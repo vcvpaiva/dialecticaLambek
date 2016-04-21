@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Revisiting a Dialectica Model of the Lambek Calculus}
+\author{Valeria de Paiva and Harley Eades III}
+\date{April 2016}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+This   note discusses the Lambek Calculus  and some of its variants
+from the point-of-view of Linear Logic.  The Lambek calculus was first introduced  with the name of Syntactic Calculus, by J. Lambek in 1958 
+as an explanation of the mathematics of sentence structure. After a long period of ostracism, around 1980 the Syntactic Calculus, now called the Lambek Calculus was taken up by logicians interested in Computational Linguistics, especially the ones in the area of Categorial Grammar. The calculus was considered ``like a logical system" but much too weak
+ to be taken seriously as a logic. To quote from van Benthem
+ \begin{quotation}One fundamental system of this kind is the so-called `Lambek Calculus' whose type-change rules show a  close analogy with the inference rules of constructive propositional logic.
+ \end{quotation}
+This situation would change drastically with the advent of Girard's Linear Logic.  Girard showed that there is a full embedding, preserving proofs, of Intuitionistic Logic into Linear Logic with a modality ``!". That means, in loose terms, that Linear Logic is  as expressive as Intuitionistic Logic and the claim is that it is more precise i.e. it makes finer distinctions. As the Lambek Calculus is the multiplicative fragment of non-commutative Intuitionistic Linear Logic, several interesting questions can be asked. One of them, posed by Morrill et al  is whether we can extend the Lambek calculus with a modality that does for the structural rule of \textit{(exchange)} what the modality `!' does for the rules of \textit{(weakening)} and \textit{(contraction)}. A very preliminary proposal, which answers this question affirmatively, is set forward in this paper. But it must be said from the start that the `answer' is  provided in semantical terms. The Proof Theory of the systems considered should be investigated in future work. Anotehr warning is that the perspective of this note is basically from Category Theory as a branch of Mathematics, so words like categories and functors are always meant in their mathematical, rather than linguistical or philosophical sense.
+
+
+We first recall Linear Logic and provide the transformations to show that the Lambek Calculus \textsf{L} really is the multiplicative fragment of non-commutative Intuitionistic Linear Logic. In the second section we describe the usual String Semantics for the Lambek Calculus \textsf{L} and generalise it, using a categorical perspective. In the third section we describe our Dialectica model for the Lambek Calculus. In the last section we discuss modalities and some untidiness of the Curry-Howard correspondence for the fragments of Linear Logic in question.
+
+\noindent{\textbf{Acknowledgments}} I would like to thank Jan van Eijck for inviting me to give the talk that became
+this note, thereby gently `forcing' me to think about the subject, as well as for his
+generous hospitality. I also would like to thank Martin Hyland, Harold Schellinx,
+Dirk Roorda, Mark Hepple, Glyn Morrill and Michael Moortgat for several useful
+discussions. Many of the ideas in this paper have been shaped by these discussions,
+but of course the mistakes are all mine. Finally I want to thank Jim Lambek for     `putting me right'
+ in the most friendly possible way on how completeness has nothing to do with the existence of two disjunctions.
+
+\section{From Linear Logic to Lambek Calculus}
+Intuitionistic Linear Logic (henceforth \textsf{ILL}) was describ ed in \cite{girard1987}. One of the best ways of thinking about the system ILL is to start with Gentzen's Intuitionistic 
+
+\section{Semantics}
+
+\section{A Dialectica Construction}
+
+\section{Modalities}
+\section{Conclusion}
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1.7]{universe.jpg}
+\caption{The Universe}
+\label{fig:univerise}
+\end{figure}

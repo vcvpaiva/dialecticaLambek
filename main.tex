@@ -1,6 +1,5 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref}
 
 \title{Dialectica Models of the Lambek Calculus Revisited}
 \author{Valeria de Paiva and Harley Eades III}
@@ -8,6 +7,8 @@
 
 \usepackage{natbib}
 \usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathpartir}
 
 %% Ott includes:
 \input{L-inc}
@@ -17,8 +18,6 @@
 \maketitle
 
 \section*{Introduction}
-
-$[[A <- B]]$
 
 This note recalls a Dialectica model of the Lambek Calculus presented
 by the first author in the Amsterdam Colloquium 1991. We approach the
@@ -119,7 +118,22 @@ fragments of Linear Logic in question.
 
 \section{The Lambek Calculus}
 
-\texttt{Harley to add rules}
+\begin{figure}
+  \begin{mathpar}
+    \Ldruleax{} \and
+    \Ldrulecut{} \and
+    \Ldruleunit{} \and
+    \LdruleTl{} \and
+    \LdruleTr{} \and
+    \LdruleIRl{} \and
+    \LdruleILl{} \and
+    \LdruleIRr{}
+  \end{mathpar}
+  \Lusedrule{\LdruleILr{}}  
+  \caption{The Lambek Calculus: L}
+  \label{fig:L}
+\end{figure}
+
 
 \section{Algebraic Semantics}
 

@@ -119,8 +119,86 @@
 % defnss
 % defns Jtyp
 %% defn Log
+\newcommand{\Ldruleax}[1]{\Ldrule[#1]{%
+}{
+ \Lnt{A}  \vdash  \Lnt{A} }{%
+{\Ldrulename{ax}}{}%
+}}
+
+
+\newcommand{\Ldrulecut}[1]{\Ldrule[#1]{%
+\Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{A}   \qquad   \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{B}  }%
+}{
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{B} }{%
+{\Ldrulename{cut}}{}%
+}}
+
+
+\newcommand{\Ldruleunit}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \vdash  \Lnt{A} }%
+}{
+ \Gamma  \Lsym{,}  I  \vdash  \Lnt{A} }{%
+{\Ldrulename{unit}}{}%
+}}
+
+
+\newcommand{\LdruleTl}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lnt{A}  \Lsym{,}  \Lnt{B}  \vdash  \Lnt{C} }%
+}{
+ \Gamma  \Lsym{,}   \Lnt{A}  \otimes  \Lnt{B}   \vdash  \Lnt{C} }{%
+{\Ldrulename{Tl}}{}%
+}}
+
+
+\newcommand{\LdruleTr}[1]{\Ldrule[#1]{%
+\Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{A}   \qquad   \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{B}  }%
+}{
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \Lnt{A}  \otimes  \Lnt{B}  }{%
+{\Ldrulename{Tr}}{}%
+}}
+
+
+\newcommand{\LdruleIRl}[1]{\Ldrule[#1]{%
+\Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{A}   \qquad   \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lnt{B}  \vdash  \Lnt{C}  }%
+}{
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}   \Lnt{A}  \rightharpoonup  \Lnt{B}   \vdash  \Lnt{C} }{%
+{\Ldrulename{IRl}}{}%
+}}
+
+
+\newcommand{\LdruleILl}[1]{\Ldrule[#1]{%
+\Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{A}   \qquad   \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{C}  }%
+}{
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}   \Lnt{A}  \leftharpoonup  \Lnt{B}   \vdash  \Lnt{C} }{%
+{\Ldrulename{ILl}}{}%
+}}
+
+
+\newcommand{\LdruleIRr}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lnt{A}  \vdash  \Lnt{B} }%
+}{
+ \Gamma  \vdash   \Lnt{A}  \rightharpoonup  \Lnt{B}  }{%
+{\Ldrulename{IRr}}{}%
+}}
+
+
+\newcommand{\LdruleILr}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lnt{A}  \Lsym{,}  \Gamma  \vdash  \Lnt{B} }%
+}{
+ \Gamma  \vdash   \Lnt{A}  \leftharpoonup  \Lnt{B}  }{%
+{\Ldrulename{ILr}}{}%
+}}
 
 \newcommand{\LdefnLog}[1]{\begin{Ldefnblock}[#1]{$ \Gamma  \vdash  \Lnt{A} $}{}
+\Lusedrule{\Ldruleax{}}
+\Lusedrule{\Ldrulecut{}}
+\Lusedrule{\Ldruleunit{}}
+\Lusedrule{\LdruleTl{}}
+\Lusedrule{\LdruleTr{}}
+\Lusedrule{\LdruleIRl{}}
+\Lusedrule{\LdruleILl{}}
+\Lusedrule{\LdruleIRr{}}
+\Lusedrule{\LdruleILr{}}
 \end{Ldefnblock}}
 
 

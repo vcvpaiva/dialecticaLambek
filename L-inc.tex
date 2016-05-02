@@ -33,7 +33,7 @@
 
 \newcommand{\LA}{
 \Lrulehead{\Lnt{A}  ,\ \Lnt{B}  ,\ \Lnt{C}}{::=}{}\Lprodnewline
-\Lfirstprodline{|}{I}{}{}{}{}\Lprodnewline
+\Lfirstprodline{|}{ I }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A}  \otimes  \Lnt{B} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A}  \rightharpoonup  \Lnt{B} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A}  \leftharpoonup  \Lnt{B} }{}{}{}{}\Lprodnewline
@@ -50,8 +50,7 @@
 
 \newcommand{\Lterminals}{
 \Lrulehead{\Lnt{terminals}}{::=}{}\Lprodnewline
-\Lfirstprodline{|}{ I }{}{}{}{}\Lprodnewline
-\Lprodline{|}{\Lsym{1}}{}{}{}{}\Lprodnewline
+\Lfirstprodline{|}{\Lsym{1}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{0}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Box }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \models }{}{}{}{}\Lprodnewline
@@ -137,7 +136,7 @@
 \newcommand{\Ldruleunit}[1]{\Ldrule[#1]{%
 \Lpremise{ \Gamma  \vdash  \Lnt{A} }%
 }{
- \Gamma  \Lsym{,}  I  \vdash  \Lnt{A} }{%
+ \Gamma  \Lsym{,}   I   \vdash  \Lnt{A} }{%
 {\Ldrulename{unit}}{}%
 }}
 

@@ -6,6 +6,7 @@ grammar
 
 A, B, C :: 'form_' ::=
   | I    ::   :: I
+  {{tex I }}  
   | A (x) B :: :: Tensor
   {{tex [[A]] \otimes [[B]] }}  
   | A -> B :: :: RImp
@@ -27,8 +28,6 @@ G {{tex \Gamma}}, D {{tex \Delta}} :: 'G_' ::=
   {{ tex [[G]] }}   
   
 terminals :: '' ::=
-  | I    ::  :: I
-  {{tex I }}
   | 1    ::  :: One
   | 0    ::  :: Zero
   | []   :: :: Box  {{ tex \Box }}

@@ -5,6 +5,7 @@
 \author{Valeria de Paiva and Harley Eades III}
 \date{April 2016}
 
+\usepackage{amssymb,amsmath}
 \usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -118,6 +119,25 @@ fragments of Linear Logic in question.
 
 \section{The Lambek Calculus}
 
+The Lambek Calculus, formerly the Syntactic Calculus, is due to Jim
+Lambek \cite{?}.  His idea was to capture the logical structure of
+sentences, and to do this he introduced a substructural logic with an
+operator denoting concatenation, $[[A (x) B]]$, and two implications
+relating the order of phrases, $[[A <- B]]$ and $[[A -> B]]$, where
+the former is a phrase of type $[[A]]$ when followed by a phrase of
+type $[[B]]$, and the latter is a phrase of type $[[B]]$ when
+proceeded by a phrase of type $[[A]]$.
+
+It turns out that the Lambek Calculus can be presented as a
+non-commutative intuitionistic multiplicative linear logic.  The
+syntax of formulas and contexts of the logic are as follows:
+\[
+\begin{array}{lll}
+  \text{(formulas)} & [[A]],[[B]],[[C]] ::= [[I]] \mid [[A (x) B]] \mid [[A <- B]] \mid [[A -> B]]\\
+  \text{(contexts)} & [[G]] ::= [[A]] \mid [[G1,G2]]\\
+\end{array}
+\]
+The inference rules are defined in Figure~\ref{fig:L}.
 \begin{figure}
   \begin{mathpar}
     \Ldruleax{} \and
@@ -133,7 +153,10 @@ fragments of Linear Logic in question.
   \caption{The Lambek Calculus: L}
   \label{fig:L}
 \end{figure}
-
+Because the operator $[[A (x) B]]$ denotes the type of concatenations
+the types $[[A (x) B]]$ and $[[B (x) A]]$ are not equivalent, and
+hence, L is non-commutative which explains why implication must be
+broken up into two operators $[[A <- B]]$ and $[[A -> B]]$.
 
 \section{Algebraic Semantics}
 

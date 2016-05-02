@@ -1,0 +1,77 @@
+% Input variables.
+metavar vars ,  x , y, z ::=  
+indexvar ivar, i , k , j , l ::= 
+
+grammar
+
+A, B, C :: 'form_' ::=
+  | I    ::   :: I
+  | A (x) B :: :: Tensor
+  {{tex [[A]] \otimes [[B]] }}  
+  | A -> B :: :: RImp
+  {{tex [[A]] \rightharpoonup [[B]] }}
+  | A <- B :: :: LImp
+  {{tex [[A]] \leftharpoonup [[B]] }}    
+  | ( A )   :: M :: Parens 
+  | h( A )  :: M :: HiddenParens 
+  {{ tex [[A]] }}
+
+% Contexts:
+G {{tex \Gamma}}, D {{tex \Delta}} :: 'G_' ::=
+  | .           ::   :: Empty
+  {{tex \cdot }}
+  | A           ::   :: El
+  | G , G'      ::   :: Ext
+  | ( G )       :: S :: Paren
+  | h( G )      :: M :: HiddenParens 
+  {{ tex [[G]] }}   
+  
+terminals :: '' ::=
+  | I    ::  :: I
+  {{tex I }}
+  | 1    ::  :: One
+  | 0    ::  :: Zero
+  | []   :: :: Box  {{ tex \Box }}
+  | |=   :: :: models  {{ tex \models }}
+  | |-   :: :: Turnstyle  {{tex \vdash }}
+  | star :: :: star   {{ tex \mathop{\star} }}
+  | >>   :: :: RR   {{ tex \gg}}
+  | _    :: :: Under   {{tex \Box}}
+  | \    :: :: slash  {{ tex \lambda }}
+  | ~>   :: :: step  {{ tex \redto }}
+  | ~*>   :: :: sstep  {{ tex \redto^* }}
+  | >=   :: :: succeq {{ tex \succeq }}
+  | <=   :: :: preceq {{ tex \preceq }}
+  | ->   :: :: rightarrow  {{ tex \rightarrow }}
+  | <-   :: :: leftarrow  {{ tex \leftarrow }}
+  | -<   :: :: Yleft  {{ tex \Yleft }}
+  | ~*>  :: :: mstep  {{ tex \redto^* }}
+  | =    :: :: Eq
+  | ==   :: :: Equiv  {{ tex \equiv }}
+  | =~   :: :: Cong  {{ tex \cong }}
+  | bot  :: :: Bottom   {{ tex \mathop{\perp} }}
+  | top  :: :: Top   {{ tex \top }}
+  | *    :: :: Cut  {{ tex \bullet}}
+  | ~    :: :: Tilde  {{tex \mathop{\sim} }}
+  | \    :: :: Lam {{ tex \lambda }}
+  | mu   :: :: Mu {{ tex \mu }}
+  | !=   :: :: Neq {{tex \neq }}
+  | FV   :: :: FV  {{ tex \mathsf{FV} }}
+  | in   :: :: In {{ tex \in }}
+
+ formula :: 'formula_' ::=
+  | judgement               ::  :: judgement
+  | formula <= formula'     :: M :: PJ
+  | ( formula )             :: M :: ParenF
+  | formula && formula'     ::  :: judgement_list 
+  {{ tex [[formula]] \qquad [[formula']] }}
+  | ( formula )             ::  :: parens
+
+defns
+  Jtyp :: '' ::=
+
+defn
+ G |- A :: :: Log :: '' 
+ {{tex [[G]] \vdash [[A]] }}
+ by
+

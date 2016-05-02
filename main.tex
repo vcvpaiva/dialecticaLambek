@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 
-\title{More Dialectica Models of the Lambek Calculus}
+\title{Dialectica Models of the Lambek Calculus Rivited}
 \author{Valeria de Paiva and Harley Eades III}
 \date{April 2016}
 
@@ -13,83 +13,73 @@
 \maketitle
 
 \section*{Introduction}
-This   note recalls a Dialectica model of the Lambek Calculus presented by the first author in the Amsterdam Colloquium 1991,
-from the point-of-view of Linear Logic. Twenty five years later we find that the work is still interesting and that it might inform some of the most recent work on word vectors. So we have decided to retype some of the old results and see if our new implementations can shed new light on some of the issues that were not solved. 
+This   note recalls a Dialectica model of the Lambek Calculus presented by the first author in the Amsterdam Colloquium 1991. We approach the Lambek 
+Calculus from the perspective of Linear Logic. On that first work we took for granted the syntax and only worried about the exciting possibilities of new models of Linear Logic-like systems. 
 
-\subsection*{Brief Historical Overview}
+Twenty five years later we find that the work is still interesting and that it might inform some of the most recent work on word vectors. But the Amsterdam Colloquium proceedings were never published and not even the author had a copy of the paper. So we have decided to revisit some of the old work, this time using the new tools that have been developed for Type Theory and Proof systems in the time that elapsed. Thus we implemented the calculus in Agda and we use \texttt{ott} to check that we do not have silly mistakes in our term systems. The goal is to  see if our new implementations can shed new light on some of the issues that remained open on the applicability and fit of the systems to their intended uses. 
+
+\subsection*{Historical Overview}
 The Lambek calculus was first introduced  with the name of Syntactic Calculus, by Jim Lambek in 1958  as an explanation of the mathematics of sentence structure.  After a long period of ostracism, around 1980 the Syntactic Calculus, now called the Lambek Calculus was taken up by logicians interested in Computational Linguistics, especially the ones in the area of Categorial Grammar. 
 %The calculus was considered ``like a logical system" but much too weak to be taken seriously as a logic. To quote from van Benthem
 % \begin{quotation}One fundamental system of this kind is the so-called `Lambek Calculus' whose type-change rules show a  close analogy with the inference rules of constructive propositional logic.
 % \end{quotation}
 
-The work on Categorial Grammar was given a serious impulse by  the advent of Girard's Linear Logic at the end of the 1980s.  Girard showed that there is a full embedding, preserving proofs, of Intuitionistic Logic into Linear Logic with a modality ``!", which meant that one could consider several systems of resource logics. These refined resource logics were applied to several areas of Computer Science. The Lambek calculus has seen a significant number of works written about it, apart from a number of monographs that
-deal with logical and linguistic aspects of the type-logical
-approach.
-%For the general logical background, there is Languagein Action.
-Type Logical Grammar situates
-the type-logical
-approach
-within
-the framework of Montague's
-Universal Grammar
-and
-presents detailed
-linguistic
-analyses
+The work on Categorial Grammar was given a serious impulse by  the advent of Girard's Linear Logic at the end of the 1980s.  Girard showed that there is a full embedding, preserving proofs, of Intuitionistic Logic into Linear Logic with a modality ``!", which meant that one could consider several systems of resource logics. These refined resource logics were applied to several areas of Computer Science. 
+
+The Lambek calculus has seen a significant number of works written about it, quite apart from a number of monographs that deal with logical and linguistic aspects of the generalized type-logical approach.
+For  general  background the typetype-logical approach, there is a wealth of information in the monographs of Moortgat, Morril, Carpenter and Steedman. For a shorter introduction, see Moortgat's chapter on the Handbook of Logic in Language \cite{}.
+
+Type Logical Grammar situates the type-logical
+approach within the framework of Montague's
+Universal Grammar and presents detailed
+linguistic analyses
 for a substantive fragment of syntactic
-and semantic phenomena
-in the grammar
-of English.
-Type Logical Semantics
- offers
-a general
-introduction
-to natural language
+and semantic phenomena in the grammar of English.
+Type Logical Semantics offers a general
+introduction to natural language
 semantics studied
 from a type-logical
-perspective. Moortgat's Categorial
-Type Logics, in the Handbook of Logic ad Language
+perspective. % Moortgat's Categorial Type Logics, in the Handbook of Logic ad Language
 
 
-However, fashion turned against these systems with the rise of probabilistic and machine learning systems.
+%However, fashion turned against these systems with the rise of probabilistic and machine learning systems.
 
 This meant that a series of systems, implemented or not, were devised  that used the Lambek Calculus or variants of Linear Logic. These systems can be   as expressive as Intuitionistic Logic and the claim is that they are more precise i.e. they make finer distinctions.
 From the beginning it was clear that the Lambek Calculus is the multiplicative fragment of non-commutative Intuitionistic Linear Logic. 
 Hence several interesting questions, considered for Linear Logic,  could also be asked of the Lambek Calculus. 
 One of them, posed by Morrill et al  is whether we can extend the Lambek calculus with a modality that does for the structural rule of \textit{(exchange)} what the modality \textit{of course} `!' does for the rules of \textit{(weakening)} and \textit{(contraction)}.
-A very preliminary proposal, which answers this question affirmatively, is set forward in this paper. But it must be said from the start that the `answer' is  provided in semantical terms. 
+A very preliminary proposal, which answers this question affirmatively, is set forward in this paper. The `answer' was  provided in semantical terms in the first version of this work. Here we provide also the more syntactic description, building on work of Galatos and others.
+
+%amount of work in Type Logical 
 %The Proof Theory of the systems considered should be investigated in future work. Another warning is that the perspective of this note is basically from Category Theory as a branch of Mathematics, so words like categories and functors are always meant in their mathematical, rather than linguistical or philosophical sense.
 
 
 We first recall Linear Logic and provide the transformations to show that the Lambek Calculus \textsf{L} really is the multiplicative fragment of non-commutative Intuitionistic Linear Logic. 
 In the second section we describe the usual String Semantics for the Lambek Calculus \textsf{L} and generalise it, using a categorical perspective. 
-In the third section we describe our Dialectica model for the Lambek Calculus. 
-In the last section we discuss modalities and some untidiness of the Curry-Howard correspondence for the fragments of Linear Logic in question.
+In the third section we recall our Dialectica model for the Lambek Calculus. 
+In the fourth section we discuss modalities and some untidiness of the Curry-Howard correspondence for the fragments of Linear Logic in question.
 
-\iffalse
-\noindent{\textbf{Acknowledgments}} I would like to thank Jan van Eijck for inviting me to give the talk that became
-this note, thereby gently `forcing' me to think about the subject, as well as for his
-generous hospitality. I also would like to thank Martin Hyland, Harold Schellinx,
-Dirk Roorda, Mark Hepple, Glyn Morrill and Michael Moortgat for several useful
-discussions. Many of the ideas in this paper have been shaped by these discussions,
-but of course the mistakes are all mine. Finally I want to thank Jim Lambek for     `putting me right'
- in the most friendly possible way on how completeness has nothing to do with the existence of two disjunctions.
-\fi 
+
 
 \section{The Lambek Calculus}
-
+\texttt{Harley to add rules}
 
 \section{Algebraic Semantics}
 
-\section{A Dialectica Construction}
+\section{Dialectica Lambek Spaces}
 
-\section{Modalities}
+\section{MultiModalities}
 \section{Conclusion}
 
 
 \bibliographystyle{plain}
 \bibliography{references}
 \end{document}
+http://www.di.ens.fr/~zappa/readings/wmm10.pdf
+Sewell, Peter, et al. "Ott: effective tool support for the working semanticist." ACM SIGPLAN Notices. Vol. 42. No. 9. ACM, 2007.
+https://www.cs.kent.ac.uk/people/staff/sao/documents/icfp07.pdf
+
+
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=1.7]{universe.jpg}

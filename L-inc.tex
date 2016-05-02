@@ -37,6 +37,7 @@
 \Lprodline{|}{ \Lnt{A}  \otimes  \Lnt{B} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A}  \rightharpoonup  \Lnt{B} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A}  \leftharpoonup  \Lnt{B} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ !  \Lnt{A} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{(}  \Lnt{A}  \Lsym{)}} {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A} } {\textsf{M}}{}{}{}}
 
@@ -46,6 +47,7 @@
 \Lprodline{|}{\Lnt{A}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Gamma  \Lsym{,}  \Gamma'}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{(}  \Gamma  \Lsym{)}} {\textsf{S}}{}{}{}\Lprodnewline
+\Lprodline{|}{ !  \Gamma } {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Gamma } {\textsf{M}}{}{}{}}
 
 \newcommand{\Lterminals}{
@@ -188,6 +190,38 @@
 {\Ldrulename{ILr}}{}%
 }}
 
+
+\newcommand{\LdruleC}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}   !  \Lnt{A}   \Lsym{,}   !  \Lnt{A}   \vdash  \Lnt{B} }%
+}{
+ \Gamma  \Lsym{,}   !  \Lnt{A}   \vdash  \Lnt{B} }{%
+{\Ldrulename{C}}{}%
+}}
+
+
+\newcommand{\LdruleW}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \vdash  \Lnt{B} }%
+}{
+ \Gamma  \Lsym{,}   !  \Lnt{A}   \vdash  \Lnt{B} }{%
+{\Ldrulename{W}}{}%
+}}
+
+
+\newcommand{\LdruleBr}[1]{\Ldrule[#1]{%
+\Lpremise{  !  \Gamma   \vdash  \Lnt{B} }%
+}{
+  !  \Gamma   \vdash   !  \Lnt{B}  }{%
+{\Ldrulename{Br}}{}%
+}}
+
+
+\newcommand{\LdruleBl}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lnt{A}  \vdash  \Lnt{B} }%
+}{
+ \Gamma  \Lsym{,}   !  \Lnt{A}   \vdash  \Lnt{B} }{%
+{\Ldrulename{Bl}}{}%
+}}
+
 \newcommand{\LdefnLog}[1]{\begin{Ldefnblock}[#1]{$ \Gamma  \vdash  \Lnt{A} $}{}
 \Lusedrule{\Ldruleax{}}
 \Lusedrule{\Ldrulecut{}}
@@ -198,6 +232,10 @@
 \Lusedrule{\LdruleILl{}}
 \Lusedrule{\LdruleIRr{}}
 \Lusedrule{\LdruleILr{}}
+\Lusedrule{\LdruleC{}}
+\Lusedrule{\LdruleW{}}
+\Lusedrule{\LdruleBr{}}
+\Lusedrule{\LdruleBl{}}
 \end{Ldefnblock}}
 
 

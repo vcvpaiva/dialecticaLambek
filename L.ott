@@ -12,7 +12,9 @@ A, B, C :: 'form_' ::=
   | A -> B :: :: RImp
   {{tex [[A]] \rightharpoonup [[B]] }}
   | A <- B :: :: LImp
-  {{tex [[A]] \leftharpoonup [[B]] }}    
+  {{tex [[A]] \leftharpoonup [[B]] }}
+  | ! A     ::   :: OfCourse
+  {{tex ! [[A]] }}
   | ( A )   :: M :: Parens 
   | h( A )  :: M :: HiddenParens 
   {{ tex [[A]] }}
@@ -24,6 +26,8 @@ G {{tex \Gamma}}, D {{tex \Delta}} :: 'G_' ::=
   | A           ::   :: El
   | G , G'      ::   :: Ext
   | ( G )       :: S :: Paren
+  | !{ G }      :: M :: OfCourse
+  {{tex ! [[G]] }}
   | h( G )      :: M :: HiddenParens 
   {{ tex [[G]] }}   
   
@@ -108,3 +112,19 @@ defn
  A, G |- B
  ----------- :: ILr
  G |- A <- B
+
+ G, !A, !A |- B
+ ----------------- :: C
+ G, !A |- B
+
+ G |- B
+ ---------- :: W
+ G, !A |- B
+
+ !{G} |- B
+ -------- :: Br
+ !{G} |- !B
+
+ G, A |- B
+ ---------- :: Bl
+ G, !A |- B

@@ -133,7 +133,7 @@ non-commutative intuitionistic multiplicative linear logic.  The
 syntax of formulas and contexts of the logic are as follows:
 \[
 \begin{array}{lll}
-  \text{(formulas)} & [[A]],[[B]],[[C]] ::= [[I]] \mid [[A (x) B]] \mid [[A <- B]] \mid [[A -> B]]\\
+  \text{(formulas)} & [[A]],[[B]],[[C]] ::= [[I]] \mid [[A (x) B]] \mid [[A <- B]] \mid [[A -> B]] \mid [[! A]]\\
   \text{(contexts)} & [[G]] ::= [[A]] \mid [[G1,G2]]\\
 \end{array}
 \]
@@ -152,7 +152,11 @@ The inference rules are defined in Figure~\ref{fig:L}.
     \LdruleC{} \and
     \LdruleW{} \and
     \LdruleBr{} \and
-    \LdruleBl{}
+    \LdruleBl{} \and
+    \LdruleEr{} \and
+    \LdruleEl{} \and
+    \LdruleEOne{} \and
+    \LdruleETwo{} 
   \end{mathpar}
     
   \caption{The Lambek Calculus: L}

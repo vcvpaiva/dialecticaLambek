@@ -38,6 +38,7 @@
 \Lprodline{|}{ \Lnt{A}  \rightharpoonup  \Lnt{B} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A}  \leftharpoonup  \Lnt{B} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ !  \Lnt{A} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \kappa  \Lnt{A} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{(}  \Lnt{A}  \Lsym{)}} {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A} } {\textsf{M}}{}{}{}}
 
@@ -48,6 +49,7 @@
 \Lprodline{|}{\Gamma  \Lsym{,}  \Gamma'}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{(}  \Gamma  \Lsym{)}} {\textsf{S}}{}{}{}\Lprodnewline
 \Lprodline{|}{ !  \Gamma } {\textsf{M}}{}{}{}\Lprodnewline
+\Lprodline{|}{ \kappa  \Gamma } {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Gamma } {\textsf{M}}{}{}{}}
 
 \newcommand{\Lterminals}{
@@ -222,6 +224,38 @@
 {\Ldrulename{Bl}}{}%
 }}
 
+
+\newcommand{\LdruleEr}[1]{\Ldrule[#1]{%
+\Lpremise{  \kappa  \Gamma   \vdash  \Lnt{B} }%
+}{
+  \kappa  \Gamma   \vdash   \kappa  \Lnt{B}  }{%
+{\Ldrulename{Er}}{}%
+}}
+
+
+\newcommand{\LdruleEl}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lnt{A}  \vdash  \Lnt{B} }%
+}{
+ \Gamma  \Lsym{,}   \kappa  \Lnt{A}   \vdash  \Lnt{B} }{%
+{\Ldrulename{El}}{}%
+}}
+
+
+\newcommand{\LdruleEOne}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}   \kappa  \Lnt{A}   \Lsym{,}  \Lnt{B}  \vdash  \Lnt{C} }%
+}{
+ \Gamma  \Lsym{,}  \Lnt{B}  \Lsym{,}   \kappa  \Lnt{A}   \vdash  \Lnt{C} }{%
+{\Ldrulename{E1}}{}%
+}}
+
+
+\newcommand{\LdruleETwo}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lnt{A}  \Lsym{,}   \kappa  \Lnt{B}   \vdash  \Lnt{C} }%
+}{
+ \Gamma  \Lsym{,}   \kappa  \Lnt{B}   \Lsym{,}  \Lnt{A}  \vdash  \Lnt{C} }{%
+{\Ldrulename{E2}}{}%
+}}
+
 \newcommand{\LdefnLog}[1]{\begin{Ldefnblock}[#1]{$ \Gamma  \vdash  \Lnt{A} $}{}
 \Lusedrule{\Ldruleax{}}
 \Lusedrule{\Ldrulecut{}}
@@ -236,6 +270,10 @@
 \Lusedrule{\LdruleW{}}
 \Lusedrule{\LdruleBr{}}
 \Lusedrule{\LdruleBl{}}
+\Lusedrule{\LdruleEr{}}
+\Lusedrule{\LdruleEl{}}
+\Lusedrule{\LdruleEOne{}}
+\Lusedrule{\LdruleETwo{}}
 \end{Ldefnblock}}
 
 

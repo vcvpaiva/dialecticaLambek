@@ -10,6 +10,12 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{mathpartir}
+\usepackage[barr]{xy}
+
+\let\mto\to                     % Used for arrows
+\let\to\relax                   % Used for implication
+\newcommand{\to}{\rightarrow}
+\newcommand{\id}{\mathsf{id}}
 
 %% Ott includes:
 \input{L-inc}
@@ -40,12 +46,12 @@ open on the applicability and fit of the systems to their intended
 uses.
 
 \subsection*{Historical Overview}
-The Syntactic Calculus was first introduced by Jim Lambek in 1958 \cite{Lambek1958}, now
-known as the Lambek Calculus, and is an explanation of the mathematics
-of sentence structure.  After a long period of ostracism, around 1980
-the Lambek Calculus was taken up by logicians interested in
-Computational Linguistics, especially the ones in the area of
-Categorial Grammar.
+The Syntactic Calculus was first introduced by Jim Lambek in 1958
+\cite{Lambek1958}, now known as the Lambek Calculus, and is an
+explanation of the mathematics of sentence structure.  After a long
+period of ostracism, around 1980 the Lambek Calculus was taken up by
+logicians interested in Computational Linguistics, especially the ones
+in the area of Categorial Grammar.
 % The calculus was considered ``like a logical system" but much too
 % weak to be taken seriously as a logic. To quote from van
 % Benthem \begin{quotation}One fundamental system of this kind is the
@@ -137,7 +143,9 @@ syntax of formulas and contexts of the logic are as follows:
   \text{(contexts)} & [[G]] ::= [[A]] \mid [[G1,G2]]\\
 \end{array}
 \]
-The inference rules are defined in Figure~\ref{fig:L}.
+We denote mapping the modalities over an arbitrary context by $[[!{ G
+}]]$ and $[[E{ G }]]$.  The inference rules are defined in
+Figure~\ref{fig:L}.
 \begin{figure}
   \begin{mathpar}
     \Ldruleax{} \and
@@ -166,6 +174,55 @@ Because the operator $[[A (x) B]]$ denotes the type of concatenations
 the types $[[A (x) B]]$ and $[[B (x) A]]$ are not equivalent, and
 hence, L is non-commutative which explains why implication must be
 broken up into two operators $[[A <- B]]$ and $[[A -> B]]$.
+
+The usual modality, $[[! A]]$, known as the of-course modality due to
+Girard \cite{Girard:1987} corresponds to a comonad which adds the
+structural rules for weakening and contraction as an effect to linear
+logic, but here we add a second modality, $[[E A]]$, which we simply
+call the exchange modality, and corresponds to a second comonad adding
+exchange as an effect.  Notice that rules $\Ldrulename{E1}$ and
+$\Ldrulename{E2}$ allow any formula under $\kappa$ to commute with any
+other formula regardless if it is under $\kappa$.
+
+Categorically, one models of-course as a functor endowed with the structure
+of a comonad with some additional structure.  That is, there are maps
+$\delta_A : [[!A]] \mto [[!!A]]$ and $\varepsilon_A : [[!A]] \mto [[A]]$
+subject to a few coherence diagrams, and maps $c_A : [[!A]] \mto
+[[h(!A) (x) !A]]$ and $w_A : [[!A]] \mto [[I]]$.  Using this structure we can
+interpret the rules of the of-course modality.  Consider the rule
+$\Ldrulename{C}$, and suppose we have a map
+$[[G]] \otimes [[(h(!A) (x) !A)]] \mto^{f} [[B]]$, then we can obtain
+a new map
+$[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes c_A} [[G]] \otimes [[(h(!A) (x) !A)]] \mto^f [[B]]$.
+The rule $\Ldrulename{W}$ is similar, but we start with a map $[[G]]
+\mto^f [[B]]$ and then we can define the map
+$[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes w_A} [[G]] \otimes [[I]] \mto^\cong [[G]] \mto^{f} [[B]]$.
+Notice that the previous map exploits the fact that $[[I]]$ is the
+unit for tensor.  Now consider the rule $\Ldrulename{Bl}$, and suppose
+we have a map $[[!{G}]] \mto^f [[B]]$, then we may obtain a second map
+using the fact that of-course is a functor $[[!{G}]] \mto^{\delta}
+[[!{!{G}}]] \mto^{!f} [[!B]]$.  Finally, consider the rule
+$\Ldrulename{Br}$ and suppose we have a map $[[G]] \otimes [[A]]
+\mto^f [[B]]$, then we can construct the map
+$[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes \varepsilon_A} [[G]]
+\otimes [[A]] \mto^f [[B]]$.  This analysis tells us a few things
+about interpreting logics into categorical models.  Sequents, $[[G |-
+    B]]$, are interpreted as morphisms, $[[G]] \mto^f [[B]]$, where
+$[[G]]$ is $[[I]]$ if it is empty, or it is the tensor product of the
+interpretations of its formulas.  Then interpreting inference rules
+amounts to starting with the morphisms corresponding to the premises,
+and then building a map corresponding to the conclusion.  The
+cut-elimination procedure defined by a set of equations between
+derivations, and hence, in the model corresponds to equations between
+morphisms.  The various coherence diagrams relating the structure of
+the model enforce that these equations hold.
+
+We can similarly interpret the rules for the exponential modality.
+That is, as a functor endowed with the structure of a second comonad,
+but also with the maps $e_1 : [[A (x) E B]] \mto [[h(E B) (x) A]]$ and
+$e_2 : [[h(E A) (x) B]] \mto [[B (x) E A]]$.  Then, each of the
+inference rules for the exponential modality can easily be interpreted
+into the model.
 
 \section{Algebraic Semantics}
 

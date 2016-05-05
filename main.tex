@@ -254,7 +254,6 @@ connectives):
   [[A -> B]] = \{y \in \V \mid \text{for all } x \in A, xy \in B\}\\ \relax
 \end{array}
 \]
-
 Let $\N = \pow{\V}$ be the powerset of $\V$.  Then we can view each of
 the above definitions as binary operations with type $\N \times \N \mto
 \N$. In fact, $\N$ has a natural order induced by set containment, and
@@ -277,7 +276,7 @@ a monoid $(\N, \otimes, I)$, but that is not all, these two structures
 are compatible, that is, given $A \subseteq B$ the following hold:
 \[
   \begin{array}{cll}
-    [[A (x) C]] \subseteq [[B (x) C]]\text{, for all } C \in \N\\
+    [[A (x) C]] \subseteq [[B (x) C]]\text{, for all } C \in \N\\ \relax
     [[C (x) A]] \subseteq [[C (x) B]]\text{, for all } C \in \N\\
   \end{array}
 \]
@@ -323,8 +322,8 @@ understand how implication relates to the ordered non-commutative
 monoid structure.  Notice that the following hold:
 \[
 \begin{array}{lll}
-  [[A (x) (A -> B)]] \subseteq B\\
-  [[(A <- B) (x) A]] \subseteq B\\
+  [[A (x) (A -> B)]] \subseteq B\\ \relax
+  [[(A <- B) (x) A]] \subseteq B\\ \relax
 \end{array}
 \]
 Furthermore, there are no larger objects of $\N$ with these

@@ -344,6 +344,21 @@ poset.
   \lto b$ and $a \rto b$ exist for any $a,b \in M$.
 \end{definition}
 
+At this point we have everything we need to model the Lambek Calculus
+L without modalities.
+\begin{lemma}
+  \label{lemma:biclosed-poset-model-L}
+  Any biclosed poset $(M, \leq, \circ, e, \lto, \rto)$ is a model for
+  the Lambek Calculus L without modalities.
+\end{lemma}
+\begin{proof}
+  First suppose we have an assignment $(-)^0$ which assigns to each
+  formula of L an element of $M$.  Then if $[[G |- A]]$ holds we
+  show that $([[G]])^0 \leq ([[A]])^0$.  This proof can easily be
+  completed by induction on the form $[[G |- A]]$.  
+\end{proof}
+
+
 \section{Dialectica Lambek Spaces}
 
 \section{MultiModalities}

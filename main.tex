@@ -247,13 +247,15 @@ formulas of L by subsets of $\V$ it proceeds by defining operations on
 these subsets, which correspond to the logical connectives of L.  Each
 operation is defined as follows (using our notation for the logical
 connectives):
-\[
-\begin{array}{c}
+\begin{center}
+  \begin{math}
+    \begin{array}{c}
   [[A (x) B]] = \{xy \in \V \mid x \in A \text{ and } y \in B\}\\
   [[C <- B]] = \{x \in \V \mid \text{for all } y \in B, xy \in C\}\\
   [[A -> C]] = \{y \in \V \mid \text{for all } x \in A, xy \in C\}\\
 \end{array}
-\]
+  \end{math}
+\end{center}
 Let $\N = \pow{\V}$ be the powerset of $\V$.  Then we can view each of
 the above definitions as binary operations with type $\N \times \N \mto
 \N$. In fact, $\N$ has a natural order induced by set containment, and

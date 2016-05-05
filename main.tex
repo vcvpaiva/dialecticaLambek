@@ -5,7 +5,7 @@
 \author{Valeria de Paiva and Harley Eades III}
 \date{April 2016}
 
-\usepackage{amssymb,amsmath}
+\usepackage{amssymb,amsmath,amsthm}
 \usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -16,6 +16,19 @@
 \let\to\relax                   % Used for implication
 \newcommand{\to}{\rightarrow}
 \newcommand{\id}{\mathsf{id}}
+\newcommand{\V}{\text{V}^+}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\pow}[1]{\mathcal{P}(#1)}
+\newcommand{\rto}{\leftharpoonup}
+\newcommand{\lto}{\rightharpoonup}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+
 
 %% Ott includes:
 \input{L-inc}
@@ -225,6 +238,111 @@ inference rules for the exchange modality can easily be interpreted
 into the model.
 
 \section{Algebraic Semantics}
+
+In Lambek's original paper \cite{Lambek1958} introducing his calculus
+L, albeit without modalities, he introduced an algebraic semantics
+that is now called the String Semantics for L.  The semantics begins
+with a non-empty set of expressions denoted $\V$, and then by modeling
+formulas of L by subsets of $\V$ it proceeds by defining operations on
+these subsets, which correspond to the logical connectives of L.  Each
+operation is defined as follows (using our notation for the logical
+connectives):
+\[
+\begin{array}{c}
+  [[A (x) B]] = \{xy \in \V \mid x \in A \text{ and } y \in B\}\\
+  [[C <- B]] = \{x \in \V \mid \text{for all } y \in B, xy \in C\}\\
+  [[A -> C]] = \{y \in \V \mid \text{for all } x \in A, xy \in C\}\\
+\end{array}
+\]
+Let $\N = \pow{\V}$ be the powerset of $\V$.  Then we can view each of
+the above definitions as binary operations with type $\N \times \N \mto
+\N$. In fact, $\N$ has a natural order induced by set containment, and
+concatenation, $[[A (x) B]]$, gives $\N$ a non-commutative monoidal
+structure, where the unit $[[I]] = \{\epsilon\}$ is the set containing
+the empty sequence:
+\[
+\begin{array}{lll}
+  \text{(associativity)} & [[A (x) (B (x) C)]] = [[(A (x) B) (x) C]]\\
+  \text{(unit)} & [[A (x) I]] = [[A]] = [[I (x) A]]\\
+  \text{(non-commutativity)} & [[A (x) B]] \neq [[B (x) A]]\text{, in general}
+\end{array}
+\]
+
+There happens to be a more general structure underlying the previous
+semantics.  We now make this structure explicit using the tools
+developed by Hyland and de Paiva \cite{Hyland:1991}. The ordering on
+$\N$ induces a poset $(\N, \subseteq)$, but even more so, $\N$ is also
+a monoid $(\N, \otimes, I)$, but that is not all, these two structures
+are compatible, that is, given $A \subseteq B$ the following hold:
+\[
+  \begin{array}{cll}
+    [[A (x) C]] \subseteq [[B (x) C]]\text{, for all } C \in \N\\
+    [[C (x) A]] \subseteq [[C (x) B]]\text{, for all } C \in \N\\
+  \end{array}
+\]
+Abstracting this structure out yields what is call a ordered
+non-commutative monoid.
+\begin{definition}
+  \label{def:ordered-non-comm-monoid}
+  An \textbf{ordered non-commutative monoid}, $(M,\leq,\circ,e)$, is a
+  poset $(M,\leq)$ with a given compatible monoidal structure $(M,
+  \circ, e)$.  That is, a set $M$ equipped with a binary relation,
+  $\leq : M \times M \mto \mathsf{2}$, satisfying:
+  \begin{center}
+    \begin{tabular}{cll}
+    \text{(reflexivity)} & $a \leq a$ for all $a \in M$\\
+    \text{(transitivity)} &  $a \leq b$ and $b \leq c$, implies that $a
+    \leq c$ for all $a, b , c \in M$\\
+    \text{(antisymmetry)} &  $a \leq b$ and $b \leq a$, implies that $a = b$
+    \end{tabular}
+  \end{center}
+  together with a monoidal multiplication $\circ : M \times M \mto M$
+  and a distinguished object $e \in M$ satisfying the following:
+  \begin{center}
+    \begin{tabular}{cll}
+    \text{(associativity)} & $a \circ (b \circ c) = (a \circ b) \circ c$\\
+    \text{(identity)} & $e \circ a = a = a \circ e$
+    \end{tabular}
+  \end{center}
+  The structures are compatible in the sense that, if $a \leq b$, then
+  the following hold:
+  \begin{center}
+    \begin{tabular}{lll}
+      $a \circ c \leq b \circ c$ for any $c \in M$\\
+      $c \circ a \leq c \circ b$ for any $c \in M$\\
+    \end{tabular}
+  \end{center}
+\end{definition}
+It is easy to see that the previous definition accounts for all of the
+structure we have described so far, and thus, we may conclude that
+$(\N, \subseteq, \otimes, I)$ is an ordered non-commutative monoid,
+however, this definition is not able to model the implication
+operations $[[A <- B]]$ and $[[A -> B]]$.  To do this we need to
+understand how implication relates to the ordered non-commutative
+monoid structure.  Notice that the following hold:
+\[
+\begin{array}{lll}
+  [[A (x) (A -> B)]] \subseteq B\\
+  [[(A <- B) (x) A]] \subseteq B\\
+\end{array}
+\]
+Furthermore, there are no larger objects of $\N$ with these
+properties.  Abstracting this results in the notion of a biclosed
+poset.
+\begin{definition}
+  \label{def:biclosed-poset}
+  Suppose $(M, \leq, \circ, e)$ is an ordered non-commutative monoid.
+  If there exists a largest $x \in M$ such that $a \circ x \leq b$ for
+  any $a, b \in M$, then we denote $x$ by $a \lto b$ and called it
+  the \textbf{left-pseudocomplement} of $a$ w.r.t $b$.  Additionally,
+  if there exists a largest $x \in M$ such that $x \circ a \leq b$ for
+  any $a, b \in M$, then we denote $x$ by $a \rto b$ and called it
+  the \textbf{right-pseudocomplement} of $a$ w.r.t $b$.
+
+  A \textbf{biclosed poset}, $(M, \leq, \circ, e, \lto, \rto)$, is an
+  ordered non-commutative monoid, $(M, \leq, \circ, e)$, such that $a
+  \lto b$ and $a \rto b$ exist for any $a,b \in M$.
+\end{definition}
 
 \section{Dialectica Lambek Spaces}
 

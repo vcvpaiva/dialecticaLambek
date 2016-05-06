@@ -60,7 +60,7 @@ uses.
 
 \subsection*{Historical Overview}
 The Syntactic Calculus was first introduced by Jim Lambek in 1958
-\cite{Lambek1958}, now known as the Lambek Calculus, and is an
+\cite{Lambek1958}, now known as the Lambek Calculus, is an
 explanation of the mathematics of sentence structure.  After a long
 period of ostracism, around 1980 the Lambek Calculus was taken up by
 logicians interested in Computational Linguistics, especially the ones
@@ -78,15 +78,17 @@ showed that there is a full embedding, preserving proofs, of
 Intuitionistic Logic into Linear Logic with a modality ``!", which
 meant that one could consider several systems of resource
 logics. These refined resource logics were applied to several areas of
-Computer Science.
+Computer Science. 
 
-The Lambek calculus has seen a significant number of works written
-about it, quite apart from a number of monographs that deal with
+In Computational Linguistics, the Lambek calculus 
+has seen a significant number of works written
+about it,  apart from a number of monographs that deal with
 logical and linguistic aspects of the generalized type-logical
 approach.  For general background on the type-logical approach, there
-is a wealth of information in the monographs of Moortgat, Morril,
+are the monographs of Moortgat, Morril,
 Carpenter and Steedman. For a shorter introduction, see
-Moortgat's chapter on the Handbook of Logic in Language \cite{?}.
+Moortgat's chapter on the Handbook of Logic in Language \cite{?} 
+or the Stanford Encyclopedia Of Philosophy article on Type Logical Grammar.
 
 Type Logical Grammar situates the type-logical approach within the
 framework of Montague's Universal Grammar and presents detailed
@@ -138,27 +140,32 @@ fragments of Linear Logic in question.
 
 \section{The Lambek Calculus}
 
-The Lambek Calculus, formerly the Syntactic Calculus, is due to Jim
-Lambek \cite{Lambek1958}.  His idea was to capture the logical structure of
-sentences, and to do this he introduced a substructural logic with an
-operator denoting concatenation, $[[A (x) B]]$, and two implications
-relating the order of phrases, $[[A <- B]]$ and $[[A -> B]]$, where
-the former is a phrase of type $[[A]]$ when followed by a phrase of
-type $[[B]]$, and the latter is a phrase of type $[[B]]$ when
+The Lambek Calculus, formerly the Syntactic Calculus $\sf L$,  due to J.
+Lambek \cite{Lambek1958}, was  created to capture the logical structure of
+sentences.  Lambek  introduced what we think of as a substructural logic with an
+%Harley any reason why we have these wrong symbols includign semantic brackets, here?
+operator denoting concatenation, $[[A \otimes B]]$, and two implications
+relating the order of phrases, $[[A <- B]]$ and $[[A -> B]]$.  The first implication
+corresponds to  a phrase of type $[[A]]$ when followed by a phrase of
+type $[[B]]$, and the second is a phrase of type $[[B]]$ when
 proceeded by a phrase of type $[[A]]$.
 
-It turns out that the Lambek Calculus can be presented as a
+The Lambek Calculus can be presented as a
 non-commutative intuitionistic multiplicative linear logic.  The
 syntax of formulas and contexts of the logic are as follows:
+
 \[
 \begin{array}{lll}
   \text{(formulas)} & [[A]],[[B]],[[C]] ::= [[I]] \mid [[A (x) B]] \mid [[A <- B]] \mid [[A -> B]] \mid [[! A]] \mid [[E A]]\\
   \text{(contexts)} & [[G]] ::= [[A]] \mid [[G1,G2]]\\
 \end{array}
 \]
+
 We denote mapping the modalities over an arbitrary context by $[[!{ G
 }]]$ and $[[E{ G }]]$.  The inference rules are defined in
 Figure~\ref{fig:L}.
+
+%add a box, please?
 \begin{figure}
   \begin{mathpar}
     \Ldruleax{} \and
@@ -183,9 +190,10 @@ Figure~\ref{fig:L}.
   \caption{The Lambek Calculus: L}
   \label{fig:L}
 \end{figure}
+
 Because the operator $[[A (x) B]]$ denotes the type of concatenations
 the types $[[A (x) B]]$ and $[[B (x) A]]$ are not equivalent, and
-hence, L is non-commutative which explains why implication must be
+hence, \textsf{L} is non-commutative which explains why implication must be
 broken up into two operators $[[A <- B]]$ and $[[A -> B]]$.
 
 The usual modality, $[[! A]]$, known as the of-course modality due to
@@ -362,6 +370,7 @@ L without modalities.
 \section{Dialectica Lambek Spaces}
 
 \section{MultiModalities}
+
 \section{Conclusion}
 
 \bibliographystyle{plain}

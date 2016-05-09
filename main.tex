@@ -22,6 +22,8 @@
 \newcommand{\pow}[1]{\mathcal{P}(#1)}
 \newcommand{\rto}{\leftharpoonup}
 \newcommand{\lto}{\rightharpoonup}
+\newcommand{\LB}{\text{L}_!}
+\newcommand{\LE}{\text{L}_\kappa}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -139,7 +141,7 @@ Lambek Calculus.  Finally, in the fourth section we discuss modalities
 and some untidiness of the Curry-Howard correspondence for the
 fragments of Linear Logic in question.
 
-\section{The Lambek Calculus}
+\section{The Lambek Calculus and Some Extensions}
 
 The Lambek Calculus, formerly the Syntactic Calculus $\sf L$, due to
 J.  Lambek \cite{Lambek1958}, was created to capture the logical
@@ -187,48 +189,58 @@ Figure~\ref{fig:L}.
 
 Because the operator $[[A (x) B]]$ denotes the type of concatenations
 the types $[[A (x) B]]$ and $[[B (x) A]]$ are not equivalent, and
-hence, \textsf{L} is non-commutative which explains why implication must be
-broken up into two operators $[[A <- B]]$ and $[[A -> B]]$.
+hence, \textsf{L} is non-commutative which explains why implication
+must be broken up into two operators $[[A <- B]]$ and $[[A -> B]]$.  In the following subsections we give two extensions of L: one with the well-known modality of-course of linear logic which adds weakening and contraction, and a second with a new modality adding exchange.
 
-\subsection{The Lambek Calculus with the Weakening and Contraction Modality}
+\subsection{Adding Weakening and Contraction to the Lambek Calculus}
 \label{subsec:the_lambek_calculus_with_the_weakening_and_contraction_modality}
 
-\begin{figure}
-  \begin{mathpar}
-    
-  \end{mathpar}
-    
-  \caption{The Lambek Calculus: L}
-  \label{fig:L}
-\end{figure}
-\begin{definition}
-  \label{def:of-course}
-  The following define the weakening and contraction modality of-course:
-  \[
-  \begin{array}{lll}
-    \LdruleC{} & \LdruleW{}\\
-    \\
-    \LdruleBr{} & \LdruleBl{}
-  \end{array}
-  \]
-\end{definition}
-
+The linear modality, $[[! A]]$, read ``of-course $[[A]]$'' was first
+proposed by Girard \cite{Girard:1987} as a means of encoding
+non-linear logic in both classical and intuitionistic forms in linear
+logic.  For example, non-linear implication $[[A -> B]]$ is usually
+encoded into linear logic by $[[!A]] \multimap [[B]]$. Since we have
+based L on non-commutative intuitionistic linear logic it is
+straightforward to add the of-course modality to L.  The rules for the
+of-course modality are defined by the following rules:
+\[
+\begin{array}{lll}
+  \LdruleC{} & \LdruleW{}\\
+  \\
+  \LdruleBr{} & \LdruleBl{}
+\end{array}
+\]
+The rules $\Ldrulename{C}$ and $\Ldrulename{W}$ add contraction and
+weakening to L in a controlled way.  Then the other two rules allow
+for linear formulas to be injected into the modality; and essentially
+correspond to the rules for necessitation found in S4\cite{?}.  Thus,
+under the of-course modality the logic becomes non-linear. We will see
+in Section~\ref{sec:dialectica_lambek_spaces} that these rules define
+a comonad.  We call the extension of L with the of-course modality
+$\LB$.
 % subsection the_lambek_calculus_with_the_weakening_and_contraction_modality (end)
 
-\subsection{The Lambek Calculus with the Exchange Modality}
+\subsection{Adding Exchange to the Lambek Calculus}
 \label{subsec:the_lambek_calculus_with_the_exchange_modality}
-
-\begin{definition}
-  \label{def:exchange-modality}
-  The following are the inference rules for the exchange modality:
-  \[
-  \begin{array}{lll}
-    \LdruleEr{} & \LdruleEl{}\\
-    \\
-    \LdruleEOne{} & \LdruleETwo{} 
-  \end{array}
-  \]
-\end{definition}
+As we remarked above, one leading question of the Lambek Calculus is
+can exchange be added in a similar way to weakening and contraction?
+That is, can we add a new modality that adds the exchange rule to L in
+a controlled way?  The answer to this question is positive, and the
+rules for this new modality are as follows:
+\[
+\begin{array}{lll}
+  \LdruleEr{} & \LdruleEl{}\\
+  \\
+  \LdruleEOne{} & \LdruleETwo{} 
+\end{array}
+\]
+The first two rules are similar to of-course, but the last two add
+exchange to formulas under the $\kappa$-modality.  We call L with the
+exchange modality $\LE$.  Thus, unlike intuitionistic linear logic
+where any two formulas can be exchanged $\LE$ restricts exchange to
+only formulas under the exchange modality.  Just like of-course
+the exchange modality is modeled categorically as a comonad; see
+Section~\ref{sec:dialectica_lambek_spaces}.
 % subsection the_lambek_calculus_with_the_exchange_modality (end)
 
 \section{Algebraic Semantics}
@@ -354,6 +366,7 @@ L without modalities.
 
 
 \section{Dialectica Lambek Spaces}
+\label{sec:dialectica_lambek_spaces}
 
 Categorically, one models of-course as a functor endowed with the structure
 of a comonad with some additional structure.  That is, there are maps
@@ -394,6 +407,7 @@ but also with the maps $e_1 : [[A (x) E B]] \mto [[h(E B) (x) A]]$ and
 $e_2 : [[h(E A) (x) B]] \mto [[B (x) E A]]$.  Then, each of the
 inference rules for the exchange modality can easily be interpreted
 into the model.
+% section dialectica_lambek_spaces (end)
 
 \section{MultiModalities}
 

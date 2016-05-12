@@ -21,6 +21,27 @@ A, B, C :: 'form_' ::=
   | h( A )  :: M :: HiddenParens 
   {{ tex [[A]] }}
 
+p :: 'pat_' ::=
+  | p-unit :: :: UnitPatter
+  {{tex \mathsf{unit} }}
+  | - :: :: Hole
+  | x :: :: Var
+  | p1 (x) p2 :: :: Tensor
+  {{tex [[p1]] \otimes [[p2]] }}
+
+t :: 'term_' ::=
+  | x                 :: :: Var
+  | unit              :: :: Unit
+  {{tex \mathsf{unit} }}
+  | t1 (x) t2         :: :: Tensor
+  {{tex [[t1]] \otimes [[t2]] }}
+  | \ x . t           :: :: Lambda
+  {{tex \lambda [[x]].[[t]] }}
+  | t1 t2             :: :: Application
+  | let t1 be p in t2 :: :: Let
+  {{tex \mathsf{let}\,[[t1]]\,\mathsf{be}\,[[p]]\,\mathsf{in}\,[[t2]] }}
+  | ( t )             :: S :: Parens
+
 % Contexts:
 G {{tex \Gamma}}, D {{tex \Delta}} :: 'G_' ::=
   | .           ::   :: Empty

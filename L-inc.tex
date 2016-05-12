@@ -42,6 +42,23 @@
 \Lprodline{|}{\Lsym{(}  \Lnt{A}  \Lsym{)}} {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A} } {\textsf{M}}{}{}{}}
 
+\newcommand{\Lp}{
+\Lrulehead{\Lnt{p}}{::=}{}\Lprodnewline
+\Lfirstprodline{|}{ \mathsf{unit} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lsym{-}}{}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lmv{x}}{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \Lnt{p_{{\mathrm{1}}}}  \otimes  \Lnt{p_{{\mathrm{2}}}} }{}{}{}{}}
+
+\newcommand{\Lt}{
+\Lrulehead{\Lnt{t}}{::=}{}\Lprodnewline
+\Lfirstprodline{|}{\Lmv{x}}{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{unit} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \lambda  \Lmv{x} . \Lnt{t} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lnt{t_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}}}{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\, \Lnt{p} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lsym{(}  \Lnt{t}  \Lsym{)}} {\textsf{S}}{}{}{}}
+
 \newcommand{\LG}{
 \Lrulehead{\Gamma  ,\ \Delta}{::=}{}\Lprodnewline
 \Lfirstprodline{|}{ \cdot }{}{}{}{}\Lprodnewline
@@ -105,12 +122,16 @@
 \Lfirstprodline{|}{\Lmv{vars}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lmv{ivar}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lnt{A}}{}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lnt{p}}{}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lnt{t}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Gamma}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lnt{terminals}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lnt{formula}}{}{}{}{}}
 
 \newcommand{\Lgrammar}{\Lgrammartabular{
 \LA\Linterrule
+\Lp\Linterrule
+\Lt\Linterrule
 \LG\Linterrule
 \Lterminals\Linterrule
 \Lformula\Linterrule

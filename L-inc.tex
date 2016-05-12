@@ -198,7 +198,7 @@
 \newcommand{\LdruleILl}[1]{\Ldrule[#1]{%
 \Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{A}   \qquad   \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{C}  }%
 }{
- \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}   \Lnt{A}  \leftharpoonup  \Lnt{B}   \vdash  \Lnt{C} }{%
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}   \Lnt{B}  \leftharpoonup  \Lnt{A}   \vdash  \Lnt{C} }{%
 {\Ldrulename{ILl}}{}%
 }}
 
@@ -214,7 +214,7 @@
 \newcommand{\LdruleILr}[1]{\Ldrule[#1]{%
 \Lpremise{ \Lnt{A}  \Lsym{,}  \Gamma  \vdash  \Lnt{B} }%
 }{
- \Gamma  \vdash   \Lnt{A}  \leftharpoonup  \Lnt{B}  }{%
+ \Gamma  \vdash   \Lnt{B}  \leftharpoonup  \Lnt{A}  }{%
 {\Ldrulename{ILr}}{}%
 }}
 
@@ -369,7 +369,7 @@
 \newcommand{\LdruleTXXILr}[1]{\Ldrule[#1]{%
 \Lpremise{ \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma  \vdash  \Lnt{t}  :  \Lnt{B} }%
 }{
- \Gamma  \vdash   \lambda  \Lmv{x} . \Lnt{t}   :   \Lnt{A}  \leftharpoonup  \Lnt{B}  }{%
+ \Gamma  \vdash   \lambda  \Lmv{x} . \Lnt{t}   :   \Lnt{B}  \leftharpoonup  \Lnt{A}  }{%
 {\Ldrulename{T\_ILr}}{}%
 }}
 

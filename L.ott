@@ -33,11 +33,16 @@ t :: 'term_' ::=
   | x                 :: :: Var
   | unit              :: :: Unit  
   {{tex \mathsf{unit} }}
-  | t1 t2             :: :: Application  
+  | appl t1 t2        :: :: Applicationl
+  {{tex \mathsf{app}_l\,[[t1]]\,[[t2]] }}
+  | appr t1 t2        :: :: Applicationr
+  {{tex \mathsf{app}_r\,[[t1]]\,[[t2]] }}  
   | t1 (x) t2         :: :: Tensor
   {{tex [[t1]] \otimes [[t2]] }}
-  | \ x . t           :: :: Lambda
-  {{tex \lambda [[x]].[[t]] }}
+  | \l x : A . t      :: :: LambdaL
+  {{tex \lambda_l [[x]]:[[A]].[[t]] }}
+  | \r x : A . t      :: :: LambdaR
+  {{tex \lambda_r [[x]]:[[A]].[[t]] }}  
   | let t1 be p in t2 :: :: Let
   {{tex \mathsf{let}\,[[t1]]\,\mathsf{be}\,[[p]]\,\mathsf{in}\,[[t2]] }}
   | { t }             :: S :: Parens
@@ -201,17 +206,17 @@ defn
  G1,G2 |- h(t1 (x) t2) : h(A (x) B)
 
  G1 |- t1 : A && G2, x : B |- t2 : C
- ----------------------------------- :: IRl
- G1,G2,z : A -> B |- [z t1/x]t2 : C
+ --------------------------------------- :: IRl
+ G1,G2,z : A -> B |- [appr z t1/x]t2 : C
 
  G1 |- t1 : A && x : B,G2 |- t2 : C
- ---------------------------------- :: ILl
- G1,G2,z : B <- A |- [z t1/x]t2 : C
+ --------------------------------------- :: ILl
+ G1,G2,z : B <- A |- [appl z t1/x]t2 : C
 
  G, x : A |- t : B
- ------------------ :: IRr
- G |- \x.t : A -> B
+ ---------------------- :: IRr
+ G |- \r x:A.t : A -> B
 
  x : A, G |- t : B
- ------------------ :: ILr
- G |- \x.t : B <- A
+ ---------------------- :: ILr
+ G |- \l x:A.t : B <- A

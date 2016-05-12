@@ -53,9 +53,11 @@
 \Lrulehead{\Lnt{t}}{::=}{}\Lprodnewline
 \Lfirstprodline{|}{\Lmv{x}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \mathsf{unit} }{}{}{}{}\Lprodnewline
-\Lprodline{|}{\Lnt{t_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}}}{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{app}_l\, \Lnt{t_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{app}_r\, \Lnt{t_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}\Lprodnewline
-\Lprodline{|}{ \lambda  \Lmv{x} . \Lnt{t} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \lambda_l  \Lmv{x} : \Lnt{A} . \Lnt{t} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \lambda_r  \Lmv{x} : \Lnt{A} . \Lnt{t} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\, \Lnt{p} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{\{}  \Lnt{t}  \Lsym{\}}} {\textsf{S}}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}} {\textsf{M}}{}{}{}\Lprodnewline
@@ -345,7 +347,7 @@
 \newcommand{\LdruleTXXIRl}[1]{\Ldrule[#1]{%
 \Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A}   \qquad   \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{B}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C}  }%
 }{
- \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{A}  \rightharpoonup  \Lnt{B}   \vdash  \Lsym{[}  \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }{%
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{A}  \rightharpoonup  \Lnt{B}   \vdash  \Lsym{[}   \mathsf{app}_r\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }{%
 {\Ldrulename{T\_IRl}}{}%
 }}
 
@@ -353,7 +355,7 @@
 \newcommand{\LdruleTXXILl}[1]{\Ldrule[#1]{%
 \Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A}   \qquad   \Lmv{x}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C}  }%
 }{
- \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \leftharpoonup  \Lnt{A}   \vdash  \Lsym{[}  \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }{%
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \leftharpoonup  \Lnt{A}   \vdash  \Lsym{[}   \mathsf{app}_l\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }{%
 {\Ldrulename{T\_ILl}}{}%
 }}
 
@@ -361,7 +363,7 @@
 \newcommand{\LdruleTXXIRr}[1]{\Ldrule[#1]{%
 \Lpremise{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lnt{t}  :  \Lnt{B} }%
 }{
- \Gamma  \vdash   \lambda  \Lmv{x} . \Lnt{t}   :   \Lnt{A}  \rightharpoonup  \Lnt{B}  }{%
+ \Gamma  \vdash   \lambda_r  \Lmv{x} : \Lnt{A} . \Lnt{t}   :   \Lnt{A}  \rightharpoonup  \Lnt{B}  }{%
 {\Ldrulename{T\_IRr}}{}%
 }}
 
@@ -369,7 +371,7 @@
 \newcommand{\LdruleTXXILr}[1]{\Ldrule[#1]{%
 \Lpremise{ \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma  \vdash  \Lnt{t}  :  \Lnt{B} }%
 }{
- \Gamma  \vdash   \lambda  \Lmv{x} . \Lnt{t}   :   \Lnt{B}  \leftharpoonup  \Lnt{A}  }{%
+ \Gamma  \vdash   \lambda_l  \Lmv{x} : \Lnt{A} . \Lnt{t}   :   \Lnt{B}  \leftharpoonup  \Lnt{A}  }{%
 {\Ldrulename{T\_ILr}}{}%
 }}
 

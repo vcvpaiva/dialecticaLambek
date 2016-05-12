@@ -1,0 +1,279 @@
+\begin{itemize}
+\item[Case:] commuting conversion cut vs cut (first case).
+  The following proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}
+        }{[[G1 |- t : A]]}
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Cut] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}
+          }{[[x : A,G2 |- t1 : B]]}
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}
+          }{[[y : B,G3 |- t' : C]]}
+        }{[[x : A,G2,G3 |- [t1/y]t' : C]]}
+      }{[[G1,G2,G3 |- [t/x][t1/y]t' : C]]}
+    \end{math}
+  \end{center}
+  is transformed into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}               
+          }{[[G1 |- t : A]]}
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}
+          }{[[x : A,G2 |- t1 : B]]}
+        }{[[G1,G2 |- [t/x]t1 : B]]}
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_3}
+        }{[[y : B,G3 |- t' : C]]}
+      }{[[G1,G2,G3 |- [ [t/x]t1/y]t' : C]]}
+    \end{math}
+  \end{center}
+
+%% ******* Doesn't hold in non-commutative case:
+%% 
+%% \item[Case:] commuting conversion cut vs. cut (second case).  The second commuting conversion on cut begins with the proof
+%%   \begin{center}
+%%     \begin{math}
+%%       $$\mprset{flushleft}
+%%       \inferrule* [right=Cut] {
+%%         $$\mprset{flushleft}
+%%         \inferrule* [right=] {
+%%           \inferrule* [right=,vdots=1.5em,fraction=\,] {
+%%             \,
+%%           }{\pi_1}
+%%         }{[[G |- t : A]]}
+%%         \\
+%%         $$\mprset{flushleft}
+%%         \inferrule* [right=Cut] {
+%%           $$\mprset{flushleft}
+%%           \inferrule* [right=] {
+%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
+%%               \,
+%%             }{\pi_2}
+%%           }{[[G' |- t' : B]]}
+%%           \\
+%%           $$\mprset{flushleft}
+%%           \inferrule* [right=] {
+%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
+%%               \,
+%%             }{\pi_3}
+%%           }{[[x : A,G2,y:B,G3 |- t'' : C]]}
+%%         }{[[G1,x : A,G2,G',G3 |- [t'/y]t'' : C]]}
+%%       }{[[G1,G,G2,G',G3 |- [t/x][t'/y]t'' : C]]}
+%%     \end{math}
+%%   \end{center}
+%%   is transformed into the following proof:
+%%   \begin{center}
+%%     \begin{math}
+%%       $$\mprset{flushleft}
+%%       \inferrule* [right=Cut] {
+%%         $$\mprset{flushleft}
+%%         \inferrule* [right=] {
+%%           \inferrule* [right=,vdots=1.5em,fraction=\,] {
+%%             \,
+%%           }{\pi_2}
+%%         }{[[G' |- t' : B]]}
+%%         \\
+%%         $$\mprset{flushleft}
+%%         \inferrule* [right=Cut] {
+%%           $$\mprset{flushleft}
+%%           \inferrule* [right=] {
+%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
+%%               \,
+%%             }{\pi_1}
+%%           }{[[G |- t : A]]}      
+%%           \\
+%%           $$\mprset{flushleft}
+%%           \inferrule* [right=] {
+%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
+%%               \,
+%%             }{\pi_3}
+%%           }{[[G1,x : A,G2,y:B,G3 |- t'' : C]]}
+%%         }{[[G1,G,G2,y:B,G3 |- [t/x]t'' : C]]}
+%%       }{[[G1,G,G2,G',G3 |- [t'/y][t/x]t'' : C]]}
+%%     \end{math}
+%%   \end{center}
+  
+
+\item[Case:] the $\eta$-expansion cases: tensor.  
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Ax] {
+        \,
+      }{[[x : A (x) B |- x : A (x) B]]}
+    \end{math}
+  \end{center}
+  is transformed into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Tl] {
+        $$\mprset{flushleft}
+        \inferrule* [right=Tr] {
+          $$\mprset{flushleft}
+          \inferrule* [right=Ax] {
+            \,
+          }{[[y : A |- y : A]]}
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=Ax] {
+            \,
+          }{[[z : B |- z : B]]}
+        }{[[y : A, z : B |- y (x) z : A (x) B]]}
+      }{[[x : A (x) B |- let x be y (x) z in {y (x) z} : A (x) B]]}
+    \end{math}
+  \end{center}
+
+\item[Case:] the $\eta$-expansion cases: implication.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=T\_Var] {
+        \,
+      }{[[x : A -> B |- x : A -> B]]}
+    \end{math}
+  \end{center}
+  transforms into the proof 
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=T\_IRl] {
+        $$\mprset{flushleft}
+        \inferrule* [right=T\_IRr] {
+          $$\mprset{flushleft}
+          \inferrule* [right=T\_Var] {
+            \,
+          }{[[y : A |- y : A]]}
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=T\_Var] {
+            \,
+          }{[[z : B |- z : B]]}
+        }{[[y : A, x : A -> B |- appr x y : B]]}
+      }{[[x : A -> B |- \r y:A.appr x y : A -> B]]}
+    \end{math}  
+  \end{center}
+
+\item[Case:] the $\eta$-expansion cases: implication.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=T\_Var] {
+        \,
+      }{[[x : B <- A |- x : B <- A]]}
+    \end{math}
+  \end{center}
+  transforms into the proof 
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=T\_ILl] {
+        $$\mprset{flushleft}
+        \inferrule* [right=T\_ILr] {
+          $$\mprset{flushleft}
+          \inferrule* [right=T\_Var] {
+            \,
+          }{[[y : A |- y : A]]}
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=T\_Var] {
+            \,
+          }{[[z : B |- z : B]]}
+        }{[[y : A, x : B <- A |- appl x y : B]]}
+      }{[[x : B <- A |- \l y:A.appl x y : A <- B]]}
+    \end{math}  
+  \end{center}  
+  
+\item[Case:] the $\eta$-expansion cases: tensor unit.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Var] {
+        \,
+      }{[[x : I |- x : I]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Ul] {
+        $$\mprset{flushleft}
+        \inferrule* [right=Ur] {
+          \,
+        }{[[. |- unit : I]]}
+      }{[[x : I |- let x be punit in unit : I]]}
+    \end{math}
+  \end{center}
+
+\item[Case:] the axiom steps: the axiom step. The proof 
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=T\_Cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=T\_Var] {
+          \,
+        }{[[x : A |- x : A]]}
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi}          
+        }{[[y : A, G |- t : C]]}
+      }{[[x : A, G |- [x/y]t : C]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=] {
+        \inferrule* [right=,vdots=1.5em,fraction=\,] {
+          \,
+        }{\pi}          
+      }{[[y : A, G |- t : C]]}
+    \end{math}
+  \end{center}
+  
+\end{itemize}

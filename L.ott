@@ -106,6 +106,8 @@ terminals :: '' ::=
   | formula && formula'     ::  :: judgement_list 
   {{ tex [[formula]] \qquad [[formula']] }}
   | ( formula )             ::  :: parens
+  | x nin FV( t )           ::  :: FV
+  {{tex [[x]] \not\in \mathsf{FV}([[t]]) }}
 
 defns
   Jtyp :: '' ::=
@@ -233,14 +235,30 @@ defn
  {{tex [[t1]] \rightsquigarrow [[t2]] }}
  by
 
+ y nin FV(t)
+ ----------- :: Alpha
+ [y/x]t ~> t
+
+ --------------------- :: Etal
+ t ~> \l x:A.appl t x
+
+ -------------------- :: Etar
+ t ~> \r x:A.appr t x 
+
  ------------------------------- :: Betal
  appl {\l x:A.t2} t1 ~> [t1/x]t2
 
  ------------------------------- :: Betar
  appr {\r x:A.t2} t1 ~> [t1/x]t2
 
- ------------------------------------------------ :: LetT
+ ----------------------------------------- :: BetaU
+ let t1 be punit in [unit/z]t2 ~> [t1/z]t2
+
+ ------------------------------------------------ :: BetaT1
  let t1 (x) t2 be x (x) y in t ~> [t1/x][t2/y]t
+
+ ---------------------------------------------- :: BetaT2
+ let t1 be x (x) y in [x (x) y/z]t2 ~> [t1/x]t2
 
  --------------------------- :: LetU
  let unit be punit in t ~> t

@@ -113,7 +113,8 @@
 \Lprodline{|}{\Lnt{formula}  \preceq  \Lnt{formula'}} {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{(}  \Lnt{formula}  \Lsym{)}} {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{formula}  \qquad  \Lnt{formula'} }{}{}{}{}\Lprodnewline
-\Lprodline{|}{\Lsym{(}  \Lnt{formula}  \Lsym{)}}{}{}{}{}}
+\Lprodline{|}{\Lsym{(}  \Lnt{formula}  \Lsym{)}}{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \Lmv{x}  \not\in \mathsf{FV}( \Lnt{t} ) }{}{}{}{}}
 
 \newcommand{\LJtyp}{
 \Lrulehead{\Lnt{Jtyp}}{::=}{}\Lprodnewline
@@ -405,6 +406,28 @@
 \end{Ldefnblock}}
 
 %% defn ReW
+\newcommand{\LdruleRXXAlpha}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lmv{y}  \not\in \mathsf{FV}( \Lnt{t} ) }%
+}{
+ \Lsym{[}  \Lmv{y}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t}  \rightsquigarrow  \Lnt{t} }{%
+{\Ldrulename{R\_Alpha}}{}%
+}}
+
+
+\newcommand{\LdruleRXXEtal}[1]{\Ldrule[#1]{%
+}{
+ \Lnt{t}  \rightsquigarrow   \lambda_l  \Lmv{x} : \Lnt{A} .  \mathsf{app}_l\, \Lnt{t} \, \Lmv{x}   }{%
+{\Ldrulename{R\_Etal}}{}%
+}}
+
+
+\newcommand{\LdruleRXXEtar}[1]{\Ldrule[#1]{%
+}{
+ \Lnt{t}  \rightsquigarrow   \lambda_r  \Lmv{x} : \Lnt{A} .  \mathsf{app}_r\, \Lnt{t} \, \Lmv{x}   }{%
+{\Ldrulename{R\_Etar}}{}%
+}}
+
+
 \newcommand{\LdruleRXXBetal}[1]{\Ldrule[#1]{%
 }{
   \mathsf{app}_l\,  (   \lambda_l  \Lmv{x} : \Lnt{A} . \Lnt{t_{{\mathrm{2}}}}   )  \, \Lnt{t_{{\mathrm{1}}}}   \rightsquigarrow  \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}} }{%
@@ -419,10 +442,24 @@
 }}
 
 
-\newcommand{\LdruleRXXLetT}[1]{\Ldrule[#1]{%
+\newcommand{\LdruleRXXBetaU}[1]{\Ldrule[#1]{%
+}{
+  \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lsym{[}   \mathsf{unit}   \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}   \rightsquigarrow  \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}} }{%
+{\Ldrulename{R\_BetaU}}{}%
+}}
+
+
+\newcommand{\LdruleRXXBetaTOne}[1]{\Ldrule[#1]{%
 }{
   \mathsf{let}\,  \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}  \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lnt{t}   \rightsquigarrow  \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}  \Lnt{t_{{\mathrm{2}}}}  \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t} }{%
-{\Ldrulename{R\_LetT}}{}%
+{\Ldrulename{R\_BetaT1}}{}%
+}}
+
+
+\newcommand{\LdruleRXXBetaTTwo}[1]{\Ldrule[#1]{%
+}{
+  \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lsym{[}   \Lmv{x}  \otimes  \Lmv{y}   \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}   \rightsquigarrow  \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}} }{%
+{\Ldrulename{R\_BetaT2}}{}%
 }}
 
 
@@ -505,9 +542,14 @@
 }}
 
 \newcommand{\LdefnReW}[1]{\begin{Ldefnblock}[#1]{$ \Lnt{t_{{\mathrm{1}}}}  \rightsquigarrow  \Lnt{t_{{\mathrm{2}}}} $}{}
+\Lusedrule{\LdruleRXXAlpha{}}
+\Lusedrule{\LdruleRXXEtal{}}
+\Lusedrule{\LdruleRXXEtar{}}
 \Lusedrule{\LdruleRXXBetal{}}
 \Lusedrule{\LdruleRXXBetar{}}
-\Lusedrule{\LdruleRXXLetT{}}
+\Lusedrule{\LdruleRXXBetaU{}}
+\Lusedrule{\LdruleRXXBetaTOne{}}
+\Lusedrule{\LdruleRXXBetaTTwo{}}
 \Lusedrule{\LdruleRXXLetU{}}
 \Lusedrule{\LdruleRXXLet{}}
 \Lusedrule{\LdruleRXXTOne{}}

@@ -444,22 +444,25 @@ Putting this here for now.
 \begin{figure}
   \begin{mdframed}
     \begin{mathpar}
+      \LdruleRXXEtal{}  \and
+      \LdruleRXXEtar{}  \and
       \LdruleRXXBetal{} \and
       \LdruleRXXBetar{} \and
-      \LdruleRXXLetT{} \and
-      \LdruleRXXLetU{} \and
-      \LdruleRXXLet{} \and
-      \LdruleRXXTOne{} \and
-      \LdruleRXXTTwo{} \and
+      \LdruleRXXBetaTOne{}  \and
+      \LdruleRXXBetaTTwo{}  \and      
+      \LdruleRXXLetU{}  \and
+      \LdruleRXXLet{}   \and
+      \LdruleRXXTOne{}  \and
+      \LdruleRXXTTwo{}  \and
       \LdruleRXXAlOne{} \and
       \LdruleRXXAlTwo{} \and
       \LdruleRXXArOne{} \and
       \LdruleRXXArTwo{} \and
-      \LdruleRXXLl{} \and
+      \LdruleRXXLl{}    \and
       \LdruleRXXLr{}
     \end{mathpar}
   \end{mdframed}
-    \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}$}
+  \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}$}
   \label{fig:rewrite-L}
 \end{figure}
 
@@ -472,6 +475,16 @@ Putting this here for now.
 
 \bibliographystyle{plain}
 \bibliography{references}
+
+\appendix
+
+\section{Term Annotated Cut Elimination Procedure for L}
+\label{sec:cut_elimination_procedure_for_l}
+
+\input{cut-elim-output}
+
+% section cut_elimination_procedure_for_l (end)
+
 \end{document}
 
 http://www.di.ens.fr/~zappa/readings/wmm10.pdf

@@ -4,7 +4,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
@@ -13,7 +13,7 @@
         }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t}  :  \Lnt{A} }
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Cut] {
+        \inferrule* [right=cut] {
           $$\mprset{flushleft}
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
@@ -35,7 +35,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
         \inferrule* [right=] {
           $$\mprset{flushleft}
@@ -63,70 +63,68 @@
     \end{math}
   \end{center}
 
-%% ******* Doesn't hold in non-commutative case:
-%% 
-%% \item[Case:] commuting conversion cut vs. cut (second case).  The second commuting conversion on cut begins with the proof
-%%   \begin{center}
-%%     \begin{math}
-%%       $$\mprset{flushleft}
-%%       \inferrule* [right=Cut] {
-%%         $$\mprset{flushleft}
-%%         \inferrule* [right=] {
-%%           \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%             \,
-%%           }{\pi_1}
-%%         }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }
-%%         \\
-%%         $$\mprset{flushleft}
-%%         \inferrule* [right=Cut] {
-%%           $$\mprset{flushleft}
-%%           \inferrule* [right=] {
-%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%               \,
-%%             }{\pi_2}
-%%           }{ \Gamma'  \vdash  \Lnt{t'}  :  \Lnt{B} }
-%%           \\
-%%           $$\mprset{flushleft}
-%%           \inferrule* [right=] {
-%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%               \,
-%%             }{\pi_3}
-%%           }{ \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t''}  :  \Lnt{C} }
-%%         }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma'  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t'}  \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t''}  :  \Lnt{C} }
-%%       }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma'  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}  \Lnt{t'}  \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t''}  :  \Lnt{C} }
-%%     \end{math}
-%%   \end{center}
-%%   is transformed into the following proof:
-%%   \begin{center}
-%%     \begin{math}
-%%       $$\mprset{flushleft}
-%%       \inferrule* [right=Cut] {
-%%         $$\mprset{flushleft}
-%%         \inferrule* [right=] {
-%%           \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%             \,
-%%           }{\pi_2}
-%%         }{ \Gamma'  \vdash  \Lnt{t'}  :  \Lnt{B} }
-%%         \\
-%%         $$\mprset{flushleft}
-%%         \inferrule* [right=Cut] {
-%%           $$\mprset{flushleft}
-%%           \inferrule* [right=] {
-%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%               \,
-%%             }{\pi_1}
-%%           }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
-%%           \\
-%%           $$\mprset{flushleft}
-%%           \inferrule* [right=] {
-%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%               \,
-%%             }{\pi_3}
-%%           }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t''}  :  \Lnt{C} }
-%%         }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t''}  :  \Lnt{C} }
-%%       }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma'  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t'}  \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t''}  :  \Lnt{C} }
-%%     \end{math}
-%%   \end{center}
+\item[Case:] commuting conversion cut vs. cut (second case).  The second commuting conversion on cut begins with the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}
+          }{ \Gamma'  \vdash  \Lnt{t'}  :  \Lnt{B} }
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}
+          }{ \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t''}  :  \Lnt{C} }
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma'  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t'}  \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t''}  :  \Lnt{C} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma'  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}  \Lnt{t'}  \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t''}  :  \Lnt{C} }
+    \end{math}
+  \end{center}
+  is transformed into the following proof:
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_2}
+        }{ \Gamma'  \vdash  \Lnt{t'}  :  \Lnt{B} }
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}
+          }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t''}  :  \Lnt{C} }
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t''}  :  \Lnt{C} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma'  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t'}  \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t''}  :  \Lnt{C} }
+    \end{math}
+  \end{center}
   
 
 \item[Case:] the $\eta$-expansion cases: tensor.  
@@ -134,7 +132,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Ax] {
+      \inferrule* [right=Var] {
         \,
       }{ \Lmv{x}  \Lsym{:}   \Lnt{A}  \otimes  \Lnt{B}   \vdash  \Lmv{x}  :   \Lnt{A}  \otimes  \Lnt{B}  }
     \end{math}
@@ -147,12 +145,12 @@
         $$\mprset{flushleft}
         \inferrule* [right=Tr] {
           $$\mprset{flushleft}
-          \inferrule* [right=Ax] {
+          \inferrule* [right=Var] {
             \,
           }{ \Lmv{y}  \Lsym{:}  \Lnt{A}  \vdash  \Lmv{y}  :  \Lnt{A} }
           \\
           $$\mprset{flushleft}
-          \inferrule* [right=Ax] {
+          \inferrule* [right=Var] {
             \,
           }{ \Lmv{z}  \Lsym{:}  \Lnt{B}  \vdash  \Lmv{z}  :  \Lnt{B} }
         }{ \Lmv{y}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Lmv{z}  \Lsym{:}  \Lnt{B}  \vdash   \Lmv{y}  \otimes  \Lmv{z}   :   \Lnt{A}  \otimes  \Lnt{B}  }
@@ -165,7 +163,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_Var] {
+      \inferrule* [right=Var] {
         \,
       }{ \Lmv{x}  \Lsym{:}   \Lnt{A}  \rightharpoonup  \Lnt{B}   \vdash  \Lmv{x}  :   \Lnt{A}  \rightharpoonup  \Lnt{B}  }
     \end{math}
@@ -174,16 +172,16 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_IRl] {
+      \inferrule* [right=IRr] {
         $$\mprset{flushleft}
-        \inferrule* [right=T\_IRr] {
+        \inferrule* [right=IRl] {
           $$\mprset{flushleft}
-          \inferrule* [right=T\_Var] {
+          \inferrule* [right=Var] {
             \,
           }{ \Lmv{y}  \Lsym{:}  \Lnt{A}  \vdash  \Lmv{y}  :  \Lnt{A} }
           \\
           $$\mprset{flushleft}
-          \inferrule* [right=T\_Var] {
+          \inferrule* [right=Var] {
             \,
           }{ \Lmv{z}  \Lsym{:}  \Lnt{B}  \vdash  \Lmv{z}  :  \Lnt{B} }
         }{ \Lmv{y}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Lmv{x}  \Lsym{:}   \Lnt{A}  \rightharpoonup  \Lnt{B}   \vdash   \mathsf{app}_r\, \Lmv{x} \, \Lmv{y}   :  \Lnt{B} }
@@ -196,7 +194,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_Var] {
+      \inferrule* [right=Var] {
         \,
       }{ \Lmv{x}  \Lsym{:}   \Lnt{B}  \leftharpoonup  \Lnt{A}   \vdash  \Lmv{x}  :   \Lnt{B}  \leftharpoonup  \Lnt{A}  }
     \end{math}
@@ -205,16 +203,16 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_ILl] {
+      \inferrule* [right=ILr] {
         $$\mprset{flushleft}
-        \inferrule* [right=T\_ILr] {
+        \inferrule* [right=ILl] {
           $$\mprset{flushleft}
-          \inferrule* [right=T\_Var] {
+          \inferrule* [right=Var] {
             \,
           }{ \Lmv{y}  \Lsym{:}  \Lnt{A}  \vdash  \Lmv{y}  :  \Lnt{A} }
           \\
           $$\mprset{flushleft}
-          \inferrule* [right=T\_Var] {
+          \inferrule* [right=Var] {
             \,
           }{ \Lmv{z}  \Lsym{:}  \Lnt{B}  \vdash  \Lmv{z}  :  \Lnt{B} }
         }{ \Lmv{y}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Lmv{x}  \Lsym{:}   \Lnt{B}  \leftharpoonup  \Lnt{A}   \vdash   \mathsf{app}_l\, \Lmv{x} \, \Lmv{y}   :  \Lnt{B} }
@@ -249,9 +247,9 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=T\_Var] {
+        \inferrule* [right=Var] {
           \,
         }{ \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lmv{x}  :  \Lnt{A} }
         \\
@@ -281,7 +279,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
@@ -290,7 +288,7 @@
         }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }
         \,
         $$\mprset{flushleft}
-        \inferrule* [right=T\_var] {
+        \inferrule* [right=var] {
           \,
         }{ \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lmv{x}  :  \Lnt{A} }
       }{ \Gamma  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lmv{x}  :  \Lnt{A} }
@@ -313,7 +311,7 @@
     \scriptsize
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=\footnotesize Cut] {
+      \inferrule* [right=\footnotesize cut] {
         $$\mprset{flushleft}
         \inferrule* [right=\footnotesize Tr] {
           \inferrule* [right=] {
@@ -344,7 +342,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
             \,
@@ -352,7 +350,7 @@
         }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A} }
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Cut] {
+        \inferrule* [right=cut] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -375,9 +373,9 @@
     \scriptsize
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=\scriptsize Cut] {
+      \inferrule* [right=\scriptsize cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Impr] {
+        \inferrule* [right=\scriptsize IRr] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -386,7 +384,7 @@
         }{ \Gamma  \vdash   \lambda_r  \Lmv{x} : \Lnt{A} . \Lnt{t}   :   \Lnt{A}  \rightharpoonup  \Lnt{B}  }
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Impl] {
+        \inferrule* [right=\scriptsize IRl] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -407,9 +405,9 @@
     \scriptsize
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=\scriptsize Cut] {
+      \inferrule* [right=\scriptsize cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Cut] {
+        \inferrule* [right=\scriptsize cut] {
             \inferrule* [right=] {
               \inferrule* [right=,vdots=1.5em,fraction=\,] {
                 \,
@@ -438,9 +436,9 @@
     \scriptsize
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=\scriptsize Cut] {
+      \inferrule* [right=\scriptsize cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Impr] {
+        \inferrule* [right=\scriptsize ILr] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -449,7 +447,7 @@
         }{ \Gamma  \vdash   \lambda_l  \Lmv{x} : \Lnt{A} . \Lnt{t}   :   \Lnt{B}  \leftharpoonup  \Lnt{A}  }
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Impl] {
+        \inferrule* [right=\scriptsize ILl] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -470,9 +468,9 @@
     \scriptsize
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=\scriptsize Cut] {
+      \inferrule* [right=\scriptsize cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Cut] {
+        \inferrule* [right=\scriptsize cut] {
             \inferrule* [right=] {
               \inferrule* [right=,vdots=1.5em,fraction=\,] {
                 \,
@@ -498,11 +496,12 @@
 \item[Case:] secondary conclusion: left introduction of implication.
   The proof 
   \begin{center}
+    \small
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=Impl] {
+        \inferrule* [right=IRl] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -528,7 +527,7 @@
   \begin{center}
     \begin{math}      
       $$\mprset{flushleft}
-      \inferrule* [right=Impl] {
+      \inferrule* [right=IRl] {
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
             \,
@@ -536,7 +535,7 @@
         }{ \Gamma  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A} }
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Cut] {
+        \inferrule* [right=cut] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -558,9 +557,9 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=Impl] {
+        \inferrule* [right=ILl] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -586,7 +585,7 @@
   \begin{center}
     \begin{math}      
       $$\mprset{flushleft}
-      \inferrule* [right=Impl] {
+      \inferrule* [right=ILl] {
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
             \,
@@ -594,7 +593,7 @@
         }{ \Gamma  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A} }
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Cut] {
+        \inferrule* [right=cut] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -616,7 +615,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
         \inferrule* [right=Tl] {
           \inferrule* [right=] {
@@ -640,7 +639,7 @@
       $$\mprset{flushleft}
       \inferrule* [right=Tl] {
         $$\mprset{flushleft}
-        \inferrule* [right=Cut] {
+        \inferrule* [right=cut] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -656,5 +655,708 @@
       }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{A}  \otimes  \Lnt{B}   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \mathsf{let}\, \Lmv{z} \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{w}  \Lsym{]}  \Lnt{t'}   :  \Lnt{D} }
     \end{math}
   \end{center}
+
+\item[Case:] secondary conclusion: left introduction of tensor unit.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=Ul] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{C} }      
+        }{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}   I   \vdash   \mathsf{let}\, \Lmv{x} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lnt{t}   :  \Lnt{C} }
+        \\
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_2}          
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{w}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t'}  :  \Lnt{D} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}   I   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{let}\, \Lmv{x} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lnt{t}   \Lsym{/}  \Lmv{w}  \Lsym{]}  \Lnt{t'}  :  \Lnt{D} }
+    \end{math}
+  \end{center}
+  is transformed into the following:
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+        \inferrule* [right=Ul] {
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{C} }      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_2}          
+            }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{w}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t'}  :  \Lnt{D} }  
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{w}  \Lsym{]}  \Lnt{t'}  :  \Lnt{D} }
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}   I   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \mathsf{let}\, \Lmv{x} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{w}  \Lsym{]}  \Lnt{t'}   :  \Lnt{D} }
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: left introduction of tensor.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Tl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Lmv{z}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{D} }                  
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{w}  \Lsym{:}   \Lnt{B}  \otimes  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash   \mathsf{let}\, \Lmv{w} \,\mathsf{be}\,  \Lmv{y}  \otimes  \Lmv{z}  \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :  \Lnt{D} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{w}  \Lsym{:}   \Lnt{B}  \otimes  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}   \mathsf{let}\, \Lmv{w} \,\mathsf{be}\,  \Lmv{y}  \otimes  \Lmv{z}  \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :  \Lnt{D} }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Tl] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Lmv{z}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{D} }                  
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Lmv{z}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{D} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{w}  \Lsym{:}   \Lnt{B}  \otimes  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash   \mathsf{let}\, \Lmv{w} \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}   :  \Lnt{D} }
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: right introduction of tensor (first
+  case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Tr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }      
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash   \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}   :   \Lnt{B}  \otimes  \Lnt{C}  }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}   (   \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}   )   :   \Lnt{B}  \otimes  \Lnt{C}  }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+        $$\mprset{flushleft}
+        \inferrule* [right=Tr] {
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_2}          
+            }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }      
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash    (  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}  )   \otimes  \Lnt{t_{{\mathrm{2}}}}   :   \Lnt{B}  \otimes  \Lnt{C}  }
+    \end{math}
+  \end{center}
+  
+\item[Case:] secondary hypothesis: right introduction of tensor
+  (second case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Tr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }      
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash   \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}   :   \Lnt{B}  \otimes  \Lnt{C}  }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}   (   \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}   )   :   \Lnt{B}  \otimes  \Lnt{C}  }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}      
+      $$\mprset{flushleft}
+        \inferrule* [right=Tr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_3}          
+            }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }      
+          }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }       
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash   \Lnt{t_{{\mathrm{1}}}}  \otimes   (  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  )    :   \Lnt{B}  \otimes  \Lnt{C}  }
+    \end{math}
+  \end{center}  
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (first case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=IRl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+        }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \rightharpoonup  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{app}_r\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+      }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \rightharpoonup  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}   \mathsf{app}_r\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=IRl] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }
+        \\
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_3}          
+        }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+      }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \rightharpoonup  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{app}_r\, \Lmv{z} \, \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (first case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=ILl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+        }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{C}  \leftharpoonup  \Lnt{B}   \vdash  \Lsym{[}   \mathsf{app}_l\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+      }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{C}  \leftharpoonup  \Lnt{B}   \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}   \mathsf{app}_l\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=ILl] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }
+        \\
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_3}          
+        }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+      }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{C}  \leftharpoonup  \Lnt{B}   \vdash  \Lsym{[}   \mathsf{app}_l\, \Lmv{z} \, \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}  
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (second case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=IRl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+        }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \rightharpoonup  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{1}}}  \vdash  \Lsym{[}   \mathsf{app}_r\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+      }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \rightharpoonup  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{1}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}   \mathsf{app}_r\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}      
+        $$\mprset{flushleft}
+        \inferrule* [right=IRl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_3}          
+            }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+          }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+        }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \rightharpoonup  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{1}}}  \vdash  \Lsym{[}   \mathsf{app}_r\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (second case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=ILl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+        }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{C}  \leftharpoonup  \Lnt{B}   \vdash  \Lsym{[}   \mathsf{app}_l\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+      }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{C}  \leftharpoonup  \Lnt{B}   \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}   \mathsf{app}_l\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}      
+        $$\mprset{flushleft}
+        \inferrule* [right=ILl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_3}          
+            }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+          }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+        }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{C}  \leftharpoonup  \Lnt{B}   \vdash  \Lsym{[}   \mathsf{app}_l\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}  
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (third case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=IRl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+        }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \rightharpoonup  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lsym{[}   \mathsf{app}_r\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+      }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \rightharpoonup  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}   \mathsf{app}_r\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+        $$\mprset{flushleft}
+        \inferrule* [right=IRl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_3}          
+            }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+          }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+        }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \rightharpoonup  \Lnt{C}   \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma  \vdash  \Lsym{[}   \mathsf{app}_r\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (third case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=ILl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+        }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{C}  \leftharpoonup  \Lnt{B}   \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lsym{[}   \mathsf{app}_l\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+      }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{C}  \leftharpoonup  \Lnt{B}   \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}   \mathsf{app}_l\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+        $$\mprset{flushleft}
+        \inferrule* [right=ILl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{B} }      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_3}          
+            }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }      
+          }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{C}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+        }{ \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{C}  \leftharpoonup  \Lnt{B}   \Lsym{,}  \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma  \vdash  \Lsym{[}   \mathsf{app}_l\, \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{D} }
+    \end{math}
+  \end{center}  
+
+\item[Case:] secondary hypothesis: right introduction of implication.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=IRr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{C} }      
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \lambda_r  \Lmv{y} : \Lnt{A} . \Lnt{t_{{\mathrm{1}}}}   :   \Lnt{B}  \rightharpoonup  \Lnt{C}  }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}   (   \lambda_r  \Lmv{y} : \Lnt{A} . \Lnt{t_{{\mathrm{1}}}}   )   :   \Lnt{B}  \rightharpoonup  \Lnt{C}  }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=IRr] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+          \\        
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{C} }      
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{C} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \lambda_r  \Lmv{y} : \Lnt{A} . \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}   :   \Lnt{B}  \rightharpoonup  \Lnt{C}  }
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: right introduction of implication.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=ILr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{C} }      
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \lambda_l  \Lmv{y} : \Lnt{A} . \Lnt{t_{{\mathrm{1}}}}   :   \Lnt{C}  \leftharpoonup  \Lnt{B}  }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}   (   \lambda_l  \Lmv{y} : \Lnt{A} . \Lnt{t_{{\mathrm{1}}}}   )   :   \Lnt{C}  \leftharpoonup  \Lnt{B}  }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=ILr] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+          \\        
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{C} }      
+        }{ \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{C} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \lambda_l  \Lmv{y} : \Lnt{A} . \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{1}}}}   :   \Lnt{C}  \leftharpoonup  \Lnt{B}  }
+    \end{math}
+  \end{center}  
+
+\item[Case:] secondary hypothesis: left introduction of tensor unit.
+  The proof 
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Ul] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t'}  :  \Lnt{B} }      
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}   I   \vdash   \mathsf{let}\, \Lmv{y} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lnt{t'}   :  \Lnt{B} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}   I   \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}   \mathsf{let}\, \Lmv{y} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lnt{t'}   :  \Lnt{B} }
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Ul] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t'}  :  \Lnt{B} }      
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t'}  :  \Lnt{B} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}   I   \vdash   \mathsf{let}\, \Lmv{y} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t'}   :  \Lnt{B} }
+    \end{math}
+  \end{center}
+
   
 \end{itemize}

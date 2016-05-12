@@ -4,7 +4,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
@@ -13,7 +13,7 @@
         }{[[G1 |- t : A]]}
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Cut] {
+        \inferrule* [right=cut] {
           $$\mprset{flushleft}
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
@@ -35,7 +35,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
         \inferrule* [right=] {
           $$\mprset{flushleft}
@@ -63,70 +63,68 @@
     \end{math}
   \end{center}
 
-%% ******* Doesn't hold in non-commutative case:
-%% 
-%% \item[Case:] commuting conversion cut vs. cut (second case).  The second commuting conversion on cut begins with the proof
-%%   \begin{center}
-%%     \begin{math}
-%%       $$\mprset{flushleft}
-%%       \inferrule* [right=Cut] {
-%%         $$\mprset{flushleft}
-%%         \inferrule* [right=] {
-%%           \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%             \,
-%%           }{\pi_1}
-%%         }{[[G |- t : A]]}
-%%         \\
-%%         $$\mprset{flushleft}
-%%         \inferrule* [right=Cut] {
-%%           $$\mprset{flushleft}
-%%           \inferrule* [right=] {
-%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%               \,
-%%             }{\pi_2}
-%%           }{[[G' |- t' : B]]}
-%%           \\
-%%           $$\mprset{flushleft}
-%%           \inferrule* [right=] {
-%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%               \,
-%%             }{\pi_3}
-%%           }{[[x : A,G2,y:B,G3 |- t'' : C]]}
-%%         }{[[G1,x : A,G2,G',G3 |- [t'/y]t'' : C]]}
-%%       }{[[G1,G,G2,G',G3 |- [t/x][t'/y]t'' : C]]}
-%%     \end{math}
-%%   \end{center}
-%%   is transformed into the following proof:
-%%   \begin{center}
-%%     \begin{math}
-%%       $$\mprset{flushleft}
-%%       \inferrule* [right=Cut] {
-%%         $$\mprset{flushleft}
-%%         \inferrule* [right=] {
-%%           \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%             \,
-%%           }{\pi_2}
-%%         }{[[G' |- t' : B]]}
-%%         \\
-%%         $$\mprset{flushleft}
-%%         \inferrule* [right=Cut] {
-%%           $$\mprset{flushleft}
-%%           \inferrule* [right=] {
-%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%               \,
-%%             }{\pi_1}
-%%           }{[[G |- t : A]]}      
-%%           \\
-%%           $$\mprset{flushleft}
-%%           \inferrule* [right=] {
-%%             \inferrule* [right=,vdots=1.5em,fraction=\,] {
-%%               \,
-%%             }{\pi_3}
-%%           }{[[G1,x : A,G2,y:B,G3 |- t'' : C]]}
-%%         }{[[G1,G,G2,y:B,G3 |- [t/x]t'' : C]]}
-%%       }{[[G1,G,G2,G',G3 |- [t'/y][t/x]t'' : C]]}
-%%     \end{math}
-%%   \end{center}
+\item[Case:] commuting conversion cut vs. cut (second case).  The second commuting conversion on cut begins with the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}
+        }{[[G |- t : A]]}
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}
+          }{[[G' |- t' : B]]}
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}
+          }{[[x : A,G2,y:B,G3 |- t'' : C]]}
+        }{[[G1,x : A,G2,G',G3 |- [t'/y]t'' : C]]}
+      }{[[G1,G,G2,G',G3 |- [t/x][t'/y]t'' : C]]}
+    \end{math}
+  \end{center}
+  is transformed into the following proof:
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_2}
+        }{[[G' |- t' : B]]}
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}
+          }{[[G |- t : A]]}      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}
+          }{[[G1,x : A,G2,y:B,G3 |- t'' : C]]}
+        }{[[G1,G,G2,y:B,G3 |- [t/x]t'' : C]]}
+      }{[[G1,G,G2,G',G3 |- [t'/y][t/x]t'' : C]]}
+    \end{math}
+  \end{center}
   
 
 \item[Case:] the $\eta$-expansion cases: tensor.  
@@ -134,7 +132,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Ax] {
+      \inferrule* [right=Var] {
         \,
       }{[[x : A (x) B |- x : A (x) B]]}
     \end{math}
@@ -147,12 +145,12 @@
         $$\mprset{flushleft}
         \inferrule* [right=Tr] {
           $$\mprset{flushleft}
-          \inferrule* [right=Ax] {
+          \inferrule* [right=Var] {
             \,
           }{[[y : A |- y : A]]}
           \\
           $$\mprset{flushleft}
-          \inferrule* [right=Ax] {
+          \inferrule* [right=Var] {
             \,
           }{[[z : B |- z : B]]}
         }{[[y : A, z : B |- y (x) z : A (x) B]]}
@@ -165,7 +163,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_Var] {
+      \inferrule* [right=Var] {
         \,
       }{[[x : A -> B |- x : A -> B]]}
     \end{math}
@@ -174,16 +172,16 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_IRl] {
+      \inferrule* [right=IRr] {
         $$\mprset{flushleft}
-        \inferrule* [right=T\_IRr] {
+        \inferrule* [right=IRl] {
           $$\mprset{flushleft}
-          \inferrule* [right=T\_Var] {
+          \inferrule* [right=Var] {
             \,
           }{[[y : A |- y : A]]}
           \\
           $$\mprset{flushleft}
-          \inferrule* [right=T\_Var] {
+          \inferrule* [right=Var] {
             \,
           }{[[z : B |- z : B]]}
         }{[[y : A, x : A -> B |- appr x y : B]]}
@@ -196,7 +194,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_Var] {
+      \inferrule* [right=Var] {
         \,
       }{[[x : B <- A |- x : B <- A]]}
     \end{math}
@@ -205,16 +203,16 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_ILl] {
+      \inferrule* [right=ILr] {
         $$\mprset{flushleft}
-        \inferrule* [right=T\_ILr] {
+        \inferrule* [right=ILl] {
           $$\mprset{flushleft}
-          \inferrule* [right=T\_Var] {
+          \inferrule* [right=Var] {
             \,
           }{[[y : A |- y : A]]}
           \\
           $$\mprset{flushleft}
-          \inferrule* [right=T\_Var] {
+          \inferrule* [right=Var] {
             \,
           }{[[z : B |- z : B]]}
         }{[[y : A, x : B <- A |- appl x y : B]]}
@@ -249,9 +247,9 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=T\_Var] {
+        \inferrule* [right=Var] {
           \,
         }{[[x : A |- x : A]]}
         \\
@@ -281,7 +279,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=T\_cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
@@ -290,7 +288,7 @@
         }{[[G |- t : A]]}
         \,
         $$\mprset{flushleft}
-        \inferrule* [right=T\_var] {
+        \inferrule* [right=var] {
           \,
         }{[[x : A |- x : A]]}
       }{[[G |- [t/x]x : A]]}
@@ -313,7 +311,7 @@
     \scriptsize
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=\footnotesize Cut] {
+      \inferrule* [right=\footnotesize cut] {
         $$\mprset{flushleft}
         \inferrule* [right=\footnotesize Tr] {
           \inferrule* [right=] {
@@ -344,7 +342,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
             \,
@@ -352,7 +350,7 @@
         }{[[G1 |- t1 : A]]}
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Cut] {
+        \inferrule* [right=cut] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -375,9 +373,9 @@
     \scriptsize
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=\scriptsize Cut] {
+      \inferrule* [right=\scriptsize cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Impr] {
+        \inferrule* [right=\scriptsize IRr] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -386,7 +384,7 @@
         }{[[G |- \r x:A.t : A -> B]]}
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Impl] {
+        \inferrule* [right=\scriptsize IRl] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -407,9 +405,9 @@
     \scriptsize
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=\scriptsize Cut] {
+      \inferrule* [right=\scriptsize cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Cut] {
+        \inferrule* [right=\scriptsize cut] {
             \inferrule* [right=] {
               \inferrule* [right=,vdots=1.5em,fraction=\,] {
                 \,
@@ -438,9 +436,9 @@
     \scriptsize
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=\scriptsize Cut] {
+      \inferrule* [right=\scriptsize cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Impr] {
+        \inferrule* [right=\scriptsize ILr] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -449,7 +447,7 @@
         }{[[G |- \l x:A.t : B <- A]]}
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Impl] {
+        \inferrule* [right=\scriptsize ILl] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -470,9 +468,9 @@
     \scriptsize
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=\scriptsize Cut] {
+      \inferrule* [right=\scriptsize cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=\scriptsize Cut] {
+        \inferrule* [right=\scriptsize cut] {
             \inferrule* [right=] {
               \inferrule* [right=,vdots=1.5em,fraction=\,] {
                 \,
@@ -498,11 +496,12 @@
 \item[Case:] secondary conclusion: left introduction of implication.
   The proof 
   \begin{center}
+    \small
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=Impl] {
+        \inferrule* [right=IRl] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -528,7 +527,7 @@
   \begin{center}
     \begin{math}      
       $$\mprset{flushleft}
-      \inferrule* [right=Impl] {
+      \inferrule* [right=IRl] {
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
             \,
@@ -536,7 +535,7 @@
         }{[[G |- t1 : A]]}
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Cut] {
+        \inferrule* [right=cut] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -558,9 +557,9 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
-        \inferrule* [right=Impl] {
+        \inferrule* [right=ILl] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -586,7 +585,7 @@
   \begin{center}
     \begin{math}      
       $$\mprset{flushleft}
-      \inferrule* [right=Impl] {
+      \inferrule* [right=ILl] {
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
             \,
@@ -594,7 +593,7 @@
         }{[[G |- t1 : A]]}
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Cut] {
+        \inferrule* [right=cut] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -616,7 +615,7 @@
   \begin{center}
     \begin{math}
       $$\mprset{flushleft}
-      \inferrule* [right=Cut] {
+      \inferrule* [right=cut] {
         $$\mprset{flushleft}
         \inferrule* [right=Tl] {
           \inferrule* [right=] {
@@ -640,7 +639,7 @@
       $$\mprset{flushleft}
       \inferrule* [right=Tl] {
         $$\mprset{flushleft}
-        \inferrule* [right=Cut] {
+        \inferrule* [right=cut] {
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
@@ -656,5 +655,708 @@
       }{[[G1,G, z : A (x) B, G2 |- let z be x (x) y in [t/w]t' : D]]}
     \end{math}
   \end{center}
+
+\item[Case:] secondary conclusion: left introduction of tensor unit.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=Ul] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[G |- t : C]]}      
+        }{[[G, x : I |- let x be punit in t : C]]}
+        \\
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_2}          
+        }{[[G1,w : C, G2 |- t' : D]]}
+      }{[[G1,G,x : I,G2 |- [let x be punit in t/w]t' : D]]}
+    \end{math}
+  \end{center}
+  is transformed into the following:
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+        \inferrule* [right=Ul] {
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{[[G |- t : C]]}      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_2}          
+            }{[[G1,w : C, G2 |- t' : D]]}  
+          }{[[G1,G, G2 |- [t/w]t' : D]]}
+        }{[[G1,G,x : I,G2 |- let x be punit in [t/w]t' : D]]}
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: left introduction of tensor.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Tl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,x : A,G2,y : B,z : C,G3 |- t1 : D]]}                  
+        }{[[G1,x : A,G2,w : B (x) C,G3 |- let w be y (x) z in t1 : D]]}
+      }{[[G1,G,G2,w : B (x) C,G3 |- [t/x]let w be y (x) z in t1 : D]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Tl] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[G |- t : A]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,x : A,G2,y : B,z : C,G3 |- t1 : D]]}                  
+        }{[[G1,G,G2,y : B,z : C,G3 |- [t/x]t1 : D]]}
+      }{[[G1,G,G2,w : B (x) C,G3 |- let w be x (x) y in [t/x]t1 : D]]}
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: right introduction of tensor (first
+  case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Tr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,x : A, G2 |- t1 : B]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[G3 |- t2 : C]]}      
+        }{[[G1,x :A,G2,G3 |- t1 (x) t2 : B (x) C]]}
+      }{[[G1,G,G2,G3 |- [t/x]{t1 (x) t2} : B (x) C]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+        $$\mprset{flushleft}
+        \inferrule* [right=Tr] {
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{[[G |- t : A]]}      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_2}          
+            }{[[G1,x : A, G2 |- t1 : B]]}      
+          }{[[G1,G, G2 |- [t/x]t1 : B]]}
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[G3 |- t2 : C]]}      
+        }{[[G1,G, G2,G3 |- {[t/x]t1} (x) t2 : B (x) C]]}
+    \end{math}
+  \end{center}
+  
+\item[Case:] secondary hypothesis: right introduction of tensor
+  (second case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Tr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1 |- t1 : B]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[G2,x : A, G3  |- t2 : C]]}      
+        }{[[G1,G2,x :A,G3 |- t1 (x) t2 : B (x) C]]}
+      }{[[G1,G2,G,G3 |- [t/x]{t1 (x) t2} : B (x) C]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}      
+      $$\mprset{flushleft}
+        \inferrule* [right=Tr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1 |- t1 : B]]}      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{[[G |- t : A]]}      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_3}          
+            }{[[G2,x : A, G3 |- t2 : C]]}      
+          }{[[G2,G, G3 |- [t/x]t2 : C]]}       
+        }{[[G1,G2,G,G3 |- t1 (x) {[t/x]t2} : B (x) C]]}
+    \end{math}
+  \end{center}  
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (first case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=IRl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,x : A,G2 |- t1 : B]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[G3,y : C |- t2 : D]]}      
+        }{[[G3,z : B -> C,G1,x:A,G2 |- [appr z t1/y]t2 : D]]}
+      }{[[G3,z : B -> C,G1,G,G2 |- [t/x][appr z t1/y]t2 : D]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=IRl] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[G |- t : A]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,x : A,G2 |- t1 : B]]}      
+        }{[[G1,G,G2 |- [t/x]t1 : B]]}
+        \\
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_3}          
+        }{[[G3,y : C |- t2 : D]]}      
+      }{[[G3,z : B -> C,G1,G,G2 |- [appr z [t/x]t1/y]t2 : D]]}
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (first case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=ILl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,x : A,G2 |- t1 : B]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[G3,y : C |- t2 : D]]}      
+        }{[[G3,G1,x:A,G2,z : C <- B |- [appl z t1/y]t2 : D]]}
+      }{[[G3,G1,G,G2,z : C <- B |- [t/x][appl z t1/y]t2 : D]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=ILl] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[G |- t : A]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,x : A,G2 |- t1 : B]]}      
+        }{[[G1,G,G2 |- [t/x]t1 : B]]}
+        \\
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_3}          
+        }{[[G3,y : C |- t2 : D]]}      
+      }{[[G3,G1,G,G2,z : C <- B |- [appl z [t/x]t1/y]t2 : D]]}
+    \end{math}
+  \end{center}  
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (second case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=IRl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1 |- t1 : B]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[G2,x : A,G3,y : C |- t2 : D]]}      
+        }{[[G2,x:A,G3,z : B -> C,G1 |- [appr z t1/y]t2 : D]]}
+      }{[[G2,G,G3,z : B -> C,G1 |- [t/x][appr z t1/y]t2 : D]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}      
+        $$\mprset{flushleft}
+        \inferrule* [right=IRl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1 |- t1 : B]]}      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{[[G |- t : A]]}      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_3}          
+            }{[[G2,x : A,G3,y : C |- t2 : D]]}      
+          }{[[G2,G,G3,y : C |- [t/x]t2 : D]]}
+        }{[[G2,G,G3,z : B -> C,G1 |- [appr z t1/y][t/x]t2 : D]]}
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (second case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=ILl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1 |- t1 : B]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[G2,x : A,G3,y : C |- t2 : D]]}      
+        }{[[G2,x:A,G3,G1,z : C <- B |- [appl z t1/y]t2 : D]]}
+      }{[[G2,G,G3,G1,z : C <- B |- [t/x][appl z t1/y]t2 : D]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}      
+        $$\mprset{flushleft}
+        \inferrule* [right=ILl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1 |- t1 : B]]}      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{[[G |- t : A]]}      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_3}          
+            }{[[G2,x : A,G3,y : C |- t2 : D]]}      
+          }{[[G2,G,G3,y : C |- [t/x]t2 : D]]}
+        }{[[G2,G,G3,G1,z : C <- B |- [appl z t1/y][t/x]t2 : D]]}
+    \end{math}
+  \end{center}  
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (third case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=IRl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1 |- t1 : B]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[G2,y : C,G3,x : A |- t2 : D]]}      
+        }{[[G2,z : B -> C,G1,G3,x:A |- [appr z t1/y]t2 : D]]}
+      }{[[G2,z : B -> C,G1,G3,G |- [t/x][appr z t1/y]t2 : D]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+        $$\mprset{flushleft}
+        \inferrule* [right=IRl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1 |- t1 : B]]}      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{[[G |- t : A]]}      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_3}          
+            }{[[G2,y : C,G3,x : A |- t2 : D]]}      
+          }{[[G2,y : C,G3,G |- [t/x]t2 : D]]}
+        }{[[G2,z : B -> C,G1,G3,G |- [appr z t1/y][t/x]t2 : D]]}
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: left introduction of implication
+  (third case).
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=ILl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1 |- t1 : B]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[G2,y : C,G3,x : A |- t2 : D]]}      
+        }{[[G2,G1,z : C <- B,G3,x:A |- [appl z t1/y]t2 : D]]}
+      }{[[G2,G1,z : C <- B,G3,G |- [t/x][appl z t1/y]t2 : D]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+        $$\mprset{flushleft}
+        \inferrule* [right=ILl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1 |- t1 : B]]}      
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=cut] {
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{[[G |- t : A]]}      
+            \\
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_3}          
+            }{[[G2,y : C,G3,x : A |- t2 : D]]}      
+          }{[[G2,y : C,G3,G |- [t/x]t2 : D]]}
+        }{[[G2,G1,z : C <- B,G3,G |- [appl z t1/y][t/x]t2 : D]]}
+    \end{math}
+  \end{center}  
+
+\item[Case:] secondary hypothesis: right introduction of implication.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=IRr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,x : A,G2,y : B |- t1 : C]]}      
+        }{[[G1,x : A,G2 |- \r y:A.t1 : B -> C]]}
+      }{[[G1,G,G2 |- [t/x]{\r y:A.t1} : B -> C]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=IRr] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[G |- t : A]]}      
+          \\        
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,x : A,G2,y : B |- t1 : C]]}      
+        }{[[G1,G,G2,y : B |- [t/x]t1 : C]]}
+      }{[[G1,G,G2 |- \r y:A.[t/x]t1 : B -> C]]}
+    \end{math}
+  \end{center}
+
+\item[Case:] secondary hypothesis: right introduction of implication.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=ILr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[y : B,G1,x : A,G2 |- t1 : C]]}      
+        }{[[G1,x : A,G2 |- \l y:A.t1 : C <- B]]}
+      }{[[G1,G,G2 |- [t/x]{\l y:A.t1} : C <- B]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=ILr] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[G |- t : A]]}      
+          \\        
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[y : B,G1,x : A,G2 |- t1 : C]]}      
+        }{[[y : B,G1,G,G2 |- [t/x]t1 : C]]}
+      }{[[G1,G,G2 |- \l y:A.[t/x]t1 : C <- B]]}
+    \end{math}
+  \end{center}  
+
+\item[Case:] secondary hypothesis: left introduction of tensor unit.
+  The proof 
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G |- t : A]]}      
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Ul] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1, x : A, G2 |- t' : B]]}      
+        }{[[G1,x:A,G2,y : I |- let y be punit in t' : B]]}
+      }{[[G1,G,G2,y : I |- [t/x]let y be punit in t' : B]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Ul] {
+        $$\mprset{flushleft}
+        \inferrule* [right=cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[G |- t : A]]}      
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1, x : A, G2 |- t' : B]]}      
+        }{[[G1, G, G2 |- [t/x]t' : B]]}
+      }{[[G1, G, G2, y : I |- let y be punit in [t/x]t' : B]]}
+    \end{math}
+  \end{center}
+
   
 \end{itemize}

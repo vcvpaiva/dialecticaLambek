@@ -53,16 +53,19 @@
 \Lrulehead{\Lnt{t}}{::=}{}\Lprodnewline
 \Lfirstprodline{|}{\Lmv{x}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \mathsf{unit} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lnt{t_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \lambda  \Lmv{x} . \Lnt{t} }{}{}{}{}\Lprodnewline
-\Lprodline{|}{\Lnt{t_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\, \Lnt{p} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}\Lprodnewline
-\Lprodline{|}{\Lsym{(}  \Lnt{t}  \Lsym{)}} {\textsf{S}}{}{}{}}
+\Lprodline{|}{\Lsym{\{}  \Lnt{t}  \Lsym{\}}} {\textsf{S}}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}} {\textsf{M}}{}{}{}\Lprodnewline
+\Lprodline{|}{ \Lnt{t} } {\textsf{M}}{}{}{}}
 
 \newcommand{\LG}{
 \Lrulehead{\Gamma  ,\ \Delta}{::=}{}\Lprodnewline
 \Lfirstprodline{|}{ \cdot }{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lnt{A}}{}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lmv{x}  \Lsym{:}  \Lnt{A}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Gamma  \Lsym{,}  \Gamma'}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{(}  \Gamma  \Lsym{)}} {\textsf{S}}{}{}{}\Lprodnewline
 \Lprodline{|}{ !  \Gamma } {\textsf{M}}{}{}{}\Lprodnewline
@@ -71,7 +74,8 @@
 
 \newcommand{\Lterminals}{
 \Lrulehead{\Lnt{terminals}}{::=}{}\Lprodnewline
-\Lfirstprodline{|}{\Lsym{1}}{}{}{}{}\Lprodnewline
+\Lfirstprodline{|}{ \otimes }{}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lsym{1}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{0}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Box }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \models }{}{}{}{}\Lprodnewline
@@ -111,7 +115,8 @@
 
 \newcommand{\LJtyp}{
 \Lrulehead{\Lnt{Jtyp}}{::=}{}\Lprodnewline
-\Lfirstprodline{|}{ \Gamma  \vdash  \Lnt{A} }{}{}{}{}}
+\Lfirstprodline{|}{ \Gamma  \vdash  \Lnt{A} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }{}{}{}{}}
 
 \newcommand{\Ljudgement}{
 \Lrulehead{\Lnt{judgement}}{::=}{}\Lprodnewline
@@ -297,9 +302,92 @@
 \Lusedrule{\LdruleETwo{}}
 \end{Ldefnblock}}
 
+%% defn JType
+\newcommand{\LdruleTXXvar}[1]{\Ldrule[#1]{%
+}{
+ \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lmv{x}  :  \Lnt{A} }{%
+{\Ldrulename{T\_var}}{}%
+}}
+
+
+\newcommand{\LdruleTXXcut}[1]{\Ldrule[#1]{%
+\Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A}   \qquad   \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B}  }%
+}{
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }{%
+{\Ldrulename{T\_cut}}{}%
+}}
+
+
+\newcommand{\LdruleTXXunit}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }%
+}{
+ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}   I   \vdash   \mathsf{let}\, \Lmv{x} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lnt{t}   :  \Lnt{A} }{%
+{\Ldrulename{T\_unit}}{}%
+}}
+
+
+\newcommand{\LdruleTXXTl}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \vdash  \Lnt{t}  :  \Lnt{C} }%
+}{
+ \Gamma  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{A}  \otimes  \Lnt{B}   \vdash   \mathsf{let}\, \Lmv{z} \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lnt{t}   :  \Lnt{C} }{%
+{\Ldrulename{T\_Tl}}{}%
+}}
+
+
+\newcommand{\LdruleTXXTr}[1]{\Ldrule[#1]{%
+\Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A}   \qquad   \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B}  }%
+}{
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash    \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}    :    \Lnt{A}  \otimes  \Lnt{B}   }{%
+{\Ldrulename{T\_Tr}}{}%
+}}
+
+
+\newcommand{\LdruleTXXIRl}[1]{\Ldrule[#1]{%
+\Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A}   \qquad   \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{B}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C}  }%
+}{
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{A}  \rightharpoonup  \Lnt{B}   \vdash  \Lsym{[}  \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }{%
+{\Ldrulename{T\_IRl}}{}%
+}}
+
+
+\newcommand{\LdruleTXXILl}[1]{\Ldrule[#1]{%
+\Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A}   \qquad   \Lmv{x}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C}  }%
+}{
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{B}  \leftharpoonup  \Lnt{A}   \vdash  \Lsym{[}  \Lmv{z} \, \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{C} }{%
+{\Ldrulename{T\_ILl}}{}%
+}}
+
+
+\newcommand{\LdruleTXXIRr}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lnt{t}  :  \Lnt{B} }%
+}{
+ \Gamma  \vdash   \lambda  \Lmv{x} . \Lnt{t}   :   \Lnt{A}  \rightharpoonup  \Lnt{B}  }{%
+{\Ldrulename{T\_IRr}}{}%
+}}
+
+
+\newcommand{\LdruleTXXILr}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma  \vdash  \Lnt{t}  :  \Lnt{B} }%
+}{
+ \Gamma  \vdash   \lambda  \Lmv{x} . \Lnt{t}   :   \Lnt{A}  \leftharpoonup  \Lnt{B}  }{%
+{\Ldrulename{T\_ILr}}{}%
+}}
+
+\newcommand{\LdefnJType}[1]{\begin{Ldefnblock}[#1]{$ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} $}{}
+\Lusedrule{\LdruleTXXvar{}}
+\Lusedrule{\LdruleTXXcut{}}
+\Lusedrule{\LdruleTXXunit{}}
+\Lusedrule{\LdruleTXXTl{}}
+\Lusedrule{\LdruleTXXTr{}}
+\Lusedrule{\LdruleTXXIRl{}}
+\Lusedrule{\LdruleTXXILl{}}
+\Lusedrule{\LdruleTXXIRr{}}
+\Lusedrule{\LdruleTXXILr{}}
+\end{Ldefnblock}}
+
 
 \newcommand{\LdefnsJtyp}{
-\LdefnLog{}}
+\LdefnLog{}\LdefnJType{}}
 
 \newcommand{\Ldefnss}{
 \LdefnsJtyp

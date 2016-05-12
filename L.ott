@@ -31,22 +31,26 @@ p :: 'pat_' ::=
 
 t :: 'term_' ::=
   | x                 :: :: Var
-  | unit              :: :: Unit
+  | unit              :: :: Unit  
   {{tex \mathsf{unit} }}
+  | t1 t2             :: :: Application  
   | t1 (x) t2         :: :: Tensor
   {{tex [[t1]] \otimes [[t2]] }}
   | \ x . t           :: :: Lambda
   {{tex \lambda [[x]].[[t]] }}
-  | t1 t2             :: :: Application
   | let t1 be p in t2 :: :: Let
   {{tex \mathsf{let}\,[[t1]]\,\mathsf{be}\,[[p]]\,\mathsf{in}\,[[t2]] }}
-  | ( t )             :: S :: Parens
-
+  | { t }             :: S :: Parens
+  | [ t1 / x ] t2     :: M :: Sub
+  | h( t )            :: M :: HiddenParens 
+  {{ tex [[t]] }}
+  
 % Contexts:
 G {{tex \Gamma}}, D {{tex \Delta}} :: 'G_' ::=
   | .           ::   :: Empty
   {{tex \cdot }}
   | A           ::   :: El
+  | x : A       ::   :: TEl
   | G , G'      ::   :: Ext
   | ( G )       :: S :: Paren
   | !{ G }      :: M :: OfCourse
@@ -57,6 +61,8 @@ G {{tex \Gamma}}, D {{tex \Delta}} :: 'G_' ::=
   {{ tex [[G]] }}   
   
 terminals :: '' ::=
+  | (x)  ::  :: Tensor
+  {{tex \otimes }}
   | 1    ::  :: One
   | 0    ::  :: Zero
   | []   :: :: Box  {{ tex \Box }}
@@ -169,3 +175,43 @@ defn
  G, A , E B |- C
  --------------- :: E2
  G, E B , A |- C
+
+defn
+ G |- t : A :: :: JType :: 'T_' 
+ {{tex [[G]] \vdash [[t]] : [[A]] }}
+ by
+
+ -------------- :: var
+ x : A |- x : A
+
+ G1 |- t1 : A && x : A,G2 |- t2 : B
+ ---------------------------------- :: cut
+ G1,G2 |- [t1/x]t2 : B
+
+ G |- t : A
+ ------------------------------------ :: unit
+ G, x : I |- let x be p-unit in t : A
+
+ G,x : A,y : B |- t : C
+ ------------------------------------------- :: Tl
+ G, z : A (x) B |- let z be x (x) y in t : C
+
+ G1 |- t1 : A && G2 |- t2 : B
+ ------------------------------- :: Tr
+ G1,G2 |- h(t1 (x) t2) : h(A (x) B)
+
+ G1 |- t1 : A && G2, x : B |- t2 : C
+ ----------------------------------- :: IRl
+ G1,G2,z : A -> B |- [z t1/x]t2 : C
+
+ G1 |- t1 : A && x : B,G2 |- t2 : C
+ ---------------------------------- :: ILl
+ G1,G2,z : B <- A |- [z t1/x]t2 : C
+
+ G, x : A |- t : B
+ ------------------ :: IRr
+ G |- \x.t : A -> B
+
+ x : A, G |- t : B
+ ------------------ :: ILr
+ G |- \x.t : A <- B

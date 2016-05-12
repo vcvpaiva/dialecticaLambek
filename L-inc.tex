@@ -59,7 +59,7 @@
 \Lprodline{|}{ \lambda_l  \Lmv{x} : \Lnt{A} . \Lnt{t} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \lambda_r  \Lmv{x} : \Lnt{A} . \Lnt{t} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\, \Lnt{p} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}\Lprodnewline
-\Lprodline{|}{\Lsym{\{}  \Lnt{t}  \Lsym{\}}} {\textsf{S}}{}{}{}\Lprodnewline
+\Lprodline{|}{ (  \Lnt{t}  ) } {\textsf{S}}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}} {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{t} } {\textsf{M}}{}{}{}}
 
@@ -118,7 +118,8 @@
 \newcommand{\LJtyp}{
 \Lrulehead{\Lnt{Jtyp}}{::=}{}\Lprodnewline
 \Lfirstprodline{|}{ \Gamma  \vdash  \Lnt{A} }{}{}{}{}\Lprodnewline
-\Lprodline{|}{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }{}{}{}{}}
+\Lprodline{|}{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \Lnt{t_{{\mathrm{1}}}}  \rightsquigarrow  \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}}
 
 \newcommand{\Ljudgement}{
 \Lrulehead{\Lnt{judgement}}{::=}{}\Lprodnewline
@@ -387,9 +388,125 @@
 \Lusedrule{\LdruleTXXILr{}}
 \end{Ldefnblock}}
 
+%% defn ReW
+\newcommand{\LdruleRXXBetal}[1]{\Ldrule[#1]{%
+}{
+  \mathsf{app}_l\,  (   \lambda_l  \Lmv{x} : \Lnt{A} . \Lnt{t_{{\mathrm{2}}}}   )  \, \Lnt{t_{{\mathrm{1}}}}   \rightsquigarrow  \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}} }{%
+{\Ldrulename{R\_Betal}}{}%
+}}
+
+
+\newcommand{\LdruleRXXBetar}[1]{\Ldrule[#1]{%
+}{
+  \mathsf{app}_r\,  (   \lambda_r  \Lmv{x} : \Lnt{A} . \Lnt{t_{{\mathrm{2}}}}   )  \, \Lnt{t_{{\mathrm{1}}}}   \rightsquigarrow  \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}} }{%
+{\Ldrulename{R\_Betar}}{}%
+}}
+
+
+\newcommand{\LdruleRXXLetT}[1]{\Ldrule[#1]{%
+}{
+  \mathsf{let}\,  \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}  \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lnt{t}   \rightsquigarrow  \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}  \Lnt{t_{{\mathrm{2}}}}  \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t} }{%
+{\Ldrulename{R\_LetT}}{}%
+}}
+
+
+\newcommand{\LdruleRXXLetU}[1]{\Ldrule[#1]{%
+}{
+  \mathsf{let}\,  \mathsf{unit}  \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lnt{t}   \rightsquigarrow  \Lnt{t} }{%
+{\Ldrulename{R\_LetU}}{}%
+}}
+
+
+\newcommand{\LdruleRXXLet}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lnt{t_{{\mathrm{1}}}}  \rightsquigarrow  \Lnt{t_{{\mathrm{2}}}} }%
+}{
+  \mathsf{let}\, \Lmv{x} \,\mathsf{be}\, \Lnt{p} \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \rightsquigarrow   \mathsf{let}\, \Lmv{x} \,\mathsf{be}\, \Lnt{p} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}  }{%
+{\Ldrulename{R\_Let}}{}%
+}}
+
+
+\newcommand{\LdruleRXXTOne}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lnt{t_{{\mathrm{1}}}}  \rightsquigarrow  \Lnt{t'_{{\mathrm{1}}}} }%
+}{
+  \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}   \rightsquigarrow   \Lnt{t'_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}  }{%
+{\Ldrulename{R\_T1}}{}%
+}}
+
+
+\newcommand{\LdruleRXXTTwo}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lnt{t_{{\mathrm{2}}}}  \rightsquigarrow  \Lnt{t'_{{\mathrm{2}}}} }%
+}{
+  \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}   \rightsquigarrow   \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t'_{{\mathrm{2}}}}  }{%
+{\Ldrulename{R\_T2}}{}%
+}}
+
+
+\newcommand{\LdruleRXXAlOne}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lnt{t_{{\mathrm{1}}}}  \rightsquigarrow  \Lnt{t'_{{\mathrm{1}}}} }%
+}{
+  \mathsf{app}_l\, \Lnt{t_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}}   \rightsquigarrow   \mathsf{app}_l\, \Lnt{t'_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}}  }{%
+{\Ldrulename{R\_Al1}}{}%
+}}
+
+
+\newcommand{\LdruleRXXAlTwo}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lnt{t_{{\mathrm{2}}}}  \rightsquigarrow  \Lnt{t'_{{\mathrm{2}}}} }%
+}{
+  \mathsf{app}_l\, \Lnt{t_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}}   \rightsquigarrow   \mathsf{app}_l\, \Lnt{t_{{\mathrm{1}}}} \, \Lnt{t'_{{\mathrm{2}}}}  }{%
+{\Ldrulename{R\_Al2}}{}%
+}}
+
+
+\newcommand{\LdruleRXXArOne}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lnt{t_{{\mathrm{1}}}}  \rightsquigarrow  \Lnt{t'_{{\mathrm{1}}}} }%
+}{
+  \mathsf{app}_r\, \Lnt{t_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}}   \rightsquigarrow   \mathsf{app}_r\, \Lnt{t'_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}}  }{%
+{\Ldrulename{R\_Ar1}}{}%
+}}
+
+
+\newcommand{\LdruleRXXArTwo}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lnt{t_{{\mathrm{2}}}}  \rightsquigarrow  \Lnt{t'_{{\mathrm{2}}}} }%
+}{
+  \mathsf{app}_r\, \Lnt{t_{{\mathrm{1}}}} \, \Lnt{t_{{\mathrm{2}}}}   \rightsquigarrow   \mathsf{app}_r\, \Lnt{t_{{\mathrm{1}}}} \, \Lnt{t'_{{\mathrm{2}}}}  }{%
+{\Ldrulename{R\_Ar2}}{}%
+}}
+
+
+\newcommand{\LdruleRXXLl}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lnt{t}  \rightsquigarrow  \Lnt{t'} }%
+}{
+  \lambda_l  \Lmv{x} : \Lnt{A} . \Lnt{t}   \rightsquigarrow   \lambda_l  \Lmv{x} : \Lnt{A} . \Lnt{t'}  }{%
+{\Ldrulename{R\_Ll}}{}%
+}}
+
+
+\newcommand{\LdruleRXXLr}[1]{\Ldrule[#1]{%
+\Lpremise{ \Lnt{t}  \rightsquigarrow  \Lnt{t'} }%
+}{
+  \lambda_r  \Lmv{x} : \Lnt{A} . \Lnt{t}   \rightsquigarrow   \lambda_r  \Lmv{x} : \Lnt{A} . \Lnt{t'}  }{%
+{\Ldrulename{R\_Lr}}{}%
+}}
+
+\newcommand{\LdefnReW}[1]{\begin{Ldefnblock}[#1]{$ \Lnt{t_{{\mathrm{1}}}}  \rightsquigarrow  \Lnt{t_{{\mathrm{2}}}} $}{}
+\Lusedrule{\LdruleRXXBetal{}}
+\Lusedrule{\LdruleRXXBetar{}}
+\Lusedrule{\LdruleRXXLetT{}}
+\Lusedrule{\LdruleRXXLetU{}}
+\Lusedrule{\LdruleRXXLet{}}
+\Lusedrule{\LdruleRXXTOne{}}
+\Lusedrule{\LdruleRXXTTwo{}}
+\Lusedrule{\LdruleRXXAlOne{}}
+\Lusedrule{\LdruleRXXAlTwo{}}
+\Lusedrule{\LdruleRXXArOne{}}
+\Lusedrule{\LdruleRXXArTwo{}}
+\Lusedrule{\LdruleRXXLl{}}
+\Lusedrule{\LdruleRXXLr{}}
+\end{Ldefnblock}}
+
 
 \newcommand{\LdefnsJtyp}{
-\LdefnLog{}\LdefnJType{}}
+\LdefnLog{}\LdefnJType{}\LdefnReW{}}
 
 \newcommand{\Ldefnss}{
 \LdefnsJtyp

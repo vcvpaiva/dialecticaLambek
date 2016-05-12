@@ -22,7 +22,7 @@ A, B, C :: 'form_' ::=
   {{ tex [[A]] }}
 
 p :: 'pat_' ::=
-  | p-unit :: :: UnitPatter
+  | punit :: :: UnitPatter
   {{tex \mathsf{unit} }}
   | - :: :: Hole
   | x :: :: Var
@@ -46,6 +46,7 @@ t :: 'term_' ::=
   | let t1 be p in t2 :: :: Let
   {{tex \mathsf{let}\,[[t1]]\,\mathsf{be}\,[[p]]\,\mathsf{in}\,[[t2]] }}
   | { t }             :: S :: Parens
+  {{tex ( [[t]] ) }}
   | [ t1 / x ] t2     :: M :: Sub
   | h( t )            :: M :: HiddenParens 
   {{ tex [[t]] }}
@@ -195,7 +196,7 @@ defn
 
  G |- t : A
  ------------------------------------ :: unit
- G, x : I |- let x be p-unit in t : A
+ G, x : I |- let x be punit in t : A
 
  G,x : A,y : B |- t : C
  ------------------------------------------- :: Tl
@@ -220,3 +221,56 @@ defn
  x : A, G |- t : B
  ---------------------- :: ILr
  G |- \l x:A.t : B <- A
+
+defn
+ t1 ~> t2 :: :: ReW :: 'R_' 
+ {{tex [[t1]] \rightsquigarrow [[t2]] }}
+ by
+
+ ------------------------------- :: Betal
+ appl {\l x:A.t2} t1 ~> [t1/x]t2
+
+ ------------------------------- :: Betar
+ appr {\r x:A.t2} t1 ~> [t1/x]t2
+
+ ------------------------------------------------ :: LetT
+ let t1 (x) t2 be x (x) y in t ~> [t1/x][t2/y]t
+
+ --------------------------- :: LetU
+ let unit be punit in t ~> t
+
+ t1 ~> t2
+ ------------------------------------ :: Let
+ let x be p in t1 ~> let x be p in t2
+
+ t1 ~> t1'
+ ----------------------- :: T1
+ t1 (x) t2 ~> t1' (x) t2
+
+ t2 ~> t2'
+ ----------------------- :: T2
+ t1 (x) t2 ~> t1 (x) t2'
+
+ t1 ~> t1'
+ ------------------------- :: Al1
+ appl t1 t2 ~> appl t1' t2
+
+ t2 ~> t2'
+ ------------------------ :: Al2
+ appl t1 t2 ~> appl t1 t2'
+
+ t1 ~> t1'
+ ------------------------- :: Ar1
+ appr t1 t2 ~> appr t1' t2
+
+ t2 ~> t2'
+ ------------------------ :: Ar2
+ appr t1 t2 ~> appr t1 t2'
+
+ t ~> t'
+ --------------------- :: Ll
+ \l x:A.t ~> \l x:A.t'
+
+ t ~> t'
+ --------------------- :: Lr
+ \r x:A.t ~> \r x:A.t'

@@ -364,12 +364,15 @@ L without modalities.
   completed by induction on the form $[[G |- A]]$.  
 \end{proof}
 
+\section{Categorical Models}
 
-\section{Dialectica Lambek Spaces}
-\label{sec:dialectica_lambek_spaces}
+Historically the Lambek calculus arose from its intended categorical model, biclosed symmetric monoidal categories, as discussed by Lambek in \cite{lambek1988}. Clearly all this happened almost three decades  before Girard introduced Linear Logic, hence there were no modalities or exponentials in this setting.
 
-Categorically, one models of-course as a functor endowed with the structure
-of a comonad with some additional structure.  That is, there are maps
+
+Categorically, one models the of-course modality as a functor endowed with the structure
+of a comonad $(!, \delta_A, \varepsilon_A)$ with some additional structure.  
+
+That is, there are maps
 $\delta_A : [[!A]] \mto [[!!A]]$ and $\varepsilon_A : [[!A]] \mto [[A]]$
 subject to a few coherence diagrams, and maps $c_A : [[!A]] \mto
 [[h(!A) (x) !A]]$ and $w_A : [[!A]] \mto [[I]]$.  Using this structure we can
@@ -409,7 +412,11 @@ inference rules for the exchange modality can easily be interpreted
 into the model.
 % section dialectica_lambek_spaces (end)
 
-\section{MultiModalities}
+\section{Dialectica Lambek Spaces}
+\label{sec:dialectica_lambek_spaces}
+
+% section dialectica_lambek_spaces (end)
+%\section{MultiModalities}
 
 \section{Conclusion}
 

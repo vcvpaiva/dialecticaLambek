@@ -158,6 +158,13 @@
 }}
 
 
+\newcommand{\LdruleUr}[1]{\Ldrule[#1]{%
+}{
+  \cdot   \vdash   I  }{%
+{\Ldrulename{Ur}}{}%
+}}
+
+
 \newcommand{\Ldrulecut}[1]{\Ldrule[#1]{%
 \Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{A}   \qquad   \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{B}  }%
 }{
@@ -166,11 +173,11 @@
 }}
 
 
-\newcommand{\Ldruleunit}[1]{\Ldrule[#1]{%
+\newcommand{\LdruleUl}[1]{\Ldrule[#1]{%
 \Lpremise{ \Gamma  \vdash  \Lnt{A} }%
 }{
  \Gamma  \Lsym{,}   I   \vdash  \Lnt{A} }{%
-{\Ldrulename{unit}}{}%
+{\Ldrulename{Ul}}{}%
 }}
 
 
@@ -287,8 +294,9 @@
 
 \newcommand{\LdefnLog}[1]{\begin{Ldefnblock}[#1]{$ \Gamma  \vdash  \Lnt{A} $}{}
 \Lusedrule{\Ldruleax{}}
+\Lusedrule{\LdruleUr{}}
 \Lusedrule{\Ldrulecut{}}
-\Lusedrule{\Ldruleunit{}}
+\Lusedrule{\LdruleUl{}}
 \Lusedrule{\LdruleTl{}}
 \Lusedrule{\LdruleTr{}}
 \Lusedrule{\LdruleIRl{}}
@@ -313,6 +321,13 @@
 }}
 
 
+\newcommand{\LdruleTXXUr}[1]{\Ldrule[#1]{%
+}{
+  \cdot   \vdash   \mathsf{unit}   :   I  }{%
+{\Ldrulename{T\_Ur}}{}%
+}}
+
+
 \newcommand{\LdruleTXXcut}[1]{\Ldrule[#1]{%
 \Lpremise{  \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A}   \qquad   \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B}  }%
 }{
@@ -321,11 +336,11 @@
 }}
 
 
-\newcommand{\LdruleTXXunit}[1]{\Ldrule[#1]{%
+\newcommand{\LdruleTXXUl}[1]{\Ldrule[#1]{%
 \Lpremise{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }%
 }{
  \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}   I   \vdash   \mathsf{let}\, \Lmv{x} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lnt{t}   :  \Lnt{A} }{%
-{\Ldrulename{T\_unit}}{}%
+{\Ldrulename{T\_Ul}}{}%
 }}
 
 
@@ -378,8 +393,9 @@
 
 \newcommand{\LdefnJType}[1]{\begin{Ldefnblock}[#1]{$ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} $}{}
 \Lusedrule{\LdruleTXXvar{}}
+\Lusedrule{\LdruleTXXUr{}}
 \Lusedrule{\LdruleTXXcut{}}
-\Lusedrule{\LdruleTXXunit{}}
+\Lusedrule{\LdruleTXXUl{}}
 \Lusedrule{\LdruleTXXTl{}}
 \Lusedrule{\LdruleTXXTr{}}
 \Lusedrule{\LdruleTXXIRl{}}

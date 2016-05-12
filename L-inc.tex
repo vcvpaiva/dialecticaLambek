@@ -183,9 +183,9 @@
 
 
 \newcommand{\LdruleTl}[1]{\Ldrule[#1]{%
-\Lpremise{ \Gamma  \Lsym{,}  \Lnt{A}  \Lsym{,}  \Lnt{B}  \vdash  \Lnt{C} }%
+\Lpremise{ \Gamma  \Lsym{,}  \Lnt{A}  \Lsym{,}  \Lnt{B}  \Lsym{,}  \Gamma'  \vdash  \Lnt{C} }%
 }{
- \Gamma  \Lsym{,}   \Lnt{A}  \otimes  \Lnt{B}   \vdash  \Lnt{C} }{%
+ \Gamma  \Lsym{,}   \Lnt{A}  \otimes  \Lnt{B}   \Lsym{,}  \Gamma'  \vdash  \Lnt{C} }{%
 {\Ldrulename{Tl}}{}%
 }}
 
@@ -346,9 +346,9 @@
 
 
 \newcommand{\LdruleTXXTl}[1]{\Ldrule[#1]{%
-\Lpremise{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \vdash  \Lnt{t}  :  \Lnt{C} }%
+\Lpremise{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma'  \vdash  \Lnt{t}  :  \Lnt{C} }%
 }{
- \Gamma  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{A}  \otimes  \Lnt{B}   \vdash   \mathsf{let}\, \Lmv{z} \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lnt{t}   :  \Lnt{C} }{%
+ \Gamma  \Lsym{,}  \Lmv{z}  \Lsym{:}   \Lnt{A}  \otimes  \Lnt{B}   \Lsym{,}  \Gamma'  \vdash   \mathsf{let}\, \Lmv{z} \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lnt{t}   :  \Lnt{C} }{%
 {\Ldrulename{T\_Tl}}{}%
 }}
 

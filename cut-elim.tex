@@ -276,6 +276,98 @@
     \end{math}
   \end{center}
 
+\item[Case:] the axiom steps: conclusion vs. axiom.
+  The proof 
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=T\_cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi}          
+        }{[[G |- t : A]]}
+        \,
+        $$\mprset{flushleft}
+        \inferrule* [right=T\_var] {
+          \,
+        }{[[x : A |- x : A]]}
+      }{[[G |- [t/x]x : A]]}
+    \end{math}
+  \end{center}
+  transforms into 
+  \begin{center}
+    \begin{math}      
+      \inferrule* [right=] {
+        \inferrule* [right=,vdots=1.5em,fraction=\,] {
+          \,
+        }{\pi}          
+      }{[[G |- t : A]]}
+    \end{math}
+  \end{center}  
   
+\item[Case:] principal formula vs. principal formula: tensor.
+  The proof 
+  \begin{center}
+    \scriptsize
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=\footnotesize Cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=\footnotesize Tr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[G1 |- t1 : A]]}
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G2 |- t2 : B]]}
+        }{[[G1,G2 |- t1 (x) t2 : A (x) B]]}
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=\footnotesize Tl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[x : A, y : B,G4 |- t3 : C]]}
+        }{[[z : A (x) B,G4 |- let z be x (x) y in t3 : C]]}
+      }{[[G3,G1,G2,G4 |- [t1 (x) t2/z]let z be x (x) y in t3 : C]]}
+    \end{math}
+  \end{center}
+  is transformed into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[G1 |- t1 : A]]}
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G2 |- t2 : B]]}
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{[[G3,x : A, y : B,G4 |- t3 : C]]}
+        }{[[G3,x : A, G2,G4 |- [t2/y]t3 : C]]}
+      }{[[G3,G1, G2,G4 |-[t1/x][t2/y]t3 : C]]}
+    \end{math}
+  \end{center}
+
   
 \end{itemize}

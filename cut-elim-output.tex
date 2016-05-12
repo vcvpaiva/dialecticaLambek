@@ -276,6 +276,98 @@
     \end{math}
   \end{center}
 
+\item[Case:] the axiom steps: conclusion vs. axiom.
+  The proof 
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=T\_cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi}          
+        }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }
+        \,
+        $$\mprset{flushleft}
+        \inferrule* [right=T\_var] {
+          \,
+        }{ \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lmv{x}  :  \Lnt{A} }
+      }{ \Gamma  \vdash  \Lsym{[}  \Lnt{t}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lmv{x}  :  \Lnt{A} }
+    \end{math}
+  \end{center}
+  transforms into 
+  \begin{center}
+    \begin{math}      
+      \inferrule* [right=] {
+        \inferrule* [right=,vdots=1.5em,fraction=\,] {
+          \,
+        }{\pi}          
+      }{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} }
+    \end{math}
+  \end{center}  
   
+\item[Case:] principal formula vs. principal formula: tensor.
+  The proof 
+  \begin{center}
+    \scriptsize
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=\footnotesize Cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=\footnotesize Tr] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A} }
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}   :   \Lnt{A}  \otimes  \Lnt{B}  }
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=\footnotesize Tl] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{4}}}  \vdash  \Lnt{t_{{\mathrm{3}}}}  :  \Lnt{C} }
+        }{ \Lmv{z}  \Lsym{:}   \Lnt{A}  \otimes  \Lnt{B}   \Lsym{,}  \Gamma_{{\mathrm{4}}}  \vdash   \mathsf{let}\, \Lmv{z} \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lnt{t_{{\mathrm{3}}}}   :  \Lnt{C} }
+      }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{4}}}  \vdash  \Lsym{[}   \Lnt{t_{{\mathrm{1}}}}  \otimes  \Lnt{t_{{\mathrm{2}}}}   \Lsym{/}  \Lmv{z}  \Lsym{]}   \mathsf{let}\, \Lmv{z} \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lnt{t_{{\mathrm{3}}}}   :  \Lnt{C} }
+    \end{math}
+  \end{center}
+  is transformed into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=Cut] {
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{ \Gamma_{{\mathrm{1}}}  \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A} }
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Cut] {
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{ \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }
+          \\
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_3}          
+          }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Gamma_{{\mathrm{4}}}  \vdash  \Lnt{t_{{\mathrm{3}}}}  :  \Lnt{C} }
+        }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{4}}}  \vdash  \Lsym{[}  \Lnt{t_{{\mathrm{2}}}}  \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{3}}}}  :  \Lnt{C} }
+      }{ \Gamma_{{\mathrm{3}}}  \Lsym{,}  \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{4}}}  \vdash  \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lsym{[}  \Lnt{t_{{\mathrm{2}}}}  \Lsym{/}  \Lmv{y}  \Lsym{]}  \Lnt{t_{{\mathrm{3}}}}  :  \Lnt{C} }
+    \end{math}
+  \end{center}
+
   
 \end{itemize}

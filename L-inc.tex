@@ -27,12 +27,12 @@
 \newcommand{\Lafterlastrule}{\\}
 \newcommand{\Lmetavars}{
 \Lmetavartabular{
- $ \Lmv{vars} ,\, \Lmv{x} ,\, \Lmv{y} ,\, \Lmv{z} $ &  \\
+ $ \Lmv{vars} ,\, \Lmv{x} ,\, \Lmv{y} ,\, \Lmv{z} ,\, \Lmv{w} $ &  \\
  $ \Lmv{ivar} ,\, \Lmv{i} ,\, \Lmv{k} ,\, \Lmv{j} ,\, \Lmv{l} $ &  \\
 }}
 
 \newcommand{\LA}{
-\Lrulehead{\Lnt{A}  ,\ \Lnt{B}  ,\ \Lnt{C}}{::=}{}\Lprodnewline
+\Lrulehead{\Lnt{A}  ,\ \Lnt{B}  ,\ \Lnt{C}  ,\ \Lnt{D}}{::=}{}\Lprodnewline
 \Lfirstprodline{|}{ I }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A}  \otimes  \Lnt{B} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{A}  \rightharpoonup  \Lnt{B} }{}{}{}{}\Lprodnewline
@@ -64,7 +64,7 @@
 \Lprodline{|}{ \Lnt{t} } {\textsf{M}}{}{}{}}
 
 \newcommand{\LG}{
-\Lrulehead{\Gamma  ,\ \Delta}{::=}{}\Lprodnewline
+\Lrulehead{\Gamma}{::=}{}\Lprodnewline
 \Lfirstprodline{|}{ \cdot }{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lnt{A}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lmv{x}  \Lsym{:}  \Lnt{A}}{}{}{}{}\Lprodnewline
@@ -463,6 +463,20 @@
 }}
 
 
+\newcommand{\LdruleRXXNatU}[1]{\Ldrule[#1]{%
+}{
+ \Lsym{[}   \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lnt{t_{{\mathrm{3}}}}  \rightsquigarrow   \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lsym{[}  \Lnt{t_{{\mathrm{2}}}}  \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lnt{t_{{\mathrm{3}}}}  }{%
+{\Ldrulename{R\_NatU}}{}%
+}}
+
+
+\newcommand{\LdruleRXXNatT}[1]{\Ldrule[#1]{%
+}{
+ \Lsym{[}   \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lnt{t_{{\mathrm{3}}}}  \rightsquigarrow   \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\,  \Lmv{x}  \otimes  \Lmv{y}  \,\mathsf{in}\, \Lsym{[}  \Lnt{t_{{\mathrm{2}}}}  \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lnt{t_{{\mathrm{3}}}}  }{%
+{\Ldrulename{R\_NatT}}{}%
+}}
+
+
 \newcommand{\LdruleRXXLetU}[1]{\Ldrule[#1]{%
 }{
   \mathsf{let}\,  \mathsf{unit}  \,\mathsf{be}\,  \mathsf{unit}  \,\mathsf{in}\, \Lnt{t}   \rightsquigarrow  \Lnt{t} }{%
@@ -550,6 +564,8 @@
 \Lusedrule{\LdruleRXXBetaU{}}
 \Lusedrule{\LdruleRXXBetaTOne{}}
 \Lusedrule{\LdruleRXXBetaTTwo{}}
+\Lusedrule{\LdruleRXXNatU{}}
+\Lusedrule{\LdruleRXXNatT{}}
 \Lusedrule{\LdruleRXXLetU{}}
 \Lusedrule{\LdruleRXXLet{}}
 \Lusedrule{\LdruleRXXTOne{}}

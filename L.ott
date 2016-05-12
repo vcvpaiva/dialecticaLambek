@@ -1,10 +1,10 @@
 % Input variables.
-metavar vars ,  x , y, z ::=  
+metavar vars ,  x , y, z, w ::=  
 indexvar ivar, i , k , j , l ::= 
 
 grammar
 
-A, B, C :: 'form_' ::=
+A, B, C, D :: 'form_' ::=
   | I    ::   :: I
   {{tex I }}  
   | A (x) B :: :: Tensor
@@ -52,7 +52,7 @@ t :: 'term_' ::=
   {{ tex [[t]] }}
   
 % Contexts:
-G {{tex \Gamma}}, D {{tex \Delta}} :: 'G_' ::=
+G {{tex \Gamma}} :: 'G_' ::=
   | .           ::   :: Empty
   {{tex \cdot }}
   | A           ::   :: El
@@ -259,6 +259,12 @@ defn
 
  ---------------------------------------------- :: BetaT2
  let t1 be x (x) y in [x (x) y/z]t2 ~> [t1/x]t2
+
+ -------------------------------------------------------------- :: NatU
+ [let t1 be punit in t2/z]t3 ~> let t1 be punit in [t2/z]t3
+
+ -------------------------------------------------------------- :: NatT
+ [let t1 be x (x) y in t2/z]t3 ~> let t1 be x (x) y in [t2/z]t3
 
  --------------------------- :: LetU
  let unit be punit in t ~> t

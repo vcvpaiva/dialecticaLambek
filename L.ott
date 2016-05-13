@@ -45,18 +45,20 @@ t :: 'term_' ::=
   {{tex \lambda_r [[x]]:[[A]].[[t]] }}  
   | let t1 be p in t2 :: :: Let
   {{tex \mathsf{let}\,[[t1]]\,\mathsf{be}\,[[p]]\,\mathsf{in}\,[[t2]] }}
-  | copy x as y , z in t :: :: Copy
-  {{tex \mathsf{copy}\,[[x]]\,\mathsf{as}\,[[y]],[[z]]\,\mathsf{in}\,[[t]] }}
-  | discard x in t :: :: Discard
-  {{tex \mathsf{discard}\,[[x]]\,\mathsf{in}\,[[t]] }}
+  | copy t' as y , z in t :: :: Copy
+  {{tex \mathsf{copy}\,[[t']]\,\mathsf{as}\,[[y]],[[z]]\,\mathsf{in}\,[[t]] }}
+  | discard t' in t :: :: Discard
+  {{tex \mathsf{discard}\,[[t']]\,\mathsf{in}\,[[t]] }}
+  | discard ! t' in t :: :: DiscardVec
+  {{tex \mathsf{discard}\,\vec{[[t']]}\,\mathsf{in}\,[[t]] }}  
   | promote! ! x for ! y in t :: :: Promote
   {{tex \mathsf{promote}_!\,\vec{[[x]]}\,\mathsf{for}\,\vec{[[y]]}\,\mathsf{in}\,[[t]] }}
-  | derelict! y :: :: Derel
-  {{tex \mathsf{derelict}_!\,[[y]] }}
+  | derelict! t :: :: Derel
+  {{tex \mathsf{derelict}_!\,[[t]] }}
   | promoteE E x for E y in t :: :: Promotek
   {{tex \mathsf{promote}_\kappa\,\vec{[[x]]}\,\mathsf{for}\,\vec{[[y]]}\,\mathsf{in}\,[[t]] }}
-  | derelictE y :: :: Derelk
-  {{tex \mathsf{derelict}_\kappa\,[[y]] }}
+  | derelictE t :: :: Derelk
+  {{tex \mathsf{derelict}_\kappa\,[[t]] }}
   | rexchange x with y in t :: :: REx
   {{tex \mathsf{exchange_r}\,[[x]]\,\mathsf{with}\,[[y]]\,\mathsf{in}\,[[t]] }}
   | lexchange x with y in t :: :: LEx
@@ -175,9 +177,12 @@ defn
  ----------- :: ILr
  G |- B <- A
 
- G1, !A, !A,G2 |- B
- ----------------- :: C
- G1, !A, G2 |- B
+ % Had to generalize to three contexts in the following rule in order
+ % for the promotion vs contraction case of cut elimination to go
+ % through.
+ G1, !A, G2, !A,G3 |- B
+ ---------------------- :: C
+ G1, !A, G2,G3 |- B
 
  G1,G2 |- B
  ------------- :: W
@@ -250,9 +255,9 @@ defn
  ---------------------- :: ILr
  G |- \l x:A.t : B <- A
 
- G1, x : !A, y : !A, G2 |- t : B
- ----------------------------------------- :: C
- G1, z : !A, G2 |- copy x as y, z in t : B
+ G1, x : !A, G2,y : !A, G3 |- t : B
+ -------------------------------------------- :: C
+ G1, z : !A, G2,G3 |- copy x as y, z in t : B
 
  G1, G2 |- t : B
  ------------------------------------ :: W
@@ -320,6 +325,15 @@ defn
 
  --------------------------- :: LetU
  let unit be punit in t ~> t
+
+ ------------------------------------------ :: BetaDR
+ derelict! {promote! !y for !x in t1} ~> t1
+
+ ------------------------------------------------------------ :: BetaDI
+ discard {promote! !y for !x in t1} in t2 ~> discard !y in t2
+
+ ---------------------------------------------------------------------------------------------------------- :: BetaC
+ copy {promote! !y for !x in t1} as w,z in t2 ~> [promote! !y for !x in t1/w][promote! !y for !x in t1/z]t2
 
  t1 ~> t2
  ------------------------------------ :: Let

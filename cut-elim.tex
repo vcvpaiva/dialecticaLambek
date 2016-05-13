@@ -496,7 +496,8 @@
 \item[Case:] promotion vs dereliction.
   The proof
   \begin{center}
-    \begin{math}
+    \scriptsize
+    \begin{math}      
       $$\mprset{flushleft}
       \inferrule* [right=cut] {
         $$\mprset{flushleft}
@@ -506,8 +507,8 @@
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
             }{\pi_1}          
-          }{[[!{G} |- A]]}          
-        }{[[!{G} |- !A]]}
+          }{[[!x : !{G} |- t1 : A]]}          
+        }{[[!y : !{G} |- promote! !y for !x in t1 : !A]]}
         \\
         $$\mprset{flushleft}
         \inferrule* [right=Bl] {
@@ -516,9 +517,9 @@
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
               \,
             }{\pi_2}          
-          }{[[G1,A,G2 |- B]]}                      
-        }{[[G1,!A,G2 |- B]]}
-      }{[[G1,!{G},G2 |- B]]}
+          }{[[G1,w : A,G2 |- t2 : B]]}                      
+        }{[[G1,z : !A,G2 |- [derelict! z/w]t2 : B]]}
+      }{[[G1,!y : !{G},G2 |- [promote! !y for !x in t1/z][derelict! z/w]t2 : B]]}
     \end{math}
   \end{center}
   transforms into the proof
@@ -531,15 +532,132 @@
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
             \,
           }{\pi_1}          
-        }{[[!{G} |- A]]}          
+        }{[[!x : !{G} |- t1 : A]]}          
         \\
         $$\mprset{flushleft}
         \inferrule* [right=] {
           \inferrule* [right=,vdots=1.5em,fraction=\,] {
             \,
           }{\pi_2}          
-        }{[[G1,A,G2 |- B]]}                      
-      }{[[G1,!{G},G2 |- B]]}
+        }{[[G1,w : A,G2 |- t2 : B]]}                      
+      }{[[G1,!x : !{G},G2 |- [t1/w]t2 : B]]}
+    \end{math}
+  \end{center}
+
+\item[Case:] promotion vs weakening.
+  The proof
+  \begin{center}
+    \scriptsize
+    \begin{math}      
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=Br] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[!x : !{G} |- t1 : A]]}          
+        }{[[!y : !{G} |- promote! !y for !x in t1 : !A]]}
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Bl] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,G2 |- t2 : B]]}                      
+        }{[[G1,z : !A,G2 |- discard z in t2 : B]]}
+      }{[[G1,!y : !{G},G2 |- [promote! !y for !x in t1/z]discard z in t2 : B]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=\scriptsize Series of Weakening W] {                
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_2}          
+        }{[[G1,G2 |- t2 : B]]}                      
+      }{[[G1,!y : !{G},G2 |- discard !y in t2 : B]]}
+    \end{math}
+  \end{center}
+
+\item[Case:] promotion vs contraction.
+  The proof
+  \begin{center}
+    \scriptsize
+    \begin{math}      
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=Br] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[!x : !{G} |- t1 : A]]}          
+        }{[[!y : !{G} |- promote! !y for !x in t1 : !A]]}
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Bl] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,w1 : !A, w2 : !A, G2 |- t2 : B]]}                      
+        }{[[G1,z : !A,G2 |- copy z as w1,w2 in t2 : B]]}
+      }{[[G1,!y : !{G},G2 |- [promote! !y for !x in t1/z]copy z as w1,w2 in t2 : B]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}      
+      $$\mprset{flushleft}
+      \inferrule* [right=\scriptsize cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=\scriptsize Br] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[!x : !{G} |- t1 : A]]}          
+        }{[[!y : !{G} |- promote! !y for !x in t1 : !A]]}
+        \\
+        D
+      }{[[G1,!y : !{G}, !y : !{G}, G2 |- [promote! !y for !x in t1/w1][promote! !y for !x in t1/w2]t2 : B]]}
+    \end{math}
+  \end{center}
+  where the definition $D$ is as follows:
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+        \inferrule* [right=\scriptsize cut] {
+          $$\mprset{flushleft}
+          \inferrule* [right=\scriptsize Br] {
+            $$\mprset{flushleft}
+            \inferrule* [right=] {
+              \inferrule* [right=,vdots=1.5em,fraction=\,] {
+                \,
+              }{\pi_1}          
+            }{[[!x : !{G} |- t1 : A]]}          
+          }{[[!y : !{G} |- promote! !y for !x in t1 : !A]]}          
+          \\
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,w1 : !A, w2 : !A, G2 |- t2 : B]]}                      
+        }{[[G1,w1 : !A, !y : !{G}, G2 |- [promote! !y for !x in t1/w2]t2 : B]]}                
     \end{math}
   \end{center}
 

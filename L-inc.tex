@@ -28,7 +28,7 @@
 \newcommand{\Lmetavars}{
 \Lmetavartabular{
  $ \Lmv{vars} ,\, \Lmv{x} ,\, \Lmv{y} ,\, \Lmv{z} ,\, \Lmv{w} $ &  \\
- $ \Lmv{ivar} ,\, \Lmv{i} ,\, \Lmv{k} ,\, \Lmv{j} ,\, \Lmv{l} $ &  \\
+ $ \Lmv{ivar} ,\, \Lmv{i} ,\, \Lmv{j} ,\, \Lmv{l} $ &  \\
 }}
 
 \newcommand{\LA}{
@@ -59,6 +59,14 @@
 \Lprodline{|}{ \lambda_l  \Lmv{x} : \Lnt{A} . \Lnt{t} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \lambda_r  \Lmv{x} : \Lnt{A} . \Lnt{t} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \mathsf{let}\, \Lnt{t_{{\mathrm{1}}}} \,\mathsf{be}\, \Lnt{p} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{copy}\, \Lmv{x} \,\mathsf{as}\, \Lmv{y} , \Lmv{z} \,\mathsf{in}\, \Lnt{t} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{discard}\, \Lmv{x} \,\mathsf{in}\, \Lnt{t} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{promote}_!\,\vec{ \Lmv{x} }\,\mathsf{for}\,\vec{ \Lmv{y} }\,\mathsf{in}\, \Lnt{t} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{derelict}_!\, \Lmv{y} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{promote}_\kappa\,\vec{ \Lmv{x} }\,\mathsf{for}\,\vec{ \Lmv{y} }\,\mathsf{in}\, \Lnt{t} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{derelict}_\kappa\, \Lmv{y} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{exchange_r}\, \Lmv{x} \,\mathsf{with}\, \Lmv{y} \,\mathsf{in}\, \Lnt{t} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \mathsf{exchange_l}\, \Lmv{x} \,\mathsf{with}\, \Lmv{y} \,\mathsf{in}\, \Lnt{t} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{ (  \Lnt{t}  ) } {\textsf{S}}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}} {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{t} } {\textsf{M}}{}{}{}}
@@ -69,6 +77,8 @@
 \Lprodline{|}{\Lnt{A}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lmv{x}  \Lsym{:}  \Lnt{A}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Gamma  \Lsym{,}  \Gamma'}{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \vec{ \Lmv{x} } : ! \Gamma } {\textsf{M}}{}{}{}\Lprodnewline
+\Lprodline{|}{ \vec{ \Lmv{x} } : \kappa  \Gamma } {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{(}  \Gamma  \Lsym{)}} {\textsf{S}}{}{}{}\Lprodnewline
 \Lprodline{|}{ !  \Gamma } {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{ \kappa  \Gamma } {\textsf{M}}{}{}{}\Lprodnewline
@@ -392,6 +402,70 @@
 {\Ldrulename{T\_ILr}}{}%
 }}
 
+
+\newcommand{\LdruleTXXC}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Lmv{y}  \Lsym{:}   !  \Lnt{A}   \vdash  \Lnt{t}  :  \Lnt{B} }%
+}{
+ \Gamma  \Lsym{,}  \Lmv{z}  \Lsym{:}   !  \Lnt{A}   \vdash   \mathsf{copy}\, \Lmv{x} \,\mathsf{as}\, \Lmv{y} , \Lmv{z} \,\mathsf{in}\, \Lnt{t}   :  \Lnt{B} }{%
+{\Ldrulename{T\_C}}{}%
+}}
+
+
+\newcommand{\LdruleTXXW}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \vdash  \Lnt{t}  :  \Lnt{B} }%
+}{
+ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}   !  \Lnt{A}   \vdash   \mathsf{discard}\, \Lmv{x} \,\mathsf{in}\, \Lnt{t}   :  \Lnt{B} }{%
+{\Ldrulename{T\_W}}{}%
+}}
+
+
+\newcommand{\LdruleTXXBr}[1]{\Ldrule[#1]{%
+\Lpremise{  \vec{ \Lmv{x} } : ! \Gamma   \vdash  \Lnt{t}  :  \Lnt{B} }%
+}{
+  \vec{ \Lmv{y} } : ! \Gamma   \vdash   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t}   :   !  \Lnt{B}  }{%
+{\Ldrulename{T\_Br}}{}%
+}}
+
+
+\newcommand{\LdruleTXXBl}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lnt{t}  :  \Lnt{B} }%
+}{
+ \Gamma  \Lsym{,}  \Lmv{y}  \Lsym{:}   !  \Lnt{A}   \vdash  \Lsym{[}   \mathsf{derelict}_!\, \Lmv{y}   \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t}  :  \Lnt{B} }{%
+{\Ldrulename{T\_Bl}}{}%
+}}
+
+
+\newcommand{\LdruleTXXEr}[1]{\Ldrule[#1]{%
+\Lpremise{  \vec{ \Lmv{x} } : \kappa  \Gamma   \vdash  \Lnt{t}  :  \Lnt{B} }%
+}{
+  \vec{ \Lmv{y} } : \kappa  \Gamma   \vdash   \mathsf{promote}_\kappa\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t}   :   \kappa  \Lnt{B}  }{%
+{\Ldrulename{T\_Er}}{}%
+}}
+
+
+\newcommand{\LdruleTXXEl}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash  \Lnt{t}  :  \Lnt{B} }%
+}{
+ \Gamma  \Lsym{,}  \Lmv{y}  \Lsym{:}   \kappa  \Lnt{A}   \vdash  \Lsym{[}   \mathsf{derelict}_\kappa\, \Lmv{y}   \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t}  :  \Lnt{B} }{%
+{\Ldrulename{T\_El}}{}%
+}}
+
+
+\newcommand{\LdruleTXXEOne}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}   \kappa  \Lnt{A}   \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \vdash  \Lnt{t}  :  \Lnt{C} }%
+}{
+ \Gamma  \Lsym{,}  \Lmv{y}  \Lsym{:}  \Lnt{B}  \Lsym{,}  \Lmv{x}  \Lsym{:}   \kappa  \Lnt{A}   \vdash   \mathsf{exchange_l}\, \Lmv{x} \,\mathsf{with}\, \Lmv{y} \,\mathsf{in}\, \Lnt{t}   :  \Lnt{C} }{%
+{\Ldrulename{T\_E1}}{}%
+}}
+
+
+\newcommand{\LdruleTXXETwo}[1]{\Ldrule[#1]{%
+\Lpremise{ \Gamma  \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Lmv{y}  \Lsym{:}   \kappa  \Lnt{B}   \vdash  \Lnt{t}  :  \Lnt{C} }%
+}{
+ \Gamma  \Lsym{,}  \Lmv{y}  \Lsym{:}   \kappa  \Lnt{B}   \Lsym{,}  \Lmv{x}  \Lsym{:}  \Lnt{A}  \vdash   \mathsf{exchange_r}\, \Lmv{x} \,\mathsf{with}\, \Lmv{y} \,\mathsf{in}\, \Lnt{t}   :  \Lnt{C} }{%
+{\Ldrulename{T\_E2}}{}%
+}}
+
 \newcommand{\LdefnJType}[1]{\begin{Ldefnblock}[#1]{$ \Gamma  \vdash  \Lnt{t}  :  \Lnt{A} $}{}
 \Lusedrule{\LdruleTXXvar{}}
 \Lusedrule{\LdruleTXXUr{}}
@@ -403,6 +477,14 @@
 \Lusedrule{\LdruleTXXILl{}}
 \Lusedrule{\LdruleTXXIRr{}}
 \Lusedrule{\LdruleTXXILr{}}
+\Lusedrule{\LdruleTXXC{}}
+\Lusedrule{\LdruleTXXW{}}
+\Lusedrule{\LdruleTXXBr{}}
+\Lusedrule{\LdruleTXXBl{}}
+\Lusedrule{\LdruleTXXEr{}}
+\Lusedrule{\LdruleTXXEl{}}
+\Lusedrule{\LdruleTXXEOne{}}
+\Lusedrule{\LdruleTXXETwo{}}
 \end{Ldefnblock}}
 
 %% defn ReW

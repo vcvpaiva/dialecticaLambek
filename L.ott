@@ -1,6 +1,6 @@
 % Input variables.
 metavar vars ,  x , y, z, w ::=  
-indexvar ivar, i , k , j , l ::= 
+indexvar ivar, i , j , l ::= 
 
 grammar
 
@@ -45,6 +45,22 @@ t :: 'term_' ::=
   {{tex \lambda_r [[x]]:[[A]].[[t]] }}  
   | let t1 be p in t2 :: :: Let
   {{tex \mathsf{let}\,[[t1]]\,\mathsf{be}\,[[p]]\,\mathsf{in}\,[[t2]] }}
+  | copy x as y , z in t :: :: Copy
+  {{tex \mathsf{copy}\,[[x]]\,\mathsf{as}\,[[y]],[[z]]\,\mathsf{in}\,[[t]] }}
+  | discard x in t :: :: Discard
+  {{tex \mathsf{discard}\,[[x]]\,\mathsf{in}\,[[t]] }}
+  | promote! ! x for ! y in t :: :: Promote
+  {{tex \mathsf{promote}_!\,\vec{[[x]]}\,\mathsf{for}\,\vec{[[y]]}\,\mathsf{in}\,[[t]] }}
+  | derelict! y :: :: Derel
+  {{tex \mathsf{derelict}_!\,[[y]] }}
+  | promoteE E x for E y in t :: :: Promotek
+  {{tex \mathsf{promote}_\kappa\,\vec{[[x]]}\,\mathsf{for}\,\vec{[[y]]}\,\mathsf{in}\,[[t]] }}
+  | derelictE y :: :: Derelk
+  {{tex \mathsf{derelict}_\kappa\,[[y]] }}
+  | rexchange x with y in t :: :: REx
+  {{tex \mathsf{exchange_r}\,[[x]]\,\mathsf{with}\,[[y]]\,\mathsf{in}\,[[t]] }}
+  | lexchange x with y in t :: :: LEx
+  {{tex \mathsf{exchange_l}\,[[x]]\,\mathsf{with}\,[[y]]\,\mathsf{in}\,[[t]] }}
   | { t }             :: S :: Parens
   {{tex ( [[t]] ) }}
   | [ t1 / x ] t2     :: M :: Sub
@@ -58,6 +74,10 @@ G {{tex \Gamma}} :: 'G_' ::=
   | A           ::   :: El
   | x : A       ::   :: TEl
   | G , G'      ::   :: Ext
+  | ! x : !{ G } :: M :: Vec
+  {{tex \vec{[[x]]} : ![[G]] }}
+  | E x : E{ G } :: M :: Veck
+  {{tex \vec{[[x]]} : \kappa [[G]] }}  
   | ( G )       :: S :: Paren
   | !{ G }      :: M :: OfCourse
   {{tex ! [[G]] }}
@@ -229,6 +249,38 @@ defn
  x : A, G |- t : B
  ---------------------- :: ILr
  G |- \l x:A.t : B <- A
+
+ G, x : !A, y : !A |- t : B
+ ------------------------------------ :: C
+ G, z : !A |- copy x as y, z in t : B
+
+ G |- t : B
+ ------------------------------- :: W
+ G, x : !A |- discard x in t : B
+
+ !x : !{G} |- t : B
+ ----------------------------------------- :: Br
+ !y : !{G} |- promote! !y for !x in t : !B
+
+ G, x : A |- t : B
+ --------------------------------- :: Bl
+ G, y : !A |- [derelict! y/x]t : B
+
+ E x : E{G} |- t : B
+ ----------------------------------------- :: Er
+ E y : E{G} |- promoteE E y for E x in t : E B
+
+ G, x : A |- t : B
+ --------------------------------- :: El
+ G, y : E A |- [derelictE y/x]t : B
+
+ G, x : E A , y : B |- t : C
+ ------------------------------------------------- :: E1
+ G, y : B , x : E A |- lexchange x with y in t : C
+
+ G, x : A , y : E B |- t : C
+ ------------------------------------------------- :: E2
+ G, y : E B , x : A |- rexchange x with y in t : C
 
 defn
  t1 ~> t2 :: :: ReW :: 'R_' 

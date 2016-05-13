@@ -491,7 +491,57 @@
           }{[[G1, y : B |- t3 : C]]}
         }{[[G1,G,G2 |- [ [t1/x]t/y]t3 : C]]}
     \end{math}
-  \end{center}    
+  \end{center}
+
+\item[Case:] promotion vs dereliction.
+  The proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {
+        $$\mprset{flushleft}
+        \inferrule* [right=Br] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_1}          
+          }{[[!{G} |- A]]}          
+        }{[[!{G} |- !A]]}
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=Bl] {
+          $$\mprset{flushleft}
+          \inferrule* [right=] {
+            \inferrule* [right=,vdots=1.5em,fraction=\,] {
+              \,
+            }{\pi_2}          
+          }{[[G1,A,G2 |- B]]}                      
+        }{[[G1,!A,G2 |- B]]}
+      }{[[G1,!{G},G2 |- B]]}
+    \end{math}
+  \end{center}
+  transforms into the proof
+  \begin{center}
+    \begin{math}
+      $$\mprset{flushleft}
+      \inferrule* [right=cut] {        
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_1}          
+        }{[[!{G} |- A]]}          
+        \\
+        $$\mprset{flushleft}
+        \inferrule* [right=] {
+          \inferrule* [right=,vdots=1.5em,fraction=\,] {
+            \,
+          }{\pi_2}          
+        }{[[G1,A,G2 |- B]]}                      
+      }{[[G1,!{G},G2 |- B]]}
+    \end{math}
+  \end{center}
 
 \item[Case:] secondary conclusion: left introduction of implication.
   The proof 
@@ -1356,7 +1406,6 @@
         }{[[G1, G, G2 |- [t/x]t' : B]]}
       }{[[G1, G, G2, y : I |- let y be punit in [t/x]t' : B]]}
     \end{math}
-  \end{center}
-
+  \end{center}  
   
 \end{itemize}

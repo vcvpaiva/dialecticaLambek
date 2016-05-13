@@ -408,7 +408,7 @@
 \newcommand{\LdruleTXXC}[1]{\Ldrule[#1]{%
 \Lpremise{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{x}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Lmv{y}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash  \Lnt{t}  :  \Lnt{B} }%
 }{
- \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash   \mathsf{copy}\, \Lmv{x} \,\mathsf{as}\, \Lmv{y} , \Lmv{z} \,\mathsf{in}\, \Lnt{t}   :  \Lnt{B} }{%
+ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \Lsym{,}  \Gamma_{{\mathrm{3}}}  \vdash   \mathsf{copy}\, \Lmv{z} \,\mathsf{as}\, \Lmv{x} , \Lmv{y} \,\mathsf{in}\, \Lnt{t}   :  \Lnt{B} }{%
 {\Ldrulename{T\_C}}{}%
 }}
 
@@ -589,6 +589,13 @@
 }}
 
 
+\newcommand{\LdruleRXXNatD}[1]{\Ldrule[#1]{%
+}{
+ \Lsym{[}   \mathsf{discard}\, \Lnt{t} \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  \rightsquigarrow   \mathsf{discard}\, \Lnt{t} \,\mathsf{in}\, \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  }{%
+{\Ldrulename{R\_NatD}}{}%
+}}
+
+
 \newcommand{\LdruleRXXLet}[1]{\Ldrule[#1]{%
 \Lpremise{ \Lnt{t_{{\mathrm{1}}}}  \rightsquigarrow  \Lnt{t_{{\mathrm{2}}}} }%
 }{
@@ -675,6 +682,7 @@
 \Lusedrule{\LdruleRXXBetaDR{}}
 \Lusedrule{\LdruleRXXBetaDI{}}
 \Lusedrule{\LdruleRXXBetaC{}}
+\Lusedrule{\LdruleRXXNatD{}}
 \Lusedrule{\LdruleRXXLet{}}
 \Lusedrule{\LdruleRXXTOne{}}
 \Lusedrule{\LdruleRXXTTwo{}}

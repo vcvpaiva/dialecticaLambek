@@ -24,7 +24,8 @@ A, B, C, D :: 'form_' ::=
 p :: 'pat_' ::=
   | punit :: :: UnitPatter
   {{tex \mathsf{unit} }}
-  | - :: :: Hole
+  | h :: :: Hole
+  {{tex - }}
   | x :: :: Var
   | p1 (x) p2 :: :: Tensor
   {{tex [[p1]] \otimes [[p2]] }}
@@ -45,14 +46,14 @@ t :: 'term_' ::=
   {{tex \lambda_r [[x]]:[[A]].[[t]] }}  
   | let t1 be p in t2 :: :: Let
   {{tex \mathsf{let}\,[[t1]]\,\mathsf{be}\,[[p]]\,\mathsf{in}\,[[t2]] }}
-  | copy t' as y , z in t :: :: Copy
-  {{tex \mathsf{copy}\,[[t']]\,\mathsf{as}\,[[y]],[[z]]\,\mathsf{in}\,[[t]] }}
+  | copy t' as t1 , t2 in t :: :: Copy
+  {{tex \mathsf{copy}\,[[t']]\,\mathsf{as}\,[[t1]],[[t2]]\,\mathsf{in}\,[[t]] }}
   | discard t' in t :: :: Discard
   {{tex \mathsf{discard}\,[[t']]\,\mathsf{in}\,[[t]] }}
-  | discard ! t' in t :: :: DiscardVec
-  {{tex \mathsf{discard}\,\vec{[[t']]}\,\mathsf{in}\,[[t]] }}  
-  | promote! ! x for ! y in t :: :: Promote
-  {{tex \mathsf{promote}_!\,\vec{[[x]]}\,\mathsf{for}\,\vec{[[y]]}\,\mathsf{in}\,[[t]] }}
+  | discard t' in t :: :: DiscardVec
+  {{tex \mathsf{discard}\,[[t']]\,\mathsf{in}\,[[t]] }}  
+  | promote! t' for ! y in t :: :: Promote
+  {{tex \mathsf{promote}_!\,[[t']]\,\mathsf{for}\,\vec{[[y]]}\,\mathsf{in}\,[[t]] }}
   | derelict! t :: :: Derel
   {{tex \mathsf{derelict}_!\,[[t]] }}
   | promoteE E x for E y in t :: :: Promotek
@@ -63,9 +64,11 @@ t :: 'term_' ::=
   {{tex \mathsf{exchange_r}\,[[x]]\,\mathsf{with}\,[[y]]\,\mathsf{in}\,[[t]] }}
   | lexchange x with y in t :: :: LEx
   {{tex \mathsf{exchange_l}\,[[x]]\,\mathsf{with}\,[[y]]\,\mathsf{in}\,[[t]] }}
+  | ! t               :: M :: BTerm
+  {{tex \vec{[[t]]} }}
   | { t }             :: S :: Parens
   {{tex ( [[t]] ) }}
-  | [ t1 / x ] t2     :: M :: Sub
+  | [ t1 / t ] t2     :: M :: Sub
   | h( t )            :: M :: HiddenParens 
   {{ tex [[t]] }}
   
@@ -326,14 +329,14 @@ defn
  --------------------------- :: LetU
  let unit be punit in t ~> t
 
- ------------------------------------------ :: BetaDR
- derelict! {promote! !y for !x in t1} ~> t1
+ ------------------------------------------------- :: BetaDR
+ derelict! {promote! !t for !x in t1} ~> [!t/!x]t1
 
  ------------------------------------------------------------ :: BetaDI
- discard {promote! !y for !x in t1} in t2 ~> discard !y in t2
+ discard {promote! !t for !x in t1} in t2 ~> discard !t in t2
 
  ---------------------------------------------------------------------------------------------------------- :: BetaC
- copy {promote! !y for !x in t1} as w,z in t2 ~> [promote! !y for !x in t1/w][promote! !y for !x in t1/z]t2
+ copy {promote! !t for !x in t1} as w,z in t2 ~> copy !t as !w,!z in [promote! !w for !x in t1/w][promote! !z for !x in t1/z]t2
 
  t1 ~> t2
  ------------------------------------ :: Let

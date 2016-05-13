@@ -508,7 +508,7 @@
               \,
             }{\pi_1}          
           }{  \vec{ \Lmv{x} } : ! \Gamma   \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A} }          
-        }{  \vec{ \Lmv{y} } : ! \Gamma   \vdash   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :   !  \Lnt{A}  }
+        }{  \vec{ \Lmv{y} } : ! \Gamma   \vdash   \mathsf{promote}_!\,  \vec{ \Lmv{y} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :   !  \Lnt{A}  }
         \\
         $$\mprset{flushleft}
         \inferrule* [right=Bl] {
@@ -519,7 +519,7 @@
             }{\pi_2}          
           }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{w}  \Lsym{:}  \Lnt{A}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }                      
         }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{derelict}_!\, \Lmv{z}   \Lsym{/}  \Lmv{w}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }
-      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lsym{[}   \mathsf{derelict}_!\, \Lmv{z}   \Lsym{/}  \Lmv{w}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{promote}_!\,  \vec{ \Lmv{y} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lsym{[}   \mathsf{derelict}_!\, \Lmv{z}   \Lsym{/}  \Lmv{w}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }
     \end{math}
   \end{center}
   transforms into the proof
@@ -559,10 +559,10 @@
               \,
             }{\pi_1}          
           }{  \vec{ \Lmv{x} } : ! \Gamma   \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A} }          
-        }{  \vec{ \Lmv{y} } : ! \Gamma   \vdash   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :   !  \Lnt{A}  }
+        }{  \vec{ \Lmv{y} } : ! \Gamma   \vdash   \mathsf{promote}_!\,  \vec{ \Lmv{y} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :   !  \Lnt{A}  }
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Bl] {
+        \inferrule* [right=W] {
           $$\mprset{flushleft}
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
@@ -570,7 +570,7 @@
             }{\pi_2}          
           }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }                      
         }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \mathsf{discard}\, \Lmv{z} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   :  \Lnt{B} }
-      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{z}  \Lsym{]}   \mathsf{discard}\, \Lmv{z} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   :  \Lnt{B} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{promote}_!\,  \vec{ \Lmv{y} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{z}  \Lsym{]}   \mathsf{discard}\, \Lmv{z} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   :  \Lnt{B} }
     \end{math}
   \end{center}
   transforms into the proof
@@ -584,7 +584,7 @@
             \,
           }{\pi_2}          
         }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }                      
-      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \mathsf{discard}\,\vec{ \Lmv{y} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   :  \Lnt{B} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \mathsf{discard}\,  \vec{ \Lmv{y} }  \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   :  \Lnt{B} }
     \end{math}
   \end{center}
 
@@ -603,10 +603,10 @@
               \,
             }{\pi_1}          
           }{  \vec{ \Lmv{x} } : ! \Gamma   \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A} }          
-        }{  \vec{ \Lmv{y} } : ! \Gamma   \vdash   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :   !  \Lnt{A}  }
+        }{  \vec{ \Lmv{y} } : ! \Gamma   \vdash   \mathsf{promote}_!\,  \vec{ \Lmv{y} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :   !  \Lnt{A}  }
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Bl] {
+        \inferrule* [right=C] {
           $$\mprset{flushleft}
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
@@ -614,13 +614,15 @@
             }{\pi_2}          
           }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{w_{{\mathrm{1}}}}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Lmv{w_{{\mathrm{2}}}}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }                      
         }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{z}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \mathsf{copy}\, \Lmv{z} \,\mathsf{as}\, \Lmv{w_{{\mathrm{1}}}} , \Lmv{w_{{\mathrm{2}}}} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   :  \Lnt{B} }
-      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{z}  \Lsym{]}   \mathsf{copy}\, \Lmv{z} \,\mathsf{as}\, \Lmv{w_{{\mathrm{1}}}} , \Lmv{w_{{\mathrm{2}}}} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   :  \Lnt{B} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{promote}_!\,  \vec{ \Lmv{y} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{z}  \Lsym{]}   \mathsf{copy}\, \Lmv{z} \,\mathsf{as}\, \Lmv{w_{{\mathrm{1}}}} , \Lmv{w_{{\mathrm{2}}}} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   :  \Lnt{B} }
     \end{math}
   \end{center}
   transforms into the proof
   \begin{center}
     \begin{math}      
       $$\mprset{flushleft}
+      \inferrule* [right=C] {
+        $$\mprset{flushleft}
       \inferrule* [right=\scriptsize cut] {
         $$\mprset{flushleft}
         \inferrule* [right=\scriptsize Br] {
@@ -630,10 +632,11 @@
               \,
             }{\pi_1}          
           }{  \vec{ \Lmv{x} } : ! \Gamma   \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A} }          
-        }{  \vec{ \Lmv{y} } : ! \Gamma   \vdash   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :   !  \Lnt{A}  }
+        }{  \vec{ \Lmv{z} } : ! \Gamma   \vdash   \mathsf{promote}_!\,  \vec{ \Lmv{z} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :   !  \Lnt{A}  }
         \\
         D
-      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{w_{{\mathrm{1}}}}  \Lsym{]}  \Lsym{[}   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{w_{{\mathrm{2}}}}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{z_{{\mathrm{1}}}} } : ! \Gamma   \Lsym{,}   \vec{ \Lmv{z_{{\mathrm{2}}}} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{promote}_!\,  \vec{ \Lmv{z_{{\mathrm{1}}}} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{w_{{\mathrm{1}}}}  \Lsym{]}  \Lsym{[}   \mathsf{promote}_!\,  \vec{ \Lmv{z_{{\mathrm{2}}}} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{w_{{\mathrm{2}}}}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }
+      }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash   \mathsf{copy}\,  \vec{ \Lmv{y} }  \,\mathsf{as}\, \Lmv{z_{{\mathrm{1}}}} , \Lmv{z_{{\mathrm{2}}}} \,\mathsf{in}\, \Lsym{[}   \mathsf{promote}_!\,  \vec{ \Lmv{z_{{\mathrm{1}}}} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{w_{{\mathrm{1}}}}  \Lsym{]}  \Lsym{[}   \mathsf{promote}_!\,  \vec{ \Lmv{z_{{\mathrm{2}}}} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{w_{{\mathrm{2}}}}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}   :  \Lnt{B} }
     \end{math}
   \end{center}
   where the definition $D$ is as follows:
@@ -649,7 +652,7 @@
                 \,
               }{\pi_1}          
             }{  \vec{ \Lmv{x} } : ! \Gamma   \vdash  \Lnt{t_{{\mathrm{1}}}}  :  \Lnt{A} }          
-          }{  \vec{ \Lmv{y} } : ! \Gamma   \vdash   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :   !  \Lnt{A}  }          
+          }{  \vec{ \Lmv{y} } : ! \Gamma   \vdash   \mathsf{promote}_!\,  \vec{ \Lmv{y} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   :   !  \Lnt{A}  }          
           \\
           $$\mprset{flushleft}
           \inferrule* [right=] {
@@ -657,7 +660,7 @@
               \,
             }{\pi_2}          
           }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{w_{{\mathrm{1}}}}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Lmv{w_{{\mathrm{2}}}}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }                      
-        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{w_{{\mathrm{1}}}}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{promote}_!\,\vec{ \Lmv{y} }\,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{w_{{\mathrm{2}}}}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }                
+        }{ \Gamma_{{\mathrm{1}}}  \Lsym{,}  \Lmv{w_{{\mathrm{1}}}}  \Lsym{:}   !  \Lnt{A}   \Lsym{,}   \vec{ \Lmv{y} } : ! \Gamma   \Lsym{,}  \Gamma_{{\mathrm{2}}}  \vdash  \Lsym{[}   \mathsf{promote}_!\,  \vec{ \Lmv{y} }  \,\mathsf{for}\,\vec{ \Lmv{x} }\,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{w_{{\mathrm{2}}}}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  :  \Lnt{B} }                
     \end{math}
   \end{center}
 

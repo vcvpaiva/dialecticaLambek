@@ -562,7 +562,7 @@
         }{[[!y : !{G} |- promote! !y for !x in t1 : !A]]}
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Bl] {
+        \inferrule* [right=W] {
           $$\mprset{flushleft}
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
@@ -606,7 +606,7 @@
         }{[[!y : !{G} |- promote! !y for !x in t1 : !A]]}
         \\
         $$\mprset{flushleft}
-        \inferrule* [right=Bl] {
+        \inferrule* [right=C] {
           $$\mprset{flushleft}
           \inferrule* [right=] {
             \inferrule* [right=,vdots=1.5em,fraction=\,] {
@@ -621,6 +621,8 @@
   \begin{center}
     \begin{math}      
       $$\mprset{flushleft}
+      \inferrule* [right=C] {
+        $$\mprset{flushleft}
       \inferrule* [right=\scriptsize cut] {
         $$\mprset{flushleft}
         \inferrule* [right=\scriptsize Br] {
@@ -630,10 +632,11 @@
               \,
             }{\pi_1}          
           }{[[!x : !{G} |- t1 : A]]}          
-        }{[[!y : !{G} |- promote! !y for !x in t1 : !A]]}
+        }{[[!z : !{G} |- promote! !z for !x in t1 : !A]]}
         \\
         D
-      }{[[G1,!y : !{G}, !y : !{G}, G2 |- [promote! !y for !x in t1/w1][promote! !y for !x in t1/w2]t2 : B]]}
+      }{[[G1,!z1 : !{G}, !z2 : !{G}, G2 |- [promote! !z1 for !x in t1/w1][promote! !z2 for !x in t1/w2]t2 : B]]}
+      }{[[G1,!y : !{G}, G2 |- copy !y as z1,z2 in [promote! !z1 for !x in t1/w1][promote! !z2 for !x in t1/w2]t2 : B]]}
     \end{math}
   \end{center}
   where the definition $D$ is as follows:

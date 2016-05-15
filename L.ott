@@ -341,6 +341,9 @@ defn
  ---------------------------------------------- :: NatD
  [discard t in t1/x]t2 ~> discard t in [t1/x]t2
 
+ ------------------------------------------------------ :: NatC
+ [copy t as x,y in t1/x]t2 ~> copy t as x,y in [t1/x]t2
+
  t1 ~> t2
  ------------------------------------ :: Let
  let x be p in t1 ~> let x be p in t2

@@ -50,22 +50,22 @@ t :: 'term_' ::=
   {{tex \mathsf{copy}\,[[t']]\,\mathsf{as}\,[[t1]],[[t2]]\,\mathsf{in}\,[[t]] }}
   | discard t' in t :: :: Discard
   {{tex \mathsf{discard}\,[[t']]\,\mathsf{in}\,[[t]] }}
-  | discard t' in t :: :: DiscardVec
-  {{tex \mathsf{discard}\,[[t']]\,\mathsf{in}\,[[t]] }}  
-  | promote! t' for ! y in t :: :: Promote
-  {{tex \mathsf{promote}_!\,[[t']]\,\mathsf{for}\,\vec{[[y]]}\,\mathsf{in}\,[[t]] }}
+  | promote! t' for t'' in t :: :: Promote
+  {{tex \mathsf{promote}_!\,[[t']]\,\mathsf{for}\,[[t'']]\,\mathsf{in}\,[[t]] }}
   | derelict! t :: :: Derel
   {{tex \mathsf{derelict}_!\,[[t]] }}
-  | promoteE E x for E y in t :: :: Promotek
-  {{tex \mathsf{promote}_\kappa\,\vec{[[x]]}\,\mathsf{for}\,\vec{[[y]]}\,\mathsf{in}\,[[t]] }}
+  | promoteE t1 for t2 in t3 :: :: Promotek
+  {{tex \mathsf{promote}_\kappa\,[[t1]]\,\mathsf{for}\,[[t2]]\,\mathsf{in}\,[[t3]] }}
   | derelictE t :: :: Derelk
   {{tex \mathsf{derelict}_\kappa\,[[t]] }}
-  | rexchange x with y in t :: :: REx
-  {{tex \mathsf{exchange_r}\,[[x]]\,\mathsf{with}\,[[y]]\,\mathsf{in}\,[[t]] }}
-  | lexchange x with y in t :: :: LEx
-  {{tex \mathsf{exchange_l}\,[[x]]\,\mathsf{with}\,[[y]]\,\mathsf{in}\,[[t]] }}
+  | rexchange t1 with t2 in t3 :: :: REx
+  {{tex \mathsf{exchange_r}\,[[t1]]\,\mathsf{with}\,[[t2]]\,\mathsf{in}\,[[t3]] }}
+  | lexchange t1 with t2 in t3 :: :: LEx
+  {{tex \mathsf{exchange_l}\,[[t1]]\,\mathsf{with}\,[[t2]]\,\mathsf{in}\,[[t3]] }}
   | ! t               :: M :: BTerm
   {{tex \vec{[[t]]} }}
+  | E t               :: M :: ETerm
+  {{tex \vec{[[t]]} }}  
   | { t }             :: S :: Parens
   {{tex ( [[t]] ) }}
   | [ t1 / t ] t2     :: M :: Sub
@@ -297,13 +297,13 @@ defn
 
  y nin FV(t)
  ----------- :: Alpha
- [y/x]t ~> t
+ t ~> [y/x]t
 
  --------------------- :: Etal
- t ~> \l x:A.appl t x
+ \l x:A.appl t x ~> t
 
  -------------------- :: Etar
- t ~> \r x:A.appr t x 
+ \r x:A.appr t x  ~> t
 
  ------------------------------- :: Betal
  appl {\l x:A.t2} t1 ~> [t1/x]t2
@@ -329,6 +329,9 @@ defn
  --------------------------- :: LetU
  let unit be punit in t ~> t
 
+ ------------------------------------ :: EtaP
+ promote! t for x in derelict! x ~> t
+
  ------------------------------------------------- :: BetaDR
  derelict! {promote! !t for !x in t1} ~> [!t/!x]t1
 
@@ -343,6 +346,18 @@ defn
 
  ------------------------------------------------------ :: NatC
  [copy t as x,y in t1/x]t2 ~> copy t as x,y in [t1/x]t2
+
+ ------------------------------------ :: EtaEP
+ promoteE t for x in derelictE x ~> t
+
+ ----------------------------------------------------- :: BetaEDR
+ derelictE {promoteE E t for E x in t1} ~> [E t/E x]t1
+
+ -------------------------------------------------------------------- :: NatEl
+ [lexchange t1 with t2 in t3/z]t4 ~> lexchange t1 with t2 in [t3/x]t4
+
+ -------------------------------------------------------------------- :: NatEr
+ [rexchange t1 with t2 in t3/z]t4 ~> rexchange t1 with t2 in [t3/x]t4
 
  t1 ~> t2
  ------------------------------------ :: Let
@@ -379,3 +394,67 @@ defn
  t ~> t'
  --------------------- :: Lr
  \r x:A.t ~> \r x:A.t'
+
+ t1 ~> t1'
+ --------------------------------------------- :: Copy1
+ copy t1 as x,y in t2 ~> copy t1' as x,y in t2
+
+ t2 ~> t2'
+ --------------------------------------------- :: Copy2
+ copy t1 as x,y in t2 ~> copy t1 as x,y in t2'
+
+ t1 ~> t1'
+ ------------------------------------- :: Discard1
+ discard t1 in t2 ~> discard t1' in t2
+
+ t2 ~> t2'
+ ------------------------------------- :: Discard2
+ discard t1 in t2 ~> discard t1 in t2'
+
+ t1 ~> t1'
+ ------------------------------------------------------- :: Promote1
+ promote! t1 for ! x in t2 ~> promote! t1' for ! x in t2
+
+ t2 ~> t2'
+ ------------------------------------------------------- :: Promote2
+ promote! t1 for ! x in t2 ~> promote! t1 for ! x in t2'
+
+ t ~> t'
+ --------------------------- :: Derelict
+ derelict! t ~> derelict! t'
+
+ t1 ~> t1'
+ --------------------------------------------------------- :: LEx1
+ lexchange t1 with t2 in t3 ~> lexchange t1' with t2 in t3
+
+ t2 ~> t2'
+ -------------------------------------------------------- :: LEx2
+ lexchange t1 with t2 in t3 ~> lexchange t1 with t2' in t3
+
+ t3 ~> t3'
+ --------------------------------------------------------- :: LEx3
+ lexchange t1 with t2 in t3 ~> lexchange t1 with t2 in t3'
+
+ t1 ~> t1'
+ --------------------------------------------------------- :: REx1
+ rexchange t1 with t2 in t3 ~> rexchange t1' with t2 in t3
+
+ t2 ~> t2'
+ -------------------------------------------------------- :: REx2
+ rexchange t1 with t2 in t3 ~> rexchange t1 with t2' in t3
+
+ t3 ~> t3'
+ --------------------------------------------------------- :: REx3
+ rexchange t1 with t2 in t3 ~> rexchange t1 with t2 in t3'
+
+ t1 ~> t1'
+ ------------------------------------------------------- :: EPromote1
+ promoteE t1 for E x in t2 ~> promoteE t1' for E x in t2
+
+ t2 ~> t2'
+ ------------------------------------------------------- :: EPromote2
+ promoteE t1 for E x in t2 ~> promoteE t1 for E x in t2'
+
+ t ~> t'
+ --------------------------- :: EDerelict
+ derelictE t ~> derelictE t'

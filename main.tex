@@ -443,7 +443,7 @@ Putting this here for now.
 \begin{figure}
   \begin{mdframed}
     \begin{mathpar}
-      \LdruleRXXAlpha{} \and
+      %% \LdruleRXXAlpha{} \and
       \LdruleRXXEtal{} \and
       \LdruleRXXEtar{} \and
       \LdruleRXXBetal{} \and
@@ -485,11 +485,19 @@ Putting this here for now.
 \begin{figure}
   \begin{mdframed}
     \begin{mathpar}
+      \LdruleRXXEtaP{} \and      
       \LdruleRXXBetaDR{} \and
       \LdruleRXXBetaDI{} \and
       \LdruleRXXBetaC{} \and
       \LdruleRXXNatD{} \and
-      \LdruleRXXNatC{}
+      \LdruleRXXNatC{} \and
+      \LdruleRXXCopyOne{} \and
+      \LdruleRXXCopyTwo{} \and
+      \LdruleRXXDiscardOne{} \and
+      \LdruleRXXDiscardTwo{} \and
+      \LdruleRXXPromoteOne{} \and
+      \LdruleRXXPromoteTwo{}  \and
+      \LdruleRXXDerelict{}
     \end{mathpar}
   \end{mdframed}
   \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_!$}
@@ -509,6 +517,27 @@ Putting this here for now.
   \label{fig:typed-LB}
 \end{figure}
 
+\begin{figure}
+  \begin{mdframed}
+    \begin{mathpar}
+      \LdruleRXXEtaEP{} \and      
+      \LdruleRXXBetaEDR{} \and
+      \LdruleRXXNatEl{} \and
+      \LdruleRXXNatEr{} \and
+      \LdruleRXXLExOne{} \and
+      \LdruleRXXLExTwo{} \and
+      \LdruleRXXLExThree{} \and
+      \LdruleRXXRExOne{} \and
+      \LdruleRXXRExTwo{} \and
+      \LdruleRXXRExThree{} \and
+      \LdruleRXXEPromoteOne{} \and
+      \LdruleRXXEPromoteTwo{} \and
+      \LdruleRXXEDerelict{}
+    \end{mathpar}
+  \end{mdframed}
+  \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
+  \label{fig:rewrite-LB}
+\end{figure}
 
 % section type_theories (end)
 
@@ -518,14 +547,14 @@ Putting this here for now.
 \bibliographystyle{plain}
 \bibliography{references}
 
-\appendix
+%% \appendix
 
-\section{Term Annotated Cut Elimination Procedure for L}
-\label{sec:cut_elimination_procedure_for_l}
+%% \section{Term Annotated Cut Elimination Procedure for L}
+%% \label{sec:cut_elimination_procedure_for_l}
 
-\input{cut-elim-output}
+%% \input{cut-elim-output}
 
-% section cut_elimination_procedure_for_l (end)
+%% % section cut_elimination_procedure_for_l (end)
 
 \end{document}
 

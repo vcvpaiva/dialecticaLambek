@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Dialectica Categories and Lambek Calculus}
+\author{Valeria de Paiva and Harley Eades III}
+\date{May 2016}
+
+\begin{document}
+
+\maketitle
+A long time ago the first author presented  Dialectica categorical models of the Lambek Calculus in the Amsterdam Colloquium \cite{depaiva1991}. Following Lambek's lead the article proposed to approach the
+Lambek Calculus from the perspective of Linear Logic and adapted the Dialectica categorical models for Linear Logic to Lambek's non-commutative calculus \cite{lambek1988}. In that earlier work we took for granted the syntax of the Lambek calculus 
+%as discussed in \cite{lambek1988}
+as proposed by Lambek and only discussed the exciting possibilities of new models for modalities that the work on Linear Logic like systems had recently introduced.
+
+Dialectica models of Linear Logic (or dialectica categories), first introduced in \cite{depaiva1989}, have been influential. Originally conceived as models for G\"odel's Dialectica interpretation of higher-order arithmetic, they were shown to provide  classes of models for intuitionistic logic, classical logic, and intuitionistic linear logic. Dialectica models
+of classical linear logic are described in \cite{depaiva1990}, based on earlier models of intuitionistic logic
+and intuitionistic linear logic in \cite{depaiva1989}. Historically, they were the first models of linear logic to not equate multiplicative and additive units, and they have been generalised and applied in several ways. 
+
+Generalizations of dialectica categories include Hyland's partial-ordered fibrational definition, 
+%starting only from a partially ordered fibration 
+in  \cite{hyland2002} and Biering's phd work \cite{biering2008}, which using full fibrations, extends a variant of the Dialectica interpretation to dependent type theory (`The Copenhagen Interpretation'). A different kind of generalization, building on the game semantics connection, has been pursued by Oliva and collaborators. They show that many functional interpretations can be unified under the same framework. These  various functional interpretations, including G\"odel’s dialectica interpretation, its Diller-Nahm variant, Kreisel's modified realizability, Stein’s family of functional interpretations, functional interpretations “with truth”, and bounded functional interpretations, can all be seen as a categorical decomposition of a basic dialectica construction, followed by different ways of dealing with contraction. A summary of this work with full references can be found in \cite{oliva2014}.
+
+As far as applications of dialectica categories are concerned, the initial ones were to models of Petri Nets and models of state in programming, in the style of Reynolds' Separation Logic. More recently, applications to Set Theory and the theory of cardinalities of the continuum have been developed, based on old work of Andreas Blass. The dialectica constructions have shown flexibility and adaptability to different scenarios.
+
+Twenty five years later we find that the work on dialectica models of the Lambek calculus is still interesting and that it might inform some of the most recent work on the relationship between Categorial Grammars and notions of distributional semantics, e.g. \cite{coecke2013} under heated debate. But the Amsterdam Colloquium proceedings were never formally published and not even the author had a copy of Amsterdam version that she could point people to. So we asked the Logic Institute in Amsterdam for a copy and have now decided to revisit this old work. 
+
+More than simply retyping the old work, we wanted to make sure that the results that had not been finished in the first version got done  this time. This meant that the type theory associated with the lambda calculus extensions for the modalities needed to be checked. This kind of work is error-prone. Thankfully new tools are now available. We are now using  tools that have been developed for type theories and sequent proof systems in the last few years. Thus, we implement the calculus in Agda
+\cite{bove2009} and we use
+\texttt{Ott} \cite{Sewell:2010} to check that we do not have trivial
+mistakes in our term systems.
+
+The plan is to recall the Lambek calculus with its Curry-Howard isomorphic term assignment system. Then extend it with a $\kappa$ modality, inspired from Yetter's work, that makes the calculus commutative. Finally we add the of-course modality $!$, just as Girard did, to  re-introduce weakening and contraction for all formulas and get back the full power of intuitionistic and classical logic. We present algebraic semantics and categorical semantics, proved sound and complete in the previous work. But also show the traditional properties of type systems, like subject reduction, Church-Rosserness and  normalization for the calculi of extended modalities, which we did not have before.
+
+The goal is to see if our new
+implementations can shed new light on some of the issues that remained
+open. Ultimately we are  interested on the applicability and fit of the original systems to their intended uses in the construction of semantics of Natural Language. But before we can discuss that, we need to make sure that the mathematical properties that make the Lambek calculus attractive are all properly modeled. Bonus points if these properties can be extended to more generic versions of CCG \cite{lewis2014}. 
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+
+
+\end{document}

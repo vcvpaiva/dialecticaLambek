@@ -17,6 +17,8 @@ A, B, C, D :: 'form_' ::=
   {{tex ! [[A]] }}
   | E A     ::   :: Exchange
   {{tex \kappa [[A]] }}
+  | A -o B :: M :: Limp
+  {{tex [[A]] \multimap [[B]] }}  
   | ( A )   :: M :: Parens 
   | h( A )  :: M :: HiddenParens 
   {{ tex [[A]] }}
@@ -62,6 +64,10 @@ t :: 'term_' ::=
   {{tex \mathsf{exchange_r}\,[[t1]]\,\mathsf{with}\,[[t2]]\,\mathsf{in}\,[[t3]] }}
   | lexchange t1 with t2 in t3 :: :: LEx
   {{tex \mathsf{exchange_l}\,[[t1]]\,\mathsf{with}\,[[t2]]\,\mathsf{in}\,[[t3]] }}
+  | \ x : A . t      :: M :: Lambda
+  {{tex \lambda [[x]]:[[A]].[[t]] }}    
+  | t1 t2        :: M :: Application
+  {{tex [[t1]]\,[[t2]] }}  
   | ! t               :: M :: BTerm
   {{tex \vec{[[t]]} }}
   | E t               :: M :: ETerm
@@ -250,6 +256,10 @@ defn
  ------------------------------------------ :: ILl
  G1,G2,z : B <- A,G3 |- [appl z t1/x]t2 : C
 
+ G2 |- t1 : A && G1, x : B,G3 |- t2 : C
+ -------------------------------------- :: Il
+ G1,z : A -o B,G2,G3 |- [z t1/x]t2 : C
+
  G, x : A |- t : B
  ---------------------- :: IRr
  G |- \r x:A.t : A -> B
@@ -257,6 +267,10 @@ defn
  x : A, G |- t : B
  ---------------------- :: ILr
  G |- \l x:A.t : B <- A
+
+ G, x : A |- t : B
+ ---------------------- :: Ir
+ G |- \ x:A.t : A -o B
 
  G1, x : !A, G2,y : !A, G3 |- t : B
  -------------------------------------------- :: C

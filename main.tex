@@ -633,22 +633,30 @@ omit the proof.  Thus, we have the following:
   The reduction relation, $[[~>]]$, modulo the commuting conversions
   is confluent.
 \end{theorem}
-
 % subsection the_typed_lambek_calculi_lambda-l (end)
 
-\begin{figure}
-  \begin{mdframed}
-    \begin{mathpar}
+\subsection{The Typed Lambek Calculus: $\lambda\text{L}_!$}
+\label{subsec:the_typed_lambek_calculus:lambda-l!}
+The calculus we introduce in this section is an extension of
+$\lambda\text{L}$ with the of-course modality $[[!A]]$.  This
+extension follows from ILL exactly.  The syntax of types and terms of
+$\lambda\text{L}$ are extended as follows:
+\[
+\begin{array}{cllllll}
+  \text{(types)}    & [[A]] & := & \cdots \mid [[! A]]\\
+  \text{(terms)}    & [[t]] & := & \cdots \mid [[copy t' as t1 , t2 in t]] \mid [[discard t' in t]]
+  \mid [[promote! t' for t'' in t]] \mid \\ & & & [[derelict! t]]\\
+\end{array}
+\]
+The new type and terms are what one might expect, and are the
+traditional syntax used for the of-course modality.  We add the
+following typing rules to $\lambda\text{L}$:
+\begin{mathpar}
       \LdruleTXXC{} \and
       \LdruleTXXW{} \and
       \LdruleTXXBr{} \and
       \LdruleTXXBl{} 
-    \end{mathpar}
-  \end{mdframed}
-  \caption{Typing Rules for The Typed Lambda Calculus: $\lambda\text{L}_!$}
-  \label{fig:typed-LB}
-\end{figure}
-
+\end{mathpar}
 \begin{figure}
   \begin{mdframed}
     \begin{mathpar}
@@ -670,6 +678,8 @@ omit the proof.  Thus, we have the following:
   \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_!$}
   \label{fig:rewrite-LB}
 \end{figure}
+Finally, the reduction rules can be found in Figure~\ref{fig:rewrite-LB}.
+% subsection the_typed_lambek_calculus:lambda-l! (end)
 
 \begin{figure}
   \begin{mdframed}
@@ -681,7 +691,7 @@ omit the proof.  Thus, we have the following:
     \end{mathpar}
   \end{mdframed}
   \caption{Typing Rules for The Typed Lambda Calculus: $\lambda\text{L}_\kappa$}
-  \label{fig:typed-LB}
+  \label{fig:typed-LE}
 \end{figure}
 
 \begin{figure}
@@ -703,7 +713,7 @@ omit the proof.  Thus, we have the following:
     \end{mathpar}
   \end{mdframed}
   \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
-  \label{fig:rewrite-LB}
+  \label{fig:rewrite-LE}
 \end{figure}
 
 % section type_theories (end)

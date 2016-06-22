@@ -708,7 +708,7 @@ the embedding we gave for $\lambda\text{L}$.
 Just as before this embedding is type preserving and reduction preserving.
 \begin{lemma}[Type Preserving Embedding]
   \label{lemma:type_preserving_embedding_lambdaL!}
-  If $[[G |- t : A]]$ in $\lambda\text{L}$, then
+  If $[[G |- t : A]]$ in $\lambda\text{L}_!$, then
   $[[G e |- t e : h(A e)]]$ in ILL.
 \end{lemma}
 \begin{proof}
@@ -718,7 +718,7 @@ Just as before this embedding is type preserving and reduction preserving.
 
 \begin{lemma}[Reduction Preserving Embedding]
   \label{lemma:reduction_preserving_embedding_lambdaL!}
-  If $[[t1 ~> t2]]$ in $\lambda\text{L}$, then $[[t1 e ~> h{t2 e}]]$
+  If $[[t1 ~> t2]]$ in $\lambda\text{L}_!$, then $[[t1 e ~> h{t2 e}]]$
   in ILL.
 \end{lemma}
 \begin{proof}
@@ -732,20 +732,44 @@ normalizing, because ILL is.
   \label{corollary:strong_normalization_lambdaL!}
   If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
 \end{corollary}
+
+\textbf{Confluence.} The Church-Rosser property also holds for
+$\lambda\text{L}_!$, and can be shown by straightforwardly applying a
+slightly modified version of Bierman's proof \cite{Bierman:1994} just
+as we did for $\lambda\text{L}$.  Thus, we have the following:
+\begin{theorem}[Confluence]
+  \label{thm:confluence}
+  The reduction relation, $[[~>]]$, modulo the commuting conversions
+  is confluent.
+\end{theorem}
 % subsection the_typed_lambek_calculus:lambda-l! (end)
 
-\begin{figure}
-  \begin{mdframed}
-    \begin{mathpar}
-      \LdruleTXXEOne{} \and
-      \LdruleTXXETwo{} \and
-      \LdruleTXXEr{} \and
-      \LdruleTXXEl{} 
-    \end{mathpar}
-  \end{mdframed}
-  \caption{Typing Rules for The Typed Lambda Calculus: $\lambda\text{L}_\kappa$}
-  \label{fig:typed-LE}
-\end{figure}
+\subsection{The Typed Lambda Calculus: $\lambda\text{L}_\kappa$}
+\label{subsec:the_typed_lambda_calculus:lambda-l-kappa}
+
+The next calculus we introduce is also an extension of
+$\lambda\text{L}$ with a modality that adds exchange to
+$\lambda\text{L}_\kappa$ denoted $[[E A]]$.  It is perhaps the most
+novel of the calculi we have introduced so far.  The syntax of types
+and terms of $\lambda\text{L}$ are extended as follows:
+\[
+\begin{array}{cllllll}
+  \text{(types)}    & [[A]] & := & \cdots \mid [[E A]]\\
+  \text{(terms)}    & [[t]] & := & \cdots \mid [[lexchange t1,t2 with x,y in t3]] \mid [[rexchange t1,t2 with x,y in t3]] \mid 
+  \\ & & & [[promoteE t' for t'' in t]] \mid [[derelictE t]]\\
+\end{array}
+\]
+The syntax for types has been extended to include the exchange
+modality, and the syntax of terms follow suit.  The terms $[[lexchange
+    t1,t2 with x,y in t3]]$ and $[[rexchange t1,t2 with x,y in t3]]$
+are used to explicitly track uses of exchange throughout proofs.  We
+add the following typing rules to $\lambda\text{L}$:
+\begin{mathpar}
+  \LdruleTXXEOne{} \and
+  \LdruleTXXETwo{} \and
+  \LdruleTXXEr{} \and
+  \LdruleTXXEl{} 
+\end{mathpar}
 
 \begin{figure}
   \begin{mdframed}
@@ -768,7 +792,10 @@ normalizing, because ILL is.
   \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
   \label{fig:rewrite-LE}
 \end{figure}
-
+\noindent
+The reduction rules are in Figure~\ref{fig:rewrite-LE}, and are vary
+similar to the rules from $\lambda\text{L}_!$.
+% subsection the_typed_lambda_calculus:lambda-l-kappa (end)
 % section type_theories (end)
 
 

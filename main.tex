@@ -619,7 +619,21 @@ normalizing, because ILL is.
   know this is impossible, because ILL is strongly normalizing.
 \end{proof}
 
-\textbf{Confluence.} 
+\textbf{Confluence.} The Church-Rosser property is well known to hold
+for ILL modulo commuting conversions, for example, see Theorem~19 of
+\cite{Bierman:1994} on page 96.  Since $\lambda\text{L}$ is
+essentially a subsystem of ILL, it is straightforward, albeit
+lengthly, to simply redefine Bierman's candidates (Definitions~17, 19,
+20, and 21 of Section 5.1 of ibid.), and then carry out a similar proof
+as Bierman's (Theorem~19 on page 96 of ibid.).  However, giving the
+details here would not be fruitful nor enlightening, and hence, we
+omit the proof.  Thus, we have the following:
+\begin{theorem}[Confluence]
+  \label{thm:confluence}
+  The reduction relation, $[[~>]]$, modulo the commuting conversions
+  is confluent.
+\end{theorem}
+
 % subsection the_typed_lambek_calculi_lambda-l (end)
 
 \begin{figure}

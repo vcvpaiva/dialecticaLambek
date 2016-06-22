@@ -679,6 +679,59 @@ following typing rules to $\lambda\text{L}$:
   \label{fig:rewrite-LB}
 \end{figure}
 Finally, the reduction rules can be found in Figure~\ref{fig:rewrite-LB}.
+
+\textbf{Strong normalization.} Showing strong normalization for
+$\lambda\text{L}_!$ easily follows by a straightforward extension of
+the embedding we gave for $\lambda\text{L}$.
+\begin{definition}
+  \label{def:embed-lambda-L!-in-ILL}
+  The following is an extension of the embedding of $\lambda\text{L}$
+  into ILL resulting in an embedding of types and terms of
+  $\lambda\text{L}_!$ into ILL:
+  \begin{center}
+    \begin{math}
+      \begin{array}{lrllllllllllllllllll}
+        \text{Types:}\\
+        & [[(! A) e]] & = & [[! h(A e)]]\\        
+        \\
+        \text{Terms:}\\
+        & [[{copy t' as t1 , t2 in t} e]] & = & [[copy t' e as t1 e , t2 e in h{t e}]]\\
+        & [[{discard t' in t} e]] & = & [[discard t' e in h{t e}]]\\
+        & [[{promote! t' for t'' in t} e]] & = & [[promote! t' e for t'' e in h{t e}]]\\
+        & [[{derelict! t} e]] & = & [[derelict! h{t e}]]\\
+      \end{array}
+    \end{math}
+  \end{center}
+\end{definition}
+
+\noindent
+Just as before this embedding is type preserving and reduction preserving.
+\begin{lemma}[Type Preserving Embedding]
+  \label{lemma:type_preserving_embedding_lambdaL!}
+  If $[[G |- t : A]]$ in $\lambda\text{L}$, then
+  $[[G e |- t e : h(A e)]]$ in ILL.
+\end{lemma}
+\begin{proof}
+  This holds by straightforward induction on the form of the assumed
+  typing derivation.
+\end{proof}
+
+\begin{lemma}[Reduction Preserving Embedding]
+  \label{lemma:reduction_preserving_embedding_lambdaL!}
+  If $[[t1 ~> t2]]$ in $\lambda\text{L}$, then $[[t1 e ~> h{t2 e}]]$
+  in ILL.
+\end{lemma}
+\begin{proof}
+  This holds by straightforward induction on the form of the assumed
+  reduction derivation.
+\end{proof}
+\noindent
+Finally, we can use the previous two results to conclude strongly
+normalizing, because ILL is.
+\begin{corollary}[Strong Normalization]
+  \label{corollary:strong_normalization_lambdaL!}
+  If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
+\end{corollary}
 % subsection the_typed_lambek_calculus:lambda-l! (end)
 
 \begin{figure}

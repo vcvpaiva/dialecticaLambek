@@ -513,12 +513,12 @@ reduction rules in Figure~\ref{fig:rewrite-L}.
       \LdruleRXXNatT{} \and
       \LdruleRXXLetU{} \and
       \LdruleRXXLet{} \and
-      \LdruleRXXTOne{} \and
-      \LdruleRXXTTwo{} \and
-      \LdruleRXXAlOne{} \and
-      \LdruleRXXAlTwo{} \and
-      \LdruleRXXArOne{} \and
-      \LdruleRXXArTwo{} \and
+      %% \LdruleRXXTOne{} \and
+      %% \LdruleRXXTTwo{} \and
+      %% \LdruleRXXAlOne{} \and
+      %% \LdruleRXXAlTwo{} \and
+      %% \LdruleRXXArOne{} \and
+      %% \LdruleRXXArTwo{} \and
       \LdruleRXXLl{} \and
       \LdruleRXXLr{} 
     \end{mathpar}
@@ -530,9 +530,12 @@ The typing rules are as one might expect.  Finally, the reduction
 rules were extracted from the cut-elimination procedure for L.  We
 denote the reflexive and transitive closure of the $[[~>]]$ by
 $[[~*>]]$.  We call a term with no $\beta\eta$-redexes a normal form,
-and we denote normal forms by $[[n]]$.  The other typed calculi we
-introduce below will be extensions of $\lambda\text{L}$, thus, we do
-not reintroduce these rules each time for readability.
+and we denote normal forms by $[[n]]$.  In the interest of space we
+omit the congruence rules from the definition of the reduction
+relation; we will do this for each calculi introduced throughout this
+section.  The other typed calculi we introduce below will be
+extensions of $\lambda\text{L}$, thus, we do not reintroduce these
+rules each time for readability.
 
 \textbf{Strong normalization.}  It is well known that intuitionistic
 linear logic (ILL) is strongly normalizing, for example, see Bierman's
@@ -665,14 +668,14 @@ following typing rules to $\lambda\text{L}$:
       \LdruleRXXBetaDI{} \and
       \LdruleRXXBetaC{} \and
       \LdruleRXXNatD{} \and
-      \LdruleRXXNatC{} \and
-      \LdruleRXXCopyOne{} \and
-      \LdruleRXXCopyTwo{} \and
-      \LdruleRXXDiscardOne{} \and
-      \LdruleRXXDiscardTwo{} \and
-      \LdruleRXXPromoteOne{} \and
-      \LdruleRXXPromoteTwo{}  \and
-      \LdruleRXXDerelict{}
+      \LdruleRXXNatC{} 
+      %% \LdruleRXXCopyOne{} \and
+      %% \LdruleRXXCopyTwo{} \and
+      %% \LdruleRXXDiscardOne{} \and
+      %% \LdruleRXXDiscardTwo{} \and
+      %% \LdruleRXXPromoteOne{} \and
+      %% \LdruleRXXPromoteTwo{}  \and
+      %% \LdruleRXXDerelict{}
     \end{mathpar}
   \end{mdframed}
   \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_!$}
@@ -771,22 +774,22 @@ add the following typing rules to $\lambda\text{L}$:
   \LdruleTXXEl{} 
 \end{mathpar}
 
-\begin{figure}
+\begin{figure}[h]
   \begin{mdframed}
     \begin{mathpar}
       \LdruleRXXEtaEP{} \and      
       \LdruleRXXBetaEDR{} \and
       \LdruleRXXNatEl{} \and
-      \LdruleRXXNatEr{} \and
-      \LdruleRXXLExOne{} \and
-      \LdruleRXXLExTwo{} \and
-      \LdruleRXXLExThree{} \and
-      \LdruleRXXRExOne{} \and
-      \LdruleRXXRExTwo{} \and
-      \LdruleRXXRExThree{} \and
-      \LdruleRXXEPromoteOne{} \and
-      \LdruleRXXEPromoteTwo{} \and
-      \LdruleRXXEDerelict{}
+      \LdruleRXXNatEr{} 
+      %% \LdruleRXXLExOne{} \and
+      %% \LdruleRXXLExTwo{} \and
+      %% \LdruleRXXLExThree{} \and
+      %% \LdruleRXXRExOne{} \and
+      %% \LdruleRXXRExTwo{} \and
+      %% \LdruleRXXRExThree{} \and
+      %% \LdruleRXXEPromoteOne{} \and
+      %% \LdruleRXXEPromoteTwo{} \and
+      %% \LdruleRXXEDerelict{}
     \end{mathpar}
   \end{mdframed}
   \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
@@ -795,6 +798,31 @@ add the following typing rules to $\lambda\text{L}$:
 \noindent
 The reduction rules are in Figure~\ref{fig:rewrite-LE}, and are vary
 similar to the rules from $\lambda\text{L}_!$.
+
+\textbf{Strong normalization.}  Similarly, we show that we can embed
+$\lambda\text{L}_\kappa$ into ILL, but the embedding is a bit more
+interesting.
+
+\begin{definition}
+  \label{def:embed-lambda-L!-in-ILL}
+  The following is an extension of the embedding of $\lambda\text{L}$
+  into ILL resulting in an embedding of types and terms of
+  $\lambda\text{L}_\kappa$ into ILL:
+  \begin{center}
+    \begin{math}
+      \begin{array}{lrllllllllllllllllll}
+        \text{Types:}\\
+        & [[(E A) e]] & = & [[! h(A e)]]\\        
+        \\
+        \text{Terms:}\\
+        & [[{lexchange t1 , t2 with x , y in t3} e]] & = & [[ [t2 e/x][t1 e/y]h{t3 e}]]\\
+        & [[{rexchange t1 , t2 with x , y in t3} e]] & = & [[ [t2 e/x][t1 e/y]h{t3 e}]]\\
+        & [[{promoteE t' for t'' in t} e]] & = & [[promote! t' e for t'' e in h{t e}]]\\
+        & [[{derelictE t} e]] & = & [[derelict! h{t e}]]\\
+      \end{array}
+    \end{math}
+  \end{center}
+\end{definition}
 % subsection the_typed_lambda_calculus:lambda-l-kappa (end)
 % section type_theories (end)
 

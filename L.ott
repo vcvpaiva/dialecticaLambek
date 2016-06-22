@@ -22,6 +22,8 @@ A, B, C, D :: 'form_' ::=
   | ( A )   :: M :: Parens 
   | h( A )  :: M :: HiddenParens 
   {{ tex [[A]] }}
+  | A e     :: M :: Embed
+  {{tex [[A]]^{\mathsf{e} } }}
 
 p :: 'pat_' ::=
   | punit :: :: UnitPatter
@@ -32,7 +34,7 @@ p :: 'pat_' ::=
   | p1 (x) p2 :: :: Tensor
   {{tex [[p1]] \otimes [[p2]] }}
 
-t :: 'term_' ::=
+t, n :: 'term_' ::=
   | x                 :: :: Var
   | unit              :: :: Unit  
   {{tex \mathsf{unit} }}
@@ -64,9 +66,9 @@ t :: 'term_' ::=
   {{tex \mathsf{exchange_r}\,[[t1]]\,\mathsf{with}\,[[t2]]\,\mathsf{in}\,[[t3]] }}
   | lexchange t1 with t2 in t3 :: :: LEx
   {{tex \mathsf{exchange_l}\,[[t1]]\,\mathsf{with}\,[[t2]]\,\mathsf{in}\,[[t3]] }}
-  | \ x : A . t      :: M :: Lambda
+  | \ x : A . t       :: M :: Lambda
   {{tex \lambda [[x]]:[[A]].[[t]] }}    
-  | t1 t2        :: M :: Application
+  | t1 t2             :: M :: Application
   {{tex [[t1]]\,[[t2]] }}  
   | ! t               :: M :: BTerm
   {{tex \vec{[[t]]} }}
@@ -75,8 +77,10 @@ t :: 'term_' ::=
   | { t }             :: S :: Parens
   {{tex ( [[t]] ) }}
   | [ t1 / t ] t2     :: M :: Sub
-  | h( t )            :: M :: HiddenParens 
+  | h{ t }            :: M :: HiddenParens 
   {{ tex [[t]] }}
+  | t e               :: M :: Embed
+  {{tex [[t]]^{\mathsf{e} } }}
   
 % Contexts:
 G {{tex \Gamma}} :: 'G_' ::=
@@ -95,7 +99,9 @@ G {{tex \Gamma}} :: 'G_' ::=
   | E{ G }      :: M :: Exchange
   {{tex \kappa [[G]] }}  
   | h( G )      :: M :: HiddenParens 
-  {{ tex [[G]] }}   
+  {{ tex [[G]] }}
+  | G e         :: M :: Embed
+  {{tex [[G]]^{\mathsf{e} } }}
   
 terminals :: '' ::=
   | (x)  ::  :: Tensor
@@ -132,6 +138,8 @@ terminals :: '' ::=
 
  formula :: 'formula_' ::=
   | judgement               ::  :: judgement
+  | formula e             :: M :: Embed
+  {{tex [[formula]]^{\mathsf{e} } }}  
   | formula <= formula'     :: M :: PJ
   | ( formula )             :: M :: ParenF
   | formula && formula'     ::  :: judgement_list 
@@ -245,8 +253,8 @@ defn
  G, z : A (x) B,G' |- let z be x (x) y in t : C
 
  G1 |- t1 : A && G2 |- t2 : B
- ------------------------------- :: Tr
- G1,G2 |- h(t1 (x) t2) : h(A (x) B)
+ ---------------------------------- :: Tr
+ G1,G2 |- h{t1 (x) t2} : h(A (x) B)
 
  G2 |- t1 : A && G1, x : B,G3 |- t2 : C
  ------------------------------------------ :: IRl
@@ -472,3 +480,15 @@ defn
  t ~> t'
  --------------------------- :: EDerelict
  derelictE t ~> derelictE t'
+
+defn
+ t1 ~*> t2 :: :: Mul :: 'MR_' 
+ by
+
+ t1 ~> t2
+ -------- :: Step
+ t1 ~*> t2
+
+ t1 ~*> t2 && t2 ~*> t3
+ ---------------------- :: Mul
+ t1 ~*> t3

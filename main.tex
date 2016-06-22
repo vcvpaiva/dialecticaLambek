@@ -24,6 +24,7 @@
 \newcommand{\lto}{\rightharpoonup}
 \newcommand{\LB}{\text{L}_!}
 \newcommand{\LE}{\text{L}_\kappa}
+\newcommand{\redto}{\rightsquigarrow}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -475,9 +476,10 @@ Contexts are sequences of pairs of free variables and types.  Patterns
 are only used in the let-expression which is itself used to eliminate
 logical connectives within the left rules of L.  All variables in the
 pattern of a let-expression are bound.  The remainder of the terms are
-straightforward.  The typing rules can be found in
-Figure~\ref{fig:typed-L} and the reduction rules in
-Figure~\ref{fig:rewrite-L}.
+straightforward.
+
+The typing rules can be found in Figure~\ref{fig:typed-L} and the
+reduction rules in Figure~\ref{fig:rewrite-L}.
 \begin{figure}[h]
   \begin{mdframed}
     \begin{mathpar}
@@ -525,18 +527,23 @@ Figure~\ref{fig:rewrite-L}.
   \label{fig:rewrite-L}
 \end{figure}
 The typing rules are as one might expect.  Finally, the reduction
-rules were extracted from the cut-elimination procedure for L.  The
-other typed calculi we introduce below will be extensions of
-$\lambda\text{L}$, thus, we do not reintroduce these rules each time
-for readability.
+rules were extracted from the cut-elimination procedure for L.  We
+denote the reflexive and transitive closure of the $[[~>]]$ by
+$[[~*>]]$.  We call a term with no $\beta\eta$-redexes a normal form,
+and we denote normal forms by $[[n]]$.  The other typed calculi we
+introduce below will be extensions of $\lambda\text{L}$, thus, we do
+not reintroduce these rules each time for readability.
 
-\textbf{Strong normalization.}  It is fairly straightforward to define
+\textbf{Strong normalization.}  It is well known that intuitionistic
+linear logic (ILL) is strongly normalizing, for example, see Bierman's
+thesis \cite{Bierman:1994} or Benton's beautiful embedding of ILL into
+system F \cite{Benton:1995c}.  It is fairly straightforward to define
 a reduction preserving embedding of $\lambda\text{L}$ -- and as we
-will see the other calculi can be as well -- into intuitionistic
-linear logic.  Intuitionistic linear logic can be obtained from
-$\lambda\text{L}$ by replacing the rules $\Ldrulename{T\_IRl}$,
-$\Ldrulename{T\_ILl}$, $\Ldrulename{T\_IRr}$, and
-$\Ldrulename{T\_ILr}$ with the following two rules:
+will see the other calculi can be as well -- into ILL.  Intuitionistic
+linear logic can be obtained from $\lambda\text{L}$ by replacing the
+rules $\Ldrulename{T\_IRl}$, $\Ldrulename{T\_ILl}$,
+$\Ldrulename{T\_IRr}$, and $\Ldrulename{T\_ILr}$ with the following
+two rules:
 \[
 \begin{array}{cccccccc}
   \LdruleTXXIl{} & \quad \LdruleTXXIr{}
@@ -544,6 +551,75 @@ $\Ldrulename{T\_ILr}$ with the following two rules:
 \]
 In addition, contexts are considered multisets, and hence, exchange is
 handled implicitly.
+
+At this point we define the following embeddings.
+\begin{definition}
+  \label{def:lambda-L_to_ILL}
+  We embed types and terms of $\lambda\text{L}$ into ILL as follows:
+  \begin{center}
+    \begin{math}
+      \begin{array}{lrllllllllllllllllll}
+        \text{Types:}\\
+        & [[I e]] & = & [[I]]\\
+        & [[(A (x) B) e]] & = & [[A e (x) h(B e)]]\\
+        & [[(A -> B) e]] & = & [[A e -o h(B e)]]\\
+        & [[(A <- B) e]] & = & [[A e -o h(B e)]]\\                    
+        \\
+        \text{Terms:}\\
+        & [[x e]] & = & [[x]]\\
+        & [[unit e]] & = & [[unit]]\\
+        & [[{t1 (x) t2} e]] & = & [[t1 e (x) h{t2 e}]]\\
+        & [[{let t1 be p in t2} e]] & = & [[let t1 e be p in h{t2 e}]]\\
+        & [[{\l x : A.t} e]] & = & [[\ x : A.h{t e}]]\\
+        & [[{\r x : A.t} e]] & = & [[\ x : A.h{t e}]]\\
+        & [[{appl t1 t2} e]] & = & [[h{t1 e} h{t2 e}]]\\
+        & [[{appr t1 t2} e]] & = & [[h{t1 e} h{t2 e}]]\\
+      \end{array}
+    \end{math}
+  \end{center}
+  The previous embeddings can be extended to contexts in the
+  straightforward way, and to sequents as follows:
+  \[ [[(G |- t : A) e]] = [[G e |- t e : h(A e)]]\]
+\end{definition}
+\noindent
+This embedding preserves typing and reduction.
+\begin{lemma}[Type Preserving Embedding]
+  \label{lemma:type_preserving_embedding}
+  If $[[G |- t : A]]$ in $\lambda\text{L}$, then
+  $[[G e |- t e : h(A e)]]$ in ILL.
+\end{lemma}
+\begin{proof}
+  This holds by straightforward induction on the form of the assumed
+  typing derivation.
+\end{proof}
+
+\begin{lemma}[Reduction Preserving Embedding]
+  \label{lemma:reduction_preserving_embedding}
+  If $[[t1 ~> t2]]$ in $\lambda\text{L}$, then $[[t1 e ~> h{t2 e}]]$
+  in ILL.
+\end{lemma}
+\begin{proof}
+  This holds by straightforward induction on the form of the assumed
+  reduction derivation.
+\end{proof}
+\noindent
+The previous two results imply that $\lambda\text{L}$ is strongly
+normalizing, because ILL is.
+\begin{corollary}[Strong Normalization]
+  \label{corollary:strong_normalization}
+  If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
+\end{corollary}
+\begin{proof}
+  Suppose $[[t]]$ is not strongly normalizing.  Then there exists at
+  least one infinite descending chain starting with $[[t]]$ of the
+  form $[[t]] \redto [[t']] \redto [[t'']] \redto
+  \cdots$. Lemma~\ref{lemma:reduction_preserving_embedding} implies
+  that there must also be an infinite descending chain of the form
+  $[[t e]] \redto [[t' e]] \redto [[t'' e]] \redto \cdots$, but we
+  know this is impossible, because ILL is strongly normalizing.
+\end{proof}
+
+\textbf{Confluence.} 
 % subsection the_typed_lambek_calculi_lambda-l (end)
 
 \begin{figure}

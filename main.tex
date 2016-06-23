@@ -747,8 +747,8 @@ as we did for $\lambda\text{L}$.  Thus, we have the following:
 \end{theorem}
 % subsection the_typed_lambek_calculus:lambda-l! (end)
 
-\subsection{The Typed Lambda Calculus: $\lambda\text{L}_\kappa$}
-\label{subsec:the_typed_lambda_calculus:lambda-l-kappa}
+\subsection{The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
+\label{subsec:the_typed_lambek_calculus:lambda-l-kappa}
 
 The next calculus we introduce is also an extension of
 $\lambda\text{L}$ with a modality that adds exchange to
@@ -825,7 +825,10 @@ interesting.
 \end{definition}
 The embedding just defined translates the exchange modality into the
 of-course modality of ILL.  We do this so as to preserve the comonadic
-structure of the exchange modality.  Furthermore, the left and right
+structure of the exchange modality.  One might think that we could
+simply translate the exchange modality to the identity, but as Benton
+showed \cite{Benton:1995c}, this would result in an embedding that
+does not preserve reductions.  Furthermore, the left and right
 exchange terms are translated away completely, but this works because
 ILL contains exchange in general, and hence, does not need to be
 tracked explicitly.  It is now straightforward to prove the following
@@ -855,7 +858,22 @@ normalization, because ILL is.
   \label{corollary:strong_normalization_lambdaL!}
   If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
 \end{corollary}
-% subsection the_typed_lambda_calculus:lambda-l-kappa (end)
+
+\textbf{Confluence.} The Church-Rosser property also holds for
+$\lambda\text{L}_\kappa$, and the proof is nearly identical to the
+proof that $\lambda\text{L}_!$ is confluent.  Thus, we have the
+following:
+\begin{theorem}[Confluence]
+  \label{thm:confluence}
+  The reduction relation, $[[~>]]$, modulo the commuting conversions
+  is confluent.
+\end{theorem}
+% subsection the_typed_lambek_calculus:lambda-l-kappa (end)
+
+\subsection{The Typed Lambek Calculus: $\lambda\text{L}_{!\kappa}$}
+\label{subsec:the_typed_lambek_calculus:lambda-l-!kappa}
+
+% subsection the_typed_lambek_calculus:lambda-l-!kappa (end)
 % section type_theories (end)
 
 

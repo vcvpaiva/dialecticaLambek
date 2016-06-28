@@ -141,12 +141,14 @@ terminals :: '' ::=
   | formula e             :: M :: Embed
   {{tex [[formula]]^{\mathsf{e} } }}  
   | formula <= formula'     :: M :: PJ
-  | ( formula )             :: M :: ParenF
   | formula && formula'     ::  :: judgement_list 
   {{ tex [[formula]] \qquad [[formula']] }}
   | ( formula )             ::  :: parens
+  | h( formula )            ::  :: hparens
+  {{tex [[formula]] }}
   | x nin FV( t )           ::  :: FV
   {{tex [[x]] \not\in \mathsf{FV}([[t]]) }}
+  | t = t'                  :: M :: termEq
 
 defns
   Jtyp :: '' ::=
@@ -321,11 +323,11 @@ defn
  ----------- :: Alpha
  t ~> [y/x]t
 
- --------------------- :: Etal
- \l x:A.appl t x ~> t
+ % --------------------- :: Etal
+ % \l x:A.appl t x ~> t
 
- -------------------- :: Etar
- \r x:A.appr t x  ~> t
+ % -------------------- :: Etar
+ % \r x:A.appr t x  ~> t
 
  ------------------------------- :: Betal
  appl {\l x:A.t2} t1 ~> [t1/x]t2
@@ -351,8 +353,8 @@ defn
  --------------------------- :: LetU
  let unit be punit in t ~> t
 
- ------------------------------------ :: EtaP
- promote! t for x in derelict! x ~> t
+ % ------------------------------------ :: EtaP
+ % promote! t for x in derelict! x ~> t
 
  ------------------------------------------------- :: BetaDR
  derelict! {promote! !t for !x in t1} ~> [!t/!x]t1
@@ -360,8 +362,9 @@ defn
  ------------------------------------------------------------ :: BetaDI
  discard {promote! !t for !x in t1} in t2 ~> discard !t in t2
 
- ------------------------------------------------------------------------------------------------------------------------------ :: BetaC
- copy {promote! !t for !x in t1} as w,z in t2 ~> copy !t as !w,!z in [promote! !w for !x in t1/w][promote! !z for !x in t1/z]t2
+ h(t1' = promote! !w for !x in t1) && h(t1'' = promote! !z for !x in t1)
+ ------------------------------------------------------------------------------------- :: BetaC
+ copy {promote! !t for !x in t1} as w,z in t2 ~> copy !t as !w,!z in [t1'/w][t1''/z]t2
 
  ---------------------------------------------- :: NatD
  [discard t in t1/x]t2 ~> discard t in [t1/x]t2
@@ -369,8 +372,8 @@ defn
  ------------------------------------------------------ :: NatC
  [copy t as x,y in t1/x]t2 ~> copy t as x,y in [t1/x]t2
 
- ------------------------------------ :: EtaEP
- promoteE t for x in derelictE x ~> t
+ % ------------------------------------ :: EtaEP
+ % promoteE t for x in derelictE x ~> t
 
  ----------------------------------------------------- :: BetaEDR
  derelictE {promoteE E t for E x in t1} ~> [E t/E x]t1

@@ -433,13 +433,12 @@ but also with the maps $e_1 : [[A (x) E B]] \mto [[h(E B) (x) A]]$ and
 $e_2 : [[h(E A) (x) B]] \mto [[B (x) E A]]$.  Then, each of the
 inference rules for the exchange modality can easily be interpreted
 into the model.
-% section dialectica_lambek_spaces (end)
 
-\section{Dialectica Lambek Spaces}
+\subsection{Dialectica Lambek Spaces}
 \label{sec:dialectica_lambek_spaces}
 
-% section dialectica_lambek_spaces (end)
-%\section{MultiModalities}
+% end subsection dialectica_lambek_spaces (end)
+% end section categorical_models (end)
 
 \section{Typed Lambek Calculi}
 \label{sec:typed_lambek_calculi}
@@ -502,8 +501,6 @@ reduction rules in Figure~\ref{fig:rewrite-L}.
   \begin{mdframed}
     \begin{mathpar}
       %% \LdruleRXXAlpha{} \and
-      \LdruleRXXEtal{} \and
-      \LdruleRXXEtar{} \and
       \LdruleRXXBetal{} \and
       \LdruleRXXBetar{} \and
       \LdruleRXXBetaU{} \and
@@ -512,15 +509,15 @@ reduction rules in Figure~\ref{fig:rewrite-L}.
       \LdruleRXXNatU{} \and
       \LdruleRXXNatT{} \and
       \LdruleRXXLetU{} \and
-      \LdruleRXXLet{} \and
+      %% \LdruleRXXLet{} \and
       %% \LdruleRXXTOne{} \and
       %% \LdruleRXXTTwo{} \and
       %% \LdruleRXXAlOne{} \and
       %% \LdruleRXXAlTwo{} \and
       %% \LdruleRXXArOne{} \and
       %% \LdruleRXXArTwo{} \and
-      \LdruleRXXLl{} \and
-      \LdruleRXXLr{} 
+      %% \LdruleRXXLl{} \and
+      %% \LdruleRXXLr{} 
     \end{mathpar}
   \end{mdframed}
   \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}$}
@@ -529,7 +526,7 @@ reduction rules in Figure~\ref{fig:rewrite-L}.
 The typing rules are as one might expect.  Finally, the reduction
 rules were extracted from the cut-elimination procedure for L.  We
 denote the reflexive and transitive closure of the $[[~>]]$ by
-$[[~*>]]$.  We call a term with no $\beta\eta$-redexes a normal form,
+$[[~*>]]$.  We call a term with no $\beta$-redexes a normal form,
 and we denote normal forms by $[[n]]$.  In the interest of space we
 omit the congruence rules from the definition of the reduction
 relation; we will do this for each calculi introduced throughout this
@@ -661,27 +658,24 @@ following typing rules to $\lambda\text{L}$:
       \LdruleTXXBl{} 
 \end{mathpar}
 \begin{figure}
+  \small
   \begin{mdframed}
     \begin{mathpar}
-      \LdruleRXXEtaP{} \and      
       \LdruleRXXBetaDR{} \and
       \LdruleRXXBetaDI{} \and
       \LdruleRXXBetaC{} \and
       \LdruleRXXNatD{} \and
       \LdruleRXXNatC{} 
-      %% \LdruleRXXCopyOne{} \and
-      %% \LdruleRXXCopyTwo{} \and
-      %% \LdruleRXXDiscardOne{} \and
-      %% \LdruleRXXDiscardTwo{} \and
-      %% \LdruleRXXPromoteOne{} \and
-      %% \LdruleRXXPromoteTwo{}  \and
-      %% \LdruleRXXDerelict{}
     \end{mathpar}
   \end{mdframed}
   \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_!$}
   \label{fig:rewrite-LB}
 \end{figure}
-Finally, the reduction rules can be found in Figure~\ref{fig:rewrite-LB}.
+Finally, the reduction rules can be found in
+Figure~\ref{fig:rewrite-LB}.  The equality used in the
+$\Ldrulename{R\_BetaC}$ rule is definitional, meaning, that the rule
+simply gives the terms on the right side of the equation the name on
+the left side, and nothing more.  This makes the rule easier to read.
 
 \textbf{Strong normalization.} Showing strong normalization for
 $\lambda\text{L}_!$ easily follows by a straightforward extension of
@@ -775,21 +769,12 @@ add the following typing rules to $\lambda\text{L}$:
 \end{mathpar}
 
 \begin{figure}[h]
+  \small
   \begin{mdframed}
-    \begin{mathpar}
-      \LdruleRXXEtaEP{} \and      
+    \begin{mathpar}      
       \LdruleRXXBetaEDR{} \and
       \LdruleRXXNatEl{} \and
       \LdruleRXXNatEr{} 
-      %% \LdruleRXXLExOne{} \and
-      %% \LdruleRXXLExTwo{} \and
-      %% \LdruleRXXLExThree{} \and
-      %% \LdruleRXXRExOne{} \and
-      %% \LdruleRXXRExTwo{} \and
-      %% \LdruleRXXRExThree{} \and
-      %% \LdruleRXXEPromoteOne{} \and
-      %% \LdruleRXXEPromoteTwo{} \and
-      %% \LdruleRXXEDerelict{}
     \end{mathpar}
   \end{mdframed}
   \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
@@ -875,7 +860,7 @@ following:
 If we combine all three of the previous typed Lambek calculi, then we
 obtain the typed Lambek calculus $\lambda\text{L}_{!\kappa}$.  We do
 not explicitly define the syntax, typing rules, and reduction rules
-here, because they would be repeating what we have already defined in
+here, because we would be repeating what we have already defined in
 the previous sections.  The benefits of this system is that it
 provides the structure of the Lambek calculus with the benefits of
 having exchange, and the of-course modality, but both are carefully

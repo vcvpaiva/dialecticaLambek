@@ -130,10 +130,11 @@
 \Lfirstprodline{|}{\Lnt{judgement}}{}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{formula} ^{\mathsf{e} } } {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lnt{formula}  \preceq  \Lnt{formula'}} {\textsf{M}}{}{}{}\Lprodnewline
-\Lprodline{|}{\Lsym{(}  \Lnt{formula}  \Lsym{)}} {\textsf{M}}{}{}{}\Lprodnewline
 \Lprodline{|}{ \Lnt{formula}  \qquad  \Lnt{formula'} }{}{}{}{}\Lprodnewline
 \Lprodline{|}{\Lsym{(}  \Lnt{formula}  \Lsym{)}}{}{}{}{}\Lprodnewline
-\Lprodline{|}{ \Lmv{x}  \not\in \mathsf{FV}( \Lnt{t} ) }{}{}{}{}}
+\Lprodline{|}{ \Lnt{formula} }{}{}{}{}\Lprodnewline
+\Lprodline{|}{ \Lmv{x}  \not\in \mathsf{FV}( \Lnt{t} ) }{}{}{}{}\Lprodnewline
+\Lprodline{|}{\Lnt{t}  \Lsym{=}  \Lnt{t'}} {\textsf{M}}{}{}{}}
 
 \newcommand{\LJtyp}{
 \Lrulehead{\Lnt{Jtyp}}{::=}{}\Lprodnewline
@@ -524,20 +525,6 @@
 }}
 
 
-\newcommand{\LdruleRXXEtal}[1]{\Ldrule[#1]{%
-}{
-  \lambda_l  \Lmv{x} : \Lnt{A} .  \mathsf{app}_l\, \Lnt{t} \, \Lmv{x}    \rightsquigarrow  \Lnt{t} }{%
-{\Ldrulename{R\_Etal}}{}%
-}}
-
-
-\newcommand{\LdruleRXXEtar}[1]{\Ldrule[#1]{%
-}{
-  \lambda_r  \Lmv{x} : \Lnt{A} .  \mathsf{app}_r\, \Lnt{t} \, \Lmv{x}    \rightsquigarrow  \Lnt{t} }{%
-{\Ldrulename{R\_Etar}}{}%
-}}
-
-
 \newcommand{\LdruleRXXBetal}[1]{\Ldrule[#1]{%
 }{
   \mathsf{app}_l\,  (   \lambda_l  \Lmv{x} : \Lnt{A} . \Lnt{t_{{\mathrm{2}}}}   )  \, \Lnt{t_{{\mathrm{1}}}}   \rightsquigarrow  \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}} }{%
@@ -594,13 +581,6 @@
 }}
 
 
-\newcommand{\LdruleRXXEtaP}[1]{\Ldrule[#1]{%
-}{
-  \mathsf{promote}_!\, \Lnt{t} \,\mathsf{for}\, \Lmv{x} \,\mathsf{in}\,  \mathsf{derelict}_!\, \Lmv{x}    \rightsquigarrow  \Lnt{t} }{%
-{\Ldrulename{R\_EtaP}}{}%
-}}
-
-
 \newcommand{\LdruleRXXBetaDR}[1]{\Ldrule[#1]{%
 }{
   \mathsf{derelict}_!\,  (   \mathsf{promote}_!\,  \vec{ \Lnt{t} }  \,\mathsf{for}\,  \vec{ \Lmv{x} }  \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   )    \rightsquigarrow  \Lsym{[}   \vec{ \Lnt{t} }   \Lsym{/}   \vec{ \Lmv{x} }   \Lsym{]}  \Lnt{t_{{\mathrm{1}}}} }{%
@@ -616,8 +596,9 @@
 
 
 \newcommand{\LdruleRXXBetaC}[1]{\Ldrule[#1]{%
+\Lpremise{  \Lnt{t'_{{\mathrm{1}}}}  \Lsym{=}   \mathsf{promote}_!\,  \vec{ \Lmv{w} }  \,\mathsf{for}\,  \vec{ \Lmv{x} }  \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}    \qquad   \Lnt{t''_{{\mathrm{1}}}}  \Lsym{=}   \mathsf{promote}_!\,  \vec{ \Lmv{z} }  \,\mathsf{for}\,  \vec{ \Lmv{x} }  \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   }%
 }{
-  \mathsf{copy}\,  (   \mathsf{promote}_!\,  \vec{ \Lnt{t} }  \,\mathsf{for}\,  \vec{ \Lmv{x} }  \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   )  \,\mathsf{as}\, \Lmv{w} , \Lmv{z} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   \rightsquigarrow   \mathsf{copy}\,  \vec{ \Lnt{t} }  \,\mathsf{as}\,  \vec{ \Lmv{w} }  ,  \vec{ \Lmv{z} }  \,\mathsf{in}\, \Lsym{[}   \mathsf{promote}_!\,  \vec{ \Lmv{w} }  \,\mathsf{for}\,  \vec{ \Lmv{x} }  \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{w}  \Lsym{]}  \Lsym{[}   \mathsf{promote}_!\,  \vec{ \Lmv{z} }  \,\mathsf{for}\,  \vec{ \Lmv{x} }  \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  }{%
+  \mathsf{copy}\,  (   \mathsf{promote}_!\,  \vec{ \Lnt{t} }  \,\mathsf{for}\,  \vec{ \Lmv{x} }  \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   )  \,\mathsf{as}\, \Lmv{w} , \Lmv{z} \,\mathsf{in}\, \Lnt{t_{{\mathrm{2}}}}   \rightsquigarrow   \mathsf{copy}\,  \vec{ \Lnt{t} }  \,\mathsf{as}\,  \vec{ \Lmv{w} }  ,  \vec{ \Lmv{z} }  \,\mathsf{in}\, \Lsym{[}  \Lnt{t'_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{w}  \Lsym{]}  \Lsym{[}  \Lnt{t''_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{z}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  }{%
 {\Ldrulename{R\_BetaC}}{}%
 }}
 
@@ -633,13 +614,6 @@
 }{
  \Lsym{[}   \mathsf{copy}\, \Lnt{t} \,\mathsf{as}\, \Lmv{x} , \Lmv{y} \,\mathsf{in}\, \Lnt{t_{{\mathrm{1}}}}   \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  \rightsquigarrow   \mathsf{copy}\, \Lnt{t} \,\mathsf{as}\, \Lmv{x} , \Lmv{y} \,\mathsf{in}\, \Lsym{[}  \Lnt{t_{{\mathrm{1}}}}  \Lsym{/}  \Lmv{x}  \Lsym{]}  \Lnt{t_{{\mathrm{2}}}}  }{%
 {\Ldrulename{R\_NatC}}{}%
-}}
-
-
-\newcommand{\LdruleRXXEtaEP}[1]{\Ldrule[#1]{%
-}{
-  \mathsf{promote}_\kappa\, \Lnt{t} \,\mathsf{for}\, \Lmv{x} \,\mathsf{in}\,  \mathsf{derelict}_\kappa\, \Lmv{x}    \rightsquigarrow  \Lnt{t} }{%
-{\Ldrulename{R\_EtaEP}}{}%
 }}
 
 
@@ -865,8 +839,6 @@
 
 \newcommand{\LdefnReW}[1]{\begin{Ldefnblock}[#1]{$ \Lnt{t_{{\mathrm{1}}}}  \rightsquigarrow  \Lnt{t_{{\mathrm{2}}}} $}{}
 \Lusedrule{\LdruleRXXAlpha{}}
-\Lusedrule{\LdruleRXXEtal{}}
-\Lusedrule{\LdruleRXXEtar{}}
 \Lusedrule{\LdruleRXXBetal{}}
 \Lusedrule{\LdruleRXXBetar{}}
 \Lusedrule{\LdruleRXXBetaU{}}
@@ -875,13 +847,11 @@
 \Lusedrule{\LdruleRXXNatU{}}
 \Lusedrule{\LdruleRXXNatT{}}
 \Lusedrule{\LdruleRXXLetU{}}
-\Lusedrule{\LdruleRXXEtaP{}}
 \Lusedrule{\LdruleRXXBetaDR{}}
 \Lusedrule{\LdruleRXXBetaDI{}}
 \Lusedrule{\LdruleRXXBetaC{}}
 \Lusedrule{\LdruleRXXNatD{}}
 \Lusedrule{\LdruleRXXNatC{}}
-\Lusedrule{\LdruleRXXEtaEP{}}
 \Lusedrule{\LdruleRXXBetaEDR{}}
 \Lusedrule{\LdruleRXXNatEl{}}
 \Lusedrule{\LdruleRXXNatEr{}}

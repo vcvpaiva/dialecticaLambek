@@ -12,6 +12,7 @@
 \usepackage{mathpartir}
 \usepackage[barr]{xy}
 \usepackage{mdframed}
+\usepackage{bbm}
 
 \let\mto\to                     % Used for arrows
 \let\to\relax                   % Used for implication
@@ -25,6 +26,10 @@
 \newcommand{\LB}{\text{L}_!}
 \newcommand{\LE}{\text{L}_\kappa}
 \newcommand{\redto}{\rightsquigarrow}
+\newcommand{\cat}[1]{\mathcal{#1}}
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Dial}[2]{\mathsf{Dial}_{#1}(#2)}
+\newcommand{\Hom}[3]{\mathsf{Hom}_{#1}(#2,#3)}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -384,7 +389,7 @@ L without modalities.
 
 \section{Categorical Models}
 
-Historically the Lambek calculus arose from its intended categorical
+Historically, the Lambek calculus arose from its intended categorical
 model, biclosed symmetric monoidal categories, as discussed by Lambek
 in \cite{lambek1988}. Clearly all this happened almost three decades
 before Girard introduced Linear Logic, hence there were no modalities
@@ -393,39 +398,40 @@ or exponentials in this setting.
 
 Categorically, one models the of-course modality as a functor endowed
 with the structure of a comonad $(!, \delta_A, \varepsilon_A)$ with
-some additional structure.
-
-That is, there are maps
+some additional structure.  That is, there are maps
 $\delta_A : [[!A]] \mto [[!!A]]$ and $\varepsilon_A : [[!A]] \mto [[A]]$
 subject to a few coherence diagrams, and maps $c_A : [[!A]] \mto
 [[h(!A) (x) !A]]$ and $w_A : [[!A]] \mto [[I]]$.  Using this structure we can
-interpret the rules of the of-course modality.  Consider the rule
-$\Ldrulename{C}$, and suppose we have a map
-$[[G]] \otimes [[(h(!A) (x) !A)]] \mto^{f} [[B]]$, then we can obtain
-a new map
-$[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes c_A} [[G]] \otimes [[(h(!A) (x) !A)]] \mto^f [[B]]$.
-The rule $\Ldrulename{W}$ is similar, but we start with a map $[[G]]
-\mto^f [[B]]$ and then we can define the map
-$[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes w_A} [[G]] \otimes [[I]] \mto^\cong [[G]] \mto^{f} [[B]]$.
-Notice that the previous map exploits the fact that $[[I]]$ is the
-unit for tensor.  Now consider the rule $\Ldrulename{Bl}$, and suppose
-we have a map $[[!{G}]] \mto^f [[B]]$, then we may obtain a second map
-using the fact that of-course is a functor $[[!{G}]] \mto^{\delta}
-[[!{!{G}}]] \mto^{!f} [[!B]]$.  Finally, consider the rule
-$\Ldrulename{Br}$ and suppose we have a map $[[G]] \otimes [[A]]
-\mto^f [[B]]$, then we can construct the map
-$[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes \varepsilon_A} [[G]]
-\otimes [[A]] \mto^f [[B]]$.  This analysis tells us a few things
-about interpreting logics into categorical models.  Sequents, $[[G |-
-    B]]$, are interpreted as morphisms, $[[G]] \mto^f [[B]]$, where
-$[[G]]$ is $[[I]]$ if it is empty, or it is the tensor product of the
-interpretations of its formulas.  Then interpreting inference rules
-amounts to starting with the morphisms corresponding to the premises,
-and then building a map corresponding to the conclusion.  The
-cut-elimination procedure is defined by a set of equations between
-derivations, and hence, in the model corresponds to equations between
-morphisms.  The various coherence diagrams relating the structure of
-the model enforce that these equations hold.
+interpret the rules of the of-course modality.
+
+Consider the rule $\Ldrulename{C}$ from Section~\ref{subsec:the_lambek_calculus_with_the_weakening_and_contraction_modality},
+and suppose we have a map $[[G]]
+\otimes [[(h(!A) (x) !A)]] \mto^{f} [[B]]$, then we can obtain a new
+map $[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes c_A} [[G]] \otimes
+[[(h(!A) (x) !A)]] \mto^f [[B]]$.  The rule $\Ldrulename{W}$ is
+similar, but we start with a map $[[G]] \mto^f [[B]]$ and then we can
+define the map $[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes w_A}
+[[G]] \otimes [[I]] \mto^\cong [[G]] \mto^{f} [[B]]$.  Notice that the
+previous map exploits the fact that $[[I]]$ is the unit for tensor.
+Now consider the rule $\Ldrulename{Bl}$, and suppose we have a map
+$[[!{G}]] \mto^f [[B]]$, then we may obtain a second map using the
+fact that of-course is a functor $[[!{G}]] \mto^{\delta} [[!{!{G}}]]
+\mto^{!f} [[!B]]$.  Finally, consider the rule $\Ldrulename{Br}$ and
+suppose we have a map $[[G]] \otimes [[A]] \mto^f [[B]]$, then we can
+construct the map $[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes
+  \varepsilon_A} [[G]] \otimes [[A]] \mto^f [[B]]$.
+
+This analysis tells us a few things about interpreting logics into
+categorical models.  Sequents, $[[G |- B]]$, are interpreted as
+morphisms, $[[G]] \mto^f [[B]]$, where $[[G]]$ is $[[I]]$ if it is
+empty, or it is the tensor product of the interpretations of its
+formulas.  Then interpreting inference rules amounts to starting with
+the morphisms corresponding to the premises, and then building a map
+corresponding to the conclusion.  The cut-elimination procedure is
+defined by a set of equations between derivations, and hence, in the
+model corresponds to equations between morphisms.  The various
+coherence diagrams relating the structure of the model enforce that
+these equations hold.
 
 We can similarly interpret the rules for the exchange modality.
 That is, as a functor endowed with the structure of a second comonad,
@@ -437,6 +443,226 @@ into the model.
 \subsection{Dialectica Lambek Spaces}
 \label{sec:dialectica_lambek_spaces}
 
+A sound and complete categorical model of each of the Lambek calculi
+we have been exploring can be given in a modification to de Paiva's
+dialectica categories \cite{depaiva1990}.  Originally, dialectica
+categories arose from de Paiva's thesis work on the categorical model
+of G\"odel's Dialectica interpretation.  In fact, dialectica
+categories are one of the first sound categorical models of
+intuitionistic linear logic with the linear modalities.  We show in
+this section that they can be adapted to a sound a complete model,
+called dialectica Lambek spaces, for the Lambek calculus with both the
+exchange and of-course modalities.  Due to the complexities of working
+with dialectica categories we have formally verified this section in
+the proof assistant Agda\footnote{The complete formalization can be
+  found online at
+  \url{https://github.com/heades/dialectica-spaces/blob/Lambek/NCDialSets.agda}.}
+\cite{bove2009}.
+
+Dialectica categories arise as constructions over a given monoidal
+category.  Suppose $\cat{C}$ is such a category.  Then in complete
+generality the objects of the dialectica category over $\cat{C}$ are
+triples $(U, X, \alpha)$ where $U$ and $X$ are objects of $\cat{C}$,
+and $\alpha : A \mto U \otimes X$ is a subobject of the tensor product
+in $\cat{C}$ of $U$ and $X$.  Thus, we can think of $\alpha$ as a
+relation over $U \otimes X$.  If we specialize the category $\cat{C}$
+to the category of sets and functions, $\Set$, then we obtain what is
+called a dialectica space. Dialectica spaces are a useful model of
+full intuitionistic linear logic \cite{Hyland:1993}.
+
+Now morphisms between objects $(U, X, \alpha)$ and $(V, Y, \beta)$ are
+pairs $(f, F)$ where $f : U \mto V$ and $F : Y \mto X$ are morphisms
+of $\cat{C}$ such that the following pullback condition holds:
+\[
+(U \otimes F)^{-1}(\alpha) \leq (f \otimes Y)^{-1}(\beta)
+\]
+In dialectica spaces this condition becomes the following:
+\[
+\forall u \in U.\forall y \in Y. \alpha(u , F(y)) \leq \beta(f(u), y)
+\]
+The latter reveals that we can think of the condition on morphisms as
+a weak adjoint condition.  Finally, through some nontrivial reasoning
+on this structure we can show that this is indeed a category; for the
+details see the formal development.  Dialectica categories are related
+to the Chu construction \cite{?} and to $\text{GAME}_{\kappa_1}$
+\cite{?}.
+
+To some extent the underlying category $\cat{C}$ controls the kind of
+structure we can expect in the dialectica category over $\cat{C}$.  de
+Paiva later showed \cite{?} that by changing the relation used in
+objects and the relation used in the weak adjoint condition also
+controls the type of structure we obtain in the dialectica category,
+but the structure of the underlying category and the structure of the
+underlying relations must be compatible.  She shows that one can
+abstract this notion of relation out as a parameter in the dialectica
+construction, and we denote this by $\mathsf{Dial}_{L}(\cat{C})$ where
+$L$ is the structure controlling the relations used in the
+construction.  For example, $\mathsf{Dial}_{\mathsf{2}}(\Set)$ is the
+category of dialectica spaces.  Thus, we can see dialectica categories
+as really a framework of categorical models of various logics.
+Depending on which category we start with and which structure we use
+for the relations in the construction we will obtain different models
+for different logics.
+
+The underlying category we will choose here is the category $\Set$,
+but the structure we will define our relations over will be biclosed
+posets (Definition~\ref{def:biclosed-poset}).
+\begin{definition}
+  \label{def:dialectica-lambek-spaces}
+  Suppose $(M, \leq, \circ, e, \lto, \rto)$ is a biclosed poset. Then
+  we define the category of \textbf{dialectica Lambek spaces},
+  $\mathsf{Dial}_M(\Set)$, as follows:
+  \begin{itemize}
+  \item[-] objects, or dialectica Lambek spaces, are triples $(U, X,
+    \alpha)$ where $U$ and $X$ are sets, and $\alpha : U \times X \mto
+    M$ is a generalized relation over $M$, and
+
+  \item[-] maps that are pairs $(f, F) : (U , X, \alpha) \mto (V , Y ,
+    \beta)$ where $f : U \mto V$, and $F : Y \mto X$ are functions
+    such that the following weak adjointness condition holds:
+    \[
+    \forall u \in U.\forall y \in Y. \alpha(u , F(y)) \leq \beta(f(u), y)
+    \]
+  \end{itemize}
+\end{definition}
+Notice here that the biclosed poset is used as the target of the
+relations in objects, but also as the relation in the weak adjoint
+condition on morphisms.  This will allow the structure of the biclosed
+poset to lift up into $\Dial{M}{\Set}$.
+
+We claim that $\Dial{M}{\Set}$ is a model of the Lambek calculus with
+modalities.  First, we show that it is a model of the Lambek calculus
+without modalities.  Thus, we must show that $\Dial{M}{\Set}$ is
+monoidal biclosed.
+
+\begin{definition}
+  \label{def:dial-monoidal-structure}
+  Suppose $(U, X, \alpha)$ and $(V, Y, \beta)$ are two objects of
+  $\Dial{M}{\Set}$. Then their tensor product is defined as follows:
+  \[
+  (U, X, \alpha) \otimes (V, Y, \beta) = (U \times V, (V \to X) \times (U \to Y), \alpha \otimes \beta)
+  \]
+  where $- \to -$ is the function space from $\Set$, and $(\alpha
+  \otimes \beta)((u, v), (f, g)) = \alpha(u, f(v)) \circ \beta(g(u), v)$.
+\end{definition}
+
+\noindent
+The identity of the tensor product just defined is $I = (\mathbbm{1},
+\mathbbm{1}, e)$, where $\mathbbm{1}$ is the terminal object in
+$\Set$, and $e$ is the unit of the biclosed poset.  It is
+straightforward to show that the tensor product is functorial, one can
+define the left and right unitors, and the associator for tensor; see
+the formalization for the definitions.  In addition, all of the usual
+monoidal diagrams hold \cite{depaiva1990}.  Take note of the fact that
+this tensor product is indeed non-commutative, because the
+non-commutative multiplication of the biclosed poset is used to define
+the relation of the tensor product.
+
+The tensor product has two right adjoints making $\Dial{M}{\Set}$
+biclosed.
+\begin{definition}
+  \label{def:dial-is-biclosed}
+  Suppose $(U, X, \alpha)$ and $(V, Y, \beta)$ are two objects of
+  $\Dial{M}{\Set}$. Then two internal-homs can be defined as follows:
+  \[
+  \begin{array}{lll}
+    (U, X, \alpha) \lto (V, Y, \beta) = ((U \to V) \times (Y \to X), U \times Y, \alpha \lto \beta)\\
+    (V, Y, \beta) \rto (U, X, \alpha) = ((U \to V) \times (Y \to X), U \times Y, \alpha \rto \beta)\\
+  \end{array}
+  \]
+\end{definition}
+These two definitions are functorial, where the first is contravariant
+in the first argument and covariant in the second, but the second
+internal-hom is covariant in the first argument and contravariant in
+the second.  The relations in the previous two definitions prevent
+these two from collapsing into the same object, because of the use of
+the left and right pseudo-compliments. It is straightforward to show
+that the following bijections hold:
+\[
+\begin{array}{lll}
+  \Hom{}{A \otimes B}{C} \cong \Hom{}{B}{A \lto C}\\
+  \Hom{}{A \otimes B}{C} \cong \Hom{}{A}{C \rto B}\\
+\end{array}
+\]
+Therefore, $\Dial{M}{\Set}$ is biclosed, and we obtain the following
+result.
+\begin{theorem}
+  \label{thm:sound-lambek}
+  $\Dial{M}{\Set}$ is a sound and complete model for the Lambek
+  calculus $L$ without modalities.
+\end{theorem}
+
+\subsubsection{Modalities}
+\label{subsec:modalities}
+We now extend $\Dial{M}{\Set}$ with two modalities: the usual
+modality, of-course, denoted $!A$, and the exchange modality denoted
+$\kappa A$.  However, we must first extended biclosed posets to
+include an exchange operation.
+
+\begin{definition}
+  \label{def:biclosed-exchange}
+  A \textbf{biclosed poset with exchange} is a poset $(M, \leq, \circ,
+  e, \lto, \rto)$ equipped with an unary operation $\kappa : M \to M$
+  satisfying the following:
+  \[
+  \begin{array}{clr}
+    \text{(Compatibility)} & a \leq b \text{ implies } \kappa a \leq \kappa b \text{ for all } a,b,c \in M\\
+    \text{(Minimality)} & \kappa a \leq a \text{ for all } a \in M\\
+    \text{(Duplication)} & \kappa a \leq \kappa\kappa a \text{ for all } a \in M\\
+    \text{(Left Exchange)} & \kappa a \circ b \leq b \circ \kappa a \text{ for all } a, b \in M\\
+    \text{(Right Exchange)} & a \circ \kappa b \leq \kappa b \circ a \text{ for all } a, b \in M\\
+  \end{array}
+  \]
+\end{definition}
+\noindent
+Compatibility results in $\kappa : M \to M$ being a functor in the
+biclosed poset, and the remainder of the axioms imply that $\kappa$ is
+a comonad extending the biclosed poset with left and right exchange.
+
+We can now define the two modalities in $\Dial{M}{\Set}$ where $M$ is
+a biclosed poset with exchange; clearly we know $\Dial{M}{\Set}$ is
+also a model of the Lambek calculus without modalities by
+Theorem~\ref{thm:sound-lambek} because $M$ is a biclosed poset.
+\begin{definition}
+  \label{def:modalities-dial}
+  Suppose $(U, X, \alpha)$ is an object of $\Dial{M}{\Set}$ where $M$
+  is a biclosed poset with exchange. Then the \textbf{of-course} and
+  \textbf{exchange} modalities can be defined as follows:
+  \[
+  \begin{array}{lll}
+    ! (U, X, \alpha) = (U, U \to X^*, !\alpha)\\
+    \kappa (U, X, \alpha) = (U, X, \kappa \alpha)\\
+  \end{array}
+  \]
+  where $X^*$ is the free commutative monoid on $X$, $(!\alpha)(u, f)
+  = \alpha(u, x_1) \circ \cdots \circ \alpha(u, x_i)$ for $f(u) =
+  (x_1, \ldots, x_i)$, and $(\kappa \alpha)(u, x) = \kappa (\alpha(u,
+  x))$.
+\end{definition}
+This definition highlights a fundamental difference between the two
+modalities.  The definition of the exchange modality relies on an
+extension of biclosed posets with essentially the exchange modality in
+the category of posets.  However, the of-course modality is defined by
+the structure already present in $\Dial{M}{\Set}$, specifically, the
+structure of $\Set$.
+
+Both of the modalities have the structure of a comonad.  That is,
+there are monoidal natural transformations $\varepsilon_! : !A \mto
+A$, $\varepsilon_\kappa : \kappa A \mto A$, $\delta_! : !A \mto !!A$,
+and $\delta_\kappa : \kappa A \mto \kappa\kappa A$ which satisfy the
+appropriate diagrams; see the formalization for the full
+proofs. Furthermore, these comonads come equipped with arrows $e : A
+\mto I$, $d : A \mto A \otimes A$, $\beta L : \kappa A \otimes B \mto B
+\otimes \kappa A$, and $\beta R : A \otimes \kappa B \mto \kappa B
+\otimes A$.  Thus, we arrive at the following result.
+
+\begin{theorem}
+  \label{thm:sound-dial-exchange-!}
+  Suppose $M$ is a biclosed poset with exchange.  Then
+  $\Dial{M}{\Set}$ is a sound and complete model for the Lambek
+  calculi $L_!$, $L_\kappa$, and $L_{!\kappa}$.
+\end{theorem}
+% subsubsection modalities (end)
 % end subsection dialectica_lambek_spaces (end)
 % end section categorical_models (end)
 

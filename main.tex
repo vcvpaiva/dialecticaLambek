@@ -124,20 +124,27 @@ from a type-logical perspective.
 % probabilistic and machine learning systems.
 
 This meant that a series of systems, implemented or not, were devised
-that used the Lambek Calculus or variants of Linear Logic as their basis. These
-systems can be as expressive as Intuitionistic Logic and the claim is
-that they are more precise i.e. they make finer distinctions.  From
-the beginning it was clear that the Lambek Calculus is the
-multiplicative fragment of non-commutative Intuitionistic Linear
-Logic (there was a dispute as the original system did not introduce the constant corresponding to the nullary case of the tensor product, here written as $I$).  Hence several interesting questions, considered for Linear
-Logic, could also be asked of the Lambek Calculus.  One of them, posed
-by Morrill et al is whether we can extend the Lambek calculus with a
-modality that does for the structural rule of \textit{(exchange)} what
-the modality \textit{of course} `!' does for the rules of
-\textit{(weakening)} and \textit{(contraction)}.  A  preliminary
-proposal, which answers this question affirmatively, is set forward in
-this paper. The answer was provided in semantical terms in the first
-version of this work. Here we provide also the more syntactic description of these modalities. Building up from  work of Galatos, Ciabattoni and Terui in \cite{galatos2008} and others that describe how to transform systems of axioms into cut-free sequent rules, we aim to refine the algebraization of proof theory.
+that used the Lambek Calculus or variants of Linear Logic as their
+basis. These systems can be as expressive as Intuitionistic Logic and
+the claim is that they are more precise i.e. they make finer
+distinctions.  From the beginning it was clear that the Lambek
+Calculus is the multiplicative fragment of non-commutative
+Intuitionistic Linear Logic (there was a dispute as the original
+system did not introduce the constant corresponding to the nullary
+case of the tensor product, here written as $I$).  Hence several
+interesting questions, considered for Linear Logic, could also be
+asked of the Lambek Calculus.  One of them, posed by Morrill et al is
+whether we can extend the Lambek calculus with a modality that does
+for the structural rule of \textit{(exchange)} what the modality
+\textit{of course} `!' does for the rules of \textit{(weakening)} and
+\textit{(contraction)}.  A preliminary proposal, which answers this
+question affirmatively, is set forward in this paper. The answer was
+provided in semantical terms in the first version of this work. Here
+we provide also the more syntactic description of these
+modalities. Building up from work of Galatos, Ciabattoni and Terui in
+\cite{galatos2008} and others that describe how to transform systems
+of axioms into cut-free sequent rules, we aim to refine the
+algebraization of proof theory.
 
 %amount of work in Type Logical The Proof Theory of the systems
 %considered should be investigated in future work. Another warning is
@@ -145,6 +152,36 @@ version of this work. Here we provide also the more syntactic description of the
 %as a branch of Mathematics, so words like categories and functors are
 %always meant in their mathematical, rather than linguistical or
 %philosophical sense.
+
+\[
+\begin{array}{lll}
+  \bfig
+\Ctriangle/-``-/<400,400>[
+  \textbf{LJ}_{\textbf{imp}}`
+  \textbf{L}_{\textbf{cont}}`
+  \textbf{LP};``]
+
+\Dtriangle(400,0)/`-`-/<400,400>[
+  \textbf{LJ}_{\textbf{imp}}`
+  \textbf{L}_{\textbf{weak}}`
+  \textbf{LP};``]
+
+\morphism(400,0)<0,-300>[\textbf{LP}`\textbf{L};]
+\efig
+& \quad &
+\bfig
+\Ctriangle/-``-/<400,400>[
+  \textbf{ILL}`
+  \textbf{LA}`
+  \textbf{L};``]
+
+\Dtriangle(400,0)/`-`-/<400,400>[
+  \textbf{ILL}`
+  \textbf{LP}`
+  \textbf{L};``]
+\efig
+\end{array}
+\]
 
 We first recall Linear Logic and provide the transformations to show
 that the Lambek Calculus \textsf{L} really is the multiplicative

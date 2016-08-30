@@ -1,9 +1,9 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 
-\title{Dialectica Models of the Lambek Calculus Revisited}
+\title{Agda and Dialectica Categories \\for the Lambek Calculus}
 \author{Valeria de Paiva and Harley Eades III}
-\date{April 2016}
+\date{August 2016}
 
 \usepackage{amssymb,amsmath,amsthm}
 \usepackage{natbib}
@@ -47,33 +47,32 @@
 \maketitle
 
 \section*{Introduction}
+ Lambek  introduced his homonymous calculus (originally called the  `Syntactic Calculus') for  proposed applications in Linguistics.  
+ However the calculus got much of its cult following  and reputation by being a convenient, well-behaved prototype of a Gentzen sequent calculus without any structural rules. 
 
 This note recalls a Dialectica model of the Lambek Calculus presented
-by the first author in the Amsterdam Colloquium in 1991. We approach
-the Lambek Calculus from the perspective of Linear Logic. In that
+by the first author in the Amsterdam Colloquium in 1991 \cite{depaiva1991}. Here, like then, we approach
+the Lambek Calculus from the perspective of Linear Logic, so we are interested in the basic  sequent calculus with no structural rules, except associativity of tensors. In that
 earlier work we took for granted the syntax of the calculus and only
-discussed the exciting possibilities of new models of Linear Logic
-like systems.
-
-
-Twenty five years later we find that the work is still interesting and
+discussed the exciting possibilities of  categorical models of linear-logic-like systems.  Many years later we find that the work on models is still interesting and novel  and
 that it might inform some of the most recent work on the relationship
-between Categorial Grammars and notions of distributional
-semantics. But the Amsterdam Colloquium proceedings were never
-published and not even the author had a copy of the paper. So we have
-decided to revisit some of the old work, this time using the new tools
-that have been developed for type theory and sequent proof systems in
-the time that elapsed. Thus, we implement the calculus in Agda and we
-use \texttt{Ott} \cite{Sewell:2010} to check that we do not have silly
-mistakes in our term systems. The goal is to see if our new
-implementations can shed new light on some of the issues that remained
-open, mostly on the applicability and fit of the original systems to
-their intended uses.
+between categorial grammars and notions of distributional
+semantics \cite{coecke2013}.
 
-\subsection*{Historical Overview}
-The Syntactic Calculus was first introduced by Joachim Lambek in 1958
-\cite{Lambek1958}. Now known as the Lambek Calculus, its motivation
-was to provide an explanation of the mathematics of sentence
+Moreover, the type theoretical notions that were left undiscussed are now more amenable to verification, using some new automated tools. Since the Amsterdam Colloquium proceedings were never
+published,
+%and not even the author had a copy of the paper. 
+ we have
+decided to revisit some of the mathematical work,  using the new tools that have been developed for type theory and sequent proof systems in
+the time that elapsed. Thus, we implement the calculus in Agda \cite{bove2009} and we
+use \texttt{Ott} \cite{Sewell:2010} to check that we do not have trivial
+mistakes in our term systems. 
+
+The goal is to show that  our  implementation can shed new light on some of the issues that remained
+open.  Mostly we wanted to check the correctness of the semantic proposals put forward since Szabo's seminal book \cite{szabo1978} and, for future work, on the applicability and fit of the original systems to their intended uses.
+
+\subsection*{Overview}
+The Syntactic Calculus was first introduced by Joachim Lambek in 1958 \cite{Lambek1958}. Since then the  rechristened  Lambek Calculus has had as its motivation provide an explanation of the mathematics of sentence
 structure, starting from the author's algebraic intuitions. The Lambek
 calculus is the core of logical Categorial Grammar.  The first use of
 the term “categorial grammar” seems to be in the title of Bar-Hillel,
@@ -90,14 +89,14 @@ interested in Categorial Grammars. %theories such as Categorial .
 % logic.  \end{quotation}
 
 The work on Categorial Grammar was given a serious impulse by the
-advent of Girard's Linear Logic at the end of the 1980s.  Girard
+advent of Girard's Linear Logic  at the end of the 1980s.  Girard \cite{Girard:1987}
 showed that there is a full embedding, preserving proofs, of
 Intuitionistic Logic into Linear Logic with a modality ``!". This
 meant that Linear Logic, while paying attention to resources, could
 always code up faithfully Classical Logic and hence one could, as
-Girard put it, `have one's cake and eat it', pay attention to
-resources, if desired, but always forget this accounting, if
-preferred, in the same system. This meant also that several new
+Girard put it, `have one's cake and eat it', paying attention to
+resources, if desired, but always forgetting this accounting, if
+preferred. This meant also that several new
 systems of resource logics were conceived and developed and these
 refined resource logics were applied to several areas of Computer
 Science.
@@ -106,11 +105,9 @@ In Computational Linguistics, the Lambek calculus
 has seen a significant number of works written
 about it,  apart from a number of monographs that deal with
 logical and linguistic aspects of the generalized type-logical
-approach.  For general background on the type-logical approach, there
-are the monographs of Moortgat, Morril,
-Carpenter and Steedman. For a shorter introduction, see
-Moortgat's chapter on the Handbook of Logic in Language \cite{?} 
-or the Stanford Encyclopedia Of Philosophy article on Type Logical Grammar.
+approach.  
+%For general background on the type-logical approach, there are the monographs of Moortgat, Morril, Carpenter and Steedman. 
+For a shorter introduction, see Moortgat's entry on the Stanford Encyclopedia of Philosophy  on Type Logical Grammar \cite{MoortgatSEP}.
 
 Type Logical Grammar situates the type-logical approach within the
 framework of Montague's Universal Grammar and presents detailed
@@ -127,21 +124,20 @@ from a type-logical perspective.
 % probabilistic and machine learning systems.
 
 This meant that a series of systems, implemented or not, were devised
-that used the Lambek Calculus or variants of Linear Logic. These
+that used the Lambek Calculus or variants of Linear Logic as their basis. These
 systems can be as expressive as Intuitionistic Logic and the claim is
 that they are more precise i.e. they make finer distinctions.  From
 the beginning it was clear that the Lambek Calculus is the
 multiplicative fragment of non-commutative Intuitionistic Linear
-Logic.  Hence several interesting questions, considered for Linear
+Logic (there was a dispute as the original system did not introduce the constant corresponding to the nullary case of the tensor product, here written as $I$).  Hence several interesting questions, considered for Linear
 Logic, could also be asked of the Lambek Calculus.  One of them, posed
 by Morrill et al is whether we can extend the Lambek calculus with a
 modality that does for the structural rule of \textit{(exchange)} what
 the modality \textit{of course} `!' does for the rules of
-\textit{(weakening)} and \textit{(contraction)}.  A very preliminary
+\textit{(weakening)} and \textit{(contraction)}.  A  preliminary
 proposal, which answers this question affirmatively, is set forward in
-this paper. The `answer' was provided in semantical terms in the first
-version of this work. Here we provide also the more syntactic
-description, building on work of Galatos and others.
+this paper. The answer was provided in semantical terms in the first
+version of this work. Here we provide also the more syntactic description of these modalities. Building up from  work of Galatos, Ciabattoni and Terui in \cite{galatos2008} and others that describe how to transform systems of axioms into cut-free sequent rules, we aim to refine the algebraization of proof theory.
 
 %amount of work in Type Logical The Proof Theory of the systems
 %considered should be investigated in future work. Another warning is
@@ -160,7 +156,7 @@ Lambek Calculus.  Finally, in the fourth section we discuss modalities
 and some untidiness of the Curry-Howard correspondence for the
 fragments of Linear Logic in question.
 
-\section{The Lambek Calculus and Some Extensions}
+\section{The Lambek Calculus}
 
 The Lambek Calculus, formerly the Syntactic Calculus $\sf L$, due to
 J.  Lambek \cite{Lambek1958}, was created to capture the logical
@@ -215,7 +211,9 @@ In the following subsections we give two extensions of L: one with the
 well-known modality of-course of linear logic which adds weakening and
 contraction, and a second with a new modality adding exchange.
 
-\subsection{Adding Weakening and Contraction to the Lambek Calculus}
+\section{
+%Adding Weakening and Contraction 
+Extensions to the Lambek Calculus}
 \label{subsec:the_lambek_calculus_with_the_weakening_and_contraction_modality}
 
 The linear modality, $[[! A]]$, read ``of-course $[[A]]$'' was first

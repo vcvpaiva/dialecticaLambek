@@ -429,17 +429,59 @@ important one. It is worth noticing that surprising examples of these
 structures crop up in the work of Lawvere \cite{lawvere1973}. We
 recall two of these surprising examples, as they will be useful in the
 sequel.  We show that the set of invertible matrices over the set of
-natural numbers ($\mathbb{N}$) is a biclosed poset, and that
+natural numbers, $\mathbb{N}$, is a biclosed poset, and that
 $\mathbb{N}$ is itself a biclosed poset.
 
-\subsubsection{The Set of Invertible Matrices}
+\subsubsection{The Set of Invertible Matrices as a Model for L}
 \label{subsec:the_set_of_invertible_matrices}
 
-
-
+Consider the set $\mathcal{M}$ of square invertible matrices with
+natural number entries.  We denote matrices by Greek letters $\alpha$,
+$\beta$, etc.  It is easy to see that $\mathcal{M}$ is closed under
+matrix multiplication, and thus, we have an operation $\otimes :
+\mathcal{M} \times \mathcal{M} \mto \mathcal{M}$.  Furthermore, matrix
+multiplication has the following properties:
+\begin{itemize}
+\item it is non-commutative which means that $\alpha \otimes \beta
+  \neq \beta \otimes \alpha$, for any $\alpha,\beta \in \mathcal{M}$,
+\item for each dimension, $n$, there is an identity matrix, $I_n$, and hence,
+  $\alpha \otimes I_n = I_n \otimes \alpha = \alpha$ for any $\alpha \in
+  \mathcal{M}$ of dimension $k$, and
+\item matrix multiplication is associative, that is, $(\alpha \otimes
+  \beta) \otimes \gamma = \alpha \otimes (\beta \otimes \gamma)$ for any
+  $\alpha,\beta,\gamma \in \mathcal{M}$.
+\end{itemize}
+There is a preorder on $\mathcal{M}$ defined by
+\[
+\begin{array}{lll}
+  \alpha \leq \beta & \text{iff} & \alpha^{-1} \otimes \beta \leq I.
+\end{array}
+\]
+This preorder can be extended to a poset by taking the equivalence
+classes using the usual construction. In addition, the order on
+$\mathcal{M}$ is compatible with matrix multiplication.  Thus,
+$(\mathcal{M}, \leq, \otimes, I)$ is a ordered non-commutative monoid.
+Now we can define two new operations on $\mathcal{M}$, $(-) \lto (-)$
+and $(-) \rto (-)$, both of the form $\mathcal{M}^{op} \times
+\mathcal{M} \mto \mathcal{M}$ by $\alpha \lto \beta = \alpha^{op}
+\otimes \beta$ and $\alpha \rto \beta = \beta^{-1} \otimes \alpha$.
+Thus, we now have the following:
+\begin{lemma}
+  \label{lemma:M-is-biclosed-poset}
+  The ordered monoid of invertible $n \times n$ matrices over
+  $\mathbb{N}$, $(\mathcal{M},\leq,\otimes,I,\lto,\rto)$, is a
+  biclosed poset.
+\end{lemma}
+This then implies that $(\mathcal{M},\leq,\otimes,I,\lto,\rto)$ is a
+model of the Lambek Calculus.  There are several other models as well,
+for example, modules of rings.  According to Lambek the idea for the
+Syntactic Calculus came from algebraic models.  It is easy to see that
+if one has an $n$-ordered group, i.e. the possibility of inverting
+elements of an non-symmetric ordered monoid, we will have a biclosed
+poset.
 % subsubsection the_set_of_invertible_matrices (end)
 
-\subsubsection{The Set of Natural Numbers}
+\subsubsection{The Set of Natural Numbers as a Model for LP}
 \label{subsec:the_set_of_natural_numbers}
 
 % subsubsection the_set_of_natural_numbers (end)

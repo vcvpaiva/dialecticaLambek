@@ -72,9 +72,7 @@ The goal is to show that  our  implementation can shed new light on some of the 
 open.  Mostly we wanted to check the correctness of the semantic proposals put forward since Szabo's seminal book \cite{szabo1978} and, for future work, on the applicability and fit of the original systems to their intended uses.
 
 \subsection*{Overview}
-The Syntactic Calculus was first introduced by Joachim Lambek in 1958 \cite{Lambek1958}. Since then the  rechristened  Lambek Calculus has had as its motivation provide an explanation of the mathematics of sentence
-structure, starting from the author's algebraic intuitions. The Lambek
-calculus is the core of logical Categorial Grammar.  The first use of
+The Syntactic Calculus was first introduced by Joachim Lambek in 1958 \cite{Lambek1958}. Since then the  rechristened  Lambek Calculus has had as its main motivation providing an explanation of the mathematics of sentence structure, starting from the author's algebraic intuitions. The Lambek calculus is the core of logical Categorial Grammar.  The first use of
 the term “categorial grammar” seems to be in the title of Bar-Hillel,
 Gaifman and Shamir (1960), but categorial grammar began with
 Ajdukiewicz (1935) quite a few years earlier. After a period of
@@ -108,13 +106,10 @@ logical and linguistic aspects of the generalized type-logical
 approach.  
 %For general background on the type-logical approach, there are the monographs of Moortgat, Morril, Carpenter and Steedman. 
 For a shorter introduction, see Moortgat's entry on the Stanford Encyclopedia of Philosophy  on Type Logical Grammar \cite{MoortgatSEP}.
-
 Type Logical Grammar situates the type-logical approach within the
 framework of Montague's Universal Grammar and presents detailed
 linguistic analyses for a substantive fragment of syntactic and
-semantic phenomena in the grammar of English.  Type Logical Semantics
-offers a general introduction to natural language semantics studied
-from a type-logical perspective.
+semantic phenomena in the grammar of English.  Type Logical Semantics offers a general introduction to natural language semantics studied from a type-logical perspective.
 % Moortgat's Categorial Type Logics,
 % in the Handbook of Logic ad
 % Language
@@ -124,46 +119,20 @@ from a type-logical perspective.
 % probabilistic and machine learning systems.
 
 This meant that a series of systems, implemented or not, were devised
-that used the Lambek Calculus or variants of Linear Logic as their
-basis. These systems can be as expressive as Intuitionistic Logic and
-the claim is that they are more precise i.e. they make finer
-distinctions.  From the beginning it was clear that the Lambek
-Calculus is the multiplicative fragment of non-commutative
-Intuitionistic Linear Logic (there was a dispute as the original
-system did not introduce the constant corresponding to the nullary
-case of the tensor product, here written as $I$).  Hence several
-interesting questions, considered for Linear Logic, could also be
-asked of the Lambek Calculus.  One of them, posed by Morrill et al is
-whether we can extend the Lambek calculus with a modality that does
-for the structural rule of \textit{(exchange)} what the modality
-\textit{of course} `!' does for the rules of \textit{(weakening)} and
-\textit{(contraction)}.  A preliminary proposal, which answers this
-question affirmatively, is set forward in this paper. The answer was
-provided in semantical terms in the first version of this work. Here
-we provide also the more syntactic description of these
-modalities. Building up from work of Galatos, Ciabattoni and Terui in
-\cite{galatos2008} and others that describe how to transform systems
-of axioms into cut-free sequent rules, we aim to refine the
-algebraization of proof theory.
-
-%amount of work in Type Logical The Proof Theory of the systems
-%considered should be investigated in future work. Another warning is
-%that the perspective of this note is basically from Category Theory
-%as a branch of Mathematics, so words like categories and functors are
-%always meant in their mathematical, rather than linguistical or
-%philosophical sense.
-
+that used the Lambek Calculus or its variants as their
+basis. These systems can be as expressive as Intuitionistic Logic and the claim is that they are more precise i.e. they make finer
+distinctions. Some of the landscape of calculi can be depicted as follows:
 \[
 \begin{array}{lll}
   \bfig
 \Ctriangle/-``-/<400,400>[
   \textbf{LJ}_{\textbf{imp}}`
-  \textbf{L}_{\textbf{cont}}`
+  \textbf{LP}_{\textbf{cont}}`
   \textbf{LP};``]
 
 \Dtriangle(400,0)/`-`-/<400,400>[
   \textbf{LJ}_{\textbf{imp}}`
-  \textbf{L}_{\textbf{weak}}`
+  \textbf{LP}_{\textbf{weak}}`
   \textbf{LP};``]
 
 \morphism(400,0)<0,-300>[\textbf{LP}`\textbf{L};]
@@ -182,6 +151,35 @@ algebraization of proof theory.
 \efig
 \end{array}
 \]
+
+From the beginning it was clear that the Lambek
+Calculus is the multiplicative fragment of non-commutative
+Intuitionistic Linear Logic. In the diagrams  $\bf L$ stands for the Lambek calculus, as expounded in \cite{Lambek1958} but with the  unit $I$  added for  the tensor connective
+ (there was a certain amount of dispute on that, as the original
+system did not introduce the constant corresponding to the nullary
+case of the tensor product, here written as $I$). The system $\bf{LP}$ is the Lambek calculus with permutation, sometimes called the van Benthem calculus. We are calling $\bf{LA}$ the Lambek calculus with additives, the more usual algebraic connectives corresponding to meet and join. Hence adding both permutation and additives to the Lambek calculus we get to intuitonistic linear logic. On the other diagram to the Lambek calculus with permutation we add either weakening ($\bf{LP_{weak}}$) or contraction $\bf{LP_{weak}}$) or both to get the implicational fragment of Intuitionsitic Propositional Logic.
+
+
+There several
+interesting questions, considered for Linear Logic, that could also be asked of the Lambek Calculus or its extensions.  
+One of them, posed by Morrill et al is
+whether we can extend the Lambek calculus with a modality that does
+for the structural rule of \textit{(exchange)} what the modality
+\textit{of course} `!' does for the rules of \textit{(weakening)} and
+\textit{(contraction)}.  A preliminary proposal, which answers this
+question affirmatively, is set forward in this paper. The answer was
+provided in semantical terms in the first version of this work. Here
+we provide also the more syntactic description of these
+modalities. Building up from work of  Ciabattoni, Galatos and Terui in \cite{Ciabattoni2012} and others that describe how to transform systems of axioms into cut-free sequent rules, we aim to refine the
+algebraization of proof theory.
+
+%amount of work in Type Logical The Proof Theory of the systems
+%considered should be investigated in future work. Another warning is
+%that the perspective of this note is basically from Category Theory
+%as a branch of Mathematics, so words like categories and functors are
+%always meant in their mathematical, rather than linguistical or
+%philosophical sense.
+
 
 We first recall Linear Logic and provide the transformations to show
 that the Lambek Calculus \textsf{L} really is the multiplicative
@@ -271,7 +269,7 @@ of-course modality are defined by the following rules:
 The rules $\Ldrulename{C}$ and $\Ldrulename{W}$ add contraction and
 weakening to L in a controlled way.  Then the other two rules allow
 for linear formulas to be injected into the modality; and essentially
-correspond to the rules for necessitation found in S4\cite{?}.  Thus,
+correspond to the rules for necessitation found in S4\cite{bierman2000}.  Thus,
 under the of-course modality the logic becomes non-linear. We will see
 in Section~\ref{sec:dialectica_lambek_spaces} that these rules define
 a comonad.  We call the extension of L with the of-course modality
@@ -344,8 +342,9 @@ are compatible, that is, given $A \subseteq B$ the following hold:
     [[C (x) A]] \subseteq [[C (x) B]]\text{, for all } C \in \N\\
   \end{array}
 \]
-Abstracting this structure out yields what is call an ordered
-non-commutative monoid.
+Abstracting this structure out yields what can be called an ordered
+non-commutative monoid. Other names can also be used, like FL-algebras, for Full Lambek algebras. The literature is extense, \cite{Pentus1995} discusses some of it.
+
 \begin{definition}
   \label{def:ordered-non-comm-monoid}
   An \textbf{ordered non-commutative monoid}, $(M,\leq,\circ,e)$, is a
@@ -403,17 +402,14 @@ poset.
   any $a, b \in M$, then we denote $x$ by $a \rto b$ and called it
   the \textbf{right-pseudocomplement} of $a$ w.r.t $b$.
 
-  A \textbf{biclosed poset}, $(M, \leq, \circ, e, \lto, \rto)$, is an
-  ordered non-commutative monoid, $(M, \leq, \circ, e)$, such that $a
+  A \textbf{biclosed poset}, $(M, \leq, \circ, e, \lto, \rto)$, is an  ordered non-commutative monoid, $(M, \leq, \circ, e)$, such that $a
   \lto b$ and $a \rto b$ exist for any $a,b \in M$.
 \end{definition}
 
-At this point we have everything we need to model the Lambek Calculus
-L without modalities.
+At this point we have everything we need to model the Lambek Calculus L without modalities.
 \begin{lemma}
   \label{lemma:biclosed-poset-model-L}
-  Any biclosed poset $(M, \leq, \circ, e, \lto, \rto)$ is a model for
-  the Lambek Calculus L without modalities.
+  Any biclosed poset $(M, \leq, \circ, e, \lto, \rto)$ is a model for  the Lambek Calculus L without modalities.
 \end{lemma}
 \begin{proof}
   First suppose we have an assignment $(-)^0$ which assigns to each
@@ -421,6 +417,10 @@ L without modalities.
   show that $([[G]])^0 \leq ([[A]])^0$.  This proof can easily be
   completed by induction on the form $[[G |- A]]$.  
 \end{proof}
+
+As hinted before these algebraic structrues have been studied before and, despite the order that we used here, the structure underlying the connection between the left and right implications and the tensor, which has traditionally been called a residuated structure is the most important one. It is worth noticing that surprising examples of these structures crop up in the work of Lawvere \cite{lawvere1973}. We recall two of these surprising examples, as they will be useful in the sequel.
+
+
 
 \section{Categorical Models}
 
@@ -1155,12 +1155,9 @@ systems.  Thus, we have the following results.
 \bibliography{references}
 
 %% \appendix
-
 %% \section{Term Annotated Cut Elimination Procedure for L}
 %% \label{sec:cut_elimination_procedure_for_l}
-
 %% \input{cut-elim-output}
-
 %% % section cut_elimination_procedure_for_l (end)
 
 \end{document}
@@ -1169,9 +1166,4 @@ http://www.di.ens.fr/~zappa/readings/wmm10.pdf
 Sewell, Peter, et al. "Ott: effective tool support for the working semanticist." ACM SIGPLAN Notices. Vol. 42. No. 9. ACM, 2007.
 https://www.cs.kent.ac.uk/people/staff/sao/documents/icfp07.pdf
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=1.7]{universe.jpg}
-\caption{The Universe}
-\label{fig:univerise}
-\end{figure}
+

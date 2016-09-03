@@ -1,11 +1,7 @@
-\documentclass{article}
+\documentclass{llncs}
 \usepackage[utf8]{inputenc}
 
-\title{Agda and Dialectica Categories \\for the Lambek Calculus}
-\author{Valeria de Paiva and Harley Eades III}
-\date{August 2016}
-
-\usepackage{amssymb,amsmath,amsthm}
+\usepackage{amssymb,amsmath}
 \usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -31,20 +27,22 @@
 \newcommand{\Dial}[2]{\mathsf{Dial}_{#1}(#2)}
 \newcommand{\Hom}[3]{\mathsf{Hom}_{#1}(#2,#3)}
 
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{example}[theorem]{Example}
-
-
 %% Ott includes:
 \input{L-inc}
 
 \begin{document}
 
+\title{Agda and Dialectica Categories \\for the Lambek Calculus}
+\author{Valeria de Paiva and Harley Eades III}
+\date{}
+
+\institute{Nuance Communications, Sunnyvale, CA \and Computer Science, Augusta University, Augusta, GA}
+
 \maketitle
+
+\begin{abstract}
+  TODO
+\end{abstract}
 
 \section*{Introduction}
  Lambek  introduced his homonymous calculus (originally called the  `Syntactic Calculus') for  proposed applications in Linguistics.  
@@ -483,7 +481,7 @@ clearly a symmetric closed poset, where conjunction is addition, $0$ is the unit
 internal-hom is given by truncated subtraction, as in Lawvere \cite{lawvere1973} (also in  \cite{depaiva1991, Hyland:1991}).  It is easy
 to prove the adjunction and another easy argument on Lindenbaum's construction  proves completeness of the model.
 
-These examples have been known for several decades, since historically, the Lambek calculus arose from its intended categorical model, (bi)closed (symmetric and non-symmetric) monoidal categories, as discussed by Lambek \cite{lambek1988}. However they have been brought back ot fashion by work in distributional semantics \ccite{coecke2013}.
+These examples have been known for several decades, since historically, the Lambek calculus arose from its intended categorical model, (bi)closed (symmetric and non-symmetric) monoidal categories, as discussed by Lambek \cite{lambek1988}. However they have been brought back ot fashion by work in distributional semantics \cite{coecke2013}.
 
 %In the next section we describe another model for the Lamb ek Calculus�� but this time a categorical one�� that is�� one where we take in consideration di��erent pro ofs of the same entailment�� Note that we used a similar notation for matrices and strings�� to emphasize that what matters is the structure of a biclosed ��or closed�� p oset��
 % subsubsection the_set_of_natural_numbers (end)
@@ -726,7 +724,7 @@ Theorem~\ref{thm:sound-lambek} because $M$ is a biclosed poset.
   \textbf{exchange} modalities can be defined as follows:
   \[
   \begin{array}{lll}
-    ! (U, X, \alpha) = (U, U \to X^*, !\alpha)\\
+    ! (U, X, \alpha) = (U, U \to X^*, !\alpha) & \quad & 
     \kappa (U, X, \alpha) = (U, X, \kappa \alpha)\\
   \end{array}
   \]
@@ -1557,7 +1555,7 @@ and terms of $\lambda\text{L}$ are extended as follows:
   \\ & & & [[promoteE t' for t'' in t]] \mid [[derelictE t]]\\
 \end{array}
 \]
-\fi 
+
 
 The syntax for types has been extended to include the exchange
 modality, and the syntax of terms follow suit.  The terms $[[lexchange
@@ -1588,7 +1586,7 @@ We add the following typing rules to $\lambda\text{L}$:
 \noindent
 The reduction rules are in Figure~\ref{fig:rewrite-LE}, and are vary
 similar to the rules from $\lambda\text{L}_!$.
-\fi 
+
 
 \textbf{Strong normalization.}  Similarly, we show that we can embed
 $\lambda\text{L}_\kappa$ into ILL, but the embedding is a bit more

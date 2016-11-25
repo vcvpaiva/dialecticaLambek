@@ -148,7 +148,7 @@ systems can be as expressive as Intuitionistic Logic and the claim is
 that they are more precise i.e. they make finer distinctions. Some of
 the landscape of calculi can be depicted as follows:
 \[
-\begin{array}{lll}
+\begin{array}{cccc}
   \bfig
   \Ctriangle/-``-/<400,400>[
     \textbf{LJ}_{\textbf{imp}}`
@@ -173,30 +173,60 @@ the landscape of calculi can be depicted as follows:
     \textbf{ILL}`
     \textbf{LP}`
     \textbf{L};``]
+  \morphism(400,0)//<0,-300>[`;]
   \efig
 \end{array}
 \]
 
-From the beginning it was clear that the Lambek
-Calculus is the multiplicative fragment of non-commutative
-Intuitionistic Linear Logic. In the diagrams  $\bf L$ stands for the Lambek calculus, as expounded in \cite{Lambek1958} but with the  unit $I$  added for  the tensor connective
- (there was a certain amount of dispute on that, as the original
-system did not introduce the constant corresponding to the nullary
-case of the tensor product, here written as $I$). The system $\bf{LP}$ is the Lambek calculus with permutation, sometimes called the van Benthem calculus. We are calling $\bf{LA}$ the Lambek calculus with additives, the more usual algebraic connectives corresponding to meet and join. Hence adding both permutation and additives to the Lambek calculus we get to intuitonistic linear logic. On the other diagram to the Lambek calculus with permutation we add either weakening ($\bf{LP_{weak}}$) or contraction $\bf{LP_{weak}}$) or both to get the implicational fragment of Intuitionsitic Propositional Logic.
+From the beginning it was clear that the Lambek Calculus is the
+multiplicative fragment of non-commutative Intuitionistic Linear
+Logic. In the diagrams $\bf L$ stands for the Lambek calculus, as
+expounded in \cite{Lambek1958} but with the unit $I$ added for the
+tensor connective (there was a certain amount of dispute on that, as
+the original system did not introduce the constant corresponding to
+the nullary case of the tensor product, here written as $I$). The
+system $\bf{LP}$ is the Lambek calculus with permutation, sometimes
+called the van Benthem calculus. We are calling $\bf{LA}$ the Lambek
+calculus with additives, the more usual algebraic connectives
+corresponding to meet and join. Hence adding both permutation and
+additives to the Lambek calculus we get to intuitonistic linear
+logic. On the other diagram to the Lambek calculus with permutation we
+add either weakening ($\bf{LP_{weak}}$) or contraction
+$\bf{LP_{weak}}$) or both to get the implicational fragment of
+Intuitionsitic Propositional Logic.
 
+The Lambek Calculus also has the potential for many applications in
+other areas of computer science, such as, modeling processes.  Linear
+Logic has been at the forefront of the study of process calculi for
+many years \cite{HONDA20102223,Pratt:1997,ABRAMSKY19945}. We can think
+of a the commutative tensor product of linear logic as a parallel
+operator.  For example, given a process $[[A]]$ and a process $[[B]]$,
+then we can form the process $[[A (x) B]]$ which runs both processes
+in parallel.  If we remove commutativity from the tensor product we
+obtain a sequential composition instead of parallel composition.  That
+is, the process $[[A]] \rhd [[B]]$ first runs process $[[A]]$ and then
+process $[[B]]$ in that order.  Paraphrasing Vaughan Pratt, ``The
+sequential composition operation has no evident counterpart in type
+theory'' see page 11 of \cite{Pratt:1997}.  We believe that the Lambek
+calculus will lead to filling this hole, and the results of this paper
+as a means of obtaining a theory with both a parallel operator and a
+sequential composition operator.  This work thus has a potential to
+impact research in programming languages and computer security where
+both linear logic and sequential composition play important roles.
 
-There several
-interesting questions, considered for Linear Logic, that could also be asked of the Lambek Calculus or its extensions.  
-One of them, posed by Morrill et al is
-whether we can extend the Lambek calculus with a modality that does
-for the structural rule of \textit{(exchange)} what the modality
-\textit{of course} `!' does for the rules of \textit{(weakening)} and
-\textit{(contraction)}.  A preliminary proposal, which answers this
-question affirmatively, is set forward in this paper. The answer was
-provided in semantical terms in the first version of this work. Here
-we provide also the more syntactic description of these
-modalities. Building up from work of  Ciabattoni, Galatos and Terui in \cite{Ciabattoni2012} and others that describe how to transform systems of axioms into cut-free sequent rules, we aim to refine the
-algebraization of proof theory.
+There are several interesting questions, considered for Linear Logic,
+that could also be asked of the Lambek Calculus or its extensions.
+One of them, posed by Morrill et al is whether we can extend the
+Lambek calculus with a modality that does for the structural rule of
+\textit{(exchange)} what the modality \textit{of course} `!' does for
+the rules of \textit{(weakening)} and \textit{(contraction)}.  A
+preliminary proposal, which answers this question affirmatively, is
+set forward in this paper. The answer was provided in semantical terms
+in the first version of this work. Here we provide also the more
+syntactic description of these modalities. Building up from work of
+Ciabattoni, Galatos and Terui in \cite{Ciabattoni2012} and others that
+describe how to transform systems of axioms into cut-free sequent
+rules, we aim to refine the algebraization of proof theory.
 
 %amount of work in Type Logical The Proof Theory of the systems
 %considered should be investigated in future work. Another warning is

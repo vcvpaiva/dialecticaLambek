@@ -1,4 +1,4 @@
-\documentclass{llncs}
+\documentclass{lmcs}
 \usepackage[utf8]{inputenc}
 
 \usepackage{amssymb,amsmath}
@@ -31,25 +31,72 @@
 \input{L-inc}
 \renewcommand{\Ldrule}[4][]{{\displaystyle\frac{\begin{array}{l}#2\end{array}}{#3}\,\,\Ldrulename{{\scriptsize #4}}}}
 
+%% mandatory lists of keywords 
+\keywords{MANDATORY list of keywords}
+
+%% MANDATORY 2012 ACM classification
+%% see http://dl.acm.org/ccs.cfm
+\ACMCCS{[{\bf Theory of computation}]: AAA---BBB; [{\bf Mathematics of
+  computing}]: CCC---DDD}
+\amsclass{OPTIONAL AMS classification}
+
+%% read in additional TeX-packages or personal macros here:
+%% e.g. \usepackage{tikz}
+\usepackage{hyperref}
+
+
 \begin{document}
 
-\title{Dialectica Categories for the Lambek Calculus\\
-    Preliminary Version
-}
-\author{Valeria de Paiva and Harley Eades III}
-\date{}
+\title{Dialectica Categories for the Lambek Calculus}
+\author[V.~de Paiva]{Valeria de Paiva}
+\address{Nuance Communications, Sunnyvale, CA}
+\email{valeria.depaiva@gmail.com}
+\author[H.~Eades III]{Harley Eades III}
+\address{Computer Science, Augusta University, Augusta, GA}
+\email{heades@augusta.edu}
 
-\institute{Nuance Communications, Sunnyvale, CA \and Computer Science, Augusta University, Augusta, GA}
+\begin{abstract}
+  Dialectica categorical models of the Lambek Calculus were first
+  presented in the Amsterdam Colloquium \cite{depaiva1991}. Following
+  Lambek's lead we approached the Lambek Calculus from the perspective
+  of Linear Logic and adapted the Dialectica categorical models for
+  Linear Logic to Lambek's non-commutative calculus
+  \cite{lambek1988}. This work took for granted the syntax of the
+  Lambek calculus and only discussed the exciting possibilities of new
+  models for modalities that the work on Linear Logic introduced. Many
+  years later we find that the work on dialectica models of the Lambek
+  calculus is still interesting and that it might inform some of the
+  most recent work on the relationship between Categorial Grammars and
+  notions of Distributional Semantics (see e.g. \cite{coecke2013}).
+  So we revisited the old work, making sure that the syntax details
+  that were sketchy on the first version got completed and verified,
+  using automated tools such as Agda and Ott.
+
+  We recall the Lambek calculus with its Curry-Howard isomorphic term
+  assignment system. We extend it with a $\kappa$ modality, inspired by
+  Yetter's work, which makes the calculus commutative. Then we add the
+  of-course modality $!$, as Girard did, to re-introduce weakening and
+  contraction for all formulas and get back the full power of
+  intuitionistic and classical logic. We also present algebraic
+  semantics and categorical semantics, proved sound and
+  complete. Finally we show the traditional properties of type systems,
+  like subject reduction, the Church-Rosser theorem and normalization
+  for the calculi of extended modalities, which we did not have before.
+  Ultimately we are interested on the applicability of the original
+  systems to their intended uses in the construction of semantics of
+  Natural Language. But before we can discuss that, we need to make sure
+  that the mathematical properties that make the Lambek calculus
+  attractive are all properly modeled.
+\end{abstract}
 
 \maketitle
 
-%\begin{abstract}
-%  TODO
-%\end{abstract}
-
 \section*{Introduction}
- Lambek  introduced his homonymous calculus (originally called the  `Syntactic Calculus') for  proposed applications in Linguistics.  
- However the calculus got much of its cult following  and reputation by being a convenient, well-behaved prototype of a Gentzen sequent calculus without any structural rules. 
+Lambek introduced his homonymous calculus (originally called the
+`Syntactic Calculus') for proposed applications in Linguistics.
+However the calculus got much of its cult following and reputation by
+being a convenient, well-behaved prototype of a Gentzen sequent
+calculus without any structural rules.
 
 This note recalls a Dialectica model of the Lambek Calculus presented
 by the first author in the Amsterdam Colloquium in 1991
@@ -401,7 +448,7 @@ are compatible, that is, given $A \subseteq B$ the following hold:
 Abstracting this structure out yields what can be called an ordered
 non-commutative monoid. Other names can also be used, like FL-algebras, for Full Lambek algebras. The literature is extense, \cite{Pentus1995} discusses some of it.
 
-\begin{definition}
+\begin{defi}
   \label{def:ordered-non-comm-monoid}
   An \textbf{ordered non-commutative monoid}, $(M,\leq,\circ,e)$, is a
   poset $(M,\leq)$ with a given compatible monoidal structure $(M,
@@ -432,7 +479,7 @@ non-commutative monoid. Other names can also be used, like FL-algebras, for Full
     \end{tabular}
     \vspace{-7px}
   \end{center}
-\end{definition}
+\end{defi}
 It is easy to see that the previous definition accounts for all of the
 structure we have described so far, and thus, we may conclude that
 $(\N, \subseteq, \otimes, I)$ is an ordered non-commutative monoid,
@@ -446,7 +493,7 @@ hold.
 Furthermore, there are no larger objects of $\N$ with these
 properties.  Abstracting this results in the notion of a biclosed
 poset.
-\begin{definition}
+\begin{defi}
   \label{def:biclosed-poset}
   Suppose $(M, \leq, \circ, e)$ is an ordered non-commutative monoid.
   If there exists a largest $x \in M$ such that $a \circ x \leq b$ for
@@ -458,13 +505,13 @@ poset.
 
   A \textbf{biclosed poset}, $(M, \leq, \circ, e, \lto, \rto)$, is an  ordered non-commutative monoid, $(M, \leq, \circ, e)$, such that $a
   \lto b$ and $b \rto a$ exist for any $a,b \in M$.
-\end{definition}
+\end{defi}
 
 At this point we have everything we need to model the Lambek Calculus L without modalities algebraically.
-\begin{lemma}
+\begin{lem}
   \label{lemma:biclosed-poset-model-L}
   Any biclosed poset $(M, \leq, \circ, e, \lto, \rto)$ is a model for  the Lambek Calculus L without modalities.
-\end{lemma}
+\end{lem}
 \begin{proof}
   First suppose we have an assignment $(-)^0$ which assigns to each
   formula of L an element of $M$.  Then if $[[G |- A]]$ holds we
@@ -510,12 +557,12 @@ monoid.  Now we can define two new operations on $\mathcal{M}$, $(-)
 \times \mathcal{M} \mto \mathcal{M}$ by $\alpha \lto \beta =
 \alpha^{-1} \otimes \beta$ and $\alpha \rto \beta = \beta^{-1} \otimes
 \alpha$.  Thus, we now have the following:
-\begin{lemma}
+\begin{lem}
   \label{lemma:M-is-biclosed-poset}
   The ordered monoid of invertible square $n \times n$ matrices over
   $\mathbb{N}$, $(\mathcal{M},\leq,\otimes,I,\lto,\rto)$, is a
   biclosed poset.
-\end{lemma}
+\end{lem}
 This then implies that $(\mathcal{M},\leq,\otimes,I,\lto,\rto)$ is a
 model of the Lambek Calculus.  There are several other models as well,
 for example, modules of rings.  According to Lambek the idea for the
@@ -662,7 +709,7 @@ This way we can see dialectica categories as a framework of categorical models o
 The underlying category we will choose here is the category $\Set$,
 but the structure we will define our relations over will be a biclosed
 poset (Definition~\ref{def:biclosed-poset}).
-\begin{definition}
+\begin{defi}
   \label{def:dialectica-lambek-spaces}
   Suppose $(M, \leq, \circ, e, \lto, \rto)$ is a biclosed poset. Then
   we define the category of \textbf{dialectica Lambek spaces},
@@ -678,7 +725,7 @@ poset (Definition~\ref{def:biclosed-poset}).
     $\forall u \in U.\forall y \in Y. \alpha(u , F(y)) \leq \beta(f(u), y)$
     holds.
   \end{itemize}
-\end{definition}
+\end{defi}
 Notice that the biclosed poset is used here as the target of the
 relations in objects, but also as providing the order  relation in the weak adjoint condition on morphisms.  This will allow the structure of the biclosed
 poset to lift up into $\Dial{M}{\Set}$.
@@ -688,7 +735,7 @@ modalities.  First, we show that it is a model of the Lambek calculus
 without modalities.  Thus, we must show that $\Dial{M}{\Set}$ is
 monoidal biclosed.
 
-\begin{definition}
+\begin{defi}
   \label{def:dial-monoidal-structure}
   Suppose $(U, X, \alpha)$ and $(V, Y, \beta)$ are two objects of
   $\Dial{M}{\Set}$. Then their tensor product is defined as follows:
@@ -697,7 +744,7 @@ monoidal biclosed.
   \]
   where $- \to -$ is the function space from $\Set$, and $(\alpha
   \otimes \beta)((u, v), (f, g)) = \alpha(u, f(v)) \circ \beta(g(u), v)$.
-\end{definition}
+\end{defi}
 
 \noindent
 The identity of the tensor product just defined is $I = (\mathbbm{1},
@@ -713,7 +760,7 @@ the relation of the tensor product.
 
 The tensor product has two right adjoints making $\Dial{M}{\Set}$
 biclosed.
-\begin{definition}
+\begin{defi}
   \label{def:dial-is-biclosed}
   Suppose $(U, X, \alpha)$ and $(V, Y, \beta)$ are two objects of
   $\Dial{M}{\Set}$. Then two internal-homs can be defined as follows:
@@ -723,7 +770,7 @@ biclosed.
     (V, Y, \beta) \rto (U, X, \alpha) = ((U \to V) \times (Y \to X), U \times Y, \alpha \rto \beta)\\
   \end{array}
   \]
-\end{definition}
+\end{defi}
 These two definitions are functorial, where the first is contravariant
 in the first argument and covariant in the second, but the second
 internal-hom is covariant in the first argument and contravariant in
@@ -738,11 +785,11 @@ that the following bijections hold:
 \]
 Therefore, $\Dial{M}{\Set}$ is biclosed, and we obtain the following
 result.
-\begin{theorem}
+\begin{thm}
   \label{thm:sound-lambek}
   $\Dial{M}{\Set}$ is a sound and complete model for the Lambek
   calculus $L$ without modalities.
-\end{theorem}
+\end{thm}
 \vspace{-15px}
 \subsubsection{Lambek Modalities}
 \label{subsec:modalities}
@@ -751,7 +798,7 @@ modality, of-course, denoted $!A$, and the exchange modality denoted
 $\kappa A$.  However, we must first extended biclosed posets to
 include an exchange operation.
 
-\begin{definition}
+\begin{defi}
   \label{def:biclosed-exchange}
   A \textbf{biclosed poset with exchange} is a poset $(M, \leq, \circ,
   e, \lto, \rto)$ equipped with an unary operation $\kappa : M \to M$
@@ -765,7 +812,7 @@ include an exchange operation.
     \text{(Right Exchange)} & a \circ \kappa b \leq \kappa b \circ a \text{ for all } a, b \in M\\
   \end{array}
   \]
-\end{definition}
+\end{defi}
 \noindent
 Compatibility results in $\kappa : M \to M$ being a functor in the
 biclosed poset, and the remainder of the axioms imply that $\kappa$ is
@@ -775,7 +822,7 @@ We can now define the two modalities in $\Dial{M}{\Set}$ where $M$ is
 a biclosed poset with exchange; clearly we know $\Dial{M}{\Set}$ is
 also a model of the Lambek calculus without modalities by
 Theorem~\ref{thm:sound-lambek} because $M$ is a biclosed poset.
-\begin{definition}
+\begin{defi}
   \label{def:modalities-dial}
   Suppose $(U, X, \alpha)$ is an object of $\Dial{M}{\Set}$ where $M$
   is a biclosed poset with exchange. Then the \textbf{of-course} and
@@ -786,7 +833,7 @@ Theorem~\ref{thm:sound-lambek} because $M$ is a biclosed poset.
   = \alpha(u, x_1) \circ \cdots \circ \alpha(u, x_i)$ for $f(u) =
   (x_1, \ldots, x_i)$, and $(\kappa \alpha)(u, x) = \kappa (\alpha(u,
   x))$.
-\end{definition}
+\end{defi}
 This definition highlights a fundamental difference between the two
 modalities.  The definition of the exchange modality relies on an
 extension of biclosed posets with essentially the exchange modality in
@@ -804,12 +851,12 @@ proofs. Furthermore, these comonads come equipped with arrows $e : !A
 \otimes \kappa A$, and $\beta R : A \otimes \kappa B \mto \kappa B
 \otimes A$.  Thus, we arrive at the following result.
 
-\begin{theorem}
+\begin{thm}
   \label{thm:sound-dial-exchange-!}
   Suppose $M$ is a biclosed poset with exchange.  Then
   $\Dial{M}{\Set}$ is a sound and complete model for the Lambek
   calculi $L_!$, $L_\kappa$, and $L_{!\kappa}$.
-\end{theorem}
+\end{thm}
 % subsubsection modalities (end)
 % end subsection dialectica_lambek_spaces (end)
 % end section categorical_models (end)
@@ -933,7 +980,7 @@ handled implicitly. Then we can reuse the idea of Benton's embeddings
 reduction.
 
 At this point we define the following embeddings.
-\begin{definition}
+\begin{defi}
   \label{def:lambda-L_to_ILL}
   We embed types and terms of $\lambda\text{L}$ into ILL as follows:
   \begin{center}
@@ -960,23 +1007,23 @@ At this point we define the following embeddings.
   The previous embeddings can be extended to contexts in the
   straightforward way, and to sequents as follows:
   \[ [[(G |- t : A) e]] = [[G e |- t e : h(A e)]]\]
-\end{definition}
+\end{defi}
 \noindent
 This embedding preserves typing and reduction.
-\begin{lemma}[Type Preserving Embedding]
+\begin{lem}[Type Preserving Embedding]
   \label{lemma:type_preserving_embedding}
   If $[[G |- t : A]]$ in $\lambda\text{L}$, then
   $[[G e |- t e : h(A e)]]$ in ILL.
-\end{lemma}
+\end{lem}
 \begin{proof}
   This holds by straightforward induction on the form of the assumed
   typing derivation.
 \end{proof}
-\begin{lemma}[Reduction Preserving Embedding]
+\begin{lem}[Reduction Preserving Embedding]
   \label{lemma:reduction_preserving_embedding}
   If $[[t1 ~> t2]]$ in $\lambda\text{L}$, then $[[t1 e ~> h{t2 e}]]$
   in ILL.
-\end{lemma}
+\end{lem}
 \begin{proof}
   This holds by straightforward induction on the form of the assumed
   reduction derivation.
@@ -985,10 +1032,10 @@ This embedding preserves typing and reduction.
 These two lemmas imply that $\lambda\text{L}$ is strongly normalizing,
 because ILL is. 
 
-\begin{theorem}[Strong Normalization]
+\begin{thm}[Strong Normalization]
   \label{corollary:strong_normalization}
   If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{theorem}
+\end{thm}
 \begin{proof}
   Suppose $[[t]]$ is not strongly normalizing.  Then there exists at
   least one infinite descending chain starting with $[[t]]$ of the
@@ -1007,11 +1054,11 @@ lengthly, to simply redefine Bierman's candidates
 %(Definitions~17, 19,20, and 21 of Section 5.1 of ibid.), 
 and carry out a similar proof as Bierman's (Theorem~19 on page 96 of ibid.).  
 %However, giving the details here would not be fruitful nor enlightening, and hence, we omit the proof.  Thus, we have the following:
-\begin{theorem}[Confluence]
+\begin{thm}[Confluence]
   \label{thm:confluence}
   The reduction relation, $[[~>]]$, modulo the commuting conversions
   is confluent.
-\end{theorem}
+\end{thm}
 
 \subsection{The Typed Lambek Calculus: $\lambda\text{L}_!$}
 \label{subsec:the_typed_lambek_calculus:lambda-l!}
@@ -1058,7 +1105,7 @@ the left side, and nothing more.  This makes the rule easier to read.
 \textbf{Strong normalization.} Showing strong normalization for
 $\lambda\text{L}_!$ easily follows by a straightforward extension of
 the embedding we gave for $\lambda\text{L}$.
-\begin{definition}
+\begin{defi}
   \label{def:embed-lambda-L!-in-ILL}
   The following is an extension of the embedding of $\lambda\text{L}$
   into ILL resulting in an embedding of types and terms of
@@ -1077,25 +1124,25 @@ the embedding we gave for $\lambda\text{L}$.
       \end{array}
     \end{math}
   \end{center}
-\end{definition}
+\end{defi}
 
 \noindent
 Just as before this embedding is type preserving and reduction preserving.
-\begin{lemma}[Type Preserving Embedding]
+\begin{lem}[Type Preserving Embedding]
   \label{lemma:type_preserving_embedding_lambdaL!}
   If $[[G |- t : A]]$ in $\lambda\text{L}_!$, then
   $[[G e |- t e : h(A e)]]$ in ILL.
-\end{lemma}
+\end{lem}
 \begin{proof}
   This holds by straightforward induction on the form of the assumed
   typing derivation.
 \end{proof}
 
-\begin{lemma}[Reduction Preserving Embedding]
+\begin{lem}[Reduction Preserving Embedding]
   \label{lemma:reduction_preserving_embedding_lambdaL!}
   If $[[t1 ~> t2]]$ in $\lambda\text{L}_!$, then $[[t1 e ~> h{t2 e}]]$
   in ILL.
-\end{lemma}
+\end{lem}
 \begin{proof}
   This holds by straightforward induction on the form of the assumed
   reduction derivation.
@@ -1103,20 +1150,20 @@ Just as before this embedding is type preserving and reduction preserving.
 \noindent
 Finally, we can use the previous two results to conclude strong
 normalization, because ILL is.
-\begin{theorem}[Strong Normalization]
+\begin{thm}[Strong Normalization]
   \label{corollary:strong_normalization_lambdaL!}
   If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{theorem}
+\end{thm}
 
 \textbf{Confluence.} The Church-Rosser property also holds for
 $\lambda\text{L}_!$, and can be shown by straightforwardly applying a
 slightly modified version of Bierman's proof \cite{Bierman:1994} just
 as we did for $\lambda\text{L}$.  Thus, we have the following:
-\begin{theorem}[Confluence]
+\begin{thm}[Confluence]
   \label{thm:confluence}
   The reduction relation, $[[~>]]$, modulo the commuting conversions
   is confluent.
-\end{theorem}
+\end{thm}
 
 \subsection{The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
 \label{subsec:the_typed_lambek_calculus:lambda-l-kappa}
@@ -1169,7 +1216,7 @@ similar to the rules from $\lambda\text{L}_!$.
 $\lambda\text{L}_\kappa$ into ILL, but the embedding is a bit more
 interesting.
 
-\begin{definition}
+\begin{defi}
   \label{def:embed-lambda-L!-in-ILL}
   The following is an extension of the embedding of $\lambda\text{L}$
   into ILL resulting in an embedding of types and terms of
@@ -1188,7 +1235,7 @@ interesting.
       \end{array}
     \end{math}
   \end{center}
-\end{definition}
+\end{defi}
 
 The embedding  translates the exchange modality into the
 of-course modality of ILL.  We do this so as to preserve the comonadic
@@ -1200,20 +1247,20 @@ exchange terms are translated away completely, but this works because
 ILL contains exchange in general, and hence, does not need to be
 tracked explicitly.  It is now straightforward to prove the following the lemmas that lead to
 
-\begin{lemma}[Type Preserving Embedding]
+\begin{lem}[Type Preserving Embedding]
   \label{lemma:type_preserving_embedding_lambdaLk}
   If $[[G |- t : A]]$ in $\lambda\text{L}_!$, then
   $[[G e |- t e : h(A e)]]$ in ILL.
-\end{lemma}
+\end{lem}
 \begin{proof}
   This holds by straightforward induction on the form of the assumed
   typing derivation.
 \end{proof}
-\begin{lemma}[Reduction Preserving Embedding]
+\begin{lem}[Reduction Preserving Embedding]
   \label{lemma:reduction_preserving_embedding_lambdaLk}
   If $[[t1 ~> t2]]$ in $\lambda\text{L}_!$, then $[[t1 e ~> h{t2 e}]]$
   in ILL.
-\end{lemma}
+\end{lem}
 \begin{proof}
   This holds by straightforward induction on the form of the assumed
   reduction derivation.
@@ -1222,16 +1269,16 @@ tracked explicitly.  It is now straightforward to prove the following the lemmas
 Finally, we can use the previous two results to conclude strong
 normalization, because ILL is.
 
-\begin{theorem}[Strong Normalization]
+\begin{thm}[Strong Normalization]
   \label{corollary:strong_normalization_lambdaLk}
   If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{theorem}
+\end{thm}
 
-\begin{theorem}[Confluence]
+\begin{thm}[Confluence]
   \label{thm:confluence-lambdaLk}
   The reduction relation, $[[~>]]$, modulo the commuting conversions
   is confluent.
-\end{theorem}
+\end{thm}
 % subsection the_typed_lambek_calculus:lambda-l-kappa (end)
 
 \subsection{The Typed Lambek Calculus: $\lambda\text{L}_{!\kappa}$}
@@ -1251,16 +1298,16 @@ $\lambda\text{L}_{!\kappa}$ by extending the proof of confluence for
 ILL by Bierman \cite{Bierman:1994} just as we did for the other
 systems.  Thus, we have the following results.
 
-\begin{theorem}[Strong Normalization]
+\begin{thm}[Strong Normalization]
   \label{theorem:strong_normalization_lambdaL!k}
   If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{theorem}
+\end{thm}
 
-\begin{theorem}[Confluence]
+\begin{thm}[Confluence]
   \label{thm:confluence-lambdaL!k}
   The reduction relation, $[[~>]]$, modulo the commuting conversions
   is confluent.
-\end{theorem}
+\end{thm}
 % subsection the_typed_lambek_calculus:lambda-l-!kappa (end)
 % section type_theories (end)
 

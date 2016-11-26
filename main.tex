@@ -63,17 +63,16 @@
   of Linear Logic and adapted the Dialectica categorical models for
   Linear Logic to Lambek's non-commutative calculus
   \cite{lambek1988}. This work took for granted the syntax of the
-  Lambek calculus and only discussed the exciting possibilities of new
+  Lambek Calculus and only discussed the exciting possibilities of new
   models for modalities that the work on Linear Logic introduced. Many
   years later we find that the work on dialectica models of the Lambek
-  calculus is still interesting and that it might inform some of the
+  Calculus is still interesting and that it might inform some of the
   most recent work on the relationship between Categorial Grammars and
   notions of Distributional Semantics (see e.g. \cite{coecke2013}).
-  So we revisited the old work, making sure that the syntax details
-  that were sketchy on the first version got completed and verified,
-  using automated tools such as Agda and Ott.
+  So we revisited the old work, making sure that the syntactic details
+  that were sketchy on the first version got completed and verified.
 
-  We recall the Lambek calculus with its Curry-Howard isomorphic term
+  We recall the Lambek Calculus with its Curry-Howard isomorphic term
   assignment system. We extend it with a $\kappa$ modality, inspired by
   Yetter's work, which makes the calculus commutative. Then we add the
   of-course modality $!$, as Girard did, to re-introduce weakening and
@@ -86,7 +85,7 @@
   Ultimately we are interested on the applicability of the original
   systems to their intended uses in the construction of semantics of
   Natural Language. But before we can discuss that, we need to make sure
-  that the mathematical properties that make the Lambek calculus
+  that the mathematical properties that make the Lambek Calculus
   attractive are all properly modeled.
 \end{abstract}
 
@@ -143,7 +142,7 @@ applicability and fit of the original systems to their intended uses.
 Joachim Lambek in 1958 \cite{Lambek1958}. Since then the rechristened
 Lambek Calculus has had as its main motivation providing an
 explanation of the mathematics of sentence structure, starting from
-the author's algebraic intuitions. The Lambek calculus is the core of
+the author's algebraic intuitions. The Lambek Calculus is the core of
 logical Categorial Grammar.  The first use of the term “categorial
 grammar” seems to be in the title of Bar-Hillel, Gaifman and Shamir
 (1960), but categorial grammar began with Ajdukiewicz (1935) quite a
@@ -171,7 +170,7 @@ systems of resource logics were conceived and developed and these
 refined resource logics were applied to several areas of Computer
 Science.
 
-In Computational Linguistics, the Lambek calculus 
+In Computational Linguistics, the Lambek Calculus 
 has seen a significant number of works written
 about it,  apart from a number of monographs that deal with
 logical and linguistic aspects of the generalized type-logical
@@ -228,17 +227,17 @@ the landscape of calculi can be depicted as follows:
 
 From the beginning it was clear that the Lambek Calculus is the
 multiplicative fragment of non-commutative Intuitionistic Linear
-Logic. In the diagrams $\bf L$ stands for the Lambek calculus, as
+Logic. In the diagrams $\bf L$ stands for the Lambek Calculus, as
 expounded in \cite{Lambek1958} but with the unit $I$ added for the
 tensor connective (there was a certain amount of dispute on that, as
 the original system did not introduce the constant corresponding to
 the nullary case of the tensor product, here written as $I$). The
-system $\bf{LP}$ is the Lambek calculus with permutation, sometimes
+system $\bf{LP}$ is the Lambek Calculus with permutation, sometimes
 called the van Benthem calculus. We are calling $\bf{LA}$ the Lambek
-calculus with additives, the more usual algebraic connectives
+Calculus with additives, the more usual algebraic connectives
 corresponding to meet and join. Hence adding both permutation and
-additives to the Lambek calculus we get to intuitonistic linear
-logic. On the other diagram to the Lambek calculus with permutation we
+additives to the Lambek Calculus we get to intuitonistic linear
+logic. On the other diagram to the Lambek Calculus with permutation we
 add either weakening ($\bf{LP_{weak}}$) or contraction
 $\bf{LP_{weak}}$) or both to get the implicational fragment of
 Intuitionsitic Propositional Logic.
@@ -256,7 +255,7 @@ is, the process $[[A]] \rhd [[B]]$ first runs process $[[A]]$ and then
 process $[[B]]$ in that order.  Paraphrasing Vaughan Pratt, ``The
 sequential composition operation has no evident counterpart in type
 theory'' see page 11 of \cite{Pratt:1997}.  We believe that the Lambek
-calculus will lead to filling this hole, and the results of this paper
+Calculus will lead to filling this hole, and the results of this paper
 as a means of obtaining a theory with both a parallel operator and a
 sequential composition operator.  This work thus has a potential to
 impact research in programming languages and computer security where
@@ -265,7 +264,7 @@ both linear logic and sequential composition play important roles.
 There are several interesting questions, considered for Linear Logic,
 that could also be asked of the Lambek Calculus or its extensions.
 One of them, posed by Morrill et al is whether we can extend the
-Lambek calculus with a modality that does for the structural rule of
+Lambek Calculus with a modality that does for the structural rule of
 \textit{(exchange)} what the modality \textit{of course} `!' does for
 the rules of \textit{(weakening)} and \textit{(contraction)}.  A
 preliminary proposal, which answers this question affirmatively, is
@@ -288,7 +287,7 @@ We first recall  that
 %Linear Logic and provide the transformations to show that 
 the Lambek Calculus \textsf{L} as the multiplicative
 fragment of non-commutative Intuitionistic Linear Logic.  Then we describe the usual algebraic semantics for the Lambek Calculus, including Lambek's original String Semantics, and generalize it, using a categorical perspective.  The next section recalls Dialectica models and defines them for the Lambek Calculus. Then we discuss type theory for the systems considered, proving the requisite theorems.
-Finally, we discuss modalities for the Lambek calculus and conclude with some discussion of the possible choices in this space.
+Finally, we discuss modalities for the Lambek Calculus and conclude with some discussion of the possible choices in this space.
 %in the fifth section we discuss modalities
 %and some untidiness of the Curry-Howard correspondence for the fragments of Linear Logic in question.
 
@@ -407,14 +406,12 @@ formulas of L by subsets of $\V$ it proceeds by defining operations on
 these subsets, which correspond to the logical connectives of L.  Each
 operation is defined as follows (using our notation for the logical
 connectives):
-\vspace{-7px}
 \[
 \begin{array}{l}
   [[A (x) B]] = \{xy \in \V \mid x \in A \text{ and } y \in B\}\\
   [[A <- B]] = \{x \in \V \mid \text{for all } y \in B, xy \in A\}\\ 
   [[A -> B]] = \{y \in \V \mid \text{for all } x \in A, xy \in B\}
 \end{array}
-\vspace{-7px}
 \]
 Let $\N = \pow{\V}$ be the powerset of $\V$.  Then we can view each of
 the above definitions as binary operations with type $\N \times \N \mto
@@ -422,14 +419,12 @@ the above definitions as binary operations with type $\N \times \N \mto
 concatenation, $[[A (x) B]]$, gives $\N$ a non-commutative monoidal
 structure, where the unit $[[I]] = \{\epsilon\}$ is the set containing
 the empty sequence:
-\vspace{-7px}
 \[
 \begin{array}{lll}
   \text{(associativity)} & [[A (x) (B (x) C)]] = [[(A (x) B) (x) C]]\\
   \text{(unit)} & [[A (x) I]] = [[A]] = [[I (x) A]]\\
   \text{(non-commutativity)} & [[A (x) B]] \neq [[B (x) A]]\text{, in general}
 \end{array}
-\vspace{-7px}
 \]
 
 There happens to be a more general structure underlying the previous
@@ -438,13 +433,11 @@ developed by Hyland and de Paiva \cite{Hyland:1991}. The ordering on
 $\N$ induces a poset $(\N, \subseteq)$, but even more so, $\N$ is also
 a monoid $(\N, \otimes, I)$, but that is not all, these two structures
 are compatible, that is, given $A \subseteq B$ the following hold:
-\vspace{-7px}
 \[
   \begin{array}{cll}
     [[A (x) C]] \subseteq [[B (x) C]]\text{, for all } C \in \N & \quad &
     [[C (x) A]] \subseteq [[C (x) B]]\text{, for all } C \in \N
   \end{array}
-  \vspace{-7px}
 \]
 Abstracting this structure out yields what can be called an ordered
 non-commutative monoid. Other names can also be used, like FL-algebras, for Full Lambek algebras. The literature is extense, \cite{Pentus1995} discusses some of it.
@@ -466,7 +459,6 @@ non-commutative monoid. Other names can also be used, like FL-algebras, for Full
   together with a monoidal multiplication $\circ : M \times M \mto M$
   and a distinguished object $e \in M$ satisfying the following:
   \begin{center}
-    \vspace{-3px}
     \begin{tabular}{cccccc}
     \text{(associativity)} & $a \circ (b \circ c) = (a \circ b) \circ c$ & \quad\quad & \text{(identity)} & $e \circ a = a = a \circ e$
     \end{tabular}
@@ -474,11 +466,9 @@ non-commutative monoid. Other names can also be used, like FL-algebras, for Full
   The structures are compatible in the sense that, if $a \leq b$, then
   the following hold:
   \begin{center}
-    \vspace{-7px}
     \begin{tabular}{lll}
       $a \circ c \leq b \circ c$ for any $c \in M$ & \quad & $c \circ a \leq c \circ b$ for any $c \in M$
     \end{tabular}
-    \vspace{-7px}
   \end{center}
 \end{defi}
 It is easy to see that the previous definition accounts for all of the
@@ -527,7 +517,6 @@ The algebraic structures (closed and biclosed posets) have been studied before a
 connection between the (left and right) implications and the tensor, traditionally  called a residuated structure, is the essential one. It is worth noticing that  examples of these structures already appear in the work of Lawvere \cite{lawvere1973}. We recall two of these  examples, as they will be useful in the sequel.  
 We show that the set of invertible matrices over the set of
 natural numbers, $\mathbb{N}$, is a biclosed poset, and that $\mathbb{N}$ is itself a biclosed poset.
-\vspace{-10px}
 \subsubsection{The Set of Invertible Matrices as a Model for L}
 \label{subsec:the_set_of_invertible_matrices}
 
@@ -572,7 +561,7 @@ if one has a $n$-ordered group, i.e. the possibility of inverting
 elements of a non-symmetric ordered monoid, we will have a biclosed
 poset.
 % subsubsection the_set_of_invertible_matrices (end)
-\vspace{-10px}
+
 \subsubsection{The Natural Numbers as a Model for LP}
 \label{subsec:the_set_of_natural_numbers}
 The calculus with permutations, $\textbf{LP}$, has a model in the natural numbers.
@@ -582,7 +571,7 @@ clearly a symmetric closed poset, where conjunction is addition, $0$ is the unit
 internal-hom is given by truncated subtraction, as in Lawvere \cite{lawvere1973} (also in  \cite{depaiva1991, Hyland:1991}).  It is easy
 to prove the adjunction and another easy argument on Lindenbaum's construction  proves completeness of the model.
 
-These examples have been known for several decades, since historically, the Lambek calculus arose from its intended categorical model, (bi)closed (symmetric and non-symmetric) monoidal categories, as discussed by Lambek \cite{lambek1988}. However they have been brought back to fashion by work in distributional semantics \cite{coecke2013}.
+These examples have been known for several decades, since historically, the Lambek Calculus arose from its intended categorical model, (bi)closed (symmetric and non-symmetric) monoidal categories, as discussed by Lambek \cite{lambek1988}. However they have been brought back to fashion by work in distributional semantics \cite{coecke2013}.
 
 %In the next section we describe another model for the Lamb ek Calculus�� but this time a categorical one�� that is�� one where we take in consideration di��erent pro ofs of the same entailment�� Note that we used a similar notation for matrices and strings�� to emphasize that what matters is the structure of a biclosed ��or closed�� p oset��
 % subsubsection the_set_of_natural_numbers (end)
@@ -590,9 +579,9 @@ These examples have been known for several decades, since historically, the Lamb
 
 \section{Categorical Models}
 
-Having discussed algebraic, poset-like models of the Lambek calculus,
+Having discussed algebraic, poset-like models of the Lambek Calculus,
 we now want to talk about categorical models, ones where one considers
-different proofs of the same theorem. Since the Lambek calculus itself
+different proofs of the same theorem. Since the Lambek Calculus itself
 came from its categorical models, biclosed monoidal categories, there
 is no shortage of these models. However, Girard's insight of relating
 logical systems via modalities should also be considered in this
@@ -656,14 +645,14 @@ these equations hold. We will see this for the different systems below.
 \subsection{Dialectica Lambek Spaces}
 \label{sec:dialectica_lambek_spaces}
 
-A sound and complete categorical model of  the Lambek calculi
+A sound and complete categorical model of  the Lambek Calculi
  can be given using a modification of de Paiva's
 dialectica categories \cite{depaiva1990}.  Dialectica
 categories arose from de Paiva's thesis on a categorical model
 of G\"odel's Dialectica interpretation, hence the name.  Dialectica
 categories were one of the first sound categorical models of
 intuitionistic linear logic, with  linear modalities.  We show in
-this section that they can be adapted to become a sound and complete model for the Lambek calculus, with both the
+this section that they can be adapted to become a sound and complete model for the Lambek Calculus, with both the
 exchange and of-course modalities. We call this model  \textit{dialectica Lambek spaces}.
 
 Due to the complexities of working
@@ -731,8 +720,8 @@ Notice that the biclosed poset is used here as the target of the
 relations in objects, but also as providing the order  relation in the weak adjoint condition on morphisms.  This will allow the structure of the biclosed
 poset to lift up into $\Dial{M}{\Set}$.
 
-We will show that $\Dial{M}{\Set}$ is a model of the Lambek calculus with
-modalities.  First, we show that it is a model of the Lambek calculus
+We will show that $\Dial{M}{\Set}$ is a model of the Lambek Calculus with
+modalities.  First, we show that it is a model of the Lambek Calculus
 without modalities.  Thus, we must show that $\Dial{M}{\Set}$ is
 monoidal biclosed.
 
@@ -789,9 +778,9 @@ result.
 \begin{thm}
   \label{thm:sound-lambek}
   $\Dial{M}{\Set}$ is a sound and complete model for the Lambek
-  calculus $L$ without modalities.
+  Calculus $L$ without modalities.
 \end{thm}
-\vspace{-15px}
+
 \subsubsection{Lambek Modalities}
 \label{subsec:modalities}
 We now extend $\Dial{M}{\Set}$ with two modalities: the usual
@@ -821,7 +810,7 @@ a comonad extending the biclosed poset with left and right exchange.
 
 We can now define the two modalities in $\Dial{M}{\Set}$ where $M$ is
 a biclosed poset with exchange; clearly we know $\Dial{M}{\Set}$ is
-also a model of the Lambek calculus without modalities by
+also a model of the Lambek Calculus without modalities by
 Theorem~\ref{thm:sound-lambek} because $M$ is a biclosed poset.
 \begin{defi}
   \label{def:modalities-dial}
@@ -856,7 +845,7 @@ proofs. Furthermore, these comonads come equipped with arrows $e : !A
   \label{thm:sound-dial-exchange-!}
   Suppose $M$ is a biclosed poset with exchange.  Then
   $\Dial{M}{\Set}$ is a sound and complete model for the Lambek
-  calculi $L_!$, $L_\kappa$, and $L_{!\kappa}$.
+  Calculi $L_!$, $L_\kappa$, and $L_{!\kappa}$.
 \end{thm}
 % subsubsection modalities (end)
 % end subsection dialectica_lambek_spaces (end)
@@ -880,7 +869,7 @@ page 88 of \cite{Bierman:1994}.
 \subsection{The Typed Lambek Calculus: $\lambda\text{L}$}
 \label{subsec:the_typed_lambek_calculus_lambda-l}
 
-The first system we cover is the Lambek calculus without
+The first system we cover is the Lambek Calculus without
 modalities. This system can be seen as the initial core of each of the
 other systems we introduce below, and thus, we will simply extend the
 results here to three other systems.  
@@ -1284,10 +1273,10 @@ normalization, because ILL is.
 
 \subsection{The Typed Lambek Calculus: $\lambda\text{L}_{!\kappa}$}
 \label{subsec:the_typed_lambek_calculus:lambda-l-!kappa}
-If we combine all three of the previous typed Lambek calculi, then we
-obtain the typed Lambek calculus $\lambda\text{L}_{!\kappa}$.  The
+If we combine all three of the previous typed Lambek Calculi, then we
+obtain the typed Lambek Calculus $\lambda\text{L}_{!\kappa}$.  The
 main characteristics of this system are that it provides the benefits
-of the non-symmetric adjoint structure of the Lambek calculus with the
+of the non-symmetric adjoint structure of the Lambek Calculus with the
 ability of having exchange, and the of-course modality, but both are
 carefully tracked within the proofs.
 
@@ -1315,12 +1304,12 @@ systems.  Thus, we have the following results.
 
 \section{Conclusions}
 We have recalled how to use biclosed posets and sets to construct
-dialectica-like models of the Lambek calculus. This construction is
+dialectica-like models of the Lambek Calculus. This construction is
 admittedly not the easiest one, reason why we use automated tools to
 verify our definitions, but it has one striking advantage. It shows
 how to introduce modalities to recover the expressive power of
 intuitionistic (and a posteriori classical) propositional logic to the
-system. We know of no other construction of models of Lambek calculus
+system. We know of no other construction of models of Lambek Calculus
 that does model modalities, not using their syntactic properties. (The
 traditional view in algebraic semantics is to consider idempotent
 operators for modalities like !). The categorical semantics here has

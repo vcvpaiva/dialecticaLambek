@@ -29,7 +29,7 @@
 
 %% Ott includes:
 \input{L-inc}
-\renewcommand{\Ldrule}[4][]{{\displaystyle\frac{\begin{array}{l}#2\end{array}}{#3}\,\,\Ldrulename{#4}}}
+\renewcommand{\Ldrule}[4][]{{\displaystyle\frac{\begin{array}{l}#2\end{array}}{#3}\,\,\Ldrulename{{\scriptsize #4}}}}
 
 \begin{document}
 
@@ -440,7 +440,7 @@ however, this definition is not able to model the implication
 operations $[[A <- B]]$ and $[[A -> B]]$.  To do this we need to
 understand how implication relates to the ordered non-commutative
 monoid structure.  Notice that
-$[[A (x) (A -> B)]] \subseteq B$ and $[[(A <- B) (x) A]] \subseteq B$
+$[[A (x) (A -> B)]] \subseteq B$ and $[[(A <- B) (x) B]] \subseteq A$
 hold.
 
 Furthermore, there are no larger objects of $\N$ with these
@@ -453,11 +453,11 @@ poset.
   any $a, b \in M$, then we denote $x$ by $a \lto b$ and called it
   the \textbf{left-pseudocomplement} of $a$ w.r.t $b$.  Additionally,
   if there exists a largest $x \in M$ such that $x \circ a \leq b$ for
-  any $a, b \in M$, then we denote $x$ by $a \rto b$ and called it
+  any $a, b \in M$, then we denote $x$ by $b \rto a$ and called it
   the \textbf{right-pseudocomplement} of $a$ w.r.t $b$.
 
   A \textbf{biclosed poset}, $(M, \leq, \circ, e, \lto, \rto)$, is an  ordered non-commutative monoid, $(M, \leq, \circ, e)$, such that $a
-  \lto b$ and $a \rto b$ exist for any $a,b \in M$.
+  \lto b$ and $b \rto a$ exist for any $a,b \in M$.
 \end{definition}
 
 At this point we have everything we need to model the Lambek Calculus L without modalities algebraically.
@@ -534,7 +534,7 @@ clearly a symmetric closed poset, where conjunction is addition, $0$ is the unit
 internal-hom is given by truncated subtraction, as in Lawvere \cite{lawvere1973} (also in  \cite{depaiva1991, Hyland:1991}).  It is easy
 to prove the adjunction and another easy argument on Lindenbaum's construction  proves completeness of the model.
 
-These examples have been known for several decades, since historically, the Lambek calculus arose from its intended categorical model, (bi)closed (symmetric and non-symmetric) monoidal categories, as discussed by Lambek \cite{lambek1988}. However they have been brought back ot fashion by work in distributional semantics \cite{coecke2013}.
+These examples have been known for several decades, since historically, the Lambek calculus arose from its intended categorical model, (bi)closed (symmetric and non-symmetric) monoidal categories, as discussed by Lambek \cite{lambek1988}. However they have been brought back to fashion by work in distributional semantics \cite{coecke2013}.
 
 %In the next section we describe another model for the Lamb ek Calculus�� but this time a categorical one�� that is�� one where we take in consideration di��erent pro ofs of the same entailment�� Note that we used a similar notation for matrices and strings�� to emphasize that what matters is the structure of a biclosed ��or closed�� p oset��
 % subsubsection the_set_of_natural_numbers (end)
@@ -653,7 +653,7 @@ the objects and the order used in the  `adjoint condition' (which also
 controls the type of structure) we can obtain a non-symmetric tensor in the dialectica category, if the structure of the underlying category and the structure of the underlying relations are compatible. 
 She also showed that one can
 abstract the notion of relation out as a parameter in the dialectica
-construction, so long as this has enough structure, i.e. so long as you have a algebra (that she called a lineale) to evaluate the relations at. 
+construction, so long as this has enough structure, i.e. so long as you have an algebra (that she called a lineale) to evaluate the relations at. 
 We denote this construction by $\mathsf{Dial}_{L}(\cat{C})$ where $L$ is the lineale controlling the relations coming from the monoidal category $\cat{C}$. For example, $\mathsf{Dial}_{\mathsf{2}}(\Set)$ is the
 category of usual dialectica spaces of sets over the Heyting (or Boolean) algebra $2$. 
 
@@ -835,7 +835,7 @@ page 88 of \cite{Bierman:1994}.
 The first system we cover is the Lambek calculus without
 modalities. This system can be seen as the initial core of each of the
 other systems we introduce below, and thus, we will simply extend the
-results here to those other systems.  
+results here to three other systems.  
 
 The syntax for patterns, terms, and contexts are described by the
 following grammar:
@@ -853,11 +853,11 @@ logical connectives within the left rules of L.  All variables in the
 pattern of a let-expression are bound.  The remainder of the terms are
 straightforward.
 
-The typing rules can be found in  the appendix in Figure~\ref{fig:typed-L} and the reduction rules in Figure~\ref{fig:rewrite-L}. The typing rules are as one might expect.  The reduction rules were extracted from the cut-elimination procedure for L.  
+The typing rules can be found in the in Figure~\ref{fig:typed-L} and
+the reduction rules in Figure~\ref{fig:rewrite-L}. The typing rules
+are as one might expect.  The reduction rules were extracted from the
+cut-elimination procedure for L.
 
-
-
-\iffalse
 \begin{figure}[h]
   \begin{mdframed}
     \begin{mathpar}
@@ -902,31 +902,36 @@ The typing rules can be found in  the appendix in Figure~\ref{fig:typed-L} and t
   \caption{Rewriting Rules for the Lambek Calculus: $\lambda\text{L}$}
   \label{fig:rewrite-L}
 \end{figure}
-\fi 
 
+We denote the reflexive and transitive closure of the $[[~>]]$ by
+$[[~*>]]$.  We call a term with no $\beta$-redexes a normal form,
+and we denote normal forms by $[[n]]$.  In the interest of space we
+omit the congruence rules from the definition of the reduction
+relation; we will do this for each calculi introduced throughout this
+section.  The other typed calculi we introduce below will be
+extensions of $\lambda\text{L}$, thus, we do not reintroduce these
+rules each time for readability.
 
 \textbf{Strong normalization.}  It is well known that intuitionistic
 linear logic (ILL) is strongly normalizing, for example, see Bierman's
 thesis \cite{Bierman:1994} or Benton's beautiful embedding of ILL into
 system F \cite{Benton:1995c}.  
 
-It is fairly straightforward to define
-a reduction preserving embedding of $\lambda\text{L}$ 
-%-- and of the other extension calculi  as well -- 
-into ILL.  Intuitionistic
-linear logic can be obtained from $\lambda\text{L}$ by replacing the
-rules $\Ldrulename{T\_IRl}$, $\Ldrulename{T\_ILl}$,
-$\Ldrulename{T\_IRr}$, and $\Ldrulename{T\_ILr}$ with the following
-two rules:
+It is fairly straightforward to define a reduction preserving
+embedding of $\lambda\text{L}$ into ILL.  Intuitionistic linear logic
+can be obtained from $\lambda\text{L}$ by replacing the rules
+$\Ldrulename{T\_IRl}$, $\Ldrulename{T\_ILl}$, $\Ldrulename{T\_IRr}$,
+and $\Ldrulename{T\_ILr}$ with the following two rules:
 \[
 \begin{array}{cccccccc}
   \LdruleTXXIl{} & \quad \LdruleTXXIr{}
 \end{array}
 \]
 In addition, contexts are considered multisets, and hence, exchange is
-handled implicitly. Then we can reuse the idea of Benton's embeddings (defined in the appendix) to show type preservation and type reduction.
+handled implicitly. Then we can reuse the idea of Benton's embeddings
+(defined in the appendix) to show type preservation and type
+reduction.
 
-\iffalse
 At this point we define the following embeddings.
 \begin{definition}
   \label{def:lambda-L_to_ILL}
@@ -976,18 +981,14 @@ This embedding preserves typing and reduction.
   This holds by straightforward induction on the form of the assumed
   reduction derivation.
 \end{proof}
-\fi 
 
-%\noindent
-The  two lemmas in the appendix  imply that $\lambda\text{L}$ is strongly
-normalizing, because ILL is. (proof sketches in the appendix as well.)
+These two lemmas imply that $\lambda\text{L}$ is strongly normalizing,
+because ILL is. 
 
 \begin{theorem}[Strong Normalization]
   \label{corollary:strong_normalization}
   If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
 \end{theorem}
-
-\iffalse
 \begin{proof}
   Suppose $[[t]]$ is not strongly normalizing.  Then there exists at
   least one infinite descending chain starting with $[[t]]$ of the
@@ -997,13 +998,12 @@ normalizing, because ILL is. (proof sketches in the appendix as well.)
   $[[t e]] \redto [[t' e]] \redto [[t'' e]] \redto \cdots$, but we
   know this is impossible, because ILL is strongly normalizing.
 \end{proof}
-\fi 
 
 \textbf{Confluence.} The Church-Rosser property is well known to hold
 for ILL modulo commuting conversions, for example, see Theorem~19 of
 \cite{Bierman:1994} on page 96.  Since $\lambda\text{L}$ is
 essentially a subsystem of ILL, it is straightforward, albeit
-lengthly, to simply redefine Bierman's candidates 
+lengthly, to simply redefine Bierman's candidates
 %(Definitions~17, 19,20, and 21 of Section 5.1 of ibid.), 
 and carry out a similar proof as Bierman's (Theorem~19 on page 96 of ibid.).  
 %However, giving the details here would not be fruitful nor enlightening, and hence, we omit the proof.  Thus, we have the following:
@@ -1013,13 +1013,6 @@ and carry out a similar proof as Bierman's (Theorem~19 on page 96 of ibid.).
   is confluent.
 \end{theorem}
 
-%%%%%%%%%%
-% subsection the_typed_lambek_calculi_lambda-l (end)
-Similarly we can prove strong normalization and confluence both for the Lambek calculus extended with the of-course modality and extended with the exchange modality. Details can be found in the appendix.
-%%%%%%%%%%%%
-
-
-\iffalse
 \subsection{The Typed Lambek Calculus: $\lambda\text{L}_!$}
 \label{subsec:the_typed_lambek_calculus:lambda-l!}
 The calculus we introduce in this section is an extension of
@@ -1043,7 +1036,7 @@ following typing rules to $\lambda\text{L}$:
       \LdruleTXXBl{} 
 \end{mathpar}
 \begin{figure}
-  \small
+  \footnotesize
   \begin{mdframed}
     \begin{mathpar}
       \LdruleRXXBetaDR{} \and
@@ -1124,22 +1117,17 @@ as we did for $\lambda\text{L}$.  Thus, we have the following:
   The reduction relation, $[[~>]]$, modulo the commuting conversions
   is confluent.
 \end{theorem}
-% subsection the_typed_lambek_calculus:lambda-l! (end)
 
-\fi 
-%%%%%%%%%%%%%%%%%
-\iffalse
 \subsection{The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
 \label{subsec:the_typed_lambek_calculus:lambda-l-kappa}
 
 The next calculus we introduce is also an extension of
 $\lambda\text{L}$ with a modality that adds exchange to
 $\lambda\text{L}_\kappa$ denoted $[[E A]]$.  It is perhaps the most
-novel of the calculi we have introduced, but due to space restrictions is is also banished to the appendix. 
+novel of the calculi we have introduced.
 
-\iffalse
-The syntax of types
-and terms of $\lambda\text{L}$ are extended as follows:
+The syntax of types and terms of $\lambda\text{L}$ are extended as
+follows:
 \[
 \begin{array}{cllllll}
   \text{(types)}    & [[A]] & := & \cdots \mid [[E A]]\\
@@ -1147,14 +1135,12 @@ and terms of $\lambda\text{L}$ are extended as follows:
   \\ & & & [[promoteE t' for t'' in t]] \mid [[derelictE t]]\\
 \end{array}
 \]
-\fi 
 
 The syntax for types has been extended to include the exchange
 modality, and the syntax of terms follow suit.  The terms $[[lexchange
     t1,t2 with x,y in t3]]$ and $[[rexchange t1,t2 with x,y in t3]]$
 are used to explicitly track uses of exchange throughout proofs.  
 
-\iffalse
 We add the following typing rules to $\lambda\text{L}$:
 \begin{mathpar}
   \LdruleTXXEOne{} \and
@@ -1178,13 +1164,11 @@ We add the following typing rules to $\lambda\text{L}$:
 \noindent
 The reduction rules are in Figure~\ref{fig:rewrite-LE}, and are vary
 similar to the rules from $\lambda\text{L}_!$.
-\fi 
 
 \textbf{Strong normalization.}  Similarly, we show that we can embed
 $\lambda\text{L}_\kappa$ into ILL, but the embedding is a bit more
 interesting.
 
-\iffalse
 \begin{definition}
   \label{def:embed-lambda-L!-in-ILL}
   The following is an extension of the embedding of $\lambda\text{L}$
@@ -1205,7 +1189,6 @@ interesting.
     \end{math}
   \end{center}
 \end{definition}
-\fi 
 
 The embedding  translates the exchange modality into the
 of-course modality of ILL.  We do this so as to preserve the comonadic
@@ -1217,8 +1200,6 @@ exchange terms are translated away completely, but this works because
 ILL contains exchange in general, and hence, does not need to be
 tracked explicitly.  It is now straightforward to prove the following the lemmas that lead to
 
-
-\iffalse
 \begin{lemma}[Type Preserving Embedding]
   \label{lemma:type_preserving_embedding_lambdaLk}
   If $[[G |- t : A]]$ in $\lambda\text{L}_!$, then
@@ -1240,15 +1221,11 @@ tracked explicitly.  It is now straightforward to prove the following the lemmas
 \noindent
 Finally, we can use the previous two results to conclude strong
 normalization, because ILL is.
-\fi 
 
 \begin{theorem}[Strong Normalization]
   \label{corollary:strong_normalization_lambdaLk}
   If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
 \end{theorem}
-
-%\textbf{Confluence.} The Church-Rosser property also holds for $\lambda\text{L}_\kappa$, and the proof is nearly identical to the proof that $\lambda\text{L}_!$ is confluent.  Thus, we have the following:
-
 
 \begin{theorem}[Confluence]
   \label{thm:confluence-lambdaLk}
@@ -1256,18 +1233,15 @@ normalization, because ILL is.
   is confluent.
 \end{theorem}
 % subsection the_typed_lambek_calculus:lambda-l-kappa (end)
-\fi 
 
-
-%\subsection{The Typed Lambek Calculus: $\lambda\text{L}_{!\kappa}$}
+\subsection{The Typed Lambek Calculus: $\lambda\text{L}_{!\kappa}$}
 \label{subsec:the_typed_lambek_calculus:lambda-l-!kappa}
 If we combine all three of the previous typed Lambek calculi, then we
-obtain the typed Lambek calculus $\lambda\text{L}_{!\kappa}$.  
-%We do not explicitly define the syntax, typing rules, and reduction rules here, because we would be repeating what we have already defined in the previous sections.  
-The main characteristics of this system are that it
-provides the benefits of the non-symmetric adjoint structure of the Lambek calculus with the ability  of
-having exchange, and the of-course modality, but both are carefully
-tracked within the proofs.
+obtain the typed Lambek calculus $\lambda\text{L}_{!\kappa}$.  The
+main characteristics of this system are that it provides the benefits
+of the non-symmetric adjoint structure of the Lambek calculus with the
+ability of having exchange, and the of-course modality, but both are
+carefully tracked within the proofs.
 
 Strong normalization for this calculus can be proved similarly to the
 previous calculi by simply merging the embeddings together.  Thus,
@@ -1292,434 +1266,27 @@ systems.  Thus, we have the following results.
 
 
 \section{Conclusions}
-We have recalled how to use biclosed posets and sets to construct dialectica-like models of the Lambek calculus. This construction is admittedly not the easiest one, reason why we use automated tools to verify our definitions, but it has one striking advantage. It shows how to introduce modalities to recover the expressive power of intuitionistic (and a posteriori classical) propositional logic to the system. We know of no other construction of models of Lambek calculus  that does  model  modalities, not using their syntactic properties. (The traditional view in algebraic semantics is to consider idempotent operators for modalities like !). The categorical semantics  here has been described before \cite{depaiva1991}, but the syntactic treatment of the lambda-calculi, in the style of \cite{benton1993} had not been done and there were doubts about its validity, given the results of Jay \cite{jay1991}. We are glad to put this is a firm footing, using another one of Benton's ideas: his embedding of intuitionistic linear logic into system F. Finally, we envisage more work, along the lines of algebraic proof theory, for modalities and non-symmetric type systems.
+We have recalled how to use biclosed posets and sets to construct
+dialectica-like models of the Lambek calculus. This construction is
+admittedly not the easiest one, reason why we use automated tools to
+verify our definitions, but it has one striking advantage. It shows
+how to introduce modalities to recover the expressive power of
+intuitionistic (and a posteriori classical) propositional logic to the
+system. We know of no other construction of models of Lambek calculus
+that does model modalities, not using their syntactic properties. (The
+traditional view in algebraic semantics is to consider idempotent
+operators for modalities like !). The categorical semantics here has
+been described before \cite{depaiva1991}, but the syntactic treatment
+of the lambda-calculi, in the style of \cite{benton1993} had not been
+done and there were doubts about its validity, given the results of
+Jay \cite{jay1991}. We are glad to put this is a firm footing, using
+another one of Benton's ideas: his embedding of intuitionistic linear
+logic into system F. Finally, we envisage more work, along the lines
+of algebraic proof theory, for modalities and non-symmetric type
+systems.
 
 \bibliographystyle{plain}
 \bibliography{references}
-
-%%%%%%
-%%%%%%%%%%%%
-
-\appendix{\section*{Appendix: Type Theory for  Lambek Calculus}}
-
-We first introduce the typing rules for the type theory associated to the pure Lambek calculus. This is sometimes called \textit{full Lambek calculus}, as it has tensor products and its unit.
-
-\begin{figure}[h]
-  \begin{mdframed}
-    \begin{mathpar}
-      \LdruleTXXvar{} \and
-      \LdruleTXXUr{} \and
-      \LdruleTXXcut{} \and
-      \LdruleTXXUl{} \and
-      \LdruleTXXTl{} \and
-      \LdruleTXXTr{} \and
-      \LdruleTXXIRl{} \and
-      \LdruleTXXILl{} \and
-      \LdruleTXXIRr{} \and
-      \LdruleTXXILr{} 
-    \end{mathpar}
-  \end{mdframed}
-  \caption{Typing Rules for the Typed Lambek Calculus: $\lambda\text{L}$}
-  \label{fig:typed-L}
-\end{figure}
-\begin{figure}[h]
-  \begin{mdframed}
-    \begin{mathpar}
-      %% \LdruleRXXAlpha{} \and
-      \LdruleRXXBetal{} \and
-      \LdruleRXXBetar{} \and
-      \LdruleRXXBetaU{} \and
-      \LdruleRXXBetaTOne{} \and
-      \LdruleRXXBetaTTwo{} \and
-      \LdruleRXXNatU{} \and
-      \LdruleRXXNatT{} \and
-      \LdruleRXXLetU{} \and
-      %% \LdruleRXXLet{} \and
-      %% \LdruleRXXTOne{} \and
-      %% \LdruleRXXTTwo{} \and
-      %% \LdruleRXXAlOne{} \and
-      %% \LdruleRXXAlTwo{} \and
-      %% \LdruleRXXArOne{} \and
-      %% \LdruleRXXArTwo{} \and
-      %% \LdruleRXXLl{} \and
-      %% \LdruleRXXLr{} 
-    \end{mathpar}
-  \end{mdframed}
-  \caption{Rewriting Rules for the Lambek Calculus: $\lambda\text{L}$}
-  \label{fig:rewrite-L}
-\end{figure}
-%% \section{Term Annotated Cut Elimination Procedure for L}
-%% \label{sec:cut_elimination_procedure_for_l}
-%% \input{cut-elim-output}
-%% % section cut_elimination_procedure_for_l (end)
-
-We denote the reflexive and transitive closure of the $[[~>]]$ by
-$[[~*>]]$.  We call a term with no $\beta$-redexes a normal form,
-and we denote normal forms by $[[n]]$.  In the interest of space we
-omit the congruence rules from the definition of the reduction
-relation; we will do this for each calculi introduced throughout this
-section.  The other typed calculi we introduce below will be
-extensions of $\lambda\text{L}$, thus, we do not reintroduce these
-rules each time for readability.
-
-At this point we define the following embeddings.
-\begin{definition}
-  \label{def:lambda-L_to_ILL}
-  We embed types and terms of $\lambda\text{L}$ into ILL as follows:
-  \begin{center}
-    \begin{math}
-      \begin{array}{lrllllllllllllllllll}
-        \text{Types:}\\
-        & [[I e]] & = & [[I]]\\
-        & [[(A (x) B) e]] & = & [[A e (x) h(B e)]]\\
-        & [[(A -> B) e]] & = & [[A e -o h(B e)]]\\
-        & [[(A <- B) e]] & = & [[A e -o h(B e)]]\\                    
-        \\
-        \text{Terms:}\\
-        & [[x e]] & = & [[x]]\\
-        & [[unit e]] & = & [[unit]]\\
-        & [[{t1 (x) t2} e]] & = & [[t1 e (x) h{t2 e}]]\\
-        & [[{let t1 be p in t2} e]] & = & [[let t1 e be p in h{t2 e}]]\\
-        & [[{\l x : A.t} e]] & = & [[\ x : A.h{t e}]]\\
-        & [[{\r x : A.t} e]] & = & [[\ x : A.h{t e}]]\\
-        & [[{appl t1 t2} e]] & = & [[h{t1 e} h{t2 e}]]\\
-        & [[{appr t1 t2} e]] & = & [[h{t1 e} h{t2 e}]]\\
-      \end{array}
-    \end{math}
-  \end{center}
-  The previous embeddings can be extended to contexts in the
-  straightforward way, and to sequents as follows:
-  \[ [[(G |- t : A) e]] = [[G e |- t e : h(A e)]]\]
-\end{definition}
-\noindent
-This embedding preserves typing and reduction.
-\begin{lemma}[Type Preserving Embedding]
-  \label{lemma:type_preserving_embedding}
-  If $[[G |- t : A]]$ in $\lambda\text{L}$, then
-  $[[G e |- t e : h(A e)]]$ in ILL.
-\end{lemma}
-\begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  typing derivation.
-\end{proof}
-\begin{lemma}[Reduction Preserving Embedding]
-  \label{lemma:reduction_preserving_embedding}
-  If $[[t1 ~> t2]]$ in $\lambda\text{L}$, then $[[t1 e ~> h{t2 e}]]$
-  in ILL.
-\end{lemma}
-\begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  reduction derivation.
-\end{proof}
-
-
-\begin{theorem}[Strong Normalization]
-  \label{corollary:strong_normalization}
-  If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{theorem}
-
-
-\begin{proof}
-  Suppose $[[t]]$ is not strongly normalizing.  Then there exists at
-  least one infinite descending chain starting with $[[t]]$ of the
-  form $[[t]] \redto [[t']] \redto [[t'']] \redto
-  \cdots$. Lemma~\ref{lemma:reduction_preserving_embedding} implies
-  that there must also be an infinite descending chain of the form
-  $[[t e]] \redto [[t' e]] \redto [[t'' e]] \redto \cdots$, but we
-  know this is impossible, because ILL is strongly normalizing.
-\end{proof}
-
-\section{The Typed Lambek Calculus: $\lambda\text{L}_!$}
-\label{subsec:the_typed_lambek_calculus:lambda-l!}
-The calculus we introduce in this section is an extension of
-$\lambda\text{L}$ with the of-course modality $[[!A]]$.  This
-extension follows from ILL exactly.  The syntax of types and terms of
-$\lambda\text{L}$ are extended as follows:
-\[
-\begin{array}{cllllll}
-  \text{(types)}    & [[A]] & := & \cdots \mid [[! A]]\\
-  \text{(terms)}    & [[t]] & := & \cdots \mid [[copy t' as t1 , t2 in t]] \mid [[discard t' in t]]
-  \mid [[promote! t' for t'' in t]] \mid \\ & & & [[derelict! t]]\\
-\end{array}
-\]
-The new type and terms are what one might expect, and are the
-traditional syntax used for the of-course modality.  We add the
-following typing rules to $\lambda\text{L}$:
-\begin{mathpar}
-      \LdruleTXXC{} \and
-      \LdruleTXXW{} \and
-      \LdruleTXXBr{} \and
-      \LdruleTXXBl{} 
-\end{mathpar}
-\begin{figure}
-  \small
-  \begin{mdframed}
-    \begin{mathpar}
-      \LdruleRXXBetaDR{} \and
-      \LdruleRXXBetaDI{} \and
-      \LdruleRXXBetaC{} \and
-      \LdruleRXXNatD{} \and
-      \LdruleRXXNatC{} 
-    \end{mathpar}
-  \end{mdframed}
-  \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_!$}
-  \label{fig:rewrite-LB}
-\end{figure}
-Finally, the reduction rules can be found in
-Figure~\ref{fig:rewrite-LB}.  The equality used in the
-$\Ldrulename{R\_BetaC}$ rule is definitional, meaning, that the rule
-simply gives the terms on the right side of the equation the name on
-the left side, and nothing more.  This makes the rule easier to read.
-
-\textbf{Strong normalization.} Showing strong normalization for
-$\lambda\text{L}_!$ easily follows by a straightforward extension of
-the embedding we gave for $\lambda\text{L}$.
-\begin{definition}
-  \label{def:embed-lambda-L!-in-ILL}
-  The following is an extension of the embedding of $\lambda\text{L}$
-  into ILL resulting in an embedding of types and terms of
-  $\lambda\text{L}_!$ into ILL:
-  \begin{center}
-    \begin{math}
-      \begin{array}{lrllllllllllllllllll}
-        \text{Types:}\\
-        & [[(! A) e]] & = & [[! h(A e)]]\\        
-        \\
-        \text{Terms:}\\
-        & [[{copy t' as t1 , t2 in t} e]] & = & [[copy t' e as t1 e , t2 e in h{t e}]]\\
-        & [[{discard t' in t} e]] & = & [[discard t' e in h{t e}]]\\
-        & [[{promote! t' for t'' in t} e]] & = & [[promote! t' e for t'' e in h{t e}]]\\
-        & [[{derelict! t} e]] & = & [[derelict! h{t e}]]\\
-      \end{array}
-    \end{math}
-  \end{center}
-\end{definition}
-
-\noindent
-Just as before this embedding is type preserving and reduction preserving.
-\begin{lemma}[Type Preserving Embedding]
-  \label{lemma:type_preserving_embedding_lambdaL!}
-  If $[[G |- t : A]]$ in $\lambda\text{L}_!$, then
-  $[[G e |- t e : h(A e)]]$ in ILL.
-\end{lemma}
-\begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  typing derivation.
-\end{proof}
-
-\begin{lemma}[Reduction Preserving Embedding]
-  \label{lemma:reduction_preserving_embedding_lambdaL!}
-  If $[[t1 ~> t2]]$ in $\lambda\text{L}_!$, then $[[t1 e ~> h{t2 e}]]$
-  in ILL.
-\end{lemma}
-\begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  reduction derivation.
-\end{proof}
-\noindent
-Finally, we can use the previous two results to conclude strong
-normalization, because ILL is.
-\begin{theorem}[Strong Normalization]
-  \label{corollary:strong_normalization_lambdaL!}
-  If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{theorem}
-
-\textbf{Confluence.} The Church-Rosser property also holds for
-$\lambda\text{L}_!$, and can be shown by straightforwardly applying a
-slightly modified version of Bierman's proof \cite{Bierman:1994} just
-as we did for $\lambda\text{L}$.  Thus, we have the following:
-\begin{theorem}[Confluence]
-  \label{thm:confluence}
-  The reduction relation, $[[~>]]$, modulo the commuting conversions
-  is confluent.
-\end{theorem}
-% subsection the_typed_lambek_calculus:lambda-l! (end)
-
-The syntax of types
-and terms of $\lambda\text{L}$ are extended as follows:
-\[
-\begin{array}{cllllll}
-  \text{(types)}    & [[A]] & := & \cdots \mid [[E A]]\\
-  \text{(terms)}    & [[t]] & := & \cdots \mid [[lexchange t1,t2 with x,y in t3]] \mid [[rexchange t1,t2 with x,y in t3]] \mid 
-  \\ & & & [[promoteE t' for t'' in t]] \mid [[derelictE t]]\\
-\end{array}
-\]
-
-We add the following typing rules to $\lambda\text{L}$:
-\begin{mathpar}
-  \LdruleTXXEOne{} \and
-  \LdruleTXXETwo{} \and
-  \LdruleTXXEr{} \and
-  \LdruleTXXEl{} 
-\end{mathpar}
-
-\begin{figure}[h]
-  \small
-  \begin{mdframed}
-    \begin{mathpar}      
-      \LdruleRXXBetaEDR{} \and
-      \LdruleRXXNatEl{} \and
-      \LdruleRXXNatEr{} 
-    \end{mathpar}
-  \end{mdframed}
-  \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
-  \label{fig:rewrite-LE}
-\end{figure}
-\noindent
-The reduction rules are in Figure~\ref{fig:rewrite-LE}, and are vary
-similar to the rules from $\lambda\text{L}_!$.
-
-\begin{definition}
-  \label{def:embed-lambda-L!-in-ILL}
-  The following is an extension of the embedding of $\lambda\text{L}$
-  into ILL resulting in an embedding of types and terms of
-  $\lambda\text{L}_\kappa$ into ILL:
-  \begin{center}
-    \begin{math}
-      \begin{array}{lrllllllllllllllllll}
-        \text{Types:}\\
-        & [[(E A) e]] & = & [[! h(A e)]]\\        
-        \\
-        \text{Terms:}\\
-        & [[{lexchange t1 , t2 with x , y in t3} e]] & = & [[ [t2 e/x][t1 e/y]h{t3 e}]]\\
-        & [[{rexchange t1 , t2 with x , y in t3} e]] & = & [[ [t2 e/x][t1 e/y]h{t3 e}]]\\
-        & [[{promoteE t' for t'' in t} e]] & = & [[promote! t' e for t'' e in h{t e}]]\\
-        & [[{derelictE t} e]] & = & [[derelict! h{t e}]]\\
-      \end{array}
-    \end{math}
-  \end{center}
-\end{definition}
-
-
-\section{The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
-\label{subsec:the_typed_lambek_calculus:lambda-l-kappa}
-
-The next calculus we introduce is also an extension of
-$\lambda\text{L}$ with a modality that adds exchange to
-$\lambda\text{L}_\kappa$ denoted $[[E A]]$.  It is perhaps the most
-novel of the calculi we have introduced, but due to space restrictions is is also banished to the appendix. 
-
-
-The syntax of types
-and terms of $\lambda\text{L}$ are extended as follows:
-\[
-\begin{array}{cllllll}
-  \text{(types)}    & [[A]] & := & \cdots \mid [[E A]]\\
-  \text{(terms)}    & [[t]] & := & \cdots \mid [[lexchange t1,t2 with x,y in t3]] \mid [[rexchange t1,t2 with x,y in t3]] \mid 
-  \\ & & & [[promoteE t' for t'' in t]] \mid [[derelictE t]]\\
-\end{array}
-\]
-
-
-The syntax for types has been extended to include the exchange
-modality, and the syntax of terms follow suit.  The terms $[[lexchange
-    t1,t2 with x,y in t3]]$ and $[[rexchange t1,t2 with x,y in t3]]$
-are used to explicitly track uses of exchange throughout proofs.  
-
-
-We add the following typing rules to $\lambda\text{L}$:
-\begin{mathpar}
-  \LdruleTXXEOne{} \and
-  \LdruleTXXETwo{} \and
-  \LdruleTXXEr{} \and
-  \LdruleTXXEl{} 
-\end{mathpar}
-
-\begin{figure}[h]
-  \small
-  \begin{mdframed}
-    \begin{mathpar}      
-      \LdruleRXXBetaEDR{} \and
-      \LdruleRXXNatEl{} \and
-      \LdruleRXXNatEr{} 
-    \end{mathpar}
-  \end{mdframed}
-  \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
-  \label{fig:rewrite-LE}
-\end{figure}
-\noindent
-The reduction rules are in Figure~\ref{fig:rewrite-LE}, and are vary
-similar to the rules from $\lambda\text{L}_!$.
-
-
-\textbf{Strong normalization.}  Similarly, we show that we can embed
-$\lambda\text{L}_\kappa$ into ILL, but the embedding is a bit more
-interesting.
-
-
-\begin{definition}
-  \label{def:embed-lambda-L!-in-ILL}
-  The following is an extension of the embedding of $\lambda\text{L}$
-  into ILL resulting in an embedding of types and terms of
-  $\lambda\text{L}_\kappa$ into ILL:
-  \begin{center}
-    \begin{math}
-      \begin{array}{lrllllllllllllllllll}
-        \text{Types:}\\
-        & [[(E A) e]] & = & [[! h(A e)]]\\        
-        \\
-        \text{Terms:}\\
-        & [[{lexchange t1 , t2 with x , y in t3} e]] & = & [[ [t2 e/x][t1 e/y]h{t3 e}]]\\
-        & [[{rexchange t1 , t2 with x , y in t3} e]] & = & [[ [t2 e/x][t1 e/y]h{t3 e}]]\\
-        & [[{promoteE t' for t'' in t} e]] & = & [[promote! t' e for t'' e in h{t e}]]\\
-        & [[{derelictE t} e]] & = & [[derelict! h{t e}]]\\
-      \end{array}
-    \end{math}
-  \end{center}
-\end{definition}
-
-
-The embedding  translates the exchange modality into the
-of-course modality of ILL.  We do this so as to preserve the comonadic
-structure of the exchange modality.  One might think that we could
-simply translate the exchange modality to the identity, but as Benton
-showed \cite{Benton:1995c}, this would result in an embedding that
-does not preserve reductions.  Furthermore, the left and right
-exchange terms are translated away completely, but this works because
-ILL contains exchange in general, and hence, does not need to be
-tracked explicitly.  It is now straightforward to prove the following the lemmas that lead to
-
-
-
-\begin{lemma}[Type Preserving Embedding]
-  \label{lemma:type_preserving_embedding_lambdaLk}
-  If $[[G |- t : A]]$ in $\lambda\text{L}_!$, then
-  $[[G e |- t e : h(A e)]]$ in ILL.
-\end{lemma}
-\begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  typing derivation.
-\end{proof}
-\begin{lemma}[Reduction Preserving Embedding]
-  \label{lemma:reduction_preserving_embedding_lambdaLk}
-  If $[[t1 ~> t2]]$ in $\lambda\text{L}_!$, then $[[t1 e ~> h{t2 e}]]$
-  in ILL.
-\end{lemma}
-\begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  reduction derivation.
-\end{proof}
-\noindent
-Finally, we can use the previous two results to conclude strong
-normalization, because ILL is.
-
-
-\begin{theorem}[Strong Normalization]
-  \label{corollary:strong_normalization_lambdaLk}
-  If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{theorem}
-
-%\textbf{Confluence.} The Church-Rosser property also holds for $\lambda\text{L}_\kappa$, and the proof is nearly identical to the proof that $\lambda\text{L}_!$ is confluent.  Thus, we have the following:
-
-
-\begin{theorem}[Confluence]
-  \label{thm:confluence-lambdaLk}
-  The reduction relation, $[[~>]]$, modulo the commuting conversions
-  is confluent.
-\end{theorem}
-% subsection the_typed_lambek_calculus:lambda-l-kappa (end)
-
-
 
 \end{document}
 

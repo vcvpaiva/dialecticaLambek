@@ -71,9 +71,9 @@ t, n :: 'term_' ::=
   | t1 t2             :: M :: Application
   {{tex [[t1]]\,[[t2]] }}  
   | ! t               :: M :: BTerm
-  {{tex \vec{[[t]]} }}
+  {{tex \overrightarrow{[[t]]} }}
   | E t               :: M :: ETerm
-  {{tex \vec{[[t]]} }}  
+  {{tex \overrightarrow{[[t]]} }}  
   | { t }             :: S :: Parens
   {{tex ( [[t]] ) }}
   | [ t1 / t ] t2     :: M :: Sub
@@ -89,10 +89,10 @@ G {{tex \Gamma}} :: 'G_' ::=
   | A           ::   :: El
   | x : A       ::   :: TEl
   | G , G'      ::   :: Ext
-  | ! x : !{ G } :: M :: Vec
-  {{tex \vec{[[x]]} : ![[G]] }}
-  | E x : E{ G } :: M :: Veck
-  {{tex \vec{[[x]]} : \kappa [[G]] }}  
+  | ! x : !{ G } :: M :: Overrightarrow
+  {{tex \overrightarrow{[[x]]} : ![[G]] }}
+  | E x : E{ G } :: M :: Overrightarrowk
+  {{tex \overrightarrow{[[x]]} : \kappa [[G]] }}  
   | ( G )       :: S :: Paren
   | !{ G }      :: M :: OfCourse
   {{tex ! [[G]] }}

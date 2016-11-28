@@ -291,6 +291,35 @@ Finally, we discuss modalities for the Lambek Calculus and conclude with some di
 %in the fifth section we discuss modalities
 %and some untidiness of the Curry-Howard correspondence for the fragments of Linear Logic in question.
 
+\section{Related Work}
+\label{sec:related_work}
+
+Lamarche and Retor\'e \cite{Lamarche:1996} give an overview of proof
+nets for the Lambek Calculus where they discuss the addition of
+various exchange rules to the calculus.  For example, the following
+permutation and cycle rules:
+\[
+\begin{array}{lll}
+  $$\mprset{flushleft}
+  \inferrule* [right=perm] {
+    A_1, A_2, \Gamma \vdash B
+  }{A_2, A_1, \Gamma \vdash B}
+  & \quad &
+  $$\mprset{flushleft}
+  \inferrule* [right=cycl] {
+    A_1, A_2, \Gamma \vdash B
+  }{A_1, \Gamma, A_2, \Gamma \vdash B}
+\end{array}
+\]
+Taken in isolation each rule does not imply general exchange, but
+taken together they do.  Thus, it is possible to take a restricted
+notion of exchange to the Lambek Calculus without taking general
+exchange. However, applications where one needs a completely
+non-commutative tensor product and a commutative tensor product cannot
+be modeled in the Lambek Calculus with these rules.
+% section related_work (end)
+
+
 \section{The Lambek Calculus}
 
 The Lambek Calculus, formerly the Syntactic Calculus $\sf L$, due to

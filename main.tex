@@ -285,9 +285,15 @@ rules, we aim to refine the algebraization of proof theory.
 
 We first recall  that
 %Linear Logic and provide the transformations to show that 
-the Lambek Calculus \textsf{L} as the multiplicative
-fragment of non-commutative Intuitionistic Linear Logic.  Then we describe the usual algebraic semantics for the Lambek Calculus, including Lambek's original String Semantics, and generalize it, using a categorical perspective.  The next section recalls Dialectica models and defines them for the Lambek Calculus. Then we discuss type theory for the systems considered, proving the requisite theorems.
-Finally, we discuss modalities for the Lambek Calculus and conclude with some discussion of the possible choices in this space.
+the Lambek Calculus \textsf{L} as the multiplicative fragment of
+non-commutative Intuitionistic Linear Logic.  Then we describe the
+usual algebraic semantics for the Lambek Calculus, including Lambek's
+original String Semantics, and generalize it, using a categorical
+perspective.  The next section recalls Dialectica models and defines
+them for the Lambek Calculus. Then we discuss type theory for the
+systems considered, proving the requisite theorems.  Finally, we
+discuss modalities for the Lambek Calculus and conclude with some
+discussion of the possible choices in this space.
 %in the fifth section we discuss modalities
 %and some untidiness of the Curry-Howard correspondence for the fragments of Linear Logic in question.
 
@@ -317,6 +323,27 @@ notion of exchange to the Lambek Calculus without taking general
 exchange. However, applications where one needs a completely
 non-commutative tensor product and a commutative tensor product cannot
 be modeled in the Lambek Calculus with these rules.
+
+Polakow~\cite{Polakow:2001} combines intuitionistic, commutative
+linear, and non-commutative linear logic into a system called Ordered
+Linear Logic (OLL).  They then extend OLL into two new systems: a term
+assignment of OLL called OLLi, and a logical framework in the
+tradition of LF called OLF.
+
+OLL's sequent is of the form $\Gamma, \Delta, \Omega \vdash A$ where
+$\Gamma$ is a multiset of intuitionistic assumptions, $\Delta$ is a
+multiset of commutative linear assumptions, and $\Omega$ is a list of
+non-commutative linear assumptions.  Furthermore, OLL contains logical
+connectives from each logic.  For example, there are two different
+tensor products and three different implications.  Thus, the systems
+developed here are a simplification of OLL showing how to get all of
+these systems using modalities.
+
+Greco and Palmigiano~\cite{2016arXiv161104181G} give a type of logic
+called a proper display logic for the Lambek Calculus with
+exponentials. However, they decompose the linear exponential into an
+adjunction in the spirit Benton's LNL models.  In this paper we
+concentrate on sequent calculi rather than display logic.
 % section related_work (end)
 
 

@@ -85,7 +85,8 @@
     properly modeled.
   \end{abstract}
 \begin{keyword}
-  Lambek calculus, dialectica models, categorical semantics, type theory, structural rules, non-commutative, linear logic
+  Lambek calculus, dialectica models, categorical semantics, type
+  theory, structural rules, non-commutative, linear logic
 \end{keyword}
 \end{frontmatter}
 
@@ -539,19 +540,6 @@ Section~\ref{sec:dialectica_lambek_spaces}.
 %% Furthermore, there are no larger objects of $\N$ with these
 %% properties.  Abstracting this results in the notion of a biclosed
 %% poset.
-%% \begin{definition}
-%%   \label{def:biclosed-poset}
-%%   Suppose $(M, \leq, \circ, e)$ is an ordered non-commutative monoid.
-%%   If there exists a largest $x \in M$ such that $a \circ x \leq b$ for
-%%   any $a, b \in M$, then we denote $x$ by $a \lto b$ and called it
-%%   the \textbf{left-pseudocomplement} of $a$ w.r.t $b$.  Additionally,
-%%   if there exists a largest $x \in M$ such that $x \circ a \leq b$ for
-%%   any $a, b \in M$, then we denote $x$ by $b \rto a$ and called it
-%%   the \textbf{right-pseudocomplement} of $a$ w.r.t $b$.
-
-%%   A \textbf{biclosed poset}, $(M, \leq, \circ, e, \lto, \rto)$, is an  ordered non-commutative monoid, $(M, \leq, \circ, e)$, such that $a
-%%   \lto b$ and $b \rto a$ exist for any $a,b \in M$.
-%% \end{definition}
 
 %% At this point we have everything we need to model the Lambek Calculus L without modalities algebraically.
 %% \begin{lem}
@@ -754,7 +742,23 @@ This way we can see dialectica categories as a framework of categorical models o
 
 The underlying category we will choose here is the category $\Set$,
 but the structure we will define our relations over will be a biclosed
-poset (Definition~\ref{def:biclosed-poset}).
+poset, defined in the next definition.
+\begin{definition}
+  \label{def:biclosed-poset}
+  Suppose $(M, \leq, \circ, e)$ is an ordered non-commutative monoid.
+  If there exists a largest $x \in M$ such that $a \circ x \leq b$ for
+  any $a, b \in M$, then we denote $x$ by $a \lto b$ and called it
+  the \textbf{left-pseudocomplement} of $a$ w.r.t $b$.  Additionally,
+  if there exists a largest $x \in M$ such that $x \circ a \leq b$ for
+  any $a, b \in M$, then we denote $x$ by $b \rto a$ and called it
+  the \textbf{right-pseudocomplement} of $a$ w.r.t $b$.
+
+  A \textbf{biclosed poset}, $(M, \leq, \circ, e, \lto, \rto)$, is an
+  ordered non-commutative monoid, $(M, \leq, \circ, e)$, such that $a
+  \lto b$ and $b \rto a$ exist for any $a,b \in M$.
+\end{definition}
+\noindent
+Now using the previous definition we define dialectica Lambek spaces.
 \begin{definition}
   \label{def:dialectica-lambek-spaces}
   Suppose $(M, \leq, \circ, e, \lto, \rto)$ is a biclosed poset. Then
@@ -785,7 +789,7 @@ monoidal biclosed.
   \label{def:dial-monoidal-structure}
   Suppose $(U, X, \alpha)$ and $(V, Y, \beta)$ are two objects of
   $\Dial{M}{\Set}$. Then their tensor product is defined as follows:
-  \[
+  \[ \small
   (U, X, \alpha) \otimes (V, Y, \beta) = (U \times V, (V \to X) \times (U \to Y), \alpha \otimes \beta)
   \]
   where $- \to -$ is the function space from $\Set$, and $(\alpha
@@ -810,7 +814,7 @@ biclosed.
   \label{def:dial-is-biclosed}
   Suppose $(U, X, \alpha)$ and $(V, Y, \beta)$ are two objects of
   $\Dial{M}{\Set}$. Then two internal-homs can be defined as follows:
-  \[
+  \[ \small
   \begin{array}{lll}
     (U, X, \alpha) \lto (V, Y, \beta) = ((U \to V) \times (Y \to X), U \times Y, \alpha \lto \beta)\\
     (V, Y, \beta) \rto (U, X, \alpha) = ((U \to V) \times (Y \to X), U \times Y, \alpha \rto \beta)\\
@@ -824,7 +828,7 @@ the second.  The relations in the previous two definitions prevent
 these two from collapsing into the same object, because of the use of
 the left and right pseudo-complements. It is straightforward to show
 that the following bijections hold:
-\[
+\[ \small
 \begin{array}{lll}
   \Hom{}{A \otimes B}{C} \cong \Hom{}{B}{A \lto C} & \quad &  \Hom{}{A \otimes B}{C} \cong \Hom{}{A}{C \rto B}
 \end{array}

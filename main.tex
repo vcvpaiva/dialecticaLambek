@@ -191,7 +191,7 @@ that used the Lambek Calculus or its variants as their basis. These
 systems can be as expressive as Intuitionistic Logic and the claim is
 that they are more precise i.e. they make finer distinctions. Some of
 the landscape of calculi can be depicted as follows:
-\[
+\[  
 \begin{array}{cccc}
   \bfig
   \Ctriangle/-``-/<400,400>[
@@ -931,6 +931,7 @@ results here to three other systems.
 
 The syntax for patterns, terms, and contexts are described by the
 following grammar:
+\vspace{-10px}
 \[
 \begin{array}{cll}
   \text{(patterns)} & [[p]] := [[h]] \mid [[x]] \mid [[punit]] \mid [[p1 (x) p2]]\\
@@ -938,6 +939,7 @@ following grammar:
   [[appl t1 t2]] \mid \\ & [[appr t1 t2]] \mid [[let t1 be p in t2]]\\
   \text{(contexts)} & [[G]] := [[.]] \mid [[x : A]] \mid [[G1,G2]]\\
 \end{array}
+\vspace{-10px}
 \]
 Contexts are sequences of pairs of free variables and types.  Patterns
 are only used in the let-expression which is itself used to eliminate
@@ -949,51 +951,6 @@ The typing rules can be found in the in Figure~\ref{fig:typed-L} and
 the reduction rules in Figure~\ref{fig:rewrite-L}. The typing rules
 are as one might expect.  The reduction rules were extracted from the
 cut-elimination procedure for L.
-
-\begin{figure}[h]
-  \begin{mdframed}
-    \begin{mathpar}
-      \LdruleTXXvar{} \and
-      \LdruleTXXUr{} \and
-      \LdruleTXXcut{} \and
-      \LdruleTXXUl{} \and
-      \LdruleTXXTl{} \and
-      \LdruleTXXTr{} \and
-      \LdruleTXXIRl{} \and
-      \LdruleTXXILl{} \and
-      \LdruleTXXIRr{} \and
-      \LdruleTXXILr{} 
-    \end{mathpar}
-  \end{mdframed}
-  \caption{Typing Rules for the Typed Lambek Calculus: $\lambda\text{L}$}
-  \label{fig:typed-L}
-\end{figure}
-\begin{figure}[h]
-  \begin{mdframed}
-    \begin{mathpar}
-      %% \LdruleRXXAlpha{} \and
-      \LdruleRXXBetal{} \and
-      \LdruleRXXBetar{} \and
-      \LdruleRXXBetaU{} \and
-      \LdruleRXXBetaTOne{} \and
-      \LdruleRXXBetaTTwo{} \and
-      \LdruleRXXNatU{} \and
-      \LdruleRXXNatT{} \and
-      \LdruleRXXLetU{} \and
-      %% \LdruleRXXLet{} \and
-      %% \LdruleRXXTOne{} \and
-      %% \LdruleRXXTTwo{} \and
-      %% \LdruleRXXAlOne{} \and
-      %% \LdruleRXXAlTwo{} \and
-      %% \LdruleRXXArOne{} \and
-      %% \LdruleRXXArTwo{} \and
-      %% \LdruleRXXLl{} \and
-      %% \LdruleRXXLr{} 
-    \end{mathpar}
-  \end{mdframed}
-  \caption{Rewriting Rules for the Lambek Calculus: $\lambda\text{L}$}
-  \label{fig:rewrite-L}
-\end{figure}
 
 We denote the reflexive and transitive closure of the $[[~>]]$ by
 $[[~*>]]$.  We call a term with no $\beta$-redexes a normal form,
@@ -1014,8 +971,8 @@ embedding of $\lambda\text{L}$ into ILL.  Intuitionistic linear logic
 can be obtained from $\lambda\text{L}$ by replacing the rules
 $\Ldrulename{T\_IRl}$, $\Ldrulename{T\_ILl}$, $\Ldrulename{T\_IRr}$,
 and $\Ldrulename{T\_ILr}$ with the following two rules:
-\[
-\begin{array}{cccccccc}
+\[ \small
+\begin{array}{cccccccc} 
   \LdruleTXXIl{} & \quad \LdruleTXXIr{}
 \end{array}
 \]
@@ -1029,23 +986,29 @@ At this point we define the following embeddings.
   \label{def:lambda-L_to_ILL}
   We embed types and terms of $\lambda\text{L}$ into ILL as follows:
   \begin{center}
-    \begin{math}
+    \begin{math} \small
       \begin{array}{lrllllllllllllllllll}
         \text{Types:}\\
-        & [[I e]] & = & [[I]]\\
-        & [[(A (x) B) e]] & = & [[A e (x) h(B e)]]\\
-        & [[(A -> B) e]] & = & [[A e -o h(B e)]]\\
-        & [[(A <- B) e]] & = & [[A e -o h(B e)]]\\                    
+        & \begin{array}{rll}
+            [[I e]] & = & [[I]]\\
+            [[(A (x) B) e]] & = & [[A e (x) h(B e)]]\\
+            [[(A -> B) e]] & = & [[A e -o h(B e)]]\\
+            [[(A <- B) e]] & = & [[A e -o h(B e)]]\\                    
+          \end{array}
         \\
         \text{Terms:}\\
-        & [[x e]] & = & [[x]]\\
-        & [[unit e]] & = & [[unit]]\\
-        & [[{t1 (x) t2} e]] & = & [[t1 e (x) h{t2 e}]]\\
-        & [[{let t1 be p in t2} e]] & = & [[let t1 e be p in h{t2 e}]]\\
-        & [[{\l x : A.t} e]] & = & [[\ x : A.h{t e}]]\\
-        & [[{\r x : A.t} e]] & = & [[\ x : A.h{t e}]]\\
-        & [[{appl t1 t2} e]] & = & [[h{t1 e} h{t2 e}]]\\
-        & [[{appr t1 t2} e]] & = & [[h{t1 e} h{t2 e}]]\\
+        & \begin{array}{rll}
+            [[x e]] & = & [[x]]\\
+            [[unit e]] & = & [[unit]]\\
+            [[{t1 (x) t2} e]] & = & [[t1 e (x) h{t2 e}]]\\
+            [[{let t1 be p in t2} e]] & = & [[let t1 e be p in h{t2 e}]]\\
+          \end{array}
+        & \begin{array}{rll}
+            [[{\l x : A.t} e]] & = & [[\ x : A.h{t e}]]\\
+            [[{\r x : A.t} e]] & = & [[\ x : A.h{t e}]]\\
+            [[{appl t1 t2} e]] & = & [[h{t1 e} h{t2 e}]]\\
+            [[{appr t1 t2} e]] & = & [[h{t1 e} h{t2 e}]]\\
+          \end{array}
       \end{array}
     \end{math}
   \end{center}
@@ -1073,6 +1036,53 @@ This embedding preserves typing and reduction.
   This holds by straightforward induction on the form of the assumed
   reduction derivation.
 \end{proof}
+
+\begin{figure}[t]
+  \small
+  \begin{mdframed}
+    \begin{mathpar}
+      \LdruleTXXvar{} \and
+      \LdruleTXXUr{} \and
+      \LdruleTXXcut{} \and
+      \LdruleTXXUl{} \and
+      \LdruleTXXTl{} \and
+      \LdruleTXXTr{} \and
+      \LdruleTXXIRl{} \and
+      \LdruleTXXILl{} \and
+      \LdruleTXXIRr{} \and
+      \LdruleTXXILr{} 
+    \end{mathpar}
+  \end{mdframed}
+  \caption{Typing Rules for the Typed Lambek Calculus: $\lambda\text{L}$}
+  \label{fig:typed-L}
+\end{figure}
+\begin{figure}[h]
+  \small
+  \begin{mdframed}
+    \begin{mathpar}
+      %% \LdruleRXXAlpha{} \and
+      \LdruleRXXBetal{} \and
+      \LdruleRXXBetar{} \and
+      \LdruleRXXBetaU{} \and
+      \LdruleRXXBetaTOne{} \and
+      \LdruleRXXBetaTTwo{} \and
+      \LdruleRXXNatU{} \and
+      \LdruleRXXNatT{} \and
+      \LdruleRXXLetU{} \and
+      %% \LdruleRXXLet{} \and
+      %% \LdruleRXXTOne{} \and
+      %% \LdruleRXXTTwo{} \and
+      %% \LdruleRXXAlOne{} \and
+      %% \LdruleRXXAlTwo{} \and
+      %% \LdruleRXXArOne{} \and
+      %% \LdruleRXXArTwo{} \and
+      %% \LdruleRXXLl{} \and
+      %% \LdruleRXXLr{} 
+    \end{mathpar}
+  \end{mdframed}
+  \caption{Rewriting Rules for the Lambek Calculus: $\lambda\text{L}$}
+  \label{fig:rewrite-L}
+\end{figure}
 
 These two lemmas imply that $\lambda\text{L}$ is strongly normalizing,
 because ILL is. 
@@ -1121,7 +1131,7 @@ $\lambda\text{L}$ are extended as follows:
 The new type and terms are what one might expect, and are the
 traditional syntax used for the of-course modality.  We add the
 following typing rules to $\lambda\text{L}$:
-\begin{mathpar}
+\begin{mathpar} \small
       \LdruleTXXC{} \and
       \LdruleTXXW{} \and
       \LdruleTXXBr{} \and
@@ -1155,7 +1165,7 @@ the embedding we gave for $\lambda\text{L}$.
   The following is an extension of the embedding of $\lambda\text{L}$
   into ILL resulting in an embedding of types and terms of
   $\lambda\text{L}_!$ into ILL:
-  \begin{center}
+  \begin{center} \small
     \begin{math}
       \begin{array}{lrllllllllllllllllll}
         \text{Types:}\\
@@ -1234,7 +1244,7 @@ modality, and the syntax of terms follow suit.  The terms $[[lexchange
 are used to explicitly track uses of exchange throughout proofs.  
 
 We add the following typing rules to $\lambda\text{L}$:
-\begin{mathpar}
+\begin{mathpar} \small
   \LdruleTXXEOne{} \and
   \LdruleTXXETwo{} \and
   \LdruleTXXEr{} \and

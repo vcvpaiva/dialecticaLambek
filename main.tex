@@ -67,21 +67,22 @@
     So we revisited the old work, making sure that the syntactic details
     that were sketchy on the first version got completed and verified.
 
-    We recall the Lambek Calculus with its Curry-Howard isomorphic term
-    assignment system. We extend it with a $\kappa$ modality, inspired by
-    Yetter's work, which makes the calculus commutative. Then we add the
-    of-course modality $!$, as Girard did, to re-introduce weakening and
-    contraction for all formulas and get back the full power of
-    intuitionistic and classical logic. We also present algebraic
-    semantics and categorical semantics, proved sound and
-    complete. Finally we show the traditional properties of type systems,
-    like subject reduction, the Church-Rosser theorem and normalization
-    for the calculi of extended modalities, which we did not have before.
-    Ultimately we are interested on the applicability of the original
-    systems to their intended uses in the construction of semantics of
-    Natural Language. But before we can discuss that, we need to make sure
-    that the mathematical properties that make the Lambek Calculus
-    attractive are all properly modeled.
+    We recall the Lambek Calculus with its Curry-Howard isomorphic
+    term assignment system. We extend it with a $\kappa$ modality,
+    inspired by Yetter's work, which makes the calculus
+    commutative. Then we add the of-course modality $!$, as Girard
+    did, to re-introduce weakening and contraction for all formulas
+    and get back the full power of intuitionistic and classical
+    logic. We also present the categorical semantics, proved sound and
+    complete. Finally we show the traditional properties of type
+    systems, like subject reduction, the Church-Rosser theorem and
+    normalization for the calculi of extended modalities, which we did
+    not have before.  Ultimately we are interested on the
+    applicability of the original systems to their intended uses in
+    the construction of semantics of Natural Language. But before we
+    can discuss that, we need to make sure that the mathematical
+    properties that make the Lambek Calculus attractive are all
+    properly modeled.
   \end{abstract}
 \begin{keyword}
   Please list keywords from your paper here, separated by commas.
@@ -279,18 +280,19 @@ rules, we aim to refine the algebraization of proof theory.
 %always meant in their mathematical, rather than linguistical or
 %philosophical sense.
 
+%% Then we describe the
+%% usual algebraic semantics for the Lambek Calculus, including Lambek's
+%% original String Semantics, and generalize it, using a categorical
+%% perspective.  
 
 We first recall  that
 %Linear Logic and provide the transformations to show that 
 the Lambek Calculus \textsf{L} as the multiplicative fragment of
-non-commutative Intuitionistic Linear Logic.  Then we describe the
-usual algebraic semantics for the Lambek Calculus, including Lambek's
-original String Semantics, and generalize it, using a categorical
-perspective.  The next section recalls Dialectica models and defines
-them for the Lambek Calculus. Then we discuss type theory for the
-systems considered, proving the requisite theorems.  Finally, we
-discuss modalities for the Lambek Calculus and conclude with some
-discussion of the possible choices in this space.
+non-commutative Intuitionistic Linear Logic.  The next section recalls
+Dialectica models and defines them for the Lambek Calculus. Then we
+discuss type theory for the systems considered, proving the requisite
+theorems.  Finally, we discuss modalities for the Lambek Calculus and
+conclude with some discussion of the possible choices in this space.
 %in the fifth section we discuss modalities
 %and some untidiness of the Curry-Howard correspondence for the fragments of Linear Logic in question.
 
@@ -634,8 +636,7 @@ Section~\ref{sec:dialectica_lambek_spaces}.
 
 \section{Categorical Models}
 
-Having discussed algebraic, poset-like models of the Lambek Calculus,
-we now want to talk about categorical models, ones where one considers
+We now turn to the categorical models, ones where one considers
 different proofs of the same theorem. Since the Lambek Calculus itself
 came from its categorical models, biclosed monoidal categories, there
 is no shortage of these models. However, Girard's insight of relating

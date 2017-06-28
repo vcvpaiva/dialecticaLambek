@@ -932,7 +932,7 @@ results here to three other systems.
 The syntax for patterns, terms, and contexts are described by the
 following grammar:
 \vspace{-10px}
-\[
+\[ \small
 \begin{array}{cll}
   \text{(patterns)} & [[p]] := [[h]] \mid [[x]] \mid [[punit]] \mid [[p1 (x) p2]]\\
   \text{(terms)}    & [[t]] := [[x]] \mid [[unit]] \mid [[t1 (x) t2]] \mid [[\l x : A.t]] \mid [[\r x : A.t]] \mid
@@ -987,15 +987,23 @@ At this point we define the following embeddings.
   We embed types and terms of $\lambda\text{L}$ into ILL as follows:
   \begin{center}
     \begin{math} \small
-      \begin{array}{lrllllllllllllllllll}
+      \begin{array}{lll}
+        \begin{array}{lccc}
         \text{Types:}\\
         & \begin{array}{rll}
-            [[I e]] & = & [[I]]\\
-            [[(A (x) B) e]] & = & [[A e (x) h(B e)]]\\
-            [[(A -> B) e]] & = & [[A e -o h(B e)]]\\
-            [[(A <- B) e]] & = & [[A e -o h(B e)]]\\                    
-          \end{array}
-        \\
+            \begin{array}{rll}
+              [[I e]] & = & [[I]]\\
+              [[(A (x) B) e]] & = & [[A e (x) h(B e)]]\\
+            \end{array}
+            &
+            \begin{array}{rll}
+              [[(A -> B) e]] & = & [[A e -o h(B e)]]\\
+              [[(A <- B) e]] & = & [[A e -o h(B e)]]\\                    
+            \end{array}
+          \end{array}                
+      \end{array}
+      \\
+      \begin{array}{lll}
         \text{Terms:}\\
         & \begin{array}{rll}
             [[x e]] & = & [[x]]\\
@@ -1009,6 +1017,7 @@ At this point we define the following embeddings.
             [[{appl t1 t2} e]] & = & [[h{t1 e} h{t2 e}]]\\
             [[{appr t1 t2} e]] & = & [[h{t1 e} h{t2 e}]]\\
           \end{array}
+      \end{array}
       \end{array}
     \end{math}
   \end{center}
@@ -1121,7 +1130,7 @@ The calculus we introduce in this section is an extension of
 $\lambda\text{L}$ with the of-course modality $[[!A]]$.  This
 extension follows from ILL exactly.  The syntax of types and terms of
 $\lambda\text{L}$ are extended as follows:
-\[
+\[ \small
 \begin{array}{cllllll}
   \text{(types)}    & [[A]] & := & \cdots \mid [[! A]]\\
   \text{(terms)}    & [[t]] & := & \cdots \mid [[copy t' as t1 , t2 in t]] \mid [[discard t' in t]]
@@ -1131,12 +1140,14 @@ $\lambda\text{L}$ are extended as follows:
 The new type and terms are what one might expect, and are the
 traditional syntax used for the of-course modality.  We add the
 following typing rules to $\lambda\text{L}$:
-\begin{mathpar} \small
+{\small
+\begin{mathpar} 
       \LdruleTXXC{} \and
       \LdruleTXXW{} \and
       \LdruleTXXBr{} \and
       \LdruleTXXBl{} 
 \end{mathpar}
+}
 \begin{figure}
   \footnotesize
   \begin{mdframed}
@@ -1164,18 +1175,15 @@ the embedding we gave for $\lambda\text{L}$.
   \label{def:embed-lambda-L!-in-ILL}
   The following is an extension of the embedding of $\lambda\text{L}$
   into ILL resulting in an embedding of types and terms of
-  $\lambda\text{L}_!$ into ILL:
+  $\lambda\text{L}_!$ into ILL. First, we define $[[(! A) e]] = [[!
+      h(A e)]]$, then the following defines the embedding of terms:
   \begin{center} \small
     \begin{math}
-      \begin{array}{lrllllllllllllllllll}
-        \text{Types:}\\
-        & [[(! A) e]] & = & [[! h(A e)]]\\        
-        \\
-        \text{Terms:}\\
-        & [[{copy t' as t1 , t2 in t} e]] & = & [[copy t' e as t1 e , t2 e in h{t e}]]\\
-        & [[{discard t' in t} e]] & = & [[discard t' e in h{t e}]]\\
-        & [[{promote! t' for t'' in t} e]] & = & [[promote! t' e for t'' e in h{t e}]]\\
-        & [[{derelict! t} e]] & = & [[derelict! h{t e}]]\\
+      \begin{array}{rlllllllllllllllllll}        
+        [[{copy t' as t1 , t2 in t} e]] & = & [[copy t' e as t1 e , t2 e in h{t e}]]\\
+        [[{discard t' in t} e]] & = & [[discard t' e in h{t e}]]\\
+        [[{promote! t' for t'' in t} e]] & = & [[promote! t' e for t'' e in h{t e}]]\\
+        [[{derelict! t} e]] & = & [[derelict! h{t e}]]\\
       \end{array}
     \end{math}
   \end{center}
@@ -1230,7 +1238,7 @@ novel of the calculi we have introduced.
 
 The syntax of types and terms of $\lambda\text{L}$ are extended as
 follows:
-\[
+\[ \small
 \begin{array}{cllllll}
   \text{(types)}    & [[A]] & := & \cdots \mid [[E A]]\\
   \text{(terms)}    & [[t]] & := & \cdots \mid [[lexchange t1,t2 with x,y in t3]] \mid [[rexchange t1,t2 with x,y in t3]] \mid 
@@ -1244,13 +1252,14 @@ modality, and the syntax of terms follow suit.  The terms $[[lexchange
 are used to explicitly track uses of exchange throughout proofs.  
 
 We add the following typing rules to $\lambda\text{L}$:
-\begin{mathpar} \small
+{\small
+\begin{mathpar} 
   \LdruleTXXEOne{} \and
   \LdruleTXXETwo{} \and
   \LdruleTXXEr{} \and
   \LdruleTXXEl{} 
 \end{mathpar}
-
+}
 \begin{figure}[h]
   \small
   \begin{mdframed}
@@ -1275,18 +1284,16 @@ interesting.
   \label{def:embed-lambda-L!-in-ILL}
   The following is an extension of the embedding of $\lambda\text{L}$
   into ILL resulting in an embedding of types and terms of
-  $\lambda\text{L}_\kappa$ into ILL:
-  \begin{center}
+  $\lambda\text{L}_\kappa$ into ILL.  First, we define $[[(E A) e]] =
+  [[! h(A e)]]$, and then the following defines the embedding of
+  terms:
+  \begin{center} \small
     \begin{math}
-      \begin{array}{lrllllllllllllllllll}
-        \text{Types:}\\
-        & [[(E A) e]] & = & [[! h(A e)]]\\        
-        \\
-        \text{Terms:}\\
-        & [[{lexchange t1 , t2 with x , y in t3} e]] & = & [[ [t2 e/x][t1 e/y]h{t3 e}]]\\
-        & [[{rexchange t1 , t2 with x , y in t3} e]] & = & [[ [t2 e/x][t1 e/y]h{t3 e}]]\\
-        & [[{promoteE t' for t'' in t} e]] & = & [[promote! t' e for t'' e in h{t e}]]\\
-        & [[{derelictE t} e]] & = & [[derelict! h{t e}]]\\
+      \begin{array}{rlllllllllllllllllll}        
+        [[{lexchange t1 , t2 with x , y in t3} e]] & = & [[ [t2 e/x][t1 e/y]h{t3 e}]]\\
+        [[{rexchange t1 , t2 with x , y in t3} e]] & = & [[ [t2 e/x][t1 e/y]h{t3 e}]]\\
+        [[{promoteE t' for t'' in t} e]] & = & [[promote! t' e for t'' e in h{t e}]]\\
+        [[{derelictE t} e]] & = & [[derelict! h{t e}]]\\
       \end{array}
     \end{math}
   \end{center}

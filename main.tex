@@ -157,29 +157,28 @@ Grammars. %theories such as Categorial .
 % logic.  \end{quotation}
 
 The work on Categorial Grammar was given a serious impulse by the
-advent of Girard's Linear Logic  at the end of the 1980s.  Girard \cite{Girard:1987}
-showed that there is a full embedding, preserving proofs, of
-Intuitionistic Logic into Linear Logic with a modality ``!". This
-meant that Linear Logic, while paying attention to resources, could
-always code up faithfully Classical Logic and hence one could, as
-Girard put it, `have one's cake and eat it', paying attention to
-resources, if desired, but always forgetting this accounting, if
-preferred. This meant also that several new
-systems of resource logics were conceived and developed and these
-refined resource logics were applied to several areas of Computer
-Science.
+advent of Girard's Linear Logic at the end of the 1980s.  Girard
+\cite{Girard:1987} showed that there is a full embedding, preserving
+proofs, of Intuitionistic Logic into Linear Logic with a modality
+``!". This meant that Linear Logic, while paying attention to
+resources, could always code up faithfully Classical Logic and hence
+one could, as Girard put it, `have one's cake and eat it', paying
+attention to resources, if desired, but always forgetting this
+accounting, if preferred. This meant also that several new systems of
+resource logics were conceived and developed and these refined
+resource logics were applied to several areas of Computer Science.
 
-In Computational Linguistics, the Lambek Calculus 
-has seen a significant number of works written
-about it,  apart from a number of monographs that deal with
-logical and linguistic aspects of the generalized type-logical
-approach.  
-%For general background on the type-logical approach, there are the monographs of Moortgat, Morril, Carpenter and Steedman. 
-For a shorter introduction, see Moortgat's entry on the Stanford Encyclopedia of Philosophy  on Type Logical Grammar \cite{MoortgatSEP}.
-Type Logical Grammar situates the type-logical approach within the
-framework of Montague's Universal Grammar and presents detailed
-linguistic analyses for a substantive fragment of syntactic and
-semantic phenomena in the grammar of English.  Type Logical Semantics offers a general introduction to natural language semantics studied from a type-logical perspective.
+In Computational Linguistics, the Lambek Calculus has seen a
+significant number of works written about it, apart from a number of
+monographs that deal with logical and linguistic aspects of the
+generalized type-logical approach.  For a shorter introduction, see
+Moortgat's entry on the Stanford Encyclopedia of Philosophy on Type
+Logical Grammar \cite{MoortgatSEP}.  Type Logical Grammar situates the
+type-logical approach within the framework of Montague's Universal
+Grammar and presents detailed linguistic analyses for a substantive
+fragment of syntactic and semantic phenomena in the grammar of
+English.  Type Logical Semantics offers a general introduction to
+natural language semantics studied from a type-logical perspective.
 % Moortgat's Categorial Type Logics,
 % in the Handbook of Logic ad
 % Language
@@ -245,7 +244,7 @@ The Lambek Calculus also has the potential for many applications in
 other areas of computer science, such as, modeling processes.  Linear
 Logic has been at the forefront of the study of process calculi for
 many years \cite{HONDA20102223,Pratt:1997,ABRAMSKY19945}. We can think
-of a the commutative tensor product of linear logic as a parallel
+of the commutative tensor product of linear logic as a parallel
 operator.  For example, given a process $[[A]]$ and a process $[[B]]$,
 then we can form the process $[[A (x) B]]$ which runs both processes
 in parallel.  If we remove commutativity from the tensor product we
@@ -286,14 +285,13 @@ rules, we aim to refine the algebraization of proof theory.
 %% original String Semantics, and generalize it, using a categorical
 %% perspective.  
 
-We first recall  that
-%Linear Logic and provide the transformations to show that 
-the Lambek Calculus \textsf{L} as the multiplicative fragment of
-non-commutative Intuitionistic Linear Logic.  The next section recalls
-Dialectica models and defines them for the Lambek Calculus. Then we
-discuss type theory for the systems considered, proving the requisite
-theorems.  Finally, we discuss modalities for the Lambek Calculus and
-conclude with some discussion of the possible choices in this space.
+We first recall the Lambek Calculus \textsf{L} as the multiplicative
+fragment of non-commutative Intuitionistic Linear Logic.  The next
+section recalls Dialectica models and defines them for the Lambek
+Calculus. Then we discuss type theory for the systems considered,
+proving the requisite theorems.  Finally, we discuss modalities for
+the Lambek Calculus and conclude with some discussion of the possible
+choices in this space.
 %in the fifth section we discuss modalities
 %and some untidiness of the Curry-Howard correspondence for the fragments of Linear Logic in question.
 
@@ -324,11 +322,11 @@ exchange. However, applications where one needs a completely
 non-commutative tensor product and a commutative tensor product cannot
 be modeled in the Lambek Calculus with these rules.
 
-Polakow~\cite{Polakow:2001} combines intuitionistic, commutative
-linear, and non-commutative linear logic into a system called Ordered
-Linear Logic (OLL).  They then extend OLL into two new systems: a term
-assignment of OLL called OLLi, and a logical framework in the
-tradition of LF called OLF.
+Polakow and Pfenning~\cite{Polakow:2001} combine intuitionistic,
+commutative linear, and non-commutative linear logic into a system
+called Ordered Linear Logic (OLL).  Polakow and Pfenning then extend
+OLL into two new systems: a term assignment of OLL called OLLi, and a
+logical framework in the tradition of LF called OLF.
 
 OLL's sequent is of the form $\Gamma, \Delta, \Omega \vdash A$ where
 $\Gamma$ is a multiset of intuitionistic assumptions, $\Delta$ is a
@@ -431,7 +429,7 @@ $\LB$.
 
 \subsection{Adding Exchange to the Lambek Calculus}
 \label{subsec:the_lambek_calculus_with_the_exchange_modality}
-As we remarked above, one leading question of the Lambek Calculus is
+As we remarked above, one leading question of the Lambek Calculus is:
 can exchange be added in a similar way to weakening and contraction?
 That is, can we add a new modality that adds the exchange rule to L in
 a controlled way?  The answer to this question is positive, and the
@@ -445,7 +443,7 @@ rules for this new modality are as follows:
 The first two rules are similar to of-course, but the last two add
 exchange to formulas under the $\kappa$-modality.  We call L with the
 exchange modality $\LE$.  Thus, unlike intuitionistic linear logic
-where any two formulas can be exchanged $\LE$ restricts exchange to
+where any two formulas can be exchanged, $\LE$ restricts exchange to
 only formulas under the exchange modality.  Just like of-course
 the exchange modality is modeled categorically as a comonad; see
 Section~\ref{sec:dialectica_lambek_spaces}.
@@ -850,9 +848,9 @@ include an exchange operation.
 
 \begin{definition}
   \label{def:biclosed-exchange}
-  A \textbf{biclosed poset with exchange} is a poset $(M, \leq, \circ,
-  e, \lto, \rto)$ equipped with an unary operation $\kappa : M \to M$
-  satisfying the following:
+  A \textbf{biclosed poset with exchange} is a biclosed poset $(M,
+  \leq, \circ, e, \lto, \rto)$ equipped with an unary operation
+  $\kappa : M \to M$ satisfying the following:
   \[ \small
   \begin{array}{clr}
     \text{(Compatibility)} & a \leq b \text{ implies } \kappa a \leq \kappa b \text{ for all } a,b,c \in M\\
@@ -983,8 +981,7 @@ and $\Ldrulename{T\_ILr}$ with the following two rules:
 \]
 In addition, contexts are considered multisets, and hence, exchange is
 handled implicitly. Then we can reuse the idea of Benton's embeddings
-(defined in the appendix) to show type preservation and type
-reduction.
+to show type preservation and type reduction.
 
 At this point we define the following embeddings.
 \begin{definition}

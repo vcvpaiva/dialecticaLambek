@@ -1,5 +1,5 @@
-\documentclass{entcs}
-\usepackage{entcsmacro}
+\documentclass{llncs}
+
 \usepackage[utf8]{inputenc}
 
 \usepackage{amssymb,amsmath}
@@ -9,6 +9,7 @@
 \usepackage[barr]{xy}
 \usepackage{mdframed}
 \usepackage{bbm}
+\usepackage{wrapfig}
 
 \let\mto\to                     % Used for arrows
 \let\to\relax                   % Used for implication
@@ -33,62 +34,49 @@
 
 \usepackage{hyperref}
 
-\def\lastname{de Paiva and Eades III}
 \begin{document}
 
-\begin{frontmatter}
-  \title{Dialectica Categories for the Lambek Calculus}
-  \author{Valeria de Paiva\thanksref{Vemail}}
-  \address{Nuance Communications, Sunnyvale, CA}
+\title{Dialectica Categories for the Lambek Calculus}
 
-  \author{Harley Eades III\thanksref{Hemail}}
-  \address{Computer Science, Augusta University, Augusta, GA}
+\author{Valeria de Paiva\inst{1} and Harley Eades III\inst{2}}
 
-  \thanks[Vemail]{Email:
-    \href{mailto:valeria.depaiva@gmail.com} {\texttt{\normalshape
-        valeria.depaiva@gmail.com}}}
+\institute{Nuance Communications, Sunnyvale, CA, \email{valeria.depaiva@gmail.com}
+  \and Computer Science, Augusta University, Augusta, GA, \email{harley.eades@gmail.com}}
 
-  \thanks[Hemail]{Email:
-    \href{mailto:harley.eades@gmail.com} {\texttt{\normalshape
-        harley.eades@gmail.com}}}
-  \begin{abstract}
-    Dialectica categorical models of the Lambek Calculus were first
-    presented in the Amsterdam Colloquium \cite{depaiva1991}. Following
-    Lambek's lead we approached the Lambek Calculus from the perspective
-    of Linear Logic and adapted the Dialectica categorical models for
-    Linear Logic to Lambek's non-commutative calculus
-    \cite{lambek1988}. This work took for granted the syntax of the
-    Lambek Calculus and only discussed the exciting possibilities of new
-    models for modalities that the work on Linear Logic introduced. Many
-    years later we find that the work on dialectica models of the Lambek
-    Calculus is still interesting and that it might inform some of the
-    most recent work on the relationship between Categorial Grammars and
-    notions of Distributional Semantics (see e.g. \cite{coecke2013}).
-    So we revisited the old work, making sure that the syntactic details
-    that were sketchy on the first version got completed and verified.
+\maketitle
 
-    We recall the Lambek Calculus with its Curry-Howard isomorphic
-    term assignment system. We extend it with a $\kappa$ modality,
-    inspired by Yetter's work, which makes the calculus
-    commutative. Then we add the of-course modality $!$, as Girard
-    did, to re-introduce weakening and contraction for all formulas
-    and get back the full power of intuitionistic and classical
-    logic. We also present the categorical semantics, proved sound and
-    complete. Finally we show the traditional properties of type
-    systems, like subject reduction, the Church-Rosser theorem and
-    normalization for the calculi of extended modalities, which we did
-    not have before.  Ultimately we are interested on the
-    applicability of the original systems to their intended uses in
-    the construction of semantics of Natural Language. But before we
-    can discuss that, we need to make sure that the mathematical
-    properties that make the Lambek Calculus attractive are all
-    properly modeled.
-  \end{abstract}
-\begin{keyword}
-  Lambek calculus, dialectica models, categorical semantics, type
-  theory, structural rules, non-commutative, linear logic
-\end{keyword}
-\end{frontmatter}
+\begin{abstract}
+  %% Dialectica categorical models of the Lambek Calculus were first
+  %% presented in the Amsterdam Colloquium \cite{depaiva1991}. Following
+  %% Lambek's lead we approached the Lambek Calculus from the perspective
+  %% of Linear Logic and adapted the Dialectica categorical models for
+  %% Linear Logic to Lambek's non-commutative calculus
+  %% \cite{lambek1988}. This work took for granted the syntax of the
+  %% Lambek Calculus and only discussed the exciting possibilities of new
+  %% models for modalities that the work on Linear Logic introduced. Many
+  %% years later we find that the work on dialectica models of the Lambek
+  %% Calculus is still interesting and that it might inform some of the
+  %% most recent work on the relationship between Categorial Grammars and
+  %% notions of Distributional Semantics (see e.g. \cite{coecke2013}).
+  We revisit the old work of de Paiva on the models of the Lambek
+  Calculus in dialectica models making sure that the syntactic
+  details that were sketchy on the first version got completed and
+  verified.  We extend the Lambek Calculus with a $\kappa$ modality,
+  inspired by Yetter's work, which makes the calculus
+  commutative. Then we add the of-course modality $!$, as Girard did,
+  to re-introduce weakening and contraction for all formulas and get
+  back the full power of intuitionistic and classical logic. We also
+  present the categorical semantics, proved sound and
+  complete. Finally we show the traditional properties of type
+  systems, like subject reduction, the Church-Rosser theorem and
+  normalization for the calculi of extended modalities, which we did
+  not have before.
+\end{abstract}
+%% \begin{keyword}
+%%   Lambek calculus, dialectica models, categorical semantics, type
+%%   theory, structural rules, non-commutative, linear logic
+%% \end{keyword}
+
 
 \section*{Introduction}
 Lambek introduced his homonymous calculus (originally called the
@@ -117,7 +105,7 @@ categorial grammars and notions of distributional semantics
 %% tools. Since the Amsterdam Colloquium proceedings were never
 %% published, we have decided to revisit some of the mathematical work,
 %% using the new tools that have been developed for type theory and
-%% sequent proof systems in the time that elapsed. Thus, we implement the
+%% sequent proof systems in the time that elapsed. Thus, we implemmaent the
 %% calculus in Agda \cite{bove2009} and we use \texttt{Ott}
 %% \cite{Sewell:2010} to check that we do not have trivial mistakes in
 %% our term systems.
@@ -128,12 +116,10 @@ correctness of our categorical model
 theoretical (Section~\ref{sec:typed_lambek_calculi}) notions that were
 left undiscussed in the Amsterdam Colloquium presentation.  All of the
 syntax in this paper was checked using \texttt{Ott}
-\cite{Sewell:2010}.
-
-The goal is to show that our implementation can shed new light on some
-of the issues that remained open.  Mostly we wanted to check the
-correctness of the semantic proposals put forward since Szabo's
-seminal book \cite{szabo1978} and, for future work, on the
+\cite{Sewell:2010}.  The goal is to show that our work can shed new
+light on some of the issues that remained open.  Mostly we wanted to
+check the correctness of the semantic proposals put forward since
+Szabo's seminal book \cite{szabo1978} and, for future work, on the
 applicability and fit of the original systems to their intended uses.
 
 %% \subsection*{Overview}
@@ -192,36 +178,39 @@ that used the Lambek Calculus or its variants as their basis. These
 systems can be as expressive as Intuitionistic Logic and the claim is
 that they are more precise i.e. they make finer distinctions. Some of
 the landscape of calculi can be depicted as follows:
-\[  
-\begin{array}{cccc}
-  \bfig
-  \Ctriangle/-``-/<400,400>[
-    \textbf{LJ}_{\textbf{imp}}`
-    \textbf{LP}_{\textbf{cont}}`
-    \textbf{LP};``]
+\begin{center}
+  \includegraphics[scale=0.30]{logic-diag}
+\end{center}
+%% \[  
+%% \begin{array}{cccc}
+%%   \bfig
+%%   \Ctriangle/-``-/<400,400>[
+%%     \textbf{LJ}_{\textbf{imp}}`
+%%     \textbf{LP}_{\textbf{cont}}`
+%%     \textbf{LP};``]
 
-  \Dtriangle(400,0)/`-`-/<400,400>[
-    \textbf{LJ}_{\textbf{imp}}`
-    \textbf{LP}_{\textbf{weak}}`
-    \textbf{LP};``]
+%%   \Dtriangle(400,0)/`-`-/<400,400>[
+%%     \textbf{LJ}_{\textbf{imp}}`
+%%     \textbf{LP}_{\textbf{weak}}`
+%%     \textbf{LP};``]
 
-  \morphism(400,0)<0,-300>[\textbf{LP}`\textbf{L};]
-  \efig
-  & \quad &
-  \bfig
-  \Ctriangle/-``-/<400,400>[
-    \textbf{ILL}`
-    \textbf{LA}`
-    \textbf{L};``]
+%%   \morphism(400,0)/-/<0,-300>[\textbf{LP}`\textbf{L};]
+%%   \efig
+%%   & \quad &
+%%   \bfig
+%%   \Ctriangle/-``-/<400,400>[
+%%     \textbf{ILL}`
+%%     \textbf{LA}`
+%%     \textbf{L};``]
 
-  \Dtriangle(400,0)/`-`-/<400,400>[
-    \textbf{ILL}`
-    \textbf{LP}`
-    \textbf{L};``]
-  \morphism(400,0)//<0,-300>[`;]
-  \efig
-\end{array}
-\]
+%%   \Dtriangle(400,0)/`-`-/<400,400>[
+%%     \textbf{ILL}`
+%%     \textbf{LP}`
+%%     \textbf{L};``]
+%%   \morphism(400,0)//<0,-300>[`;]
+%%   \efig
+%% \end{array}
+%% \]
 
 From the beginning it was clear that the Lambek Calculus is the
 multiplicative fragment of non-commutative Intuitionistic Linear
@@ -237,7 +226,7 @@ corresponding to meet and join. Hence adding both permutation and
 additives to the Lambek Calculus we get to intuitonistic linear
 logic. On the other diagram to the Lambek Calculus with permutation we
 add either weakening ($\bf{LP_{weak}}$) or contraction
-$\bf{LP_{weak}}$) or both to get the implicational fragment of
+$\bf{LP_{cont}}$) or both to get the implicational fragment of
 Intuitionsitic Propositional Logic.
 
 The Lambek Calculus also has the potential for many applications in
@@ -285,13 +274,13 @@ rules, we aim to refine the algebraization of proof theory.
 %% original String Semantics, and generalize it, using a categorical
 %% perspective.  
 
-We first recall the Lambek Calculus \textsf{L} as the multiplicative
-fragment of non-commutative Intuitionistic Linear Logic.  The next
-section recalls Dialectica models and defines them for the Lambek
-Calculus. Then we discuss type theory for the systems considered,
-proving the requisite theorems.  Finally, we discuss modalities for
-the Lambek Calculus and conclude with some discussion of the possible
-choices in this space.
+%% We first recall the Lambek Calculus \textsf{L} as the multiplicative
+%% fragment of non-commutative Intuitionistic Linear Logic.  The next
+%% section recalls Dialectica models and defines them for the Lambek
+%% Calculus. Then we discuss type theory for the systems considered,
+%% proving the requisite theorems.  Finally, we discuss modalities for
+%% the Lambek Calculus and conclude with some discussion of the possible
+%% choices in this space.
 %in the fifth section we discuss modalities
 %and some untidiness of the Curry-Howard correspondence for the fragments of Linear Logic in question.
 
@@ -354,7 +343,7 @@ substructural logic with an operator denoting concatenation,
 $[[A (x) B]]$, and two implications relating the order of phrases,
 $[[A <- B]]$ and $[[A -> B]]$.  The first implication corresponds to a
 phrase of type $[[A]]$ when followed by a phrase of type $[[B]]$, and
-the second is a phrase of type $[[B]]$ when proceeded by a phrase of
+the second is a phrase of type $[[B]]$ when preceded by a phrase of
 type $[[A]]$.
 
 The Lambek Calculus, defined in Figure~\ref{fig:L}, can be presented
@@ -427,8 +416,8 @@ comonad.  We call the extension of L with the of-course modality
 $\LB$.
 % subsection the_lambek_calculus_with_the_weakening_and_contraction_modality (end)
 
-\subsection{Adding Exchange to the Lambek Calculus}
-\label{subsec:the_lambek_calculus_with_the_exchange_modality}
+%% \subsection{Adding Exchange to the Lambek Calculus}
+%% \label{subsec:the_lambek_calculus_with_the_exchange_modality}
 As we remarked above, one leading question of the Lambek Calculus is:
 can exchange be added in a similar way to weakening and contraction?
 That is, can we add a new modality that adds the exchange rule to L in
@@ -447,7 +436,6 @@ where any two formulas can be exchanged, $\LE$ restricts exchange to
 only formulas under the exchange modality.  Just like of-course
 the exchange modality is modeled categorically as a comonad; see
 Section~\ref{sec:dialectica_lambek_spaces}.
-% subsection the_lambek_calculus_with_the_exchange_modality (end)
 
 %% \section{Algebraic Semantics}
 
@@ -540,13 +528,13 @@ Section~\ref{sec:dialectica_lambek_spaces}.
 %% poset.
 
 %% At this point we have everything we need to model the Lambek Calculus L without modalities algebraically.
-%% \begin{lem}
-%%   \label{lemma:biclosed-poset-model-L}
+%% \begin{lemma}
+%%   \label{lemmama:biclosed-poset-model-L}
 %%   Any biclosed poset $(M, \leq, \circ, e, \lto, \rto)$ is a model for  the Lambek Calculus L without modalities.
-%% \end{lem}
+%% \end{lemma}
 %% \begin{proof}
 %%   First suppose we have an assignment $(-)^0$ which assigns to each
-%%   formula of L an element of $M$.  Then if $[[G |- A]]$ holds we
+%%   formula of L an elemmaent of $M$.  Then if $[[G |- A]]$ holds we
 %%   show that $([[G]])^0 \leq ([[A]])^0$.  This proof can easily be
 %%   completed by induction on the form $[[G |- A]]$.  
 %% \end{proof}
@@ -588,18 +576,18 @@ Section~\ref{sec:dialectica_lambek_spaces}.
 %% \times \mathcal{M} \mto \mathcal{M}$ by $\alpha \lto \beta =
 %% \alpha^{-1} \otimes \beta$ and $\alpha \rto \beta = \beta^{-1} \otimes
 %% \alpha$.  Thus, we now have the following:
-%% \begin{lem}
-%%   \label{lemma:M-is-biclosed-poset}
+%% \begin{lemma}
+%%   \label{lemmama:M-is-biclosed-poset}
 %%   The ordered monoid of invertible square $n \times n$ matrices over
 %%   $\mathbb{N}$, $(\mathcal{M},\leq,\otimes,I,\lto,\rto)$, is a
 %%   biclosed poset.
-%% \end{lem}
+%% \end{lemma}
 %% This then implies that $(\mathcal{M},\leq,\otimes,I,\lto,\rto)$ is a
 %% model of the Lambek Calculus.  There are several other models as well,
 %% for example, modules of rings.  According to Lambek the idea for the
 %% Syntactic Calculus came from algebraic models.  It is easy to see that
 %% if one has a $n$-ordered group, i.e. the possibility of inverting
-%% elements of a non-symmetric ordered monoid, we will have a biclosed
+%% elemmaents of a non-symmetric ordered monoid, we will have a biclosed
 %% poset.
 %% % subsubsection the_set_of_invertible_matrices (end)
 
@@ -635,52 +623,18 @@ modalities or exponentials in Lambek's setting. The categorical
 modelling of the modalities (of-course! and why-not?) was the
 difficult issue with Linear Logic.
 %the one the caused the existence of different schools. 
-This is where there are design decisions to be made. We discuss ours
-in Section~\ref{subsec:modalities}.
+This is where there are design decisions to be made. %% We discuss ours
+%% in Section~\ref{subsec:modalities}.
 
-\iffalse
-Categorically, one models the of-course modality as a functor endowed with the structure of a monoidal comonad $(!, \delta_A, \varepsilon_A)$ with
-some additional structure.  The comonad structure consists of maps
-$\delta_A : [[!A]] \mto [[!!A]]$ and $\varepsilon_A : [[!A]] \mto [[A]]$
-subject to some coherence diagrams, and maps $c_A : [[!A]] \mto
-[[h(!A) (x) !A]]$ and $w_A : [[!A]] \mto [[I]]$ that duplicate and erase assumptions.  Using this structure we can
-interpret the rules of the of-course modality.
-
-Consider the rule $\Ldrulename{C}$ from Section~\ref{subsec:the_lambek_calculus_with_the_weakening_and_contraction_modality},
-and suppose we have a map $[[G]]
-\otimes [[(h(!A) (x) !A)]] \mto^{f} [[B]]$, then we can obtain a new
-map $[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes c_A} [[G]] \otimes
-[[(h(!A) (x) !A)]] \mto^f [[B]]$.  The rule $\Ldrulename{W}$ is
-similar, but we start with a map $[[G]] \mto^f [[B]]$ and then we can
-define the map $[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes w_A}
-[[G]] \otimes [[I]] \mto^\cong [[G]] \mto^{f} [[B]]$.  Notice that the
-previous map exploits the fact that $[[I]]$ is the unit for tensor.
-Now consider the rule $\Ldrulename{Bl}$, and suppose we have a map
-$[[!{G}]] \mto^f [[B]]$, then we may obtain a second map using the
-fact that of-course is a functor $[[!{G}]] \mto^{\delta} [[!{!{G}}]]
-\mto^{!f} [[!B]]$.  Finally, consider the rule $\Ldrulename{Br}$ and
-suppose we have a map $[[G]] \otimes [[A]] \mto^f [[B]]$, then we can
-construct the map $[[G]] \otimes [[!A]] \mto^{\id_{[[G]]} \otimes
-  \varepsilon_A} [[G]] \otimes [[A]] \mto^f [[B]]$.
-  
-  We can similarly interpret the rules for the exchange modality.
-That is, as a functor endowed with the structure of a second comonad,
-but also with the maps $e_1 : [[A (x) E B]] \mto [[h(E B) (x) A]]$ and
-$e_2 : [[h(E A) (x) B]] \mto [[B (x) E A]]$.  Then, each of the
-inference rules for the exchange modality can easily be interpreted
-into the model.
-\fi 
-
-%This analysis tells us a few things about 
-We assume that, interpreting logics into
-categorical models, formulas are objects of some appropriate category and sequents, $[[G |- B]]$, are interpreted as morphisms, $[[G]] \mto^f [[B]]$, where $[[G]]$ is $[[I]]$ if it is
-empty, or it is the tensor product of the interpretations of its formulas.  Interpreting inference rules amounts to starting with
-the morphisms corresponding to the premises, and then building a map
-corresponding to the conclusion.  The cut-elimination procedure is
-defined by a set of equations between derivations, and hence, in the
-model corresponds to equations between morphisms.  The various
-coherence diagrams relating the structure of the model enforce that
-these equations hold. We will see this for the different systems below.
+%% We assume that, interpreting logics into
+%% categorical models, formulas are objects of some appropriate category and sequents, $[[G |- B]]$, are interpreted as morphisms, $[[G]] \mto^f [[B]]$, where $[[G]]$ is $[[I]]$ if it is
+%% empty, or it is the tensor product of the interpretations of its formulas.  Interpreting inference rules amounts to starting with
+%% the morphisms corresponding to the premises, and then building a map
+%% corresponding to the conclusion.  The cut-elimination procedure is
+%% defined by a set of equations between derivations, and hence, in the
+%% model corresponds to equations between morphisms.  The various
+%% coherence diagrams relating the structure of the model enforce that
+%% these equations hold. We will see this for the different systems below.
 
 
 
@@ -824,7 +778,7 @@ in the first argument and covariant in the second, but the second
 internal-hom is covariant in the first argument and contravariant in
 the second.  The relations in the previous two definitions prevent
 these two from collapsing into the same object, because of the use of
-the left and right pseudo-complements. It is straightforward to show
+the left and right pseudocomplement. It is straightforward to show
 that the following bijections hold:
 \[ \small
 \begin{array}{lll}
@@ -833,14 +787,12 @@ that the following bijections hold:
 \]
 Therefore, $\Dial{M}{\Set}$ is biclosed, and we obtain the following
 result.
-\begin{thm}
-  \label{thm:sound-lambek}
+\begin{theorem}
+  \label{theorem:sound-lambek}
   $\Dial{M}{\Set}$ is a sound and complete model for the Lambek
   Calculus $L$ without modalities.
-\end{thm}
+\end{theorem}
 
-\subsubsection{Lambek Modalities}
-\label{subsec:modalities}
 We now extend $\Dial{M}{\Set}$ with two modalities: the usual
 modality, of-course, denoted $!A$, and the exchange modality denoted
 $\kappa A$.  However, we must first extended biclosed posets to
@@ -869,7 +821,7 @@ a comonad extending the biclosed poset with left and right exchange.
 We can now define the two modalities in $\Dial{M}{\Set}$ where $M$ is
 a biclosed poset with exchange; clearly we know $\Dial{M}{\Set}$ is
 also a model of the Lambek Calculus without modalities by
-Theorem~\ref{thm:sound-lambek} because $M$ is a biclosed poset.
+Theorem~\ref{theorem:sound-lambek} because $M$ is a biclosed poset.
 \begin{definition}
   \label{def:modalities-dial}
   Suppose $(U, X, \alpha)$ is an object of $\Dial{M}{\Set}$ where $M$
@@ -899,12 +851,12 @@ proofs. Furthermore, these comonads come equipped with arrows $e : !A
 \otimes \kappa A$, and $\beta R : A \otimes \kappa B \mto \kappa B
 \otimes A$.  Thus, we arrive at the following result.
 
-\begin{thm}
-  \label{thm:sound-dial-exchange-!}
+\begin{theorem}
+  \label{theorem:sound-dial-exchange-!}
   Suppose $M$ is a biclosed poset with exchange.  Then
   $\Dial{M}{\Set}$ is a sound and complete model for the Lambek
   Calculi $L_!$, $L_\kappa$, and $L_{!\kappa}$.
-\end{thm}
+\end{theorem}
 % subsubsection modalities (end)
 % end subsection dialectica_lambek_spaces (end)
 % end section categorical_models (end)
@@ -1028,26 +980,21 @@ At this point we define the following embeddings.
   \[ [[(G |- t : A) e]] = [[G e |- t e : h(A e)]]\]
 \end{definition}
 \noindent
-This embedding preserves typing and reduction.
-\begin{lem}[Type Preserving Embedding]
-  \label{lemma:type_preserving_embedding}
-  If $[[G |- t : A]]$ in $\lambda\text{L}$, then
-  $[[G e |- t e : h(A e)]]$ in ILL.
-\end{lem}
+We can now prove strong normalization using the embedding preserves.
+\begin{theorem}[Strong Normalization]
+  \label{theorem:strong_normalization}
+  \begin{itemize}
+  \item If $[[G |- t : A]]$ in $\lambda\text{L}$, then
+    $[[G e |- t e : h(A e)]]$ in ILL.
+  \item If $[[t1 ~> t2]]$ in $\lambda\text{L}$, then $[[t1 e ~> h{t2 e}]]$
+    in ILL.
+  \item If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
+  \end{itemize}
+\end{theorem}
 \begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  typing derivation.
+  The first two cases hold by straightforward induction on the form of the assumed
+  typing or reduction derivation. They then imply the third.
 \end{proof}
-\begin{lem}[Reduction Preserving Embedding]
-  \label{lemma:reduction_preserving_embedding}
-  If $[[t1 ~> t2]]$ in $\lambda\text{L}$, then $[[t1 e ~> h{t2 e}]]$
-  in ILL.
-\end{lem}
-\begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  reduction derivation.
-\end{proof}
-
 \begin{figure}[t]
   \small
   \begin{mdframed}
@@ -1094,23 +1041,16 @@ This embedding preserves typing and reduction.
   \caption{Rewriting Rules for the Lambek Calculus: $\lambda\text{L}$}
   \label{fig:rewrite-L}
 \end{figure}
-
-These two lemmas imply that $\lambda\text{L}$ is strongly normalizing,
-because ILL is. 
-
-\begin{thm}[Strong Normalization]
-  \label{corollary:strong_normalization}
-  If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{thm}
-\begin{proof}
-  Suppose $[[t]]$ is not strongly normalizing.  Then there exists at
-  least one infinite descending chain starting with $[[t]]$ of the
-  form $[[t]] \redto [[t']] \redto [[t'']] \redto
-  \cdots$. Lemma~\ref{lemma:reduction_preserving_embedding} implies
-  that there must also be an infinite descending chain of the form
-  $[[t e]] \redto [[t' e]] \redto [[t'' e]] \redto \cdots$, but we
-  know this is impossible, because ILL is strongly normalizing.
-\end{proof}
+\noindent
+%% \begin{proof}
+%%   Suppose $[[t]]$ is not strongly normalizing.  Then there exists at
+%%   least one infinite descending chain starting with $[[t]]$ of the
+%%   form $[[t]] \redto [[t']] \redto [[t'']] \redto
+%%   \cdots$. Lemmama~\ref{lemmama:reduction_preserving_embedding} implies
+%%   that there must also be an infinite descending chain of the form
+%%   $[[t e]] \redto [[t' e]] \redto [[t'' e]] \redto \cdots$, but we
+%%   know this is impossible, because ILL is strongly normalizing.
+%% \end{proof}
 
 \textbf{Confluence.} The Church-Rosser property is well known to hold
 for ILL modulo commuting conversions, for example, see Theorem~19 of
@@ -1120,11 +1060,11 @@ lengthly, to simply redefine Bierman's candidates
 %(Definitions~17, 19,20, and 21 of Section 5.1 of ibid.), 
 and carry out a similar proof as Bierman's (Theorem~19 on page 96 of ibid.).  
 %However, giving the details here would not be fruitful nor enlightening, and hence, we omit the proof.  Thus, we have the following:
-\begin{thm}[Confluence]
-  \label{thm:confluence}
+\begin{theorem}[Confluence]
+  \label{theorem:confluence}
   The reduction relation, $[[~>]]$, modulo the commuting conversions
   is confluent.
-\end{thm}
+\end{theorem}
 
 \subsection{The Typed Lambek Calculus: $\lambda\text{L}_!$}
 \label{subsec:the_typed_lambek_calculus:lambda-l!}
@@ -1164,6 +1104,7 @@ following typing rules to $\lambda\text{L}$:
   \caption{Rewriting Rules for The Typed Lambek Calculus: $\lambda\text{L}_!$}
   \label{fig:rewrite-LB}
 \end{figure}
+\noindent
 Finally, the reduction rules can be found in
 Figure~\ref{fig:rewrite-LB}.  The equality used in the
 $\Ldrulename{R\_BetaC}$ rule is definitional, meaning, that the rule
@@ -1193,42 +1134,32 @@ the embedding we gave for $\lambda\text{L}$.
 
 \noindent
 Just as before this embedding is type preserving and reduction preserving.
-\begin{lem}[Type Preserving Embedding]
-  \label{lemma:type_preserving_embedding_lambdaL!}
-  If $[[G |- t : A]]$ in $\lambda\text{L}_!$, then
+\begin{theorem}[Type and Reduction Preserving Embedding]
+  \label{theorem:strong_normalization_lambdaL!}
+  \begin{itemize}
+  \item  If $[[G |- t : A]]$ in $\lambda\text{L}_!$, then
   $[[G e |- t e : h(A e)]]$ in ILL.
-\end{lem}
-\begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  typing derivation.
-\end{proof}
 
-\begin{lem}[Reduction Preserving Embedding]
-  \label{lemma:reduction_preserving_embedding_lambdaL!}
-  If $[[t1 ~> t2]]$ in $\lambda\text{L}_!$, then $[[t1 e ~> h{t2 e}]]$
-  in ILL.
-\end{lem}
+  \item If $[[t1 ~> t2]]$ in $\lambda\text{L}_!$, then $[[t1 e ~> h{t2
+        e}]]$ in ILL.
+  \item If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.  
+  \end{itemize}
+\end{theorem}
 \begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  reduction derivation.
+  The first two cases hold by straightforward induction on the form of the assumed
+  typing or reduction derivation.  They then imply the third.
 \end{proof}
 \noindent
-Finally, we can use the previous two results to conclude strong
-normalization, because ILL is.
-\begin{thm}[Strong Normalization]
-  \label{corollary:strong_normalization_lambdaL!}
-  If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{thm}
 
 \textbf{Confluence.} The Church-Rosser property also holds for
 $\lambda\text{L}_!$, and can be shown by straightforwardly applying a
 slightly modified version of Bierman's proof \cite{Bierman:1994} just
 as we did for $\lambda\text{L}$.  Thus, we have the following:
-\begin{thm}[Confluence]
-  \label{thm:confluence}
+\begin{theorem}[Confluence]
+  \label{theorem:confluence}
   The reduction relation, $[[~>]]$, modulo the commuting conversions
   is confluent.
-\end{thm}
+\end{theorem}
 
 \subsection{The Typed Lambek Calculus: $\lambda\text{L}_\kappa$}
 \label{subsec:the_typed_lambek_calculus:lambda-l-kappa}
@@ -1301,48 +1232,36 @@ interesting.
   \end{center}
 \end{definition}
 
-The embedding  translates the exchange modality into the
-of-course modality of ILL.  We do this so as to preserve the comonadic
-structure of the exchange modality.  One might think that we could
-simply translate the exchange modality to the identity, but as Benton
-showed \cite{Benton:1995c}, this would result in an embedding that
-does not preserve reductions.  Furthermore, the left and right
-exchange terms are translated away completely, but this works because
-ILL contains exchange in general, and hence, does not need to be
-tracked explicitly.  It is now straightforward to prove the following the lemmas that lead to
+The embedding translates the exchange modality into the of-course
+modality of ILL.  We do this so as to preserve the comonadic structure
+of the exchange modality.  One might think that we could simply
+translate the exchange modality to the identity, but as Benton showed
+\cite{Benton:1995c}, this would result in an embedding that does not
+preserve reductions.  Furthermore, the left and right exchange terms
+are translated away completely, but this works because ILL contains
+exchange in general, and hence, does not need to be tracked
+explicitly.  We now have strong normalization and confluence.
 
-\begin{lem}[Type Preserving Embedding]
-  \label{lemma:type_preserving_embedding_lambdaLk}
-  If $[[G |- t : A]]$ in $\lambda\text{L}_!$, then
-  $[[G e |- t e : h(A e)]]$ in ILL.
-\end{lem}
+\begin{theorem}[Strong Normalization]
+  \label{theorem:type_preserving_embedding_lambdaLk}
+  \begin{itemize}
+  \item If $[[G |- t : A]]$ in $\lambda\text{L}_!$, then
+    $[[G e |- t e : h(A e)]]$ in ILL.
+
+  \item If $[[t1 ~> t2]]$ in $\lambda\text{L}_!$, then $[[t1 e ~> h{t2 e}]]$
+    in ILL.
+
+  \item If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
+
+  \item The reduction relation, $[[~>]]$, modulo the commuting
+    conversions is confluent.
+  \end{itemize}
+\end{theorem}
 \begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  typing derivation.
+  The first two cases hold by straightforward induction on the form of
+  the assumed typing or reductions derivation.  They then imply the
+  third case.
 \end{proof}
-\begin{lem}[Reduction Preserving Embedding]
-  \label{lemma:reduction_preserving_embedding_lambdaLk}
-  If $[[t1 ~> t2]]$ in $\lambda\text{L}_!$, then $[[t1 e ~> h{t2 e}]]$
-  in ILL.
-\end{lem}
-\begin{proof}
-  This holds by straightforward induction on the form of the assumed
-  reduction derivation.
-\end{proof}
-\noindent
-Finally, we can use the previous two results to conclude strong
-normalization, because ILL is.
-
-\begin{thm}[Strong Normalization]
-  \label{corollary:strong_normalization_lambdaLk}
-  If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{thm}
-
-\begin{thm}[Confluence]
-  \label{thm:confluence-lambdaLk}
-  The reduction relation, $[[~>]]$, modulo the commuting conversions
-  is confluent.
-\end{thm}
 % subsection the_typed_lambek_calculus:lambda-l-kappa (end)
 
 \subsection{The Typed Lambek Calculus: $\lambda\text{L}_{!\kappa}$}
@@ -1362,16 +1281,16 @@ $\lambda\text{L}_{!\kappa}$ by extending the proof of confluence for
 ILL by Bierman \cite{Bierman:1994} just as we did for the other
 systems.  Thus, we have the following results.
 
-\begin{thm}[Strong Normalization]
+\begin{theorem}[Strong Normalization]
   \label{theorem:strong_normalization_lambdaL!k}
   If $[[G |- t : A]]$, then $[[t]]$ is strongly normalizing.
-\end{thm}
+\end{theorem}
 
-\begin{thm}[Confluence]
-  \label{thm:confluence-lambdaL!k}
+\begin{theorem}[Confluence]
+  \label{theorem:confluence-lambdaL!k}
   The reduction relation, $[[~>]]$, modulo the commuting conversions
   is confluent.
-\end{thm}
+\end{theorem}
 % subsection the_typed_lambek_calculus:lambda-l-!kappa (end)
 % section type_theories (end)
 
@@ -1379,22 +1298,22 @@ systems.  Thus, we have the following results.
 \section{Conclusions}
 We have recalled how to use biclosed posets and sets to construct
 dialectica-like models of the Lambek Calculus. This construction is
-admittedly not the easiest one, reason why we use automated tools to
-verify our definitions, but it has one striking advantage. It shows
-how to introduce modalities to recover the expressive power of
-intuitionistic (and a posteriori classical) propositional logic to the
-system. We know of no other construction of models of Lambek Calculus
-that does model modalities, not using their syntactic properties. (The
-traditional view in algebraic semantics is to consider idempotent
-operators for modalities like !). The categorical semantics here has
-been described before \cite{depaiva1991}, but the syntactic treatment
-of the lambda-calculi, in the style of \cite{benton1993} had not been
-done and there were doubts about its validity, given the results of
-Jay \cite{jay1991}. We are glad to put this is a firm footing, using
-another one of Benton's ideas: his embedding of intuitionistic linear
-logic into system F. Finally, we envisage more work, along the lines
-of algebraic proof theory, for modalities and non-symmetric type
-systems.
+admittedly not the easiest one, which is the reason why we use
+automated tools to verify our definitions, but it has one striking
+advantage. It shows how to introduce modalities to recover the
+expressive power of intuitionistic (and a posteriori classical)
+propositional logic to the system. We know of no other construction of
+models of Lambek Calculus that does model modalities, not using their
+syntactic properties. (The traditional view in algebraic semantics is
+to consider idempotent operators for modalities like !). The
+categorical semantics here has been described before
+\cite{depaiva1991}, but the syntactic treatment of the lambda-calculi,
+in the style of \cite{benton1993} had not been done and there were
+doubts about its validity, given the results of Jay \cite{jay1991}. We
+are glad to put this on a firm footing, using another one of Benton's
+ideas: his embedding of intuitionistic linear logic into system
+F. Finally, we envisage more work, along the lines of algebraic proof
+theory, for modalities and non-symmetric type systems.
 
 \bibliographystyle{plain}
 \bibliography{references}
